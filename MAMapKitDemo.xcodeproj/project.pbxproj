@@ -14,8 +14,6 @@
 		65CE59A21C2A7405008809B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65CE59A01C2A7405008809B0 /* LaunchScreen.storyboard */; };
 		65CE59AD1C2A7405008809B0 /* MAMapKitDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59AC1C2A7405008809B0 /* MAMapKitDemoTests.swift */; };
 		65CE59B91C2A743B008809B0 /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CE59B71C2A743B008809B0 /* AMapSearchKit.framework */; };
-		65CE59BA1C2A743B008809B0 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CE59B81C2A743B008809B0 /* MAMapKit.framework */; };
-		65CE59BC1C2A74F6008809B0 /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65CE59BB1C2A74F6008809B0 /* AMap.bundle */; };
 		65CE59BE1C2A7507008809B0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CE59BD1C2A7507008809B0 /* UIKit.framework */; };
 		65CE59C01C2A7512008809B0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CE59BF1C2A7512008809B0 /* Foundation.framework */; };
 		65CE59C21C2A751A008809B0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CE59C11C2A751A008809B0 /* CoreGraphics.framework */; };
@@ -26,6 +24,11 @@
 		65CE59CE1C2A7568008809B0 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CE59CD1C2A7568008809B0 /* libstdc++.6.0.9.tbd */; };
 		65CE59D21C2A7584008809B0 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CE59D11C2A7584008809B0 /* Security.framework */; };
 		65CE59D51C2A75AD008809B0 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CE59D41C2A75AD008809B0 /* libz.tbd */; };
+		65CE59DA1C2AC59D008809B0 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CE59D91C2AC59D008809B0 /* OpenGLES.framework */; };
+		65CE59DC1C2AC5F0008809B0 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CE59DB1C2AC5F0008809B0 /* libc++.tbd */; };
+		65CE59DF1C2AC66D008809B0 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CE59DE1C2AC66D008809B0 /* MAMapKit.framework */; };
+		65CE59E11C2AC68C008809B0 /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65CE59E01C2AC68C008809B0 /* AMap.bundle */; };
+		65CE59E81C2AF9E4008809B0 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59E71C2AF9E4008809B0 /* SearchResultTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +44,7 @@
 /* Begin PBXFileReference section */
 		65CE59941C2A7405008809B0 /* MAMapKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MAMapKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CE59971C2A7405008809B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		65CE59991C2A7405008809B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		65CE59991C2A7405008809B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
 		65CE599C1C2A7405008809B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		65CE599E1C2A7405008809B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65CE59A11C2A7405008809B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -50,7 +53,6 @@
 		65CE59AC1C2A7405008809B0 /* MAMapKitDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAMapKitDemoTests.swift; sourceTree = "<group>"; };
 		65CE59AE1C2A7405008809B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65CE59B71C2A743B008809B0 /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AMapSearchKit.framework; path = SDK/AMapSearchKit.framework; sourceTree = "<group>"; };
-		65CE59B81C2A743B008809B0 /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MAMapKit.framework; path = SDK/MAMapKit.framework; sourceTree = "<group>"; };
 		65CE59BB1C2A74F6008809B0 /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMap.bundle; path = SDK/MAMapKit.framework/Versions/3.2.0.163b642/Resources/AMap.bundle; sourceTree = "<group>"; };
 		65CE59BD1C2A7507008809B0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		65CE59BF1C2A7512008809B0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -65,6 +67,11 @@
 		65CE59D11C2A7584008809B0 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		65CE59D41C2A75AD008809B0 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		65CE59D61C2A7660008809B0 /* AMapDemoSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AMapDemoSwift-Bridging-Header.h"; sourceTree = "<group>"; };
+		65CE59D91C2AC59D008809B0 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		65CE59DB1C2AC5F0008809B0 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		65CE59DE1C2AC66D008809B0 /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MAMapKit.framework; path = SDK/MAMapKit.framework; sourceTree = "<group>"; };
+		65CE59E01C2AC68C008809B0 /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMap.bundle; path = SDK/MAMapKit.framework/Versions/3.2.1.94eef6d.752/Resources/AMap.bundle; sourceTree = "<group>"; };
+		65CE59E71C2AF9E4008809B0 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +79,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65CE59DF1C2AC66D008809B0 /* MAMapKit.framework in Frameworks */,
+				65CE59DC1C2AC5F0008809B0 /* libc++.tbd in Frameworks */,
+				65CE59DA1C2AC59D008809B0 /* OpenGLES.framework in Frameworks */,
 				65CE59D51C2A75AD008809B0 /* libz.tbd in Frameworks */,
 				65CE59D21C2A7584008809B0 /* Security.framework in Frameworks */,
 				65CE59CE1C2A7568008809B0 /* libstdc++.6.0.9.tbd in Frameworks */,
@@ -83,7 +93,6 @@
 				65CE59C01C2A7512008809B0 /* Foundation.framework in Frameworks */,
 				65CE59BE1C2A7507008809B0 /* UIKit.framework in Frameworks */,
 				65CE59B91C2A743B008809B0 /* AMapSearchKit.framework in Frameworks */,
-				65CE59BA1C2A743B008809B0 /* MAMapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +109,8 @@
 		65CE598B1C2A7405008809B0 = {
 			isa = PBXGroup;
 			children = (
+				65CE59E01C2AC68C008809B0 /* AMap.bundle */,
+				65CE59DE1C2AC66D008809B0 /* MAMapKit.framework */,
 				65CE59D31C2A758C008809B0 /* Framworks */,
 				65CE59BB1C2A74F6008809B0 /* AMap.bundle */,
 				65CE59961C2A7405008809B0 /* MAMapKitDemo */,
@@ -120,8 +131,9 @@
 		65CE59961C2A7405008809B0 /* MAMapKitDemo */ = {
 			isa = PBXGroup;
 			children = (
+				65CE59E91C2AFA76008809B0 /* Controllers */,
+				65CE59E61C2AF9CD008809B0 /* Views */,
 				65CE59971C2A7405008809B0 /* AppDelegate.swift */,
-				65CE59991C2A7405008809B0 /* ViewController.swift */,
 				65CE599B1C2A7405008809B0 /* Main.storyboard */,
 				65CE599E1C2A7405008809B0 /* Assets.xcassets */,
 				65CE59A01C2A7405008809B0 /* LaunchScreen.storyboard */,
@@ -143,6 +155,8 @@
 		65CE59D31C2A758C008809B0 /* Framworks */ = {
 			isa = PBXGroup;
 			children = (
+				65CE59DB1C2AC5F0008809B0 /* libc++.tbd */,
+				65CE59D91C2AC59D008809B0 /* OpenGLES.framework */,
 				65CE59D41C2A75AD008809B0 /* libz.tbd */,
 				65CE59D11C2A7584008809B0 /* Security.framework */,
 				65CE59CF1C2A7577008809B0 /* libc++.1.tbd */,
@@ -156,9 +170,24 @@
 				65CE59BF1C2A7512008809B0 /* Foundation.framework */,
 				65CE59BD1C2A7507008809B0 /* UIKit.framework */,
 				65CE59B71C2A743B008809B0 /* AMapSearchKit.framework */,
-				65CE59B81C2A743B008809B0 /* MAMapKit.framework */,
 			);
 			name = Framworks;
+			sourceTree = "<group>";
+		};
+		65CE59E61C2AF9CD008809B0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				65CE59E71C2AF9E4008809B0 /* SearchResultTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		65CE59E91C2AFA76008809B0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				65CE59991C2A7405008809B0 /* ViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,7 +272,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65CE59BC1C2A74F6008809B0 /* AMap.bundle in Resources */,
+				65CE59E11C2AC68C008809B0 /* AMap.bundle in Resources */,
 				65CE59A21C2A7405008809B0 /* LaunchScreen.storyboard in Resources */,
 				65CE599F1C2A7405008809B0 /* Assets.xcassets in Resources */,
 				65CE599D1C2A7405008809B0 /* Main.storyboard in Resources */,
@@ -266,6 +295,7 @@
 			files = (
 				65CE599A1C2A7405008809B0 /* ViewController.swift in Sources */,
 				65CE59981C2A7405008809B0 /* AppDelegate.swift in Sources */,
+				65CE59E81C2AF9E4008809B0 /* SearchResultTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
