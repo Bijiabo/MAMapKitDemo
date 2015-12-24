@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "65CE59931C2A7405008809B0"
-               BuildableName = "MAMapKitDemo.app"
-               BlueprintName = "MAMapKitDemo"
-               ReferencedContainer = "container:MAMapKitDemo.xcodeproj">
+               BuildableName = "NearCat.app"
+               BlueprintName = "NearCat"
+               ReferencedContainer = "container:NearCat.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "65CE59A71C2A7405008809B0"
-               BuildableName = "MAMapKitDemoTests.xctest"
-               BlueprintName = "MAMapKitDemoTests"
-               ReferencedContainer = "container:MAMapKitDemo.xcodeproj">
+               BuildableName = "NearCat.xctest"
+               BlueprintName = "NearCatTests"
+               ReferencedContainer = "container:NearCat.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "65CE59931C2A7405008809B0"
-            BuildableName = "MAMapKitDemo.app"
-            BlueprintName = "MAMapKitDemo"
-            ReferencedContainer = "container:MAMapKitDemo.xcodeproj">
+            BuildableName = "NearCat.app"
+            BlueprintName = "NearCat"
+            ReferencedContainer = "container:NearCat.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -66,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "65CE59931C2A7405008809B0"
-            BuildableName = "MAMapKitDemo.app"
-            BlueprintName = "MAMapKitDemo"
-            ReferencedContainer = "container:MAMapKitDemo.xcodeproj">
+            BuildableName = "NearCat.app"
+            BlueprintName = "NearCat"
+            ReferencedContainer = "container:NearCat.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -85,9 +85,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "65CE59931C2A7405008809B0"
-            BuildableName = "MAMapKitDemo.app"
-            BlueprintName = "MAMapKitDemo"
-            ReferencedContainer = "container:MAMapKitDemo.xcodeproj">
+            BuildableName = "NearCat.app"
+            BlueprintName = "NearCat"
+            ReferencedContainer = "container:NearCat.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
