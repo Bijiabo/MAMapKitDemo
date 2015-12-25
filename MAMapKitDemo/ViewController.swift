@@ -188,9 +188,9 @@ extension ViewController {
         searchBar.delegate = self
         
         searchBar.layer.shadowColor = UIColor.blackColor().CGColor
-        searchBar.layer.shadowOffset = CGSize(width: 0, height: 1)
+        searchBar.layer.shadowOffset = CGSize(width: 0, height: 0.5)
         searchBar.layer.shadowRadius = 0
-        searchBar.layer.shadowOpacity = 0.2
+        searchBar.layer.shadowOpacity = 0.1
     }
 }
 
