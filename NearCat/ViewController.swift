@@ -22,13 +22,13 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // setup AMap API key
+        MAMapServices.sharedServices().apiKey = APIKey
+        AMapSearchServices.sharedServices().apiKey = APIKey
+        
         initNavigationBar()
         
-        MAMapServices.sharedServices().apiKey = APIKey
-        
         initMapView()
-        
-        AMapSearchServices.sharedServices().apiKey = APIKey
         
         initSearch()
         
@@ -39,6 +39,11 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
         searchDisplayController!.searchResultsTableView.registerClass(SearchResultTableViewCell.self, forCellReuseIdentifier: "SearchResultTableViewCell")
     }
     
+    /**
+     setup navigation bar title view -> UISegmentedControl
+     
+     - returns: Void
+     */
     func initNavigationBar() {
         let segmentedControlItems = [
             "All",
@@ -194,6 +199,7 @@ extension ViewController {
     }
 }
 
+// MARK: - UISearchBarDelegate
 extension ViewController: UISearchBarDelegate {
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         guard let searchKeywords = searchBar.text else {return}
@@ -215,6 +221,7 @@ extension ViewController: UISearchBarDelegate {
     }
 }
 
+// MARK: - UITextFieldDelegate
 extension ViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
         guard let searchKeywords = textField.text else {return}
@@ -263,6 +270,7 @@ extension ViewController: UITextFieldDelegate {
     }
 }
 
+// MARK: - UITableViewDataSource
 extension ViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults.count

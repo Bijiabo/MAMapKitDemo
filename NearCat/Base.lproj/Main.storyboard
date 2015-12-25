@@ -21,7 +21,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IOW-N3-LkL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-460" y="327"/>
+            <point key="canvasLocation" x="-1204" y="327"/>
         </scene>
         <!--Settings-->
         <scene sceneID="CQl-Fj-1L0">
@@ -83,7 +83,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="99l-Q8-8zX" kind="show" id="f6t-QQ-qGd"/>
+                                    <segue destination="gpt-tw-1ds" kind="show" id="3Ub-IB-gIp"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="findMe" id="EkY-qE-Jkp" customClass="Settings_FindMe_TableViewCell" customModule="NearCat" customModuleProvider="target">
@@ -127,6 +127,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="0UE-kw-2BQ" kind="show" id="hyd-uW-sE7"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -142,7 +145,54 @@
             </objects>
             <point key="canvasLocation" x="-460" y="1106"/>
         </scene>
-        <!--Cat Archive Edit Table View Controller-->
+        <!--Cats-->
+        <scene sceneID="pc2-I8-7gt">
+            <objects>
+                <tableViewController id="gpt-tw-1ds" customClass="CatArchiveListTableViewController" customModule="NearCat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="z3y-LZ-9pZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="catItem" textLabel="diF-jR-OJc" style="IBUITableViewCellStyleDefault" id="MWY-zQ-IT6">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MWY-zQ-IT6" id="C3p-hG-miP">
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="diF-jR-OJc">
+                                            <rect key="frame" x="15" y="0.0" width="550" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="JDf-MI-01s" kind="show" id="HL9-3g-xvl"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="gpt-tw-1ds" id="HYU-tJ-Yq5"/>
+                            <outlet property="delegate" destination="gpt-tw-1ds" id="okh-UC-dEV"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Cats" id="nLv-dd-M2A">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="OqY-O6-sEC">
+                            <connections>
+                                <segue destination="99l-Q8-8zX" kind="show" id="j3f-S4-QfP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XJr-fa-etG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="316" y="1106"/>
+        </scene>
+        <!--Edit Cat Archive-->
         <scene sceneID="yrQ-TU-MTF">
             <objects>
                 <tableViewController id="99l-Q8-8zX" customClass="CatArchiveEditTableViewController" customModule="NearCat" customModuleProvider="target" sceneMemberID="viewController">
@@ -221,10 +271,154 @@
                             <outlet property="delegate" destination="99l-Q8-8zX" id="WeU-Vz-P7w"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Edit Cat Archive" id="ZWh-r6-9ia"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pep-Wc-v1p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="245" y="1106"/>
+            <point key="canvasLocation" x="1895" y="1106"/>
+        </scene>
+        <!--Feedback-->
+        <scene sceneID="PYk-6C-J1t">
+            <objects>
+                <viewController id="0UE-kw-2BQ" customClass="FeedbackViewController" customModule="NearCat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fd0-RJ-C7D"/>
+                        <viewControllerLayoutGuide type="bottom" id="HwT-6w-erV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ePc-63-fJZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="enter your feedback" translatesAutoresizingMaskIntoConstraints="NO" id="Eqd-UX-FGx">
+                                <rect key="frame" x="14" y="72" width="572" height="120"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="arh-3b-vzf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ym3-pd-3iU">
+                                <rect key="frame" x="14" y="212" width="572" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="bsP-aF-YzU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Eqd-UX-FGx" secondAttribute="trailing" constant="14" id="CWa-ib-oz1"/>
+                            <constraint firstItem="ym3-pd-3iU" firstAttribute="top" secondItem="Eqd-UX-FGx" secondAttribute="bottom" constant="20" id="H1q-uy-SDo"/>
+                            <constraint firstItem="ym3-pd-3iU" firstAttribute="leading" secondItem="ePc-63-fJZ" secondAttribute="leading" constant="14" id="cz8-gH-lMw"/>
+                            <constraint firstAttribute="trailing" secondItem="ym3-pd-3iU" secondAttribute="trailing" constant="14" id="ohm-kl-dEc"/>
+                            <constraint firstItem="Eqd-UX-FGx" firstAttribute="top" secondItem="fd0-RJ-C7D" secondAttribute="bottom" constant="8" id="rx0-As-fVh"/>
+                            <constraint firstItem="Eqd-UX-FGx" firstAttribute="leading" secondItem="ePc-63-fJZ" secondAttribute="leading" constant="14" id="wwC-eh-Ziy"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Feedback" id="XMa-tk-TpR">
+                        <barButtonItem key="rightBarButtonItem" title="Send" id="5i2-dX-g0r"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="emailTextField" destination="ym3-pd-3iU" id="rjM-Zw-rym"/>
+                        <outlet property="feedbackTextView" destination="Eqd-UX-FGx" id="biV-ke-y46"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iIf-zE-i5g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="316" y="1887"/>
+        </scene>
+        <!--Cat Archive-->
+        <scene sceneID="NUv-ih-bxB">
+            <objects>
+                <tableViewController id="JDf-MI-01s" customClass="CatArchiveDetailTableViewController" customModule="NearCat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="lS5-eE-1Q7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="avatar" rowHeight="100" id="SLN-J7-h91" customClass="CatArchiveAvatarTableViewCell" customModule="NearCat" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SLN-J7-h91" id="l6Q-Qw-D7s">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pfI-35-3ci">
+                                            <rect key="frame" x="260" y="10" width="80" height="80"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="28a-qI-JLH"/>
+                                                <constraint firstAttribute="height" constant="80" id="eLZ-VE-0qW"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="pfI-35-3ci" firstAttribute="centerY" secondItem="l6Q-Qw-D7s" secondAttribute="centerY" id="hJg-QD-MXc"/>
+                                        <constraint firstItem="pfI-35-3ci" firstAttribute="centerX" secondItem="l6Q-Qw-D7s" secondAttribute="centerX" id="jmJ-ah-GMJ"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="avatarImageView" destination="pfI-35-3ci" id="BGT-Ay-MfX"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailItem" rowHeight="44" id="XR0-vK-3oj" customClass="CatArchiveDetailItemTableViewCell" customModule="NearCat" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="192" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XR0-vK-3oj" id="qCo-V6-bsh">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3VR-Xo-FWN">
+                                            <rect key="frame" x="14" y="11" width="33.5" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.13059520259999999" green="0.4319594356" blue="0.89330543900000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6O8-zG-eiL">
+                                            <rect key="frame" x="108" y="6" width="478" height="31.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="6O8-zG-eiL" firstAttribute="leading" secondItem="qCo-V6-bsh" secondAttribute="leadingMargin" constant="100" id="AQJ-iY-dST"/>
+                                        <constraint firstItem="6O8-zG-eiL" firstAttribute="top" secondItem="qCo-V6-bsh" secondAttribute="top" constant="6" id="Cjd-fY-Nu4"/>
+                                        <constraint firstAttribute="trailing" secondItem="6O8-zG-eiL" secondAttribute="trailing" constant="14" id="ClW-pF-GSH"/>
+                                        <constraint firstItem="3VR-Xo-FWN" firstAttribute="leading" secondItem="qCo-V6-bsh" secondAttribute="leading" constant="14" id="cIZ-a2-eH2"/>
+                                        <constraint firstItem="3VR-Xo-FWN" firstAttribute="centerY" secondItem="qCo-V6-bsh" secondAttribute="centerY" id="eKI-x5-xKr"/>
+                                        <constraint firstAttribute="bottom" secondItem="6O8-zG-eiL" secondAttribute="bottom" constant="6" id="fYC-nJ-aYr"/>
+                                        <constraint firstItem="3VR-Xo-FWN" firstAttribute="leading" secondItem="qCo-V6-bsh" secondAttribute="leadingMargin" constant="14" id="fzk-0Z-rWM"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="fzk-0Z-rWM"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="contentLabel" destination="6O8-zG-eiL" id="zyN-Di-scd"/>
+                                    <outlet property="titleLabel" destination="3VR-Xo-FWN" id="0I1-7s-6d7"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="JDf-MI-01s" id="ifd-lm-M7Y"/>
+                            <outlet property="delegate" destination="JDf-MI-01s" id="hzM-lU-TA6"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Cat Archive" id="EYR-AX-uos">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="r9a-J8-yCC">
+                            <connections>
+                                <segue destination="99l-Q8-8zX" kind="show" id="oNX-dc-zo5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uwm-zt-7XB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1104" y="1106"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -274,7 +468,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="316" y="327"/>
+            <point key="canvasLocation" x="-460" y="327"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Evr-e5-a8p">
@@ -292,7 +486,10 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xkk-ds-S1O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1312" y="327"/>
+            <point key="canvasLocation" x="-2000" y="327"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="oNX-dc-zo5"/>
+    </inferredMetricsTieBreakers>
 </document>

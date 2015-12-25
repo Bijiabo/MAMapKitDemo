@@ -17,6 +17,8 @@
 		6557F7B91C2CFFB300E6780D /* CatArchiveItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F7B81C2CFFB300E6780D /* CatArchiveItemTableViewCell.swift */; };
 		6557F7BB1C2CFFD100E6780D /* CatArchiveEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F7BA1C2CFFD100E6780D /* CatArchiveEditTableViewController.swift */; };
 		6557F7BD1C2D02D300E6780D /* CatArchiveAvatarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F7BC1C2D02D300E6780D /* CatArchiveAvatarTableViewCell.swift */; };
+		6557F7C41C2D2B1A00E6780D /* CatArchiveListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F7C31C2D2B1A00E6780D /* CatArchiveListTableViewController.swift */; };
+		6557F7C61C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F7C51C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift */; };
 		65CE59981C2A7405008809B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59971C2A7405008809B0 /* AppDelegate.swift */; };
 		65CE599A1C2A7405008809B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59991C2A7405008809B0 /* ViewController.swift */; };
 		65CE599D1C2A7405008809B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65CE599B1C2A7405008809B0 /* Main.storyboard */; };
@@ -39,6 +41,8 @@
 		65CE59DF1C2AC66D008809B0 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CE59DE1C2AC66D008809B0 /* MAMapKit.framework */; };
 		65CE59E11C2AC68C008809B0 /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65CE59E01C2AC68C008809B0 /* AMap.bundle */; };
 		65CE59E81C2AF9E4008809B0 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59E71C2AF9E4008809B0 /* SearchResultTableViewCell.swift */; };
+		65DAC81B1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC81A1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift */; };
+		65DAC81D1C2D902A00335EFC /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC81C1C2D902A00335EFC /* FeedbackViewController.swift */; };
 		65EE13781C2C15CB000CA852 /* FServiceManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65EE13771C2C15CB000CA852 /* FServiceManager.framework */; };
 		65EE13791C2C15CB000CA852 /* FServiceManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65EE13771C2C15CB000CA852 /* FServiceManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -78,6 +82,8 @@
 		6557F7B81C2CFFB300E6780D /* CatArchiveItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveItemTableViewCell.swift; sourceTree = "<group>"; };
 		6557F7BA1C2CFFD100E6780D /* CatArchiveEditTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveEditTableViewController.swift; sourceTree = "<group>"; };
 		6557F7BC1C2D02D300E6780D /* CatArchiveAvatarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveAvatarTableViewCell.swift; sourceTree = "<group>"; };
+		6557F7C31C2D2B1A00E6780D /* CatArchiveListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveListTableViewController.swift; sourceTree = "<group>"; };
+		6557F7C51C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveDetailTableViewController.swift; sourceTree = "<group>"; };
 		65CE59941C2A7405008809B0 /* NearCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CE59971C2A7405008809B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65CE59991C2A7405008809B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +113,8 @@
 		65CE59DE1C2AC66D008809B0 /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MAMapKit.framework; path = SDK/MAMapKit.framework; sourceTree = "<group>"; };
 		65CE59E01C2AC68C008809B0 /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMap.bundle; path = SDK/MAMapKit.framework/Versions/3.2.1.94eef6d.752/Resources/AMap.bundle; sourceTree = "<group>"; };
 		65CE59E71C2AF9E4008809B0 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
+		65DAC81A1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveDetailItemTableViewCell.swift; sourceTree = "<group>"; };
+		65DAC81C1C2D902A00335EFC /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		65EE13771C2C15CB000CA852 /* FServiceManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FServiceManager.framework; path = Carthage/Build/iOS/FServiceManager.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,56 +153,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		65CE598B1C2A7405008809B0 = {
+		6557F7BE1C2D211D00E6780D /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
 				6557F7AA1C2C655D00E6780D /* Alamofire.framework */,
 				6557F7AB1C2C655D00E6780D /* KeychainAccess.framework */,
-				65EE13771C2C15CB000CA852 /* FServiceManager.framework */,
-				65CE59E01C2AC68C008809B0 /* AMap.bundle */,
-				65CE59D31C2A758C008809B0 /* Framworks */,
-				65CE59961C2A7405008809B0 /* MAMapKitDemo */,
-				65CE59AB1C2A7405008809B0 /* MAMapKitDemoTests */,
-				65CE59951C2A7405008809B0 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		65CE59951C2A7405008809B0 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				65CE59941C2A7405008809B0 /* NearCat.app */,
-				65CE59A81C2A7405008809B0 /* NearCat.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		65CE59961C2A7405008809B0 /* MAMapKitDemo */ = {
-			isa = PBXGroup;
-			children = (
-				65CE59E91C2AFA76008809B0 /* Controllers */,
-				65CE59E61C2AF9CD008809B0 /* Views */,
-				65CE59971C2A7405008809B0 /* AppDelegate.swift */,
-				65CE599B1C2A7405008809B0 /* Main.storyboard */,
-				65CE599E1C2A7405008809B0 /* Assets.xcassets */,
-				65CE59A01C2A7405008809B0 /* LaunchScreen.storyboard */,
-				65CE59A31C2A7405008809B0 /* Info.plist */,
-				65CE59D61C2A7660008809B0 /* AMapDemoSwift-Bridging-Header.h */,
-			);
-			path = MAMapKitDemo;
-			sourceTree = "<group>";
-		};
-		65CE59AB1C2A7405008809B0 /* MAMapKitDemoTests */ = {
-			isa = PBXGroup;
-			children = (
-				65CE59AC1C2A7405008809B0 /* MAMapKitDemoTests.swift */,
-				65CE59AE1C2A7405008809B0 /* Info.plist */,
-			);
-			path = MAMapKitDemoTests;
-			sourceTree = "<group>";
-		};
-		65CE59D31C2A758C008809B0 /* Framworks */ = {
-			isa = PBXGroup;
-			children = (
 				65CE59DE1C2AC66D008809B0 /* MAMapKit.framework */,
 				65CE59DB1C2AC5F0008809B0 /* libc++.tbd */,
 				65CE59D91C2AC59D008809B0 /* OpenGLES.framework */,
@@ -212,6 +175,69 @@
 				65CE59BD1C2A7507008809B0 /* UIKit.framework */,
 				65CE59B71C2A743B008809B0 /* AMapSearchKit.framework */,
 			);
+			name = "Third Party";
+			sourceTree = "<group>";
+		};
+		6557F7C21C2D2AFB00E6780D /* CatArchive */ = {
+			isa = PBXGroup;
+			children = (
+				6557F7BA1C2CFFD100E6780D /* CatArchiveEditTableViewController.swift */,
+				6557F7C31C2D2B1A00E6780D /* CatArchiveListTableViewController.swift */,
+				6557F7C51C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift */,
+			);
+			name = CatArchive;
+			sourceTree = "<group>";
+		};
+		65CE598B1C2A7405008809B0 = {
+			isa = PBXGroup;
+			children = (
+				65CE59E01C2AC68C008809B0 /* AMap.bundle */,
+				65CE59D31C2A758C008809B0 /* Framworks */,
+				65CE59961C2A7405008809B0 /* NearCat */,
+				65CE59AB1C2A7405008809B0 /* NearCatTests */,
+				65CE59951C2A7405008809B0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		65CE59951C2A7405008809B0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				65CE59941C2A7405008809B0 /* NearCat.app */,
+				65CE59A81C2A7405008809B0 /* NearCat.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		65CE59961C2A7405008809B0 /* NearCat */ = {
+			isa = PBXGroup;
+			children = (
+				65CE59E91C2AFA76008809B0 /* Controllers */,
+				65CE59E61C2AF9CD008809B0 /* Views */,
+				65CE59971C2A7405008809B0 /* AppDelegate.swift */,
+				65CE599B1C2A7405008809B0 /* Main.storyboard */,
+				65CE599E1C2A7405008809B0 /* Assets.xcassets */,
+				65CE59A01C2A7405008809B0 /* LaunchScreen.storyboard */,
+				65CE59A31C2A7405008809B0 /* Info.plist */,
+				65CE59D61C2A7660008809B0 /* AMapDemoSwift-Bridging-Header.h */,
+			);
+			path = NearCat;
+			sourceTree = "<group>";
+		};
+		65CE59AB1C2A7405008809B0 /* NearCatTests */ = {
+			isa = PBXGroup;
+			children = (
+				65CE59AC1C2A7405008809B0 /* MAMapKitDemoTests.swift */,
+				65CE59AE1C2A7405008809B0 /* Info.plist */,
+			);
+			path = NearCatTests;
+			sourceTree = "<group>";
+		};
+		65CE59D31C2A758C008809B0 /* Framworks */ = {
+			isa = PBXGroup;
+			children = (
+				65EE13771C2C15CB000CA852 /* FServiceManager.framework */,
+				6557F7BE1C2D211D00E6780D /* Third Party */,
+			);
 			name = Framworks;
 			sourceTree = "<group>";
 		};
@@ -219,10 +245,8 @@
 			isa = PBXGroup;
 			children = (
 				65CE59E71C2AF9E4008809B0 /* SearchResultTableViewCell.swift */,
-				6557F7B41C2CF5ED00E6780D /* Settings_FindMe_TableViewCell.swift */,
-				6557F7B61C2CF67700E6780D /* Settings_CatArchives_TableViewCell.swift */,
-				6557F7B81C2CFFB300E6780D /* CatArchiveItemTableViewCell.swift */,
-				6557F7BC1C2D02D300E6780D /* CatArchiveAvatarTableViewCell.swift */,
+				65DAC8191C2D747800335EFC /* Settings */,
+				65DAC8181C2D746C00335EFC /* CatArchive */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -230,11 +254,31 @@
 		65CE59E91C2AFA76008809B0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6557F7C21C2D2AFB00E6780D /* CatArchive */,
 				65CE59991C2A7405008809B0 /* ViewController.swift */,
 				6557F7B21C2CF13800E6780D /* SettingsTableViewController.swift */,
-				6557F7BA1C2CFFD100E6780D /* CatArchiveEditTableViewController.swift */,
+				65DAC81C1C2D902A00335EFC /* FeedbackViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		65DAC8181C2D746C00335EFC /* CatArchive */ = {
+			isa = PBXGroup;
+			children = (
+				6557F7B81C2CFFB300E6780D /* CatArchiveItemTableViewCell.swift */,
+				6557F7BC1C2D02D300E6780D /* CatArchiveAvatarTableViewCell.swift */,
+				65DAC81A1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift */,
+			);
+			name = CatArchive;
+			sourceTree = "<group>";
+		};
+		65DAC8191C2D747800335EFC /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				6557F7B41C2CF5ED00E6780D /* Settings_FindMe_TableViewCell.swift */,
+				6557F7B61C2CF67700E6780D /* Settings_CatArchives_TableViewCell.swift */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,6 +414,10 @@
 				65CE59981C2A7405008809B0 /* AppDelegate.swift in Sources */,
 				65CE59E81C2AF9E4008809B0 /* SearchResultTableViewCell.swift in Sources */,
 				6557F7B91C2CFFB300E6780D /* CatArchiveItemTableViewCell.swift in Sources */,
+				65DAC81B1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift in Sources */,
+				65DAC81D1C2D902A00335EFC /* FeedbackViewController.swift in Sources */,
+				6557F7C61C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift in Sources */,
+				6557F7C41C2D2B1A00E6780D /* CatArchiveListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,13 +551,13 @@
 					"$(PROJECT_DIR)/SDK",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = MAMapKitDemo/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/NearCat/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = cat.near.cn;
 				PRODUCT_NAME = NearCat;
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/MAMapKitDemo/AMapDemoSwift-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/NearCat/AMapDemoSwift-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -524,13 +572,13 @@
 					"$(PROJECT_DIR)/SDK",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = MAMapKitDemo/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/NearCat/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = cat.near.cn;
 				PRODUCT_NAME = NearCat;
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/MAMapKitDemo/AMapDemoSwift-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/NearCat/AMapDemoSwift-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -538,7 +586,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = MAMapKitDemoTests/Info.plist;
+				INFOPLIST_FILE = NearCatTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bijiabo.MAMapKitDemoTests;
 				PRODUCT_NAME = NearCat;
@@ -550,7 +598,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = MAMapKitDemoTests/Info.plist;
+				INFOPLIST_FILE = NearCatTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bijiabo.MAMapKitDemoTests;
 				PRODUCT_NAME = NearCat;

@@ -15,7 +15,38 @@ class CatArchiveEditTableViewController: UITableViewController {
             "title": "name",
             "placeHolder": "enter cat name",
             "key": "name"
+        ],
+        [
+            "title": "name",
+            "placeHolder": "enter cat name",
+            "key": "name"
+        ],
+        [
+            "title": "name",
+            "placeHolder": "enter cat name",
+            "key": "name"
+        ],
+        [
+            "title": "name",
+            "placeHolder": "enter cat name",
+            "key": "name"
+        ],
+        [
+            "title": "name",
+            "placeHolder": "enter cat name",
+            "key": "name"
+        ],
+        [
+            "title": "name",
+            "placeHolder": "enter cat name",
+            "key": "name"
+        ],
+        [
+            "title": "name",
+            "placeHolder": "enter cat name",
+            "key": "name"
         ]
+        
     ]
     
     override func viewDidLoad() {
@@ -28,10 +59,14 @@ class CatArchiveEditTableViewController: UITableViewController {
         
         title = "Edit Cat"
         
+        // table view
         let tableFooterView: UIView = UIView()
         tableFooterView.backgroundColor = UIColor.clearColor()
         tableView.tableFooterView = tableFooterView
         tableView.backgroundColor = UIColor(red:0.97, green:0.97, blue:0.97, alpha:1)
+        
+        // navigation bar
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: Selector("tapDoneButton:"))
     }
 
     // MARK: - Table view data source
@@ -79,6 +114,11 @@ class CatArchiveEditTableViewController: UITableViewController {
         default:
             return 44.0
         }
+    }
+    
+    // MARK: - user actions
+    func tapDoneButton(sender: UIBarButtonItem) {
+        
     }
 
 }
