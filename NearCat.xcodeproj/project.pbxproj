@@ -11,6 +11,12 @@
 		6557F7AD1C2C655D00E6780D /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6557F7AA1C2C655D00E6780D /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6557F7AE1C2C655D00E6780D /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6557F7AB1C2C655D00E6780D /* KeychainAccess.framework */; };
 		6557F7AF1C2C655D00E6780D /* KeychainAccess.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6557F7AB1C2C655D00E6780D /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6557F7B31C2CF13800E6780D /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F7B21C2CF13800E6780D /* SettingsTableViewController.swift */; };
+		6557F7B51C2CF5ED00E6780D /* Settings_FindMe_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F7B41C2CF5ED00E6780D /* Settings_FindMe_TableViewCell.swift */; };
+		6557F7B71C2CF67700E6780D /* Settings_CatArchives_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F7B61C2CF67700E6780D /* Settings_CatArchives_TableViewCell.swift */; };
+		6557F7B91C2CFFB300E6780D /* CatArchiveItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F7B81C2CFFB300E6780D /* CatArchiveItemTableViewCell.swift */; };
+		6557F7BB1C2CFFD100E6780D /* CatArchiveEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F7BA1C2CFFD100E6780D /* CatArchiveEditTableViewController.swift */; };
+		6557F7BD1C2D02D300E6780D /* CatArchiveAvatarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F7BC1C2D02D300E6780D /* CatArchiveAvatarTableViewCell.swift */; };
 		65CE59981C2A7405008809B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59971C2A7405008809B0 /* AppDelegate.swift */; };
 		65CE599A1C2A7405008809B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59991C2A7405008809B0 /* ViewController.swift */; };
 		65CE599D1C2A7405008809B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65CE599B1C2A7405008809B0 /* Main.storyboard */; };
@@ -66,6 +72,12 @@
 /* Begin PBXFileReference section */
 		6557F7AA1C2C655D00E6780D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		6557F7AB1C2C655D00E6780D /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
+		6557F7B21C2CF13800E6780D /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		6557F7B41C2CF5ED00E6780D /* Settings_FindMe_TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings_FindMe_TableViewCell.swift; sourceTree = "<group>"; };
+		6557F7B61C2CF67700E6780D /* Settings_CatArchives_TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings_CatArchives_TableViewCell.swift; sourceTree = "<group>"; };
+		6557F7B81C2CFFB300E6780D /* CatArchiveItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveItemTableViewCell.swift; sourceTree = "<group>"; };
+		6557F7BA1C2CFFD100E6780D /* CatArchiveEditTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveEditTableViewController.swift; sourceTree = "<group>"; };
+		6557F7BC1C2D02D300E6780D /* CatArchiveAvatarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveAvatarTableViewCell.swift; sourceTree = "<group>"; };
 		65CE59941C2A7405008809B0 /* NearCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CE59971C2A7405008809B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65CE59991C2A7405008809B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +219,10 @@
 			isa = PBXGroup;
 			children = (
 				65CE59E71C2AF9E4008809B0 /* SearchResultTableViewCell.swift */,
+				6557F7B41C2CF5ED00E6780D /* Settings_FindMe_TableViewCell.swift */,
+				6557F7B61C2CF67700E6780D /* Settings_CatArchives_TableViewCell.swift */,
+				6557F7B81C2CFFB300E6780D /* CatArchiveItemTableViewCell.swift */,
+				6557F7BC1C2D02D300E6780D /* CatArchiveAvatarTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -215,6 +231,8 @@
 			isa = PBXGroup;
 			children = (
 				65CE59991C2A7405008809B0 /* ViewController.swift */,
+				6557F7B21C2CF13800E6780D /* SettingsTableViewController.swift */,
+				6557F7BA1C2CFFD100E6780D /* CatArchiveEditTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -343,9 +361,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6557F7B31C2CF13800E6780D /* SettingsTableViewController.swift in Sources */,
+				6557F7BB1C2CFFD100E6780D /* CatArchiveEditTableViewController.swift in Sources */,
 				65CE599A1C2A7405008809B0 /* ViewController.swift in Sources */,
+				6557F7BD1C2D02D300E6780D /* CatArchiveAvatarTableViewCell.swift in Sources */,
+				6557F7B71C2CF67700E6780D /* Settings_CatArchives_TableViewCell.swift in Sources */,
+				6557F7B51C2CF5ED00E6780D /* Settings_FindMe_TableViewCell.swift in Sources */,
 				65CE59981C2A7405008809B0 /* AppDelegate.swift in Sources */,
 				65CE59E81C2AF9E4008809B0 /* SearchResultTableViewCell.swift in Sources */,
+				6557F7B91C2CFFB300E6780D /* CatArchiveItemTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
