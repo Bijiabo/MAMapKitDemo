@@ -292,7 +292,8 @@
 				65CE59911C2A7405008809B0 /* Frameworks */,
 				65CE59921C2A7405008809B0 /* Resources */,
 				65EE137A1C2C15CB000CA852 /* Embed Frameworks */,
-				65EE137B1C2C1676000CA852 /* ShellScript */,
+				65EE137B1C2C1676000CA852 /* Run Script For Carthage */,
+				65DAC81E1C2D9B7900335EFC /* Run Script For Build Version */,
 			);
 			buildRules = (
 			);
@@ -382,7 +383,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		65EE137B1C2C1676000CA852 /* ShellScript */ = {
+		65DAC81E1C2D9B7900335EFC /* Run Script For Build Version */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script For Build Version";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
+		};
+		65EE137B1C2C1676000CA852 /* Run Script For Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -392,6 +407,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/FServiceManager.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 			);
+			name = "Run Script For Carthage";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
