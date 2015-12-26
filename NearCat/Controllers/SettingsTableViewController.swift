@@ -9,16 +9,12 @@
 import UIKit
 import FServiceManager
 
-class SettingsTableViewController: UITableViewController {
+class SettingsTableViewController: UITableViewController, LoginRequesterProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         _initViews()
-        
-        FAction.checkLogin { (success, description) -> Void in
-            print(success)
-        }
     }
     
     private func _initViews() {
@@ -116,81 +112,16 @@ class SettingsTableViewController: UITableViewController {
         // user tap login cell
         if tableView.cellForRowAtIndexPath(indexPath)?.reuseIdentifier == "pleaseLogin" {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            showLoginAlert()
+            NSNotificationCenter.defaultCenter().postNotificationName(Constant.Notification.Alert.showLoginTextField, object: self)
         }
     }
     
-    func showLoginAlert() {
-        let alert = UIAlertController(title: "登陆", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+    // MARK: - LoginRequesterProtocol
+    func didLoginSuccess() {
         
-        // add user email text field
-        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
-            textField.tag = 0
-            textField.placeholder = "email"
-            textField.secureTextEntry = false
-        })
-        
-        // add user password text field
-        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
-            textField.tag = 1
-            textField.placeholder = "password"
-            textField.secureTextEntry = true
-        })
-        
-        // add cancel button
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil)
-        alert.addAction(cancelAction)
-        
-        // add login button
-        let loginActionHandler: ((UIAlertAction) -> Void) = { (action: UIAlertAction) -> Void in
-            // get email and password
-            var email: String = String()
-            var password: String = String()
-            for textField in alert.textFields! {
-                switch textField.tag {
-                case 0:
-                    email = textField.text == nil ? "" : textField.text!
-                case 1:
-                    password = textField.text == nil ? "" : textField.text!
-                default:
-                    break
-                }
-            }
-            
-            // send login request to server
-            FAction.login(email, password: password, completeHandler: { (success, description) -> Void in
-                if !success {
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.showErrorAlert(title: "Login Error", message: description, closeHandler: { () -> Void in
-                            for textField in alert.textFields! {
-                                if textField.tag == 1 { textField.text = String() }
-                            }
-                            self.presentViewController(alert, animated: true, completion: { () -> Void in
-                                for textField in alert.textFields! {
-                                    if textField.tag == 1 && !email.isEmpty { textField.becomeFirstResponder() }
-                                }
-                            })
-                        })
-                    })
-                    
-                }
-                print(description)
-            })
-        }
-        let loginAction = UIAlertAction(title: "Login", style: UIAlertActionStyle.Default, handler: loginActionHandler)
-        alert.addAction(loginAction)
-        
-        presentViewController(alert, animated: true, completion: nil)
     }
     
-    func showErrorAlert(title title: String = "Error", message: String?, closeHandler: ()->Void) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        // add close action
-        let closeAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (action) -> Void in
-            closeHandler()
-        }
-        alert.addAction(closeAction)
+    func didLoginCancel() {
         
-        presentViewController(alert, animated: true, completion: nil)
     }
 }

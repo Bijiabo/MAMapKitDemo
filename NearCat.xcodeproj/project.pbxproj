@@ -46,6 +46,9 @@
 		65DAC82A1C2E55EF00335EFC /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC8291C2E55EF00335EFC /* MainNavigationController.swift */; };
 		65DAC82C1C2E569600335EFC /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC82B1C2E569600335EFC /* MainTabBarController.swift */; };
 		65DAC82F1C2E578300335EFC /* MainRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC82E1C2E578300335EFC /* MainRootViewController.swift */; };
+		65DAC83A1C2E5C7C00335EFC /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC8391C2E5C7C00335EFC /* Constant.swift */; };
+		65DAC8401C2EB97F00335EFC /* NotificationAlertObserverProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC83F1C2EB97F00335EFC /* NotificationAlertObserverProtocol.swift */; };
+		65DAC8421C2EBDA700335EFC /* LoginRequesterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC8411C2EBDA700335EFC /* LoginRequesterProtocol.swift */; };
 		65EE13781C2C15CB000CA852 /* FServiceManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65EE13771C2C15CB000CA852 /* FServiceManager.framework */; };
 		65EE13791C2C15CB000CA852 /* FServiceManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65EE13771C2C15CB000CA852 /* FServiceManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -88,12 +91,12 @@
 		6557F7C31C2D2B1A00E6780D /* CatArchiveListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveListTableViewController.swift; sourceTree = "<group>"; };
 		6557F7C51C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveDetailTableViewController.swift; sourceTree = "<group>"; };
 		65CE59941C2A7405008809B0 /* NearCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		65CE59971C2A7405008809B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		65CE59971C2A7405008809B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = NearCat/AppDelegate.swift; sourceTree = "<group>"; };
 		65CE59991C2A7405008809B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
 		65CE599C1C2A7405008809B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		65CE599E1C2A7405008809B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65CE59A11C2A7405008809B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		65CE59A31C2A7405008809B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65CE59A31C2A7405008809B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = NearCat/Info.plist; sourceTree = "<group>"; };
 		65CE59A81C2A7405008809B0 /* NearCat.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NearCat.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CE59AC1C2A7405008809B0 /* MAMapKitDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAMapKitDemoTests.swift; sourceTree = "<group>"; };
 		65CE59AE1C2A7405008809B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -110,17 +113,20 @@
 		65CE59CF1C2A7577008809B0 /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
 		65CE59D11C2A7584008809B0 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		65CE59D41C2A75AD008809B0 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		65CE59D61C2A7660008809B0 /* AMapDemoSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AMapDemoSwift-Bridging-Header.h"; sourceTree = "<group>"; };
+		65CE59D61C2A7660008809B0 /* AMapDemoSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "AMapDemoSwift-Bridging-Header.h"; path = "NearCat/AMapDemoSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		65CE59D91C2AC59D008809B0 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		65CE59DB1C2AC5F0008809B0 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		65CE59DE1C2AC66D008809B0 /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MAMapKit.framework; path = SDK/MAMapKit.framework; sourceTree = "<group>"; };
-		65CE59E01C2AC68C008809B0 /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMap.bundle; path = SDK/MAMapKit.framework/Versions/3.2.1.94eef6d.752/Resources/AMap.bundle; sourceTree = "<group>"; };
+		65CE59E01C2AC68C008809B0 /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMap.bundle; path = ../SDK/MAMapKit.framework/Versions/3.2.1.94eef6d.752/Resources/AMap.bundle; sourceTree = "<group>"; };
 		65CE59E71C2AF9E4008809B0 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		65DAC81A1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveDetailItemTableViewCell.swift; sourceTree = "<group>"; };
 		65DAC81C1C2D902A00335EFC /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		65DAC8291C2E55EF00335EFC /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		65DAC82B1C2E569600335EFC /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		65DAC82E1C2E578300335EFC /* MainRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainRootViewController.swift; sourceTree = "<group>"; };
+		65DAC8391C2E5C7C00335EFC /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constant.swift; path = NearCat/Constant.swift; sourceTree = "<group>"; };
+		65DAC83F1C2EB97F00335EFC /* NotificationAlertObserverProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationAlertObserverProtocol.swift; sourceTree = "<group>"; };
+		65DAC8411C2EBDA700335EFC /* LoginRequesterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRequesterProtocol.swift; sourceTree = "<group>"; };
 		65EE13771C2C15CB000CA852 /* FServiceManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FServiceManager.framework; path = Carthage/Build/iOS/FServiceManager.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -197,9 +203,12 @@
 		65CE598B1C2A7405008809B0 = {
 			isa = PBXGroup;
 			children = (
-				65CE59E01C2AC68C008809B0 /* AMap.bundle */,
 				65CE59D31C2A758C008809B0 /* Framworks */,
 				65CE59961C2A7405008809B0 /* NearCat */,
+				65CE59971C2A7405008809B0 /* AppDelegate.swift */,
+				65DAC8391C2E5C7C00335EFC /* Constant.swift */,
+				65CE59A31C2A7405008809B0 /* Info.plist */,
+				65CE59D61C2A7660008809B0 /* AMapDemoSwift-Bridging-Header.h */,
 				65CE59AB1C2A7405008809B0 /* NearCatTests */,
 				65CE59951C2A7405008809B0 /* Products */,
 			);
@@ -217,14 +226,10 @@
 		65CE59961C2A7405008809B0 /* NearCat */ = {
 			isa = PBXGroup;
 			children = (
+				65DAC83E1C2E604C00335EFC /* Protocols */,
 				65CE59E91C2AFA76008809B0 /* Controllers */,
 				65CE59E61C2AF9CD008809B0 /* Views */,
-				65CE59971C2A7405008809B0 /* AppDelegate.swift */,
-				65CE599B1C2A7405008809B0 /* Main.storyboard */,
-				65CE599E1C2A7405008809B0 /* Assets.xcassets */,
-				65CE59A01C2A7405008809B0 /* LaunchScreen.storyboard */,
-				65CE59A31C2A7405008809B0 /* Info.plist */,
-				65CE59D61C2A7660008809B0 /* AMapDemoSwift-Bridging-Header.h */,
+				65DAC8331C2E589A00335EFC /* Copy Bundle Resources */,
 			);
 			path = NearCat;
 			sourceTree = "<group>";
@@ -250,7 +255,7 @@
 		65CE59E61C2AF9CD008809B0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				65CE59E71C2AF9E4008809B0 /* SearchResultTableViewCell.swift */,
+				65DAC8311C2E584D00335EFC /* Map */,
 				65DAC8191C2D747800335EFC /* Settings */,
 				65DAC8181C2D746C00335EFC /* CatArchive */,
 			);
@@ -260,10 +265,9 @@
 		65CE59E91C2AFA76008809B0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				65DAC8321C2E585500335EFC /* Map */,
 				6557F7C21C2D2AFB00E6780D /* CatArchive */,
-				65CE59991C2A7405008809B0 /* ViewController.swift */,
-				6557F7B21C2CF13800E6780D /* SettingsTableViewController.swift */,
-				65DAC81C1C2D902A00335EFC /* FeedbackViewController.swift */,
+				65DAC8301C2E583B00335EFC /* Settings */,
 				65DAC82D1C2E56A500335EFC /* Main */,
 			);
 			path = Controllers;
@@ -296,6 +300,51 @@
 				65DAC82E1C2E578300335EFC /* MainRootViewController.swift */,
 			);
 			name = Main;
+			sourceTree = "<group>";
+		};
+		65DAC8301C2E583B00335EFC /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				6557F7B21C2CF13800E6780D /* SettingsTableViewController.swift */,
+				65DAC81C1C2D902A00335EFC /* FeedbackViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		65DAC8311C2E584D00335EFC /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				65CE59E71C2AF9E4008809B0 /* SearchResultTableViewCell.swift */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		65DAC8321C2E585500335EFC /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				65CE59991C2A7405008809B0 /* ViewController.swift */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		65DAC8331C2E589A00335EFC /* Copy Bundle Resources */ = {
+			isa = PBXGroup;
+			children = (
+				65CE59E01C2AC68C008809B0 /* AMap.bundle */,
+				65CE599B1C2A7405008809B0 /* Main.storyboard */,
+				65CE599E1C2A7405008809B0 /* Assets.xcassets */,
+				65CE59A01C2A7405008809B0 /* LaunchScreen.storyboard */,
+			);
+			name = "Copy Bundle Resources";
+			sourceTree = "<group>";
+		};
+		65DAC83E1C2E604C00335EFC /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				65DAC83F1C2EB97F00335EFC /* NotificationAlertObserverProtocol.swift */,
+				65DAC8411C2EBDA700335EFC /* LoginRequesterProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -439,7 +488,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6557F7B31C2CF13800E6780D /* SettingsTableViewController.swift in Sources */,
+				65DAC8401C2EB97F00335EFC /* NotificationAlertObserverProtocol.swift in Sources */,
+				65DAC83A1C2E5C7C00335EFC /* Constant.swift in Sources */,
 				6557F7BB1C2CFFD100E6780D /* CatArchiveEditTableViewController.swift in Sources */,
+				65DAC8421C2EBDA700335EFC /* LoginRequesterProtocol.swift in Sources */,
 				65DAC82C1C2E569600335EFC /* MainTabBarController.swift in Sources */,
 				65CE599A1C2A7405008809B0 /* ViewController.swift in Sources */,
 				6557F7BD1C2D02D300E6780D /* CatArchiveAvatarTableViewCell.swift in Sources */,
