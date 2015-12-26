@@ -22,13 +22,13 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // setup AMap API key
+        MAMapServices.sharedServices().apiKey = APIKey
+        AMapSearchServices.sharedServices().apiKey = APIKey
+        
         initNavigationBar()
         
-        MAMapServices.sharedServices().apiKey = APIKey
-        
         initMapView()
-        
-        AMapSearchServices.sharedServices().apiKey = APIKey
         
         initSearch()
         
@@ -39,6 +39,11 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
         searchDisplayController!.searchResultsTableView.registerClass(SearchResultTableViewCell.self, forCellReuseIdentifier: "SearchResultTableViewCell")
     }
     
+    /**
+     setup navigation bar title view -> UISegmentedControl
+     
+     - returns: Void
+     */
     func initNavigationBar() {
         let segmentedControlItems = [
             "All",
@@ -188,12 +193,13 @@ extension ViewController {
         searchBar.delegate = self
         
         searchBar.layer.shadowColor = UIColor.blackColor().CGColor
-        searchBar.layer.shadowOffset = CGSize(width: 0, height: 1)
+        searchBar.layer.shadowOffset = CGSize(width: 0, height: 0.5)
         searchBar.layer.shadowRadius = 0
-        searchBar.layer.shadowOpacity = 0.2
+        searchBar.layer.shadowOpacity = 0.1
     }
 }
 
+// MARK: - UISearchBarDelegate
 extension ViewController: UISearchBarDelegate {
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         guard let searchKeywords = searchBar.text else {return}
@@ -215,6 +221,7 @@ extension ViewController: UISearchBarDelegate {
     }
 }
 
+// MARK: - UITextFieldDelegate
 extension ViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
         guard let searchKeywords = textField.text else {return}
@@ -263,6 +270,7 @@ extension ViewController: UITextFieldDelegate {
     }
 }
 
+// MARK: - UITableViewDataSource
 extension ViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults.count
