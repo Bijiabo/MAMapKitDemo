@@ -12,6 +12,7 @@ import FServiceManager
 class MainRootViewController: UIViewController {
 
     private var loadingAlertController: UIAlertController?
+    private var hideLoadingAlertCompleteHandlerCache: ()->Void = {}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,11 +52,13 @@ extension MainRootViewController: NotificationAlertObserverProtocol {
     func showLoading(notification: NSNotification) {
         var title: String = "Loading"
         var message: String? = nil
-        if let object = notification.object as? [String: String] {
-            if let objectTitle = object["title"] { title = objectTitle }
-            if let objectMessage = object["message"] {message = objectMessage }
+        var animated: Bool = false
+        if let object = notification.object as? [String: AnyObject] {
+            if let objectTitle = object["title"] as? String { title = objectTitle }
+            if let objectMessage = object["message"] as? String {message = objectMessage }
+            if let objectAnimated = object["animated"] as? Bool { animated = objectAnimated}
         }
-        showLoadingAlert(title: title, message: message)
+        showLoadingAlert(title: title, message: message, animated: animated)
     }
     
     func hideLoading(notification: NSNotification) {
@@ -76,7 +79,7 @@ extension MainRootViewController: NotificationAlertObserverProtocol {
      */
     
     private func showLoginAlert(successHandler successHandler: (()->Void)?, cancelHandler: (()->Void)? ) {
-        let alert = UIAlertController(title: "登陆", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "登陆", message: "部分功能登陆后启用", preferredStyle: UIAlertControllerStyle.Alert)
         
         // add user email text field
         alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
@@ -145,7 +148,13 @@ extension MainRootViewController: NotificationAlertObserverProtocol {
         let loginAction = UIAlertAction(title: "Login", style: UIAlertActionStyle.Default, handler: loginActionHandler)
         alert.addAction(loginAction)
         
-        presentViewController(alert, animated: true, completion: nil)
+        if loadingAlertController != nil {
+            hideLoadingAlertCompleteHandlerCache = { () -> Void in
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+        } else {
+            presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     private func showErrorAlert(title title: String = "Error", message: String?, closeHandler: ()->Void = {}) {
@@ -156,17 +165,25 @@ extension MainRootViewController: NotificationAlertObserverProtocol {
         }
         alert.addAction(closeAction)
         
-        presentViewController(alert, animated: true, completion: nil)
+        if loadingAlertController != nil {
+            hideLoadingAlertCompleteHandlerCache = { () -> Void in
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+        } else {
+            presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
-    private func showLoadingAlert(title title: String = "Loading", message: String?) {
+    private func showLoadingAlert(title title: String = "Loading", message: String?, animated: Bool = false) {
         loadingAlertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        presentViewController(loadingAlertController!, animated: false, completion: nil)
+        presentViewController(loadingAlertController!, animated: animated, completion: nil)
     }
     
     private func hideLoadingAlert() {
         loadingAlertController?.dismissViewControllerAnimated(false, completion: { () -> Void in
             self.loadingAlertController = nil
+            self.hideLoadingAlertCompleteHandlerCache()
+            self.hideLoadingAlertCompleteHandlerCache = {}
         })
     }
 }

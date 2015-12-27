@@ -7,12 +7,27 @@
 //
 
 import UIKit
+import SwiftyJSON
+import FServiceManager
 
 class CatArchiveListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        _initViews()
+        _loadCatData()
     }
+    
+    private func _initViews() {
+        clearsSelectionOnViewWillAppear = true
+        
+        let tableFooterView: UIView = UIView()
+        tableFooterView.backgroundColor = UIColor.clearColor()
+        tableView.tableFooterView = tableFooterView
+        tableView.backgroundColor = UIColor(red:0.97, green:0.97, blue:0.97, alpha:1)
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -26,59 +41,43 @@ class CatArchiveListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return cats.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("catItem", forIndexPath: indexPath)
-        cell.textLabel?.text = "Speedy Cat"
+        let currentData = cats[indexPath.row]
+        cell.textLabel?.text = currentData["name"].stringValue
 
         return cell
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    // MARK: - data function
+    var cats: [JSON] = [JSON]()
+    
+    private func _loadCatData() {
+        
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        let loadingMessage: [String: AnyObject] = [
+            "title": "读取数据",
+            "message": "请稍等...",
+            "animated": true
+        ]
+        notificationCenter.postNotificationName(Constant.Notification.Alert.showLoading, object: loadingMessage)
+        
+        FAction.cats.mine { (request, response, json, error) -> Void in
+            notificationCenter.postNotificationName(Constant.Notification.Alert.hideLoading, object: nil)
+
+            if error != nil {
+                let errorObject: [String: String] = ["title": "读取数据失败", "message": "请下拉刷新重试"]
+                notificationCenter.postNotificationName(Constant.Notification.Alert.showError, object: errorObject)
+            } else {
+                self.cats = json.arrayValue
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadData()
+                })
+            }
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

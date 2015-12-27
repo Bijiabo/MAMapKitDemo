@@ -41,6 +41,8 @@
 		65CE59DF1C2AC66D008809B0 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CE59DE1C2AC66D008809B0 /* MAMapKit.framework */; };
 		65CE59E11C2AC68C008809B0 /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65CE59E01C2AC68C008809B0 /* AMap.bundle */; };
 		65CE59E81C2AF9E4008809B0 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59E71C2AF9E4008809B0 /* SearchResultTableViewCell.swift */; };
+		65D54D191C30340100F7B450 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D54D181C30340100F7B450 /* SwiftyJSON.framework */; };
+		65D54D1A1C30340100F7B450 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65D54D181C30340100F7B450 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65DAC81B1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC81A1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift */; };
 		65DAC81D1C2D902A00335EFC /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC81C1C2D902A00335EFC /* FeedbackViewController.swift */; };
 		65DAC82A1C2E55EF00335EFC /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC8291C2E55EF00335EFC /* MainNavigationController.swift */; };
@@ -70,6 +72,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				65D54D1A1C30340100F7B450 /* SwiftyJSON.framework in Embed Frameworks */,
 				6557F7AF1C2C655D00E6780D /* KeychainAccess.framework in Embed Frameworks */,
 				65EE13791C2C15CB000CA852 /* FServiceManager.framework in Embed Frameworks */,
 				6557F7AD1C2C655D00E6780D /* Alamofire.framework in Embed Frameworks */,
@@ -119,6 +122,7 @@
 		65CE59DE1C2AC66D008809B0 /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MAMapKit.framework; path = SDK/MAMapKit.framework; sourceTree = "<group>"; };
 		65CE59E01C2AC68C008809B0 /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMap.bundle; path = ../SDK/MAMapKit.framework/Versions/3.2.1.94eef6d.752/Resources/AMap.bundle; sourceTree = "<group>"; };
 		65CE59E71C2AF9E4008809B0 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
+		65D54D181C30340100F7B450 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		65DAC81A1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveDetailItemTableViewCell.swift; sourceTree = "<group>"; };
 		65DAC81C1C2D902A00335EFC /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		65DAC8291C2E55EF00335EFC /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 			files = (
 				65CE59DF1C2AC66D008809B0 /* MAMapKit.framework in Frameworks */,
 				65CE59DC1C2AC5F0008809B0 /* libc++.tbd in Frameworks */,
+				65D54D191C30340100F7B450 /* SwiftyJSON.framework in Frameworks */,
 				65CE59DA1C2AC59D008809B0 /* OpenGLES.framework in Frameworks */,
 				65CE59D51C2A75AD008809B0 /* libz.tbd in Frameworks */,
 				65CE59D21C2A7584008809B0 /* Security.framework in Frameworks */,
@@ -168,6 +173,7 @@
 		6557F7BE1C2D211D00E6780D /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
+				65D54D181C30340100F7B450 /* SwiftyJSON.framework */,
 				6557F7AA1C2C655D00E6780D /* Alamofire.framework */,
 				6557F7AB1C2C655D00E6780D /* KeychainAccess.framework */,
 				65CE59DE1C2AC66D008809B0 /* MAMapKit.framework */,
@@ -472,6 +478,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FServiceManager.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 			);
 			name = "Run Script For Carthage";
 			outputPaths = (
