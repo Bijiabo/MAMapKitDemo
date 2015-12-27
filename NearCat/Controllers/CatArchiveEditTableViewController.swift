@@ -9,9 +9,16 @@
 import UIKit
 import FServiceManager
 
+enum CatArchiveEditMode {
+    case Create
+    case Update
+}
+
 class CatArchiveEditTableViewController: UITableViewController {
 
-    let dataItemConfig = [
+    var editMode: CatArchiveEditMode = .Create
+    
+    private let dataItemConfig = [
         [
             "title": "name",
             "placeHolder": "enter cat name",
@@ -97,6 +104,7 @@ class CatArchiveEditTableViewController: UITableViewController {
     // MARK: - user actions
     @IBAction func tapDoneButton(sender: AnyObject) {
         let notificationCenter = NSNotificationCenter.defaultCenter()
+        // show loading alert
         let loadingMessage = [
             "title": "创建中",
             "message": "正在通讯",
@@ -107,8 +115,10 @@ class CatArchiveEditTableViewController: UITableViewController {
         // prepare cat's data
         var catInformation = getCatInformation()
         let age: Int = Int(catInformation["age"]!) == nil ? 0 : Int(catInformation["age"]!)!
-        // TODO: - need to update FServicemanager to fix request path bug
-        FAction.cats.create(catInformation["name"]!, age: age, breed: catInformation["breed"]!, completeHandler: { (success, description) -> Void in
+        
+        let editCompleteHandler: (success: Bool, description: String) -> Void = {
+            (success, description) -> Void in
+            // hide loading alert
             notificationCenter.postNotificationName(Constant.Notification.Alert.hideLoading, object: nil)
             
             if success {
@@ -124,8 +134,16 @@ class CatArchiveEditTableViewController: UITableViewController {
                 ]
                 notificationCenter.postNotificationName(Constant.Notification.Alert.showError, object: errorMessageObject)
             }
-        })
-
+        }
+        
+        // TODO: - need to update FServicemanager to fix request path bug
+        switch editMode {
+        case .Create:
+            FAction.cats.create(catInformation["name"]!, age: age, breed: catInformation["breed"]!, completeHandler: editCompleteHandler)
+        default: // -> .Update
+            // TODO: - need add update cat archive function to FServceManager framework
+            print("")
+        }
     }
     
     // MARK: - data functions

@@ -231,7 +231,7 @@
                     <navigationItem key="navigationItem" title="Cats" id="nLv-dd-M2A">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="OqY-O6-sEC">
                             <connections>
-                                <segue destination="99l-Q8-8zX" kind="show" id="j3f-S4-QfP"/>
+                                <segue destination="99l-Q8-8zX" kind="show" identifier="createNewCat" id="j3f-S4-QfP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -465,7 +465,7 @@
                     <navigationItem key="navigationItem" title="Cat Archive" id="EYR-AX-uos">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="r9a-J8-yCC">
                             <connections>
-                                <segue destination="99l-Q8-8zX" kind="show" id="oNX-dc-zo5"/>
+                                <segue destination="99l-Q8-8zX" kind="show" identifier="editCat" id="oNX-dc-zo5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -545,6 +545,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="j3f-S4-QfP"/>
+        <segue reference="oNX-dc-zo5"/>
     </inferredMetricsTieBreakers>
 </document>

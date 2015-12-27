@@ -57,4 +57,21 @@ class CatArchiveDetailTableViewController: UITableViewController {
             return UITableViewCell()
         }
     }
+    
+    // MARK: - segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        guard let segueIdentifier = segue.identifier else {return}
+        switch segueIdentifier {
+        case "createNewCat":
+            if let targetCatArchiveEditController = segue.destinationViewController as? CatArchiveEditTableViewController {
+                targetCatArchiveEditController.editMode = CatArchiveEditMode.Create
+            }
+        case "editCat":
+            if let targetCatArchiveEditController = segue.destinationViewController as? CatArchiveEditTableViewController {
+                targetCatArchiveEditController.editMode = CatArchiveEditMode.Update
+            }
+        default:
+            break
+        }
+    }
 }
