@@ -26,6 +26,17 @@ class CatArchiveListTableViewController: UITableViewController {
         tableFooterView.backgroundColor = UIColor.clearColor()
         tableView.tableFooterView = tableFooterView
         tableView.backgroundColor = UIColor(red:0.97, green:0.97, blue:0.97, alpha:1)
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
+        tableView.addSubview(refreshControl)
+        tableView.sendSubviewToBack(refreshControl)
+    }
+    
+    func refresh(sender: UIRefreshControl) {
+        _loadCatData {
+            sender.endRefreshing()
+        }
     }
 
 
@@ -55,7 +66,7 @@ class CatArchiveListTableViewController: UITableViewController {
     // MARK: - data function
     var cats: [JSON] = [JSON]()
     
-    private func _loadCatData() {
+    private func _loadCatData(completeHandler: ()->Void = {}) {
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
         let loadingMessage: [String: AnyObject] = [
@@ -66,6 +77,9 @@ class CatArchiveListTableViewController: UITableViewController {
         notificationCenter.postNotificationName(Constant.Notification.Alert.showLoading, object: loadingMessage)
         
         FAction.cats.mine { (request, response, json, error) -> Void in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                completeHandler()
+            })
             notificationCenter.postNotificationName(Constant.Notification.Alert.hideLoading, object: nil)
 
             if error != nil {
