@@ -103,14 +103,7 @@ class CatArchiveEditTableViewController: UITableViewController {
     
     // MARK: - user actions
     @IBAction func tapDoneButton(sender: AnyObject) {
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        // show loading alert
-        let loadingMessage = [
-            "title": "创建中",
-            "message": "正在通讯",
-            "animated": true
-        ]
-        notificationCenter.postNotificationName(Constant.Notification.Alert.showLoading, object: loadingMessage)
+        _showLoadingAlert()
         
         // prepare cat's data
         var catInformation = getCatInformation()
@@ -119,7 +112,7 @@ class CatArchiveEditTableViewController: UITableViewController {
         let editCompleteHandler: (success: Bool, description: String) -> Void = {
             (success, description) -> Void in
             // hide loading alert
-            notificationCenter.postNotificationName(Constant.Notification.Alert.hideLoading, object: nil)
+            NSNotificationCenter.defaultCenter().postNotificationName(Constant.Notification.Alert.hideLoading, object: nil)
             
             if success {
                 dispatch_sync(dispatch_get_main_queue(), { () -> Void in
@@ -127,12 +120,7 @@ class CatArchiveEditTableViewController: UITableViewController {
                     self.navigationController?.popViewControllerAnimated(true)
                 })
             } else {
-                let errorMessageObject = [
-                    "title": "Error",
-                    "message": description,
-                    "animated": true
-                ]
-                notificationCenter.postNotificationName(Constant.Notification.Alert.showError, object: errorMessageObject)
+                self._showErrorAlert(description: description)
             }
         }
         
@@ -144,6 +132,25 @@ class CatArchiveEditTableViewController: UITableViewController {
             // TODO: - need add update cat archive function to FServceManager framework
             print("")
         }
+    }
+    
+    private func _showLoadingAlert() {
+        // show loading alert
+        let loadingMessage = [
+            "title": "创建中",
+            "message": "正在通讯",
+            "animated": true
+        ]
+        NSNotificationCenter.defaultCenter().postNotificationName(Constant.Notification.Alert.showLoading, object: loadingMessage)
+    }
+    
+    private func _showErrorAlert(description description: String) {
+        let errorMessageObject = [
+            "title": "Error",
+            "message": description,
+            "animated": true
+        ]
+        NSNotificationCenter.defaultCenter().postNotificationName(Constant.Notification.Alert.showError, object: errorMessageObject)
     }
     
     // MARK: - data functions
