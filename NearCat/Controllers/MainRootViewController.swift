@@ -81,27 +81,15 @@ extension MainRootViewController: NotificationAlertObserverProtocol {
     private func showLoginAlert(successHandler successHandler: (()->Void)?, cancelHandler: (()->Void)? ) {
         let alert = UIAlertController(title: "登陆", message: "部分功能登陆后启用", preferredStyle: UIAlertControllerStyle.Alert)
         
-        // add user email text field
-        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
-            textField.tag = 0
-            textField.placeholder = "email"
-            textField.secureTextEntry = false
-        })
+        addTextFieldToAlertController(alert, tag: 0, placeholder: "email", secureTextEntry: false)
+        addTextFieldToAlertController(alert, tag: 1, placeholder: "password", secureTextEntry: true)
         
-        // add user password text field
-        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
-            textField.tag = 1
-            textField.placeholder = "password"
-            textField.secureTextEntry = true
-        })
-        
-        // add cancel button
+        // define cancel button
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) -> Void in
             cancelHandler?()
         })
-        alert.addAction(cancelAction)
         
-        // add login button
+        // define login button
         let loginActionHandler: ((UIAlertAction) -> Void) = { (action: UIAlertAction) -> Void in
             // show loading alert
             self.showLoadingAlert(title: "Login...", message: nil)
@@ -112,11 +100,9 @@ extension MainRootViewController: NotificationAlertObserverProtocol {
             for textField in alert.textFields! {
                 switch textField.tag {
                 case 0:
-                    email = textField.text == nil ? "" : textField.text!
-                case 1:
-                    password = textField.text == nil ? "" : textField.text!
-                default:
-                    break
+                    email = self.valueForTextField(textField)
+                default: // 1
+                    password = self.valueForTextField(textField)
                 }
             }
             
@@ -146,15 +132,78 @@ extension MainRootViewController: NotificationAlertObserverProtocol {
             })
         }
         let loginAction = UIAlertAction(title: "Login", style: UIAlertActionStyle.Default, handler: loginActionHandler)
-        alert.addAction(loginAction)
         
-        if loadingAlertController != nil {
-            hideLoadingAlertCompleteHandlerCache = { () -> Void in
-                self.presentViewController(alert, animated: true, completion: nil)
-            }
-        } else {
-            presentViewController(alert, animated: true, completion: nil)
+        // define show register alert button
+        let switchToRegisterAlertActionHandler: ((UIAlertAction) -> Void) = { (action: UIAlertAction) -> Void in
+            self.showRegisterAlert(successHandler: successHandler, cancelHandler: cancelHandler)
         }
+        let switchToRegisterAlertAction: UIAlertAction = UIAlertAction(title: "Register", style: UIAlertActionStyle.Default, handler: switchToRegisterAlertActionHandler)
+        
+        // add action buttons
+        alert.addAction(loginAction)
+        alert.addAction(switchToRegisterAlertAction)
+        alert.addAction(cancelAction)
+        
+        switchPresentViewControllerTo(alert)
+    }
+    
+    private func showRegisterAlert(successHandler successHandler: (()->Void)?, cancelHandler: (()->Void)? ) {
+        // TODO: - show register alert
+        let alert = UIAlertController(title: "Register", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        addTextFieldToAlertController(alert, tag: 0, placeholder: "email", secureTextEntry: false)
+        addTextFieldToAlertController(alert, tag: 1, placeholder: "name", secureTextEntry: false)
+        addTextFieldToAlertController(alert, tag: 2, placeholder: "password", secureTextEntry: true)
+        
+        // define cancel action
+        let cancelActionHandler: ((UIAlertAction) -> Void) = { (action: UIAlertAction) -> Void in
+            cancelHandler?()
+        }
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: cancelActionHandler)
+        
+        // define register action
+        let registerActionHandler: ((UIAlertAction) -> Void) = { (action: UIAlertAction) -> Void in
+            // TODO: - add register statements
+            var email: String = String()
+            var name: String = String()
+            var password: String = String()
+            for textField in alert.textFields! {
+                switch textField.tag {
+                case 0:
+                    email = self.valueForTextField(textField)
+                case 1:
+                    name = self.valueForTextField(textField)
+                default: // 2
+                    password = self.valueForTextField(textField)
+                }
+            }
+            
+            FAction.register(email, name: name, password: password, completeHandler: { (success, description) -> Void in
+                if success {
+                    successHandler?()
+                } else {
+                    // TODO: - need to show error alert, and re-display regisnter alert (again...)
+                    alert.message = "description: \(description)" // does not display
+                    self.switchPresentViewControllerTo(alert)
+                }
+                
+            })
+
+        }
+        let registerAction: UIAlertAction = UIAlertAction(title: "Register", style: UIAlertActionStyle.Default, handler: registerActionHandler)
+        
+        // define switch to login action
+        let switchToLoginActionHandler: ((UIAlertAction) -> Void) = { (action: UIAlertAction) -> Void in
+            self.showLoginAlert(successHandler: successHandler, cancelHandler: cancelHandler)
+        }
+        let switchToLoginAction: UIAlertAction = UIAlertAction(title: "Login", style: UIAlertActionStyle.Default, handler: switchToLoginActionHandler)
+        
+        // add actions
+        alert.addAction(registerAction)
+        alert.addAction(switchToLoginAction)
+        alert.addAction(cancelAction)
+        
+        switchPresentViewControllerTo(alert)
     }
     
     private func showErrorAlert(title title: String = "Error", message: String?, closeHandler: ()->Void = {}) {
@@ -165,15 +214,10 @@ extension MainRootViewController: NotificationAlertObserverProtocol {
         }
         alert.addAction(closeAction)
         
-        if loadingAlertController != nil {
-            hideLoadingAlertCompleteHandlerCache = { () -> Void in
-                self.presentViewController(alert, animated: true, completion: nil)
-            }
-        } else {
-            presentViewController(alert, animated: true, completion: nil)
-        }
+        switchPresentViewControllerTo(alert)
     }
     
+    // MARK: - loading alert
     private func showLoadingAlert(title title: String = "Loading", message: String?, animated: Bool = false) {
         loadingAlertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         presentViewController(loadingAlertController!, animated: animated, completion: nil)
@@ -184,6 +228,29 @@ extension MainRootViewController: NotificationAlertObserverProtocol {
             self.loadingAlertController = nil
             self.hideLoadingAlertCompleteHandlerCache()
             self.hideLoadingAlertCompleteHandlerCache = {}
+        })
+    }
+    
+    // MARK: - tool functions
+    private func valueForTextField(textField: UITextField) -> String {
+        return textField.text == nil ? "" : textField.text!
+    }
+    
+    private func switchPresentViewControllerTo(vc: UIViewController) {
+        if loadingAlertController != nil {
+            hideLoadingAlertCompleteHandlerCache = { () -> Void in
+                self.presentViewController(vc, animated: true, completion: nil)
+            }
+        } else {
+            presentViewController(vc, animated: true, completion: nil)
+        }
+    }
+    
+    private func addTextFieldToAlertController(alert: UIAlertController, tag: Int = 0, placeholder: String = "", secureTextEntry: Bool = false) {
+        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+            textField.tag = tag
+            textField.placeholder = placeholder
+            textField.secureTextEntry = secureTextEntry
         })
     }
 }
