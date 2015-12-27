@@ -319,7 +319,13 @@
                             <outlet property="delegate" destination="99l-Q8-8zX" id="WeU-Vz-P7w"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Edit Cat Archive" id="ZWh-r6-9ia"/>
+                    <navigationItem key="navigationItem" title="Edit Cat Archive" id="ZWh-r6-9ia">
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="XSs-n2-zXq">
+                            <connections>
+                                <action selector="tapDoneButton:" destination="99l-Q8-8zX" id="DhE-hG-e4P"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pep-Wc-v1p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -539,6 +545,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="oNX-dc-zo5"/>
+        <segue reference="j3f-S4-QfP"/>
     </inferredMetricsTieBreakers>
 </document>

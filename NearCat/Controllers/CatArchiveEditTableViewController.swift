@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FServiceManager
 
 class CatArchiveEditTableViewController: UITableViewController {
 
@@ -17,36 +18,15 @@ class CatArchiveEditTableViewController: UITableViewController {
             "key": "name"
         ],
         [
-            "title": "name",
-            "placeHolder": "enter cat name",
-            "key": "name"
+            "title": "age",
+            "placeHolder": "1-25",
+            "key": "age"
         ],
         [
-            "title": "name",
-            "placeHolder": "enter cat name",
-            "key": "name"
-        ],
-        [
-            "title": "name",
-            "placeHolder": "enter cat name",
-            "key": "name"
-        ],
-        [
-            "title": "name",
-            "placeHolder": "enter cat name",
-            "key": "name"
-        ],
-        [
-            "title": "name",
-            "placeHolder": "enter cat name",
-            "key": "name"
-        ],
-        [
-            "title": "name",
-            "placeHolder": "enter cat name",
-            "key": "name"
+            "title": "breed",
+            "placeHolder": "enter cat breed",
+            "key": "breed"
         ]
-        
     ]
     
     override func viewDidLoad() {
@@ -64,9 +44,6 @@ class CatArchiveEditTableViewController: UITableViewController {
         tableFooterView.backgroundColor = UIColor.clearColor()
         tableView.tableFooterView = tableFooterView
         tableView.backgroundColor = UIColor(red:0.97, green:0.97, blue:0.97, alpha:1)
-        
-        // navigation bar
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: Selector("tapDoneButton:"))
     }
 
     // MARK: - Table view data source
@@ -97,6 +74,7 @@ class CatArchiveEditTableViewController: UITableViewController {
             let currentData = dataItemConfig[indexPath.row]
             cell.titleLabel.text = currentData["title"]
             cell.textField.placeholder = currentData["placeHolder"]
+            cell.key = currentData["key"]!
             return cell
         default:
             break
@@ -117,8 +95,50 @@ class CatArchiveEditTableViewController: UITableViewController {
     }
     
     // MARK: - user actions
-    func tapDoneButton(sender: UIBarButtonItem) {
+    @IBAction func tapDoneButton(sender: AnyObject) {
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        let loadingMessage = [
+            "title": "创建中",
+            "message": "正在通讯",
+            "animated": true
+        ]
+        notificationCenter.postNotificationName(Constant.Notification.Alert.showLoading, object: loadingMessage)
         
+        // prepare cat's data
+        var catInformation = getCatInformation()
+        let age: Int = Int(catInformation["age"]!) == nil ? 0 : Int(catInformation["age"]!)!
+        // TODO: - need to update FServicemanager to fix request path bug
+        FAction.cats.create(catInformation["name"]!, age: age, breed: catInformation["breed"]!, completeHandler: { (success, description) -> Void in
+            notificationCenter.postNotificationName(Constant.Notification.Alert.hideLoading, object: nil)
+            
+            if success {
+                dispatch_sync(dispatch_get_main_queue(), { () -> Void in
+                    // TODO: - need to reload next view controller (which need to display next)
+                    self.navigationController?.popViewControllerAnimated(true)
+                })
+            } else {
+                let errorMessageObject = [
+                    "title": "Error",
+                    "message": description,
+                    "animated": true
+                ]
+                notificationCenter.postNotificationName(Constant.Notification.Alert.showError, object: errorMessageObject)
+            }
+        })
+
+    }
+    
+    // MARK: - data functions
+    private func getCatInformation() -> [String: String] {
+        var catInformation: [String: String] = [String: String]()
+        for i in 0..<dataItemConfig.count {
+            if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 1)) as? CatArchiveItemTableViewCell {
+                catInformation[cell.key] = cell.textField.text!
+            }
+            
+        }
+        
+        return catInformation
     }
 
 }
