@@ -146,7 +146,7 @@ class CatArchiveEditTableViewController: UITableViewController {
     private func _showLoadingAlert() {
         // show loading alert
         let loadingMessage = [
-            "title": "创建中",
+            "title": editMode == .Create ? "创建中" : "更新中",
             "message": "正在通讯",
             "animated": true
         ]
