@@ -114,6 +114,13 @@ class CatArchiveListTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         guard let segueIdentifier = segue.identifier else {return}
         switch segueIdentifier {
+        case "showDetail":
+            if
+            let targetCatArchiveDetailController = segue.destinationViewController as? CatArchiveDetailTableViewController,
+            let senderCell = sender as? UITableViewCell
+            {
+                targetCatArchiveDetailController.catId = senderCell.tag
+            }
         case "createNewCat":
             if let targetCatArchiveEditController = segue.destinationViewController as? CatArchiveEditTableViewController {
                 targetCatArchiveEditController.editMode = CatArchiveEditMode.Create

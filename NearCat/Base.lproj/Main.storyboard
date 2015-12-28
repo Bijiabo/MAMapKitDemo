@@ -219,7 +219,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="JDf-MI-01s" kind="show" id="HL9-3g-xvl"/>
+                                    <segue destination="JDf-MI-01s" kind="show" identifier="showDetail" id="HL9-3g-xvl"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
