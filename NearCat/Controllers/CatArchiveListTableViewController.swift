@@ -58,8 +58,28 @@ class CatArchiveListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("catItem", forIndexPath: indexPath)
         let currentData = cats[indexPath.row]
         cell.textLabel?.text = currentData["name"].stringValue
-
+        cell.tag = currentData["id"].intValue // as cell's cat id
+        
         return cell
+    }
+    
+    // MARK: - Table view delegate
+    
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        
+        let deleteButton = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete") { (rowAction, indexPath) -> Void in
+            guard let cell = self.tableView.cellForRowAtIndexPath(indexPath) else {return}
+            Action.cats.destroy(id: "\(cell.tag)") // TODO: - change Action to FAction
+            
+            self.cats.removeAtIndex(indexPath.row)
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left)
+        }
+        
+        return [deleteButton]
+    }
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
     }
 
     // MARK: - data function
