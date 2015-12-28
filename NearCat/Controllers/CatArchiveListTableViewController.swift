@@ -14,9 +14,15 @@ class CatArchiveListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         _initViews()
-        _loadCatData()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationItem.prompt = "loading..."
+        _loadCatData {
+            self.navigationItem.prompt = nil
+        }
     }
     
     private func _initViews() {
@@ -86,11 +92,9 @@ class CatArchiveListTableViewController: UITableViewController {
     var cats: [JSON] = [JSON]()
     
     private func _loadCatData(completeHandler: ()->Void = {}) {
-        refreshControl?.beginRefreshing()
         
         FAction.cats.mine { (request, response, json, error) -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.refreshControl?.endRefreshing()
                 completeHandler()
             })
         
@@ -113,10 +117,6 @@ class CatArchiveListTableViewController: UITableViewController {
         case "createNewCat":
             if let targetCatArchiveEditController = segue.destinationViewController as? CatArchiveEditTableViewController {
                 targetCatArchiveEditController.editMode = CatArchiveEditMode.Create
-            }
-        case "editCat":
-            if let targetCatArchiveEditController = segue.destinationViewController as? CatArchiveEditTableViewController {
-                targetCatArchiveEditController.editMode = CatArchiveEditMode.Update
             }
         default:
             break

@@ -66,11 +66,13 @@ extension MainRootViewController: NotificationAlertObserverProtocol {
     }
     
     func showError(notification: NSNotification) {
-        guard let object = notification.object as? [String: String] else {return}
-        if let title = object["title"] {
-            showErrorAlert(title: title, message: object["message"])
+        guard let object = notification.object as? [String: AnyObject] else {return}
+        guard let message = object["message"] as? String else {return}
+        if let title = object["title"] as? String
+        {
+            showErrorAlert(title: title, message: message)
         } else {
-            showErrorAlert(message: object["message"])
+            showErrorAlert(message: message)
         }
     }
     

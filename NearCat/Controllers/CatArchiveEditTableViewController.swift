@@ -17,6 +17,7 @@ enum CatArchiveEditMode {
 class CatArchiveEditTableViewController: UITableViewController {
 
     var editMode: CatArchiveEditMode = .Create
+    var catId: Int = 0
     
     private let dataItemConfig = [
         [
@@ -115,7 +116,7 @@ class CatArchiveEditTableViewController: UITableViewController {
             NSNotificationCenter.defaultCenter().postNotificationName(Constant.Notification.Alert.hideLoading, object: nil)
             
             if success {
-                dispatch_sync(dispatch_get_main_queue(), { () -> Void in
+                delay(1, task: { () -> () in
                     // TODO: - need to reload next view controller (which need to display next)
                     self.navigationController?.popViewControllerAnimated(true)
                 })
@@ -127,10 +128,9 @@ class CatArchiveEditTableViewController: UITableViewController {
         // TODO: - need to update FServicemanager to fix request path bug
         switch editMode {
         case .Create:
-            FAction.cats.create(catInformation["name"]!, age: age, breed: catInformation["breed"]!, completeHandler: editCompleteHandler)
+            Action.cats.create(catInformation["name"]!, age: age, breed: catInformation["breed"]!, completeHandler: editCompleteHandler)
         default: // -> .Update
-            // TODO: - need add update cat archive function to FServceManager framework
-            print("")
+            Action.cats.update(id: catId, catData: catInformation, completeHandler: editCompleteHandler)
         }
     }
     

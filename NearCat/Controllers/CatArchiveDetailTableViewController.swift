@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class CatArchiveDetailTableViewController: UITableViewController {
 
+    var catInformation: JSON = JSON([])
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -62,13 +65,10 @@ class CatArchiveDetailTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         guard let segueIdentifier = segue.identifier else {return}
         switch segueIdentifier {
-        case "createNewCat":
-            if let targetCatArchiveEditController = segue.destinationViewController as? CatArchiveEditTableViewController {
-                targetCatArchiveEditController.editMode = CatArchiveEditMode.Create
-            }
         case "editCat":
             if let targetCatArchiveEditController = segue.destinationViewController as? CatArchiveEditTableViewController {
                 targetCatArchiveEditController.editMode = CatArchiveEditMode.Update
+                targetCatArchiveEditController.catId = catInformation["id"].intValue
             }
         default:
             break
