@@ -39,7 +39,6 @@ class CatArchiveListTableViewController: UITableViewController {
         }
     }
 
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -67,24 +66,17 @@ class CatArchiveListTableViewController: UITableViewController {
     var cats: [JSON] = [JSON]()
     
     private func _loadCatData(completeHandler: ()->Void = {}) {
-        
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        let loadingMessage: [String: AnyObject] = [
-            "title": "读取数据",
-            "message": "请稍等...",
-            "animated": true
-        ]
-        notificationCenter.postNotificationName(Constant.Notification.Alert.showLoading, object: loadingMessage)
+        refreshControl?.beginRefreshing()
         
         FAction.cats.mine { (request, response, json, error) -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.refreshControl?.endRefreshing()
                 completeHandler()
             })
-            notificationCenter.postNotificationName(Constant.Notification.Alert.hideLoading, object: nil)
-
+        
             if error != nil {
                 let errorObject: [String: String] = ["title": "读取数据失败", "message": "请下拉刷新重试"]
-                notificationCenter.postNotificationName(Constant.Notification.Alert.showError, object: errorObject)
+                NSNotificationCenter.defaultCenter().postNotificationName(Constant.Notification.Alert.showError, object: errorObject)
             } else {
                 self.cats = json.arrayValue
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in

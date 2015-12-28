@@ -115,6 +115,7 @@ extension MainRootViewController: NotificationAlertObserverProtocol {
                             for textField in alert.textFields! {
                                 if textField.tag == 1 { textField.text = String() }
                             }
+                            // TODO: - need to be simplified and picked up
                             self.presentViewController(alert, animated: true, completion: { () -> Void in
                                 for textField in alert.textFields! {
                                     if textField.tag == 1 && !email.isEmpty { textField.becomeFirstResponder() }
