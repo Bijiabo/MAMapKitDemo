@@ -164,7 +164,9 @@ extension MainRootViewController: NotificationAlertObserverProtocol {
         
         // define register action
         let registerActionHandler: ((UIAlertAction) -> Void) = { (action: UIAlertAction) -> Void in
-            // TODO: - add register statements
+            // show loading alert
+            self.showLoadingAlert(title: "Login...", message: nil)
+
             var email: String = String()
             var name: String = String()
             var password: String = String()
@@ -183,11 +185,19 @@ extension MainRootViewController: NotificationAlertObserverProtocol {
                 if success {
                     successHandler?()
                 } else {
-                    // TODO: - need to show error alert, and re-display regisnter alert (again...)
-                    alert.message = "description: \(description)" // does not display
-                    self.switchPresentViewControllerTo(alert)
+                    self.hideLoadingAlert()
+                    self.showErrorAlert(title: "Register Error", message: description, closeHandler: { () -> Void in
+                        for textField in alert.textFields! {
+                            if textField.tag == 2 { textField.text = String() }
+                        }
+
+                        self.presentViewController(alert, animated: true, completion: { () -> Void in
+                            for textField in alert.textFields! {
+                                if textField.tag == 2 && !email.isEmpty && !name.isEmpty { textField.becomeFirstResponder() }
+                            }
+                        })
+                    })
                 }
-                
             })
 
         }
