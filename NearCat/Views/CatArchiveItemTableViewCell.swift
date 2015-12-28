@@ -12,6 +12,7 @@ class CatArchiveItemTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
+    var key: String = String()
     
     override func awakeFromNib() {
         super.awakeFromNib()

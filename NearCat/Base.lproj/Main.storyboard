@@ -219,7 +219,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="JDf-MI-01s" kind="show" id="HL9-3g-xvl"/>
+                                    <segue destination="JDf-MI-01s" kind="show" identifier="showDetail" id="HL9-3g-xvl"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -231,7 +231,7 @@
                     <navigationItem key="navigationItem" title="Cats" id="nLv-dd-M2A">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="OqY-O6-sEC">
                             <connections>
-                                <segue destination="99l-Q8-8zX" kind="show" id="j3f-S4-QfP"/>
+                                <segue destination="99l-Q8-8zX" kind="show" identifier="createNewCat" id="j3f-S4-QfP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -319,7 +319,13 @@
                             <outlet property="delegate" destination="99l-Q8-8zX" id="WeU-Vz-P7w"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Edit Cat Archive" id="ZWh-r6-9ia"/>
+                    <navigationItem key="navigationItem" title="Edit Cat Archive" id="ZWh-r6-9ia">
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="XSs-n2-zXq">
+                            <connections>
+                                <action selector="tapDoneButton:" destination="99l-Q8-8zX" id="DhE-hG-e4P"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pep-Wc-v1p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -334,10 +340,10 @@
                         <viewControllerLayoutGuide type="bottom" id="HwT-6w-erV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ePc-63-fJZ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="44" width="600" height="507"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="enter your feedback" translatesAutoresizingMaskIntoConstraints="NO" id="Eqd-UX-FGx">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="enter your feedback" translatesAutoresizingMaskIntoConstraints="NO" id="Eqd-UX-FGx">
                                 <rect key="frame" x="14" y="52" width="572" height="120"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -346,7 +352,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ym3-pd-3iU">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ym3-pd-3iU">
                                 <rect key="frame" x="14" y="192" width="572" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="bsP-aF-YzU"/>
@@ -365,6 +371,7 @@
                             <constraint firstItem="Eqd-UX-FGx" firstAttribute="leading" secondItem="ePc-63-fJZ" secondAttribute="leading" constant="14" id="wwC-eh-Ziy"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Feedback" id="XMa-tk-TpR">
                         <barButtonItem key="rightBarButtonItem" title="Send" id="5i2-dX-g0r"/>
                     </navigationItem>
@@ -459,7 +466,7 @@
                     <navigationItem key="navigationItem" title="Cat Archive" id="EYR-AX-uos">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="r9a-J8-yCC">
                             <connections>
-                                <segue destination="99l-Q8-8zX" kind="show" id="oNX-dc-zo5"/>
+                                <segue destination="99l-Q8-8zX" kind="show" identifier="editCat" id="oNX-dc-zo5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -539,6 +546,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="oNX-dc-zo5"/>
+        <segue reference="j3f-S4-QfP"/>
     </inferredMetricsTieBreakers>
 </document>
