@@ -45,6 +45,7 @@
 		65D54D1A1C30340100F7B450 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65D54D181C30340100F7B450 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65D54D231C312F0A00F7B450 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D54D221C312F0A00F7B450 /* Action.swift */; };
 		65D54D261C3141F800F7B450 /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D54D251C3141F800F7B450 /* Delay.swift */; };
+		65D54D281C31ACB000F7B450 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D54D271C31ACB000F7B450 /* Location.swift */; };
 		65DAC81B1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC81A1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift */; };
 		65DAC81D1C2D902A00335EFC /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC81C1C2D902A00335EFC /* FeedbackViewController.swift */; };
 		65DAC82A1C2E55EF00335EFC /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC8291C2E55EF00335EFC /* MainNavigationController.swift */; };
@@ -127,6 +128,7 @@
 		65D54D181C30340100F7B450 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		65D54D221C312F0A00F7B450 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Action.swift; path = NearCat/Action.swift; sourceTree = "<group>"; };
 		65D54D251C3141F800F7B450 /* Delay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
+		65D54D271C31ACB000F7B450 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		65DAC81A1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveDetailItemTableViewCell.swift; sourceTree = "<group>"; };
 		65DAC81C1C2D902A00335EFC /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		65DAC8291C2E55EF00335EFC /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				65D54D251C3141F800F7B450 /* Delay.swift */,
+				65D54D271C31ACB000F7B450 /* Location.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				6557F7B71C2CF67700E6780D /* Settings_CatArchives_TableViewCell.swift in Sources */,
 				6557F7B51C2CF5ED00E6780D /* Settings_FindMe_TableViewCell.swift in Sources */,
 				65CE59981C2A7405008809B0 /* AppDelegate.swift in Sources */,
+				65D54D281C31ACB000F7B450 /* Location.swift in Sources */,
 				65CE59E81C2AF9E4008809B0 /* SearchResultTableViewCell.swift in Sources */,
 				65D54D231C312F0A00F7B450 /* Action.swift in Sources */,
 				6557F7B91C2CFFB300E6780D /* CatArchiveItemTableViewCell.swift in Sources */,
