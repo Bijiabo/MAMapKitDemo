@@ -62,6 +62,8 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
         navigationBar?.translucent = false
         navigationBar?.setBackgroundImage(UIImage(named: "white"), forBarMetrics: UIBarMetrics.Default)
         navigationBar?.shadowImage = UIImage()
+        
+        navigationController?.setNavigationBarHidden(true, animated: false) // TODO: 添加性别分类功能后显示
     }
     
     func initMapView(){
@@ -70,7 +72,8 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
         
         mapView!.delegate = self
         
-        self.view.addSubview(mapView!)
+        view.addSubview(mapView!)
+        view.sendSubviewToBack(mapView!)
         
         let compassX = mapView?.compassOrigin.x
         
@@ -92,8 +95,7 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
         mapView?.showsScale = false
         mapView?.zoomEnabled = true
         mapView?.rotateEnabled = true
-        mapView?.userTrackingMode = .None
-        
+        mapView?.zoomLevel = 14.0
         mapView?.customizeUserLocationAccuracyCircleRepresentation = true
     }
     

@@ -341,7 +341,7 @@
                                             <rect key="frame" x="15" y="0.0" width="550" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.13059520259999999" green="0.4319594356" blue="0.89330543900000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -387,10 +387,15 @@
                                     <outlet property="delegate" destination="B3X-9k-2yx" id="4ss-Me-Ydp"/>
                                 </connections>
                             </searchBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myLoationAnnotation" translatesAutoresizingMaskIntoConstraints="NO" id="sgx-UD-jMf">
+                                <rect key="frame" x="285.5" y="280" width="29" height="40"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="sgx-UD-jMf" firstAttribute="centerY" secondItem="iGr-yM-2SD" secondAttribute="centerY" id="14v-cy-Cq3"/>
                             <constraint firstItem="a1w-aQ-xEO" firstAttribute="leading" secondItem="iGr-yM-2SD" secondAttribute="leading" id="EHG-IW-1sg"/>
+                            <constraint firstItem="sgx-UD-jMf" firstAttribute="centerX" secondItem="iGr-yM-2SD" secondAttribute="centerX" id="Sf9-Su-loK"/>
                             <constraint firstAttribute="trailing" secondItem="a1w-aQ-xEO" secondAttribute="trailing" id="ZBU-mz-zYp"/>
                             <constraint firstItem="a1w-aQ-xEO" firstAttribute="top" secondItem="xxh-ry-kAk" secondAttribute="bottom" id="evQ-Jh-qyB"/>
                         </constraints>
@@ -432,8 +437,8 @@
                         <rect key="frame" x="0.0" y="44" width="600" height="507"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="enter your feedback" translatesAutoresizingMaskIntoConstraints="NO" id="Eqd-UX-FGx">
-                                <rect key="frame" x="14" y="52" width="572" height="120"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="enter your feedback" translatesAutoresizingMaskIntoConstraints="NO" id="Eqd-UX-FGx">
+                                <rect key="frame" x="14" y="8" width="572" height="120"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="arh-3b-vzf"/>
@@ -441,8 +446,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ym3-pd-3iU">
-                                <rect key="frame" x="14" y="192" width="572" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ym3-pd-3iU">
+                                <rect key="frame" x="14" y="148" width="572" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="bsP-aF-YzU"/>
                                 </constraints>
@@ -546,6 +551,14 @@
                                     <outlet property="titleLabel" destination="3VR-Xo-FWN" id="0I1-7s-6d7"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="map" rowHeight="46" id="Qqt-V0-SjD" customClass="CatArchiveDetailMapTableViewCell" customModule="NearCat" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="216" width="600" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qqt-V0-SjD" id="fYh-Su-3Gp">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="45.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="JDf-MI-01s" id="ifd-lm-M7Y"/>
@@ -586,12 +599,22 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="qer-Ea-a26"/>
                                 </connections>
                             </searchBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gOP-p6-it7" userLabel="statusBar background">
+                                <rect key="frame" x="0.0" y="-20" width="600" height="20"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="NO9-mm-Qbf"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="gOP-p6-it7" secondAttribute="trailing" id="63P-GH-ggf"/>
                             <constraint firstItem="95A-PQ-peC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7Rs-cj-37V"/>
                             <constraint firstAttribute="trailing" secondItem="95A-PQ-peC" secondAttribute="trailing" id="Wxn-pb-cxY"/>
                             <constraint firstItem="95A-PQ-peC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="k4i-VW-gkH"/>
+                            <constraint firstItem="gOP-p6-it7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nPb-8f-y47"/>
+                            <constraint firstItem="gOP-p6-it7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="ref-SV-ARf"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -634,6 +657,9 @@
             <point key="canvasLocation" x="-2000" y="327"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="myLoationAnnotation" width="29" height="40"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="j3f-S4-QfP"/>
     </inferredMetricsTieBreakers>

@@ -15,6 +15,7 @@ class CatArchiveEditLocationViewController: UIViewController ,MAMapViewDelegate,
     var currentLocation:CLLocation?
     var delegate: CatArchiveEditTableViewController?
     var searchResults: [String] = [String]()
+    var catId: Int = 0
     @IBOutlet weak var searchBar: UISearchBar!
 
     override func viewDidLoad() {
@@ -43,7 +44,8 @@ class CatArchiveEditLocationViewController: UIViewController ,MAMapViewDelegate,
         
         mapView!.delegate = self
         
-        self.view.addSubview(mapView!)
+        view.addSubview(mapView!)
+        view.sendSubviewToBack(mapView!)
         
         let compassX = mapView?.compassOrigin.x
         
@@ -65,10 +67,8 @@ class CatArchiveEditLocationViewController: UIViewController ,MAMapViewDelegate,
         mapView?.showsScale = false
         mapView?.zoomEnabled = true
         mapView?.rotateEnabled = true
-        mapView?.userTrackingMode = .None
-        
+        mapView?.zoomLevel = 15.0
         mapView?.customizeUserLocationAccuracyCircleRepresentation = true
-        
     }
     
     // 初始化 AMapSearchAPI
@@ -93,8 +93,16 @@ class CatArchiveEditLocationViewController: UIViewController ,MAMapViewDelegate,
     
     @IBAction func tapDoneButton(sender: AnyObject) {
         // TODO: get location information
-        let currentLocation = Location.sharedInstance.currentLocation
-        delegate?.catLocation = (latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
+        if let currentLocation = mapView?.centerCoordinate {
+            print(currentLocation)
+            
+            Action.cats.setLocation(currentLocation.latitude, longitude: currentLocation.longitude , catId: catId, completeHandler: { (success, description) -> Void in
+                
+            })
+            
+            delegate?.catLocation = (latitude: currentLocation.latitude, longitude: currentLocation.longitude)
+        }
+        
         
         navigationController?.popViewControllerAnimated(true)
     }
@@ -106,7 +114,10 @@ class CatArchiveEditLocationViewController: UIViewController ,MAMapViewDelegate,
     }
     
     func didUpdateLocation(notification: NSNotification) {
-        mapView?.centerCoordinate = Location.sharedInstance.currentLocation.coordinate
+        
+        if mapView?.visibleMapRect.size.width > 0 && mapView?.visibleMapRect.size.height > 0 {
+//            mapView?.centerCoordinate = Location.sharedInstance.currentLocation.coordinate
+        }
     }
     
     // MARK: - MAMapViewDelegate
@@ -157,7 +168,7 @@ class CatArchiveEditLocationViewController: UIViewController ,MAMapViewDelegate,
             annotationView.draggable = true
             return annotationView
         } else if annotation.isKindOfClass(MAUserLocation) {
-            let pointReuseIndentifier = "pointReuseIndentifier"
+            let pointReuseIndentifier = "myLocationPointReuseIndentifier"
             var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(pointReuseIndentifier)
             
             if annotationView == nil {
@@ -165,8 +176,9 @@ class CatArchiveEditLocationViewController: UIViewController ,MAMapViewDelegate,
             }
             
             annotationView.image = UIImage(named: "myLoationAnnotation") //custom pin image
-            annotationView.canShowCallout = true
-            annotationView.draggable = true
+            annotationView.canShowCallout = false
+            annotationView.draggable = false
+            annotationView.alpha = 0 // hide my location annotation
             return annotationView
         }
         

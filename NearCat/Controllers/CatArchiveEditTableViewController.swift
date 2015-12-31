@@ -232,6 +232,7 @@ class CatArchiveEditTableViewController: UITableViewController {
         if segue.identifier == "editCatLocation" {
             guard let locationEditorViewController = segue.destinationViewController as? CatArchiveEditLocationViewController else { return }
             locationEditorViewController.delegate = self
+            locationEditorViewController.catId = catId
         }
     }
     

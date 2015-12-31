@@ -76,6 +76,39 @@ public class Action {
             }
         }
         
+        // set location for one cat
+        public class func setLocation(latitude: Double, longitude: Double, catId: Int, completeHandler: (success: Bool, description: String)->Void) {
+            let path = "cats/\(catId)/setLocation.json"
+            let parameters: [String: AnyObject] = [
+                "cat": [
+                    "latitude": latitude,
+                    "longitude": longitude
+                ],
+                "token": FHelper.token
+            ]
+            
+            FNetManager.sharedInstance.POST(path: path, parameters: parameters) { (request, response, json, error) -> Void in
+                Action.requestCompleteHandler(json: json, error: error, completeHandler: { (success, data, description) -> Void in
+                    completeHandler(success: success, description: description)
+                })
+            }
+        }
+        
+        // get nearby cats
+        public class func nearby(latitude: Double, longitude: Double, catId: Int, completeHandler: (success: Bool, data: JSON, description: String)->Void) {
+            let path = "nearbyCat"
+            let parameters: [String: AnyObject] = [
+                "latitude": latitude,
+                "longitude": longitude,
+                "token": FHelper.token
+            ]
+            
+            FNetManager.sharedInstance.GET(path: path, parameters: parameters) { (request, response, json, error) -> Void in
+                Action.requestCompleteHandler(json: json, error: error, completeHandler: { (success, data, description) -> Void in
+                    completeHandler(success: success, data: data, description: description)
+                })
+            }
+        }
     }
     
     // MARK: - tool functions
