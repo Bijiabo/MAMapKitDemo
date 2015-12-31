@@ -24,6 +24,10 @@ public struct Constant {
             static let hideLoading = Dictionary["hideLoading"]!
             static let showError = Dictionary["showError"]!
         }
+        
+        struct Location {
+            static let didUpdate = "Location_didUpdate"
+        }
     }
     
 }

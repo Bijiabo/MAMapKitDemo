@@ -1,68 +1,41 @@
 //
-//  ViewController.swift
-//  MAMapKitDemo
+//  CatArchiveEditLocationViewController.swift
+//  NearCat
 //
-//  Created by huchunbo on 15/12/23.
+//  Created by huchunbo on 15/12/30.
 //  Copyright © 2015年 Bijiabo. All rights reserved.
 //
 
 import UIKit
 
-let APIKey = "3b17386d0a14ac347b70d4bc205ee6ff"
-
-class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
+class CatArchiveEditLocationViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate {
     
     var mapView:MAMapView?
     var search:AMapSearchAPI?
     var currentLocation:CLLocation?
-
-    @IBOutlet weak var searchBar: UISearchBar!
+    var delegate: CatArchiveEditTableViewController?
     var searchResults: [String] = [String]()
-    
+    @IBOutlet weak var searchBar: UISearchBar!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // setup AMap API key
-        MAMapServices.sharedServices().apiKey = APIKey
-        AMapSearchServices.sharedServices().apiKey = APIKey
-        
-        initNavigationBar()
+        addNotificationObservers()
+        Location.sharedInstance.update()
         
         initMapView()
         
         initSearch()
         
-        addAnnotation()
         
         initSearchBar()
         
         searchDisplayController!.searchResultsTableView.registerClass(SearchResultTableViewCell.self, forCellReuseIdentifier: "SearchResultTableViewCell")
-        
-        Location.sharedInstance.requestWhenInUseAuthorization()
     }
     
-    /**
-     setup navigation bar title view -> UISegmentedControl
-     
-     - returns: Void
-     */
-    func initNavigationBar() {
-        let segmentedControlItems = [
-            "All",
-            "Type 1",
-            "Type 2"
-        ]
-        let titleView = UISegmentedControl(items: segmentedControlItems)
-        titleView.selectedSegmentIndex = 0
-        let titleViewFrame = CGRect(x: 0, y: 0, width: view.frame.size.width-40.0, height: titleView.frame.size.height)
-        titleView.frame = titleViewFrame
-        navigationItem.titleView = titleView
-        
-        let navigationBar = navigationController?.navigationBar
-        navigationBar?.translucent = false
-        navigationBar?.setBackgroundImage(UIImage(named: "white"), forBarMetrics: UIBarMetrics.Default)
-        navigationBar?.shadowImage = UIImage()
-    }
+    
+    // MARK: - init functions
+    
     
     func initMapView(){
         
@@ -95,13 +68,62 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
         mapView?.userTrackingMode = .None
         
         mapView?.customizeUserLocationAccuracyCircleRepresentation = true
+        
     }
     
     // 初始化 AMapSearchAPI
     func initSearch(){
         search = AMapSearchAPI()
         search?.delegate = self
-            //AMapSearchAPI(searchKey: APIKey, delegate: self)
+        //AMapSearchAPI(searchKey: APIKey, delegate: self)
+    }
+    
+    func initSearchBar() {
+        view.bringSubviewToFront(searchBar)
+        searchBar.backgroundColor = UIColor.whiteColor()
+        searchBar.delegate = self
+        
+        searchBar.layer.shadowColor = UIColor.blackColor().CGColor
+        searchBar.layer.shadowOffset = CGSize(width: 0, height: 0.5)
+        searchBar.layer.shadowRadius = 0
+        searchBar.layer.shadowOpacity = 0.1
+    }
+    
+    // MARK: - user actions
+    
+    @IBAction func tapDoneButton(sender: AnyObject) {
+        // TODO: get location information
+        let currentLocation = Location.sharedInstance.currentLocation
+        delegate?.catLocation = (latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
+        
+        navigationController?.popViewControllerAnimated(true)
+    }
+    
+    // MARK: - location functions
+    
+    func addNotificationObservers() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("didUpdateLocation:"), name: Constant.Notification.Location.didUpdate, object: nil)
+    }
+    
+    func didUpdateLocation(notification: NSNotification) {
+        mapView?.centerCoordinate = Location.sharedInstance.currentLocation.coordinate
+    }
+    
+    // MARK: - MAMapViewDelegate
+    
+    // 定位回调
+    func mapView(mapView: MAMapView!, didUpdateUserLocation userLocation: MAUserLocation!, updatingLocation: Bool) {
+        if updatingLocation {
+            currentLocation = userLocation.location
+        }
+    }
+    
+    // 点击Annoation回调
+    func mapView(mapView: MAMapView!, didSelectAnnotationView view: MAAnnotationView!) {
+        // 若点击的是定位标注，则执行逆地理编码
+        if view.annotation.isKindOfClass(MAUserLocation){
+            reverseGeocoding()
+        }
     }
     
     // 逆地理编码
@@ -119,23 +141,6 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
         // 进行逆地理编码查询
         self.search!.AMapReGoecodeSearch(regeo)
         
-    }
-
-    // MARK: - MAMapViewDelegate
-    
-    // 定位回调
-    func mapView(mapView: MAMapView!, didUpdateUserLocation userLocation: MAUserLocation!, updatingLocation: Bool) {
-        if updatingLocation {
-            currentLocation = userLocation.location
-        }
-    }
-    
-    // 点击Annoation回调
-    func mapView(mapView: MAMapView!, didSelectAnnotationView view: MAAnnotationView!) {
-        // 若点击的是定位标注，则执行逆地理编码
-        if view.annotation.isKindOfClass(MAUserLocation){
-            reverseGeocoding()
-        }
     }
     
     func mapView(mapView: MAMapView!, viewForAnnotation annotation: MAAnnotation!) -> MAAnnotationView! {
@@ -187,53 +192,10 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
         
         return nil
     }
-
-    // 逆地理编码回调
-    func onReGeocodeSearchDone(request: AMapReGeocodeSearchRequest, response: AMapReGeocodeSearchResponse) {
-        
-        print("request :\(request)")
-        print("response :\(response)")
-        
-        if (response.regeocode != nil) {
-            let coordinate = CLLocationCoordinate2DMake(Double(request.location.latitude), Double(request.location.longitude))
-            
-            let annotation = MAPointAnnotation()
-            annotation.coordinate = coordinate
-            annotation.title = response.regeocode.formattedAddress
-            annotation.subtitle = response.regeocode.addressComponent.province
-            mapView!.addAnnotation(annotation)
-            
-            let overlay = MACircle(centerCoordinate: coordinate, radius: 50.0)
-            mapView!.addOverlay(overlay)
-        }
-    }
-
-}
-
-extension ViewController {
-    func addAnnotation() {
-        let pointAnnotation: MAPointAnnotation = MAPointAnnotation()
-        pointAnnotation.coordinate = CLLocationCoordinate2DMake(39.989631, 116.481018)
-        pointAnnotation.title = "方恒国际"
-        pointAnnotation.subtitle = "阜通东大街6号"
-        
-        mapView?.addAnnotation(pointAnnotation)
-    }
-    
-    func initSearchBar() {
-        view.bringSubviewToFront(searchBar)
-        searchBar.backgroundColor = UIColor.whiteColor()
-        searchBar.delegate = self
-        
-        searchBar.layer.shadowColor = UIColor.blackColor().CGColor
-        searchBar.layer.shadowOffset = CGSize(width: 0, height: 0.5)
-        searchBar.layer.shadowRadius = 0
-        searchBar.layer.shadowOpacity = 0.1
-    }
 }
 
 // MARK: - UISearchBarDelegate
-extension ViewController: UISearchBarDelegate {
+extension CatArchiveEditLocationViewController: UISearchBarDelegate {
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         guard let searchKeywords = searchBar.text else {return}
         //构造AMapPOIAroundSearchRequest对象，设置周边请求参数
@@ -255,7 +217,7 @@ extension ViewController: UISearchBarDelegate {
 }
 
 // MARK: - UITextFieldDelegate
-extension ViewController: UITextFieldDelegate {
+extension CatArchiveEditLocationViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
         guard let searchKeywords = textField.text else {return}
         //构造AMapPOIAroundSearchRequest对象，设置周边请求参数
@@ -304,7 +266,7 @@ extension ViewController: UITextFieldDelegate {
 }
 
 // MARK: - UITableViewDataSource
-extension ViewController: UITableViewDataSource {
+extension CatArchiveEditLocationViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults.count
     }
@@ -320,4 +282,5 @@ extension ViewController: UITableViewDataSource {
         return cell
     }
 }
+
 

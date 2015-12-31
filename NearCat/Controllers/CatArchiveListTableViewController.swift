@@ -92,17 +92,17 @@ class CatArchiveListTableViewController: UITableViewController {
     var cats: [JSON] = [JSON]()
     
     private func _loadCatData(completeHandler: ()->Void = {}) {
-        
-        FAction.cats.mine { (request, response, json, error) -> Void in
+        Action.cats.mine { (success, data, description) -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 completeHandler()
             })
-        
-            if error != nil {
-                let errorObject: [String: String] = ["title": "读取数据失败", "message": "请下拉刷新重试"]
+
+            if !success {
+                let errorObject: [String: String] = ["title": "读取数据失败", "message": description]
                 NSNotificationCenter.defaultCenter().postNotificationName(Constant.Notification.Alert.showError, object: errorObject)
             } else {
-                self.cats = json.arrayValue
+                
+                self.cats = data.arrayValue
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.tableView.reloadData()
                 })

@@ -17,12 +17,22 @@ public class Location: NSObject, CLLocationManagerDelegate {
     private var _locationCache: CLLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
     
     public var autoRequestAuthorization: Bool = true
-    public var defaultAuthorization: CLAuthorizationStatus = .AuthorizedWhenInUse
+    public var defaultAuthorization: CLAuthorizationStatus = .AuthorizedWhenInUse {
+        didSet {
+            requestDefaultAuthorization()
+        }
+    }
+    public var desiredAccuracy: CLLocationAccuracy = kCLLocationAccuracyHundredMeters {
+        didSet {
+            _locationManager.desiredAccuracy = desiredAccuracy
+        }
+    }
     
     override init() {
         super.init()
         
         _locationManager.delegate = self
+        _locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
     }
     
     public class var sharedInstance: Location {
@@ -30,14 +40,7 @@ public class Location: NSObject, CLLocationManagerDelegate {
     }
     
     public var currentLocation: CLLocation {
-        if !alwaysAuthorization && !whenInUseAuthorization && autoRequestAuthorization {
-            switch defaultAuthorization {
-            case .AuthorizedAlways:
-                requestAlwaysAuthorization()
-            default:
-                requestWhenInUseAuthorization()
-            }
-        }
+        requestDefaultAuthorization()
         
         return _locationCache
     }
@@ -59,6 +62,40 @@ public class Location: NSObject, CLLocationManagerDelegate {
     public var whenInUseAuthorization: Bool {
         return CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse
     }
+    
+    func requestDefaultAuthorization() {
+        if !alwaysAuthorization && !whenInUseAuthorization && autoRequestAuthorization {
+            switch defaultAuthorization {
+            case .AuthorizedAlways:
+                requestAlwaysAuthorization()
+            default:
+                requestWhenInUseAuthorization()
+            }
+        }
+    }
+    
+    public func update() {
+        if !alwaysAuthorization && !whenInUseAuthorization {return}
+        
+        if #available(iOS 9.0, *) {
+            _locationManager.requestLocation()
+        } else {
+            // Fallback on earlier versions
+            _locationManager.startUpdatingLocation()
+        }
+    }
+    
+    public func startUpdating() {
+        if !alwaysAuthorization && !whenInUseAuthorization {return}
+        
+        _locationManager.startUpdatingLocation()
+    }
+    
+    public func endUpdating() {
+        if !alwaysAuthorization && !whenInUseAuthorization {return}
+        
+        _locationManager.stopUpdatingHeading()
+    }
 
     // MARK: - CLLocationManagerDelegate
     
@@ -66,6 +103,11 @@ public class Location: NSObject, CLLocationManagerDelegate {
         if let currentLocation = locations.last {
             _locationCache = currentLocation
         }
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(Constant.Notification.Location.didUpdate, object: locations)
+    }
+    
+    public func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         
     }
 }

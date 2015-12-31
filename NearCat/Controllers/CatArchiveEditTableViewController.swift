@@ -20,6 +20,13 @@ class CatArchiveEditTableViewController: UITableViewController {
     var editMode: CatArchiveEditMode = .Create
     var catInformation: JSON = JSON([])
     var catId: Int = 0
+    var catLocation: (latitude: Double, longitude: Double)? {
+        didSet {
+            guard let catLocation = catLocation else {return}
+            catInformation["latitude"].double = catLocation.latitude
+            catInformation["longitude"].double = catLocation.longitude
+        }
+    }
     
     private let dataItemConfig = [
         [
@@ -60,7 +67,7 @@ class CatArchiveEditTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,6 +76,8 @@ class CatArchiveEditTableViewController: UITableViewController {
             return 1
         case 1:
             return catInformation["archive"].count
+        case 2:
+            return 1
         default:
             return 0
         }
@@ -92,6 +101,9 @@ class CatArchiveEditTableViewController: UITableViewController {
                 cell.textField.placeholder = textFiledContent
             }
             
+            return cell
+        case 2:
+            let cell = tableView.dequeueReusableCellWithIdentifier("editLocation", forIndexPath: indexPath)
             return cell
         default:
             break
@@ -213,4 +225,14 @@ class CatArchiveEditTableViewController: UITableViewController {
             self.tableView.reloadData()
         })
     }
+    
+    // MARK: - segue
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "editCatLocation" {
+            guard let locationEditorViewController = segue.destinationViewController as? CatArchiveEditLocationViewController else { return }
+            locationEditorViewController.delegate = self
+        }
+    }
+    
 }

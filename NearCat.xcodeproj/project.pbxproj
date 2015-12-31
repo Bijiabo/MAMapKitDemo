@@ -19,6 +19,7 @@
 		6557F7BD1C2D02D300E6780D /* CatArchiveAvatarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F7BC1C2D02D300E6780D /* CatArchiveAvatarTableViewCell.swift */; };
 		6557F7C41C2D2B1A00E6780D /* CatArchiveListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F7C31C2D2B1A00E6780D /* CatArchiveListTableViewController.swift */; };
 		6557F7C61C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F7C51C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift */; };
+		6577B2C01C34255C0096F72A /* CatArchiveEditLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6577B2BF1C34255C0096F72A /* CatArchiveEditLocationViewController.swift */; };
 		65CE59981C2A7405008809B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59971C2A7405008809B0 /* AppDelegate.swift */; };
 		65CE599A1C2A7405008809B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59991C2A7405008809B0 /* ViewController.swift */; };
 		65CE599D1C2A7405008809B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65CE599B1C2A7405008809B0 /* Main.storyboard */; };
@@ -96,6 +97,7 @@
 		6557F7BC1C2D02D300E6780D /* CatArchiveAvatarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveAvatarTableViewCell.swift; sourceTree = "<group>"; };
 		6557F7C31C2D2B1A00E6780D /* CatArchiveListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveListTableViewController.swift; sourceTree = "<group>"; };
 		6557F7C51C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveDetailTableViewController.swift; sourceTree = "<group>"; };
+		6577B2BF1C34255C0096F72A /* CatArchiveEditLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveEditLocationViewController.swift; sourceTree = "<group>"; };
 		65CE59941C2A7405008809B0 /* NearCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CE59971C2A7405008809B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = NearCat/AppDelegate.swift; sourceTree = "<group>"; };
 		65CE59991C2A7405008809B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				6557F7BA1C2CFFD100E6780D /* CatArchiveEditTableViewController.swift */,
 				6557F7C31C2D2B1A00E6780D /* CatArchiveListTableViewController.swift */,
 				6557F7C51C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift */,
+				6577B2BF1C34255C0096F72A /* CatArchiveEditLocationViewController.swift */,
 			);
 			name = CatArchive;
 			sourceTree = "<group>";
@@ -518,6 +521,7 @@
 				65DAC8421C2EBDA700335EFC /* LoginRequesterProtocol.swift in Sources */,
 				65DAC82C1C2E569600335EFC /* MainTabBarController.swift in Sources */,
 				65CE599A1C2A7405008809B0 /* ViewController.swift in Sources */,
+				6577B2C01C34255C0096F72A /* CatArchiveEditLocationViewController.swift in Sources */,
 				6557F7BD1C2D02D300E6780D /* CatArchiveAvatarTableViewCell.swift in Sources */,
 				65DAC82A1C2E55EF00335EFC /* MainNavigationController.swift in Sources */,
 				6557F7B71C2CF67700E6780D /* Settings_CatArchives_TableViewCell.swift in Sources */,

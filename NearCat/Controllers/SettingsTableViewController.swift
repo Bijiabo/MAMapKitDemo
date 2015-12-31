@@ -15,6 +15,8 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
         super.viewDidLoad()
         
         _initViews()
+        
+        _addNotificationObserver()
     }
     
     private func _initViews() {
@@ -29,17 +31,28 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
         
         tableView.contentInset.top = 44.0
     }
+    
+    private func _addNotificationObserver() {
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: Selector("logStatusChanged:"), name: FConstant.Notification.FStatus.didLogin , object: nil)
+        notificationCenter.addObserver(self, selector: Selector("logStatusChanged:"), name: FConstant.Notification.FStatus.didLogout , object: nil)
+    }
 
+    func logStatusChanged(notification: NSNotification) {
+        tableView.reloadData()
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        // TODO: - split logged in or did not logged in
+        return FHelper.logged_in ? 3 : 2
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 2
+            return FHelper.logged_in ? 2 : 1
         case 1:
             return 1
         case 2:
@@ -53,23 +66,26 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            switch indexPath.row {
-            case 0:
+            if FHelper.logged_in {
+                switch indexPath.row {
+                case 0:
+                    let cell = tableView.dequeueReusableCellWithIdentifier("catArchives", forIndexPath: indexPath) as! Settings_CatArchives_TableViewCell
+                    return cell
+                default: // indexPath.row == 1
+                    let cell = tableView.dequeueReusableCellWithIdentifier("findMe", forIndexPath: indexPath) as! Settings_FindMe_TableViewCell
+                    return cell
+                }
+            } else {
                 let cell = tableView.dequeueReusableCellWithIdentifier("pleaseLogin", forIndexPath: indexPath)
                 return cell
-            case 1:
-                let cell = tableView.dequeueReusableCellWithIdentifier("catArchives", forIndexPath: indexPath) as! Settings_CatArchives_TableViewCell
-                return cell
-            default:
-                break
             }
             
         case 1:
-            let cell = tableView.dequeueReusableCellWithIdentifier("findMe", forIndexPath: indexPath) as! Settings_FindMe_TableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("feedback", forIndexPath: indexPath)
             return cell
             
         case 2:
-            let cell = tableView.dequeueReusableCellWithIdentifier("feedback", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCellWithIdentifier("quit", forIndexPath: indexPath)
             return cell
             
         default:
@@ -109,10 +125,19 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
 
     // MARK: - table view delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        guard let cell = tableView.cellForRowAtIndexPath(indexPath) else {return}
+        guard let cellReuseIdentifier = cell.reuseIdentifier else {return}
+        
         // user tap login cell
-        if tableView.cellForRowAtIndexPath(indexPath)?.reuseIdentifier == "pleaseLogin" {
+        switch cellReuseIdentifier {
+        case "pleaseLogin":
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
             NSNotificationCenter.defaultCenter().postNotificationName(Constant.Notification.Alert.showLoginTextField, object: self)
+        case "quit":
+            FAction.logout()
+            // TODO: - refresh views
+        default:
+            break
         }
     }
     

@@ -65,6 +65,17 @@ public class Action {
             }
         }
         
+        // get users own cats
+        public class func mine (completeHandler: (success: Bool, data: JSON, description: String)->Void) {
+            let path = "users/\(FHelper.current_user.id)/cats.json"
+
+            FNetManager.sharedInstance.GET(path: path) { (request, response, json, error) -> Void in
+                Action.requestCompleteHandler(json: json, error: error, completeHandler: { (success, data, description) -> Void in
+                    completeHandler(success: success, data: data, description: description)
+                })
+            }
+        }
+        
     }
     
     // MARK: - tool functions
