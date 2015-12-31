@@ -10,7 +10,7 @@
         <scene sceneID="ymA-BK-k87">
             <objects>
                 <navigationController id="g23-5L-w3v" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" id="3WO-8T-tU3"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="nearby" id="3WO-8T-tU3"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sLw-S8-QUK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -27,7 +27,7 @@
         <scene sceneID="CQl-Fj-1L0">
             <objects>
                 <navigationController id="09e-Lx-qmB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" id="OWP-ZX-yZR"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="OWP-ZX-yZR"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="i25-Fg-mlz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -659,6 +659,8 @@
     </scenes>
     <resources>
         <image name="myLoationAnnotation" width="29" height="40"/>
+        <image name="nearby" width="25" height="25"/>
+        <image name="settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="j3f-S4-QfP"/>

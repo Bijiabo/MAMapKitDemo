@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 let APIKey = "3b17386d0a14ac347b70d4bc205ee6ff"
 
@@ -30,8 +31,6 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
         
         initSearch()
         
-        addAnnotation()
-        
         initSearchBar()
         
         searchDisplayController!.searchResultsTableView.registerClass(SearchResultTableViewCell.self, forCellReuseIdentifier: "SearchResultTableViewCell")
@@ -43,6 +42,8 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
         super.viewWillAppear(animated)
         
         initMapView()
+        
+        _regionChangeCount = 45
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -119,7 +120,7 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
     
     // 逆地理编码
     func reverseGeocoding(){
-        
+        /*
         let coordinate = currentLocation?.coordinate
         
         // 构造 AMapReGeocodeSearchRequest 对象，配置查询参数（中心点坐标）
@@ -131,25 +132,37 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
         
         // 进行逆地理编码查询
         self.search!.AMapReGoecodeSearch(regeo)
-        
+        */
     }
 
     // MARK: - MAMapViewDelegate
     
     // 定位回调
     func mapView(mapView: MAMapView!, didUpdateUserLocation userLocation: MAUserLocation!, updatingLocation: Bool) {
-        if updatingLocation {
-            guard let currentLocation = userLocation.location else {return}
-            /*
-            Action.cats.nearby(currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude, completeHandler: { (success, data, description) -> Void in
-                print(data)
-            })
-            */
-        }
     }
     
+    private var _regionChangeCount: Int = 40
+    
     func mapView(mapView: MAMapView!, regionDidChangeAnimated animated: Bool) {
-        print("regionDidChangeAnimated")
+        if _regionChangeCount % 50 == 0 { // delay to cut down request nearby cat rate
+            _regionChangeCount = 0
+            
+            print("regionDidChangeAnimated")
+            mapView.removeAnnotations(mapView.annotations)
+            
+            let currentLocation = mapView.centerCoordinate
+            Action.cats.nearby(currentLocation.latitude, longitude: currentLocation.longitude, completeHandler: { (success, data, description) -> Void in
+                
+                for (_, dataItem): (String, JSON) in data {
+                    print(dataItem)
+                    let age = dataItem["age"].intValue
+                    let itemLocation = CLLocationCoordinate2D(latitude: dataItem["latitude"].doubleValue, longitude: dataItem["longitude"].doubleValue)
+                    self.addAnnotation(location: itemLocation, title: dataItem["name"].stringValue, subTitle: "\(age)岁")
+                }
+            })
+        }
+        
+        _regionChangeCount += 1
     }
     
     // 点击Annoation回调
@@ -233,11 +246,11 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
 }
 
 extension ViewController {
-    func addAnnotation() {
+    func addAnnotation(location location: CLLocationCoordinate2D, title: String, subTitle: String) {
         let pointAnnotation: MAPointAnnotation = MAPointAnnotation()
-        pointAnnotation.coordinate = CLLocationCoordinate2DMake(39.989631, 116.481018)
-        pointAnnotation.title = "方恒国际"
-        pointAnnotation.subtitle = "阜通东大街6号"
+        pointAnnotation.coordinate = location
+        pointAnnotation.title = title
+        pointAnnotation.subtitle = subTitle
         
         mapView?.addAnnotation(pointAnnotation)
     }

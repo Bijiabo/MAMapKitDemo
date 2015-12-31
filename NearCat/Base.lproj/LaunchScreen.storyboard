@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8150" systemVersion="15A204g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9527.1" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8122"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9525.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,8 +16,32 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Icon-76" translatesAutoresizingMaskIntoConstraints="NO" id="0TH-Wg-CT3">
+                                <rect key="frame" x="262" y="218" width="76" height="76"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Near Cat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REr-Ce-kkY">
+                                <rect key="frame" x="266" y="302" width="68" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.25098039215686274" green="0.48627450980392156" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Design and Code by Fayeliew and Chambers Hu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rnq-f9-v0J">
+                                <rect key="frame" x="145.5" y="571" width="309" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0TH-Wg-CT3" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="1fR-yO-IYG"/>
+                            <constraint firstItem="Rnq-f9-v0J" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="CKE-NJ-eTN"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Rnq-f9-v0J" secondAttribute="bottom" constant="12" id="KYw-87-mXm"/>
+                            <constraint firstItem="REr-Ce-kkY" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Ycd-L7-ZzV"/>
+                            <constraint firstItem="REr-Ce-kkY" firstAttribute="top" secondItem="0TH-Wg-CT3" secondAttribute="bottom" constant="8" id="h1V-pC-82A"/>
+                            <constraint firstItem="0TH-Wg-CT3" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-44" id="h2F-po-E78"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24,4 +49,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Icon-76" width="76" height="76"/>
+    </resources>
 </document>
