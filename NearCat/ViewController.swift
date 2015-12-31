@@ -28,8 +28,6 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
         
         initNavigationBar()
         
-        initMapView()
-        
         initSearch()
         
         addAnnotation()
@@ -39,6 +37,19 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
         searchDisplayController!.searchResultsTableView.registerClass(SearchResultTableViewCell.self, forCellReuseIdentifier: "SearchResultTableViewCell")
         
         Location.sharedInstance.requestWhenInUseAuthorization()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        initMapView()
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        mapView?.removeFromSuperview()
+        mapView = nil
     }
     
     /**
@@ -128,8 +139,17 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
     // 定位回调
     func mapView(mapView: MAMapView!, didUpdateUserLocation userLocation: MAUserLocation!, updatingLocation: Bool) {
         if updatingLocation {
-            currentLocation = userLocation.location
+            guard let currentLocation = userLocation.location else {return}
+            /*
+            Action.cats.nearby(currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude, completeHandler: { (success, data, description) -> Void in
+                print(data)
+            })
+            */
         }
+    }
+    
+    func mapView(mapView: MAMapView!, regionDidChangeAnimated animated: Bool) {
+        print("regionDidChangeAnimated")
     }
     
     // 点击Annoation回调

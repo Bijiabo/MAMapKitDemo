@@ -95,15 +95,10 @@ public class Action {
         }
         
         // get nearby cats
-        public class func nearby(latitude: Double, longitude: Double, catId: Int, completeHandler: (success: Bool, data: JSON, description: String)->Void) {
-            let path = "nearbyCat"
-            let parameters: [String: AnyObject] = [
-                "latitude": latitude,
-                "longitude": longitude,
-                "token": FHelper.token
-            ]
+        public class func nearby(latitude: Double, longitude: Double, completeHandler: (success: Bool, data: JSON, description: String)->Void) {
+            let path = "nearbyCat?latitude=\(latitude)&longitude=\(longitude)"
             
-            FNetManager.sharedInstance.GET(path: path, parameters: parameters) { (request, response, json, error) -> Void in
+            FNetManager.sharedInstance.GET(path: path) { (request, response, json, error) -> Void in
                 Action.requestCompleteHandler(json: json, error: error, completeHandler: { (success, data, description) -> Void in
                     completeHandler(success: success, data: data, description: description)
                 })
