@@ -10,6 +10,7 @@ import Foundation
 
 class CatAnnotationView: MAAnnotationView {
     var calloutView: CatCalloutView?
+    var calloutImage: UIImage?
     
     let kCalloutWidth: CGFloat = 200.0
     let kCalloutHeight: CGFloat = 70.0
@@ -23,7 +24,9 @@ class CatAnnotationView: MAAnnotationView {
                 calloutView?.center = CGPoint(x: CGRectGetWidth(bounds)/2.0 + calloutOffset.x, y: -CGRectGetHeight(self.calloutView!.bounds) / 2.0 + self.calloutOffset.y)
             }
             
-            calloutView?.image = UIImage(named: "pin")!
+            if let calloutImage = calloutImage {
+                calloutView?.image = calloutImage
+            }
             calloutView?.title = annotation.title!()
             calloutView?.subtitle = annotation.subtitle!()
 

@@ -185,6 +185,7 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
             annotationView?.image = UIImage(named: "pin") //custom pin image
             annotationView?.canShowCallout = false
             annotationView?.draggable = false
+            annotationView?.calloutImage = UIImage(named: "Icon-76")
             
             return annotationView!
         } else if annotation.isKindOfClass(MAUserLocation) {
