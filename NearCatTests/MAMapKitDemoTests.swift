@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import MAMapKitDemo
+@testable import NearCat
 
 class MAMapKitDemoTests: XCTestCase {
     

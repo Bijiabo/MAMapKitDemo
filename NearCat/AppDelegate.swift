@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  MAMapKitDemo
+//  NearCat
 //
 //  Created by huchunbo on 15/12/23.
 //  Copyright © 2015年 Bijiabo. All rights reserved.
