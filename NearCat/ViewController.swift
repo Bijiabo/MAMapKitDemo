@@ -148,13 +148,12 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
             _regionChangeCount = 0
             
             print("regionDidChangeAnimated")
-            mapView.removeAnnotations(mapView.annotations)
+            _removeAllAnnotation()
             
             let currentLocation = mapView.centerCoordinate
             Action.cats.nearby(currentLocation.latitude, longitude: currentLocation.longitude, completeHandler: { (success, data, description) -> Void in
                 
                 for (_, dataItem): (String, JSON) in data {
-                    print(dataItem)
                     let age = dataItem["age"].intValue
                     let itemLocation = CLLocationCoordinate2D(latitude: dataItem["latitude"].doubleValue, longitude: dataItem["longitude"].doubleValue)
                     self.addAnnotation(location: itemLocation, title: dataItem["name"].stringValue, subTitle: "\(age)岁")
@@ -176,18 +175,20 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
     func mapView(mapView: MAMapView!, viewForAnnotation annotation: MAAnnotation!) -> MAAnnotationView! {
         if annotation.isKindOfClass(MAPointAnnotation) {
             let pointReuseIndentifier = "pointReuseIndentifier"
-            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(pointReuseIndentifier)
+            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(pointReuseIndentifier) as? CatAnnotationView
             
             if annotationView == nil {
-                annotationView = MAPinAnnotationView(annotation: annotation, reuseIdentifier: pointReuseIndentifier)
+                annotationView = CatAnnotationView(annotation: annotation, reuseIdentifier: pointReuseIndentifier)
+                    // MAPinAnnotationView(annotation: annotation, reuseIdentifier: pointReuseIndentifier)
             }
             
-            annotationView.image = UIImage(named: "pin") //custom pin image
-            annotationView.canShowCallout = true
-            annotationView.draggable = true
-            return annotationView
+            annotationView?.image = UIImage(named: "pin") //custom pin image
+            annotationView?.canShowCallout = false
+            annotationView?.draggable = false
+            
+            return annotationView!
         } else if annotation.isKindOfClass(MAUserLocation) {
-            let pointReuseIndentifier = "pointReuseIndentifier"
+            let pointReuseIndentifier = "myLocationReuseIndentifier"
             var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(pointReuseIndentifier)
             
             if annotationView == nil {
@@ -222,6 +223,15 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
         
         return nil
     }
+    
+    private func _removeAllAnnotation() {
+        guard let annotations = mapView?.annotations as? [MAAnnotation] else {return}
+        for annotation in annotations {
+            if !annotation.isKindOfClass(MAUserLocation) {
+                mapView?.removeAnnotation(annotation)
+            }
+        }
+    }
 
     // 逆地理编码回调
     func onReGeocodeSearchDone(request: AMapReGeocodeSearchRequest, response: AMapReGeocodeSearchResponse) {
@@ -251,7 +261,7 @@ extension ViewController {
         pointAnnotation.coordinate = location
         pointAnnotation.title = title
         pointAnnotation.subtitle = subTitle
-        
+
         mapView?.addAnnotation(pointAnnotation)
     }
     

@@ -32,6 +32,8 @@
 		6570C3781C36939200391EB8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6570C3771C36939200391EB8 /* User.swift */; };
 		6570C37A1C3693A000391EB8 /* FStatusProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6570C3791C3693A000391EB8 /* FStatusProtocols.swift */; };
 		6570C37C1C3693F300391EB8 /* FConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6570C37B1C3693F300391EB8 /* FConfiguration.swift */; };
+		6570C37E1C36C83400391EB8 /* CatCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6570C37D1C36C83400391EB8 /* CatCalloutView.swift */; };
+		6570C3801C36D4D200391EB8 /* CatAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6570C37F1C36D4D200391EB8 /* CatAnnotationView.swift */; };
 		6577B2C01C34255C0096F72A /* CatArchiveEditLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6577B2BF1C34255C0096F72A /* CatArchiveEditLocationViewController.swift */; };
 		65CE59981C2A7405008809B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59971C2A7405008809B0 /* AppDelegate.swift */; };
 		65CE599A1C2A7405008809B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59991C2A7405008809B0 /* ViewController.swift */; };
@@ -120,6 +122,8 @@
 		6570C3771C36939200391EB8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = NearCat/FServiceManager/Models/User.swift; sourceTree = "<group>"; };
 		6570C3791C3693A000391EB8 /* FStatusProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FStatusProtocols.swift; path = NearCat/FServiceManager/Protocols/FStatusProtocols.swift; sourceTree = "<group>"; };
 		6570C37B1C3693F300391EB8 /* FConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FConfiguration.swift; path = NearCat/FServiceManager/FConfiguration.swift; sourceTree = "<group>"; };
+		6570C37D1C36C83400391EB8 /* CatCalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CatCalloutView.swift; path = ../Controllers/CatCalloutView.swift; sourceTree = "<group>"; };
+		6570C37F1C36D4D200391EB8 /* CatAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatAnnotationView.swift; sourceTree = "<group>"; };
 		6577B2BF1C34255C0096F72A /* CatArchiveEditLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveEditLocationViewController.swift; sourceTree = "<group>"; };
 		65CE59941C2A7405008809B0 /* NearCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CE59971C2A7405008809B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = NearCat/AppDelegate.swift; sourceTree = "<group>"; };
@@ -162,7 +166,6 @@
 		65DAC8391C2E5C7C00335EFC /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constant.swift; path = NearCat/Constant.swift; sourceTree = "<group>"; };
 		65DAC83F1C2EB97F00335EFC /* NotificationAlertObserverProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationAlertObserverProtocol.swift; sourceTree = "<group>"; };
 		65DAC8411C2EBDA700335EFC /* LoginRequesterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRequesterProtocol.swift; sourceTree = "<group>"; };
-		65EE13771C2C15CB000CA852 /* FServiceManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FServiceManager.framework; path = Carthage/Build/iOS/FServiceManager.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,7 +308,6 @@
 		65CE59D31C2A758C008809B0 /* Framworks */ = {
 			isa = PBXGroup;
 			children = (
-				65EE13771C2C15CB000CA852 /* FServiceManager.framework */,
 				6557F7BE1C2D211D00E6780D /* Third Party */,
 			);
 			name = Framworks;
@@ -383,7 +385,9 @@
 		65DAC8311C2E584D00335EFC /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				6570C37D1C36C83400391EB8 /* CatCalloutView.swift */,
 				65CE59E71C2AF9E4008809B0 /* SearchResultTableViewCell.swift */,
+				6570C37F1C36D4D200391EB8 /* CatAnnotationView.swift */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -603,10 +607,12 @@
 				6557F7B91C2CFFB300E6780D /* CatArchiveItemTableViewCell.swift in Sources */,
 				65DAC81B1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift in Sources */,
 				65DAC81D1C2D902A00335EFC /* FeedbackViewController.swift in Sources */,
+				6570C3801C36D4D200391EB8 /* CatAnnotationView.swift in Sources */,
 				6557F7C61C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift in Sources */,
 				65D54D261C3141F800F7B450 /* Delay.swift in Sources */,
 				6557F7C41C2D2B1A00E6780D /* CatArchiveListTableViewController.swift in Sources */,
 				65DAC82F1C2E578300335EFC /* MainRootViewController.swift in Sources */,
+				6570C37E1C36C83400391EB8 /* CatCalloutView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
