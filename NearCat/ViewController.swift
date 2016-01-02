@@ -18,7 +18,7 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
     var currentLocation:CLLocation?
 
     @IBOutlet weak var searchBar: UISearchBar!
-    var searchResults: [String] = [String]()
+    var searchResults: [AMapPOI] = [AMapPOI]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -275,6 +275,10 @@ extension ViewController {
         searchBar.layer.shadowOffset = CGSize(width: 0, height: 0.5)
         searchBar.layer.shadowRadius = 0
         searchBar.layer.shadowOpacity = 0.1
+        
+        let tableFooterView: UIView = UIView()
+        tableFooterView.backgroundColor = UIColor.clearColor()
+        searchDisplayController?.searchResultsTableView.tableFooterView = tableFooterView
     }
 }
 
@@ -284,46 +288,21 @@ extension ViewController: UISearchBarDelegate {
         guard let searchKeywords = searchBar.text else {return}
         //构造AMapPOIAroundSearchRequest对象，设置周边请求参数
         let request: AMapPOIAroundSearchRequest = AMapPOIAroundSearchRequest()
-        request.location = AMapGeoPoint.locationWithLatitude(39.990459, longitude: 116.481476)
+        let latitude: CGFloat = CGFloat(mapView!.centerCoordinate.latitude)
+        let longitude:CGFloat = CGFloat(mapView!.centerCoordinate.longitude)
+        request.location = AMapGeoPoint.locationWithLatitude(latitude, longitude: longitude)
         request.keywords = searchKeywords
         // types属性表示限定搜索POI的类别，默认为：餐饮服务|商务住宅|生活服务
         // POI的类型共分为20种大类别，分别为：
         // 汽车服务|汽车销售|汽车维修|摩托车服务|餐饮服务|购物服务|生活服务|体育休闲服务|
         // 医疗保健服务|住宿服务|风景名胜|商务住宅|政府机构及社会团体|科教文化服务|
         // 交通设施服务|金融保险服务|公司企业|道路附属设施|地名地址信息|公共设施
-        request.types = "餐饮服务|生活服务"
+        request.types = "汽车服务|汽车销售|汽车维修|摩托车服务|餐饮服务|购物服务|生活服务|体育休闲服务|医疗保健服务|住宿服务|风景名胜|商务住宅|政府机构及社会团体|科教文化服务|交通设施服务|金融保险服务|公司企业|道路附属设施|地名地址信息|公共设施"
         request.sortrule = 0;
         request.requireExtension = true
         
         //发起周边搜索
         search?.AMapPOIAroundSearch(request)
-    }
-}
-
-// MARK: - UITextFieldDelegate
-extension ViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(textField: UITextField) {
-        guard let searchKeywords = textField.text else {return}
-        //构造AMapPOIAroundSearchRequest对象，设置周边请求参数
-        let request: AMapPOIAroundSearchRequest = AMapPOIAroundSearchRequest()
-        request.location = AMapGeoPoint.locationWithLatitude(39.990459, longitude: 116.481476)
-        request.keywords = searchKeywords
-        // types属性表示限定搜索POI的类别，默认为：餐饮服务|商务住宅|生活服务
-        // POI的类型共分为20种大类别，分别为：
-        // 汽车服务|汽车销售|汽车维修|摩托车服务|餐饮服务|购物服务|生活服务|体育休闲服务|
-        // 医疗保健服务|住宿服务|风景名胜|商务住宅|政府机构及社会团体|科教文化服务|
-        // 交通设施服务|金融保险服务|公司企业|道路附属设施|地名地址信息|公共设施
-        request.types = "餐饮服务|生活服务"
-        request.sortrule = 0;
-        request.requireExtension = true
-        
-        //发起周边搜索
-        search?.AMapPOIAroundSearch(request)
-    }
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
     }
     
     func onPOISearchDone(request: AMapPOISearchBaseRequest!, response: AMapPOISearchResponse!) {
@@ -332,7 +311,7 @@ extension ViewController: UITextFieldDelegate {
             return
         }
         
-        searchResults = [String]()
+        searchResults = [AMapPOI]()
         
         //通过 AMapPOISearchResponse 对象处理搜索结果
         let strCount: String = "count: \(response.count)"
@@ -340,10 +319,10 @@ extension ViewController: UITextFieldDelegate {
         var strPoi: String = ""
         for p in response.pois as! [AMapPOI] {
             strPoi = "\(strPoi)\nPOI: \(p.name)"
-            searchResults.append(p.name)
+            searchResults.append(p)
         }
         let result: String = "\(strCount) \n \(strSuggestion) \n \(strPoi)"
-        NSLog("Place: %@", result);
+        // NSLog("Place: %@", result);
         
         searchDisplayController?.searchResultsTableView.reloadData()
     }
@@ -361,9 +340,27 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SearchResultTableViewCell", forIndexPath: indexPath) as! SearchResultTableViewCell
-        cell.textLabel?.text = searchResults[indexPath.row]
+        
+        cell.name = searchResults[indexPath.row].name
+        cell.distance = searchResults[indexPath.row].distance
         
         return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension ViewController: UITableViewDelegate {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        guard searchResults.count > indexPath.row else {return}
+        
+        let latitude: Double = Double(searchResults[indexPath.row].location.latitude)
+        let longitude: Double = Double(searchResults[indexPath.row].location.longitude)
+        
+        let centerLocation = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        
+        searchDisplayController?.setActive(false, animated: false)
+        
+        mapView?.setCenterCoordinate(centerLocation, animated: true)
     }
 }
 

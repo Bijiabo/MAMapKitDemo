@@ -243,7 +243,10 @@
 		6570C3761C36937700391EB8 /* FServiceManager */ = {
 			isa = PBXGroup;
 			children = (
+				657AD3BA1C37D7E80001CB74 /* Model */,
 				6570C3641C36936C00391EB8 /* Alamofire-SwiftyJSON.swift */,
+				6570C37B1C3693F300391EB8 /* FConfiguration.swift */,
+				6570C3791C3693A000391EB8 /* FStatusProtocols.swift */,
 				6570C3651C36936C00391EB8 /* DeviceGuru.swift */,
 				6570C3661C36936C00391EB8 /* FAction.swift */,
 				6570C3671C36936C00391EB8 /* FConstant.swift */,
@@ -256,12 +259,17 @@
 			name = FServiceManager;
 			sourceTree = "<group>";
 		};
+		657AD3BA1C37D7E80001CB74 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6570C3771C36939200391EB8 /* User.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		65CE598B1C2A7405008809B0 = {
 			isa = PBXGroup;
 			children = (
-				6570C37B1C3693F300391EB8 /* FConfiguration.swift */,
-				6570C3791C3693A000391EB8 /* FStatusProtocols.swift */,
-				6570C3771C36939200391EB8 /* User.swift */,
 				6570C3761C36937700391EB8 /* FServiceManager */,
 				65CE59D31C2A758C008809B0 /* Framworks */,
 				65CE59961C2A7405008809B0 /* NearCat */,

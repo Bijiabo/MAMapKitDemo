@@ -20,38 +20,6 @@ public class FAction: NSObject {
         return nil
     }
     
-    let _actions = [
-        "login": {
-            (params: [AnyObject], delegate: UIViewController) in
-            
-            if params.count < 1 {return}
-            guard let userInputData = params[0] as? [String: String] else {return}
-            
-            let parameters = userInputData
-            
-            FNetManager.sharedInstance.POST(path: "request_new_token", parameters: parameters, completionHandler: { (reqest, response, json, error) -> Void in
-                if error == nil {
-                    if !json["error"].boolValue {
-                        print("login success!")
-                    }else{
-                        print("login error:(")
-                    }
-                    print(json)
-                }
-            })
-        },
-        "register": {
-            (params: [AnyObject], delegate: UIViewController) in
-            
-            
-        }
-    ]
-    
-    func run (action: String, params: [AnyObject], delegate: UIViewController) {
-        
-        _actions[action]?(params, delegate)
-    }
-    
     // MARK:
     // MARK: actions
     public class func checkLogin (completeHandler: (success: Bool, description: String)->Void ) {
@@ -81,7 +49,7 @@ public class FAction: NSObject {
         FNetManager.sharedInstance.POST(path: "request_new_token.json", parameters: parameters) { (request, response, json, error) -> Void in
             var success: Bool = false
             var description: String = error.debugDescription
-            
+
             if error == nil {
                 success = !json["error"].boolValue
                 if !success {
