@@ -109,6 +109,7 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
         mapView?.rotateEnabled = true
         mapView?.zoomLevel = 14.0
         mapView?.customizeUserLocationAccuracyCircleRepresentation = true
+        mapView?.setCompassImage(UIImage(named: "doge"))
     }
     
     // 初始化 AMapSearchAPI
