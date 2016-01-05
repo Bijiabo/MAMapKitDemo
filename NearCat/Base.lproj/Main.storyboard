@@ -658,7 +658,7 @@
                                     <constraint firstAttribute="height" constant="34" id="Mfk-hx-Kp1"/>
                                 </constraints>
                             </view>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="95A-PQ-peC">
+                            <searchBar contentMode="redraw" placeholder="搜索附近地址或地点" translatesAutoresizingMaskIntoConstraints="NO" id="95A-PQ-peC">
                                 <rect key="frame" x="0.0" y="54" width="600" height="44"/>
                                 <animations/>
                                 <constraints>
@@ -697,6 +697,7 @@
                     <connections>
                         <outlet property="searchBar" destination="95A-PQ-peC" id="4d7-Rm-h0N"/>
                         <outlet property="searchDisplayController" destination="9w0-91-0iK" id="Dw1-x1-86L"/>
+                        <outlet property="segmentedControl" destination="wCd-4M-6pT" id="gue-eA-c5Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

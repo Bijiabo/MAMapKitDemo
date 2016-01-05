@@ -12,13 +12,21 @@ import UIKit
     private var labels = [UILabel]()
     var thumbView = UIView()
     
+    let highlightTextColor: UIColor = UIColor(red:0.36, green:0.5, blue:0.66, alpha:1)
+    let normalTextColor: UIColor = UIColor(red:0.58, green:0.58, blue:0.58, alpha:1)
+    
     var items:[String] = ["Item 1","Item 2","Item 3"] {
         didSet{
             setupLabels()
         }
     }
     
+    var previousSelectedIndex: Int = 0
     var selectedIndex : Int = 0 {
+        willSet {
+            previousSelectedIndex = selectedIndex
+        }
+        
         didSet {
             displayNewSelectedIndex()
         }
@@ -57,7 +65,7 @@ import UIKit
             label.font = UIFont.systemFontOfSize(12.0)
             label.text = items[index - 1]
             label.textAlignment = .Center
-            label.textColor = UIColor(red:0.58, green:0.58, blue:0.58, alpha:1)
+            label.textColor = normalTextColor
             self.addSubview(label)
             labels.append(label)
         }
@@ -101,7 +109,17 @@ import UIKit
     
     func displayNewSelectedIndex(){
         let label = labels[selectedIndex]
-        self.thumbView.frame = label.frame
+        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.1, options: UIViewAnimationOptions.AllowUserInteraction, animations: {
+            self.thumbView.frame = label.frame
+            }, completion: {
+                (complete) in
+        })
+        
+        UIView.animateWithDuration(0.5) { () -> Void in
+            self.labels[self.previousSelectedIndex].textColor = self.normalTextColor
+            label.textColor = self.highlightTextColor
+        }
+        
         print(label.text)
     }
     

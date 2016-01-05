@@ -17,6 +17,7 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
     var search:AMapSearchAPI?
     var currentLocation:CLLocation?
 
+    @IBOutlet weak var segmentedControl: SegmentedControl!
     @IBOutlet weak var searchBar: UISearchBar!
     var searchResults: [AMapPOI] = [AMapPOI]()
     
@@ -73,6 +74,8 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
         titleView.items = segmentedControlItems
         navigationItem.titleView = titleView
         */
+        segmentedControl.items = ["全部", "公猫", "母猫"]
+        
         let navigationBar = navigationController?.navigationBar
         navigationBar?.translucent = false
         navigationBar?.setBackgroundImage(UIImage(named: "white"), forBarMetrics: UIBarMetrics.Default)
@@ -284,17 +287,6 @@ extension ViewController {
         searchBar.layer.shadowOffset = CGSize(width: 0, height: 0.5)
         searchBar.layer.shadowRadius = 0
         searchBar.layer.shadowOpacity = 0.1
-        
-        for subView in searchBar.subviews{
-            for deeperView in subView.subviews{
-                if let searchField:UITextField = deeperView as? UITextField{
-//                    searchField.layer.borderWidth = 1.0
-//                    searchField.layer.borderColor = UIColor(red: 134/255, green: 14/255, blue: 75/255, alpha: 1).CGColor
-//                    searchField.layer.cornerRadius = 5.0
-//                    searchField.backgroundColor = UIColor.whiteColor()
-                }
-            }
-        }
         
         let tableFooterView: UIView = UIView()
         tableFooterView.backgroundColor = UIColor.clearColor()
