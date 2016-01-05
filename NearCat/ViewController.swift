@@ -59,17 +59,20 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
      - returns: Void
      */
     func initNavigationBar() {
+        /*
+        // setup navigation bar title view
         let segmentedControlItems = [
             "All",
             "Type 1",
             "Type 2"
         ]
-        let titleView = UISegmentedControl(items: segmentedControlItems)
-        titleView.selectedSegmentIndex = 0
+        let titleView = SegmentedControl() //UISegmentedControl(items: segmentedControlItems)
+        titleView.selectedIndex = 0
         let titleViewFrame = CGRect(x: 0, y: 0, width: view.frame.size.width-40.0, height: titleView.frame.size.height)
         titleView.frame = titleViewFrame
+        titleView.items = segmentedControlItems
         navigationItem.titleView = titleView
-        
+        */
         let navigationBar = navigationController?.navigationBar
         navigationBar?.translucent = false
         navigationBar?.setBackgroundImage(UIImage(named: "white"), forBarMetrics: UIBarMetrics.Default)
@@ -80,7 +83,10 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
     
     func initMapView(){
         
-        mapView = MAMapView(frame: self.view.bounds)
+        var mapViewFrame = view.bounds
+        mapViewFrame.origin.y = searchBar.frame.height + searchBar.frame.origin.y
+        mapViewFrame.size.height -= mapViewFrame.origin.y
+        mapView = MAMapView(frame: mapViewFrame)
         
         mapView!.delegate = self
         
@@ -270,12 +276,25 @@ extension ViewController {
     func initSearchBar() {
         view.bringSubviewToFront(searchBar)
         searchBar.backgroundColor = UIColor.whiteColor()
+        searchBar.barTintColor = UIColor.whiteColor()
+        searchBar.backgroundImage = UIImage()
         searchBar.delegate = self
         
         searchBar.layer.shadowColor = UIColor.blackColor().CGColor
         searchBar.layer.shadowOffset = CGSize(width: 0, height: 0.5)
         searchBar.layer.shadowRadius = 0
         searchBar.layer.shadowOpacity = 0.1
+        
+        for subView in searchBar.subviews{
+            for deeperView in subView.subviews{
+                if let searchField:UITextField = deeperView as? UITextField{
+//                    searchField.layer.borderWidth = 1.0
+//                    searchField.layer.borderColor = UIColor(red: 134/255, green: 14/255, blue: 75/255, alpha: 1).CGColor
+//                    searchField.layer.cornerRadius = 5.0
+//                    searchField.backgroundColor = UIColor.whiteColor()
+                }
+            }
+        }
         
         let tableFooterView: UIView = UIView()
         tableFooterView.backgroundColor = UIColor.clearColor()
@@ -362,6 +381,18 @@ extension ViewController: UITableViewDelegate {
         searchDisplayController?.setActive(false, animated: false)
         
         mapView?.setCenterCoordinate(centerLocation, animated: true)
+    }
+}
+
+extension UISearchBar {
+    
+    var textField: UITextField? {
+        for subview in subviews as [UIView] {
+            if let textField = subview as? UITextField {
+                return textField
+            }
+        }
+        return nil
     }
 }
 
