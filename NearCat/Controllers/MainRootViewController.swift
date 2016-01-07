@@ -184,21 +184,38 @@ extension MainRootViewController: NotificationAlertObserverProtocol {
             }
             
             FAction.register(email, name: name, password: password, completeHandler: { (success, description) -> Void in
-                if success {
-                    successHandler?()
-                } else {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.hideLoadingAlert()
-                    self.showErrorAlert(title: "Register Error", message: description, closeHandler: { () -> Void in
-                        for textField in alert.textFields! {
-                            if textField.tag == 2 { textField.text = String() }
-                        }
-
-                        self.presentViewController(alert, animated: true, completion: { () -> Void in
-                            for textField in alert.textFields! {
-                                if textField.tag == 2 && !email.isEmpty && !name.isEmpty { textField.becomeFirstResponder() }
+                })
+                
+                if success {
+                    FAction.login(email, password: password, completeHandler: { (loginSuccess, description) -> Void in
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            if loginSuccess {
+                                successHandler?()
+                            } else {
+                                self.showErrorAlert(title: "Internet Error", message: "注册成功，请手动登录。", closeHandler: { () -> Void in
+                                    cancelHandler?()
+                                })
                             }
                         })
                     })
+                    
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.showErrorAlert(title: "Register Error", message: description, closeHandler: { () -> Void in
+                            for textField in alert.textFields! {
+                                if textField.tag == 2 { textField.text = String() }
+                            }
+                            
+                            self.presentViewController(alert, animated: true, completion: { () -> Void in
+                                for textField in alert.textFields! {
+                                    if textField.tag == 2 && !email.isEmpty && !name.isEmpty { textField.becomeFirstResponder() }
+                                }
+                            })
+                        })
+                    })
+                    
                 }
             })
 

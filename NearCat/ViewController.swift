@@ -17,8 +17,9 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
     var search:AMapSearchAPI?
     var currentLocation:CLLocation?
 
+    @IBOutlet weak var segmentedControl: SegmentedControl!
     @IBOutlet weak var searchBar: UISearchBar!
-    var searchResults: [String] = [String]()
+    var searchResults: [AMapPOI] = [AMapPOI]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,16 +60,21 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
      - returns: Void
      */
     func initNavigationBar() {
+        /*
+        // setup navigation bar title view
         let segmentedControlItems = [
             "All",
             "Type 1",
             "Type 2"
         ]
-        let titleView = UISegmentedControl(items: segmentedControlItems)
-        titleView.selectedSegmentIndex = 0
+        let titleView = SegmentedControl() //UISegmentedControl(items: segmentedControlItems)
+        titleView.selectedIndex = 0
         let titleViewFrame = CGRect(x: 0, y: 0, width: view.frame.size.width-40.0, height: titleView.frame.size.height)
         titleView.frame = titleViewFrame
+        titleView.items = segmentedControlItems
         navigationItem.titleView = titleView
+        */
+        segmentedControl.items = ["全部", "公猫", "母猫"]
         
         let navigationBar = navigationController?.navigationBar
         navigationBar?.translucent = false
@@ -80,7 +86,10 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
     
     func initMapView(){
         
-        mapView = MAMapView(frame: self.view.bounds)
+        var mapViewFrame = view.bounds
+        mapViewFrame.origin.y = searchBar.frame.height + searchBar.frame.origin.y
+        mapViewFrame.size.height -= mapViewFrame.origin.y
+        mapView = MAMapView(frame: mapViewFrame)
         
         mapView!.delegate = self
         
@@ -109,6 +118,7 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
         mapView?.rotateEnabled = true
         mapView?.zoomLevel = 14.0
         mapView?.customizeUserLocationAccuracyCircleRepresentation = true
+        mapView?.setCompassImage(UIImage(named: "doge"))
     }
     
     // 初始化 AMapSearchAPI
@@ -148,13 +158,12 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
             _regionChangeCount = 0
             
             print("regionDidChangeAnimated")
-            mapView.removeAnnotations(mapView.annotations)
+            _removeAllAnnotation()
             
             let currentLocation = mapView.centerCoordinate
             Action.cats.nearby(currentLocation.latitude, longitude: currentLocation.longitude, completeHandler: { (success, data, description) -> Void in
                 
                 for (_, dataItem): (String, JSON) in data {
-                    print(dataItem)
                     let age = dataItem["age"].intValue
                     let itemLocation = CLLocationCoordinate2D(latitude: dataItem["latitude"].doubleValue, longitude: dataItem["longitude"].doubleValue)
                     self.addAnnotation(location: itemLocation, title: dataItem["name"].stringValue, subTitle: "\(age)岁")
@@ -176,18 +185,21 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
     func mapView(mapView: MAMapView!, viewForAnnotation annotation: MAAnnotation!) -> MAAnnotationView! {
         if annotation.isKindOfClass(MAPointAnnotation) {
             let pointReuseIndentifier = "pointReuseIndentifier"
-            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(pointReuseIndentifier)
+            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(pointReuseIndentifier) as? CatAnnotationView
             
             if annotationView == nil {
-                annotationView = MAPinAnnotationView(annotation: annotation, reuseIdentifier: pointReuseIndentifier)
+                annotationView = CatAnnotationView(annotation: annotation, reuseIdentifier: pointReuseIndentifier)
+                    // MAPinAnnotationView(annotation: annotation, reuseIdentifier: pointReuseIndentifier)
             }
             
-            annotationView.image = UIImage(named: "pin") //custom pin image
-            annotationView.canShowCallout = true
-            annotationView.draggable = true
-            return annotationView
+            annotationView?.image = UIImage(named: "pin") //custom pin image
+            annotationView?.canShowCallout = false
+            annotationView?.draggable = false
+            annotationView?.calloutImage = UIImage(named: "Icon-76")
+            
+            return annotationView!
         } else if annotation.isKindOfClass(MAUserLocation) {
-            let pointReuseIndentifier = "pointReuseIndentifier"
+            let pointReuseIndentifier = "myLocationReuseIndentifier"
             var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(pointReuseIndentifier)
             
             if annotationView == nil {
@@ -222,6 +234,15 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
         
         return nil
     }
+    
+    private func _removeAllAnnotation() {
+        guard let annotations = mapView?.annotations as? [MAAnnotation] else {return}
+        for annotation in annotations {
+            if !annotation.isKindOfClass(MAUserLocation) {
+                mapView?.removeAnnotation(annotation)
+            }
+        }
+    }
 
     // 逆地理编码回调
     func onReGeocodeSearchDone(request: AMapReGeocodeSearchRequest, response: AMapReGeocodeSearchResponse) {
@@ -251,19 +272,25 @@ extension ViewController {
         pointAnnotation.coordinate = location
         pointAnnotation.title = title
         pointAnnotation.subtitle = subTitle
-        
+
         mapView?.addAnnotation(pointAnnotation)
     }
     
     func initSearchBar() {
         view.bringSubviewToFront(searchBar)
         searchBar.backgroundColor = UIColor.whiteColor()
+        searchBar.barTintColor = UIColor.whiteColor()
+        searchBar.backgroundImage = UIImage()
         searchBar.delegate = self
         
         searchBar.layer.shadowColor = UIColor.blackColor().CGColor
         searchBar.layer.shadowOffset = CGSize(width: 0, height: 0.5)
         searchBar.layer.shadowRadius = 0
         searchBar.layer.shadowOpacity = 0.1
+        
+        let tableFooterView: UIView = UIView()
+        tableFooterView.backgroundColor = UIColor.clearColor()
+        searchDisplayController?.searchResultsTableView.tableFooterView = tableFooterView
     }
 }
 
@@ -273,46 +300,21 @@ extension ViewController: UISearchBarDelegate {
         guard let searchKeywords = searchBar.text else {return}
         //构造AMapPOIAroundSearchRequest对象，设置周边请求参数
         let request: AMapPOIAroundSearchRequest = AMapPOIAroundSearchRequest()
-        request.location = AMapGeoPoint.locationWithLatitude(39.990459, longitude: 116.481476)
+        let latitude: CGFloat = CGFloat(mapView!.centerCoordinate.latitude)
+        let longitude:CGFloat = CGFloat(mapView!.centerCoordinate.longitude)
+        request.location = AMapGeoPoint.locationWithLatitude(latitude, longitude: longitude)
         request.keywords = searchKeywords
         // types属性表示限定搜索POI的类别，默认为：餐饮服务|商务住宅|生活服务
         // POI的类型共分为20种大类别，分别为：
         // 汽车服务|汽车销售|汽车维修|摩托车服务|餐饮服务|购物服务|生活服务|体育休闲服务|
         // 医疗保健服务|住宿服务|风景名胜|商务住宅|政府机构及社会团体|科教文化服务|
         // 交通设施服务|金融保险服务|公司企业|道路附属设施|地名地址信息|公共设施
-        request.types = "餐饮服务|生活服务"
+        request.types = "汽车服务|汽车销售|汽车维修|摩托车服务|餐饮服务|购物服务|生活服务|体育休闲服务|医疗保健服务|住宿服务|风景名胜|商务住宅|政府机构及社会团体|科教文化服务|交通设施服务|金融保险服务|公司企业|道路附属设施|地名地址信息|公共设施"
         request.sortrule = 0;
         request.requireExtension = true
         
         //发起周边搜索
         search?.AMapPOIAroundSearch(request)
-    }
-}
-
-// MARK: - UITextFieldDelegate
-extension ViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(textField: UITextField) {
-        guard let searchKeywords = textField.text else {return}
-        //构造AMapPOIAroundSearchRequest对象，设置周边请求参数
-        let request: AMapPOIAroundSearchRequest = AMapPOIAroundSearchRequest()
-        request.location = AMapGeoPoint.locationWithLatitude(39.990459, longitude: 116.481476)
-        request.keywords = searchKeywords
-        // types属性表示限定搜索POI的类别，默认为：餐饮服务|商务住宅|生活服务
-        // POI的类型共分为20种大类别，分别为：
-        // 汽车服务|汽车销售|汽车维修|摩托车服务|餐饮服务|购物服务|生活服务|体育休闲服务|
-        // 医疗保健服务|住宿服务|风景名胜|商务住宅|政府机构及社会团体|科教文化服务|
-        // 交通设施服务|金融保险服务|公司企业|道路附属设施|地名地址信息|公共设施
-        request.types = "餐饮服务|生活服务"
-        request.sortrule = 0;
-        request.requireExtension = true
-        
-        //发起周边搜索
-        search?.AMapPOIAroundSearch(request)
-    }
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
     }
     
     func onPOISearchDone(request: AMapPOISearchBaseRequest!, response: AMapPOISearchResponse!) {
@@ -321,7 +323,7 @@ extension ViewController: UITextFieldDelegate {
             return
         }
         
-        searchResults = [String]()
+        searchResults = [AMapPOI]()
         
         //通过 AMapPOISearchResponse 对象处理搜索结果
         let strCount: String = "count: \(response.count)"
@@ -329,10 +331,10 @@ extension ViewController: UITextFieldDelegate {
         var strPoi: String = ""
         for p in response.pois as! [AMapPOI] {
             strPoi = "\(strPoi)\nPOI: \(p.name)"
-            searchResults.append(p.name)
+            searchResults.append(p)
         }
         let result: String = "\(strCount) \n \(strSuggestion) \n \(strPoi)"
-        NSLog("Place: %@", result);
+        // NSLog("Place: %@", result);
         
         searchDisplayController?.searchResultsTableView.reloadData()
     }
@@ -350,9 +352,39 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SearchResultTableViewCell", forIndexPath: indexPath) as! SearchResultTableViewCell
-        cell.textLabel?.text = searchResults[indexPath.row]
+        
+        cell.name = searchResults[indexPath.row].name
+        cell.distance = searchResults[indexPath.row].distance
         
         return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension ViewController: UITableViewDelegate {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        guard searchResults.count > indexPath.row else {return}
+        
+        let latitude: Double = Double(searchResults[indexPath.row].location.latitude)
+        let longitude: Double = Double(searchResults[indexPath.row].location.longitude)
+        
+        let centerLocation = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        
+        searchDisplayController?.setActive(false, animated: false)
+        
+        mapView?.setCenterCoordinate(centerLocation, animated: true)
+    }
+}
+
+extension UISearchBar {
+    
+    var textField: UITextField? {
+        for subview in subviews as [UIView] {
+            if let textField = subview as? UITextField {
+                return textField
+            }
+        }
+        return nil
     }
 }
 
