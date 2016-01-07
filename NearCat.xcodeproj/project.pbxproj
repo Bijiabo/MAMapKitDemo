@@ -19,6 +19,23 @@
 		6557F7BD1C2D02D300E6780D /* CatArchiveAvatarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F7BC1C2D02D300E6780D /* CatArchiveAvatarTableViewCell.swift */; };
 		6557F7C41C2D2B1A00E6780D /* CatArchiveListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F7C31C2D2B1A00E6780D /* CatArchiveListTableViewController.swift */; };
 		6557F7C61C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F7C51C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift */; };
+		6558EC571C359C67000783A2 /* CatArchiveDetailMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6558EC561C359C67000783A2 /* CatArchiveDetailMapTableViewCell.swift */; };
+		6570C36D1C36936C00391EB8 /* Alamofire-SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6570C3641C36936C00391EB8 /* Alamofire-SwiftyJSON.swift */; };
+		6570C36E1C36936C00391EB8 /* DeviceGuru.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6570C3651C36936C00391EB8 /* DeviceGuru.swift */; };
+		6570C36F1C36936D00391EB8 /* FAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6570C3661C36936C00391EB8 /* FAction.swift */; };
+		6570C3701C36936D00391EB8 /* FConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6570C3671C36936C00391EB8 /* FConstant.swift */; };
+		6570C3711C36936D00391EB8 /* FHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6570C3681C36936C00391EB8 /* FHelper.swift */; };
+		6570C3721C36936D00391EB8 /* FNetManager.h in Sources */ = {isa = PBXBuildFile; fileRef = 6570C3691C36936C00391EB8 /* FNetManager.h */; };
+		6570C3731C36936D00391EB8 /* FNetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6570C36A1C36936C00391EB8 /* FNetManager.swift */; };
+		6570C3741C36936D00391EB8 /* FStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6570C36B1C36936C00391EB8 /* FStatus.swift */; };
+		6570C3751C36936D00391EB8 /* FTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6570C36C1C36936C00391EB8 /* FTool.swift */; };
+		6570C3781C36939200391EB8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6570C3771C36939200391EB8 /* User.swift */; };
+		6570C37A1C3693A000391EB8 /* FStatusProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6570C3791C3693A000391EB8 /* FStatusProtocols.swift */; };
+		6570C37C1C3693F300391EB8 /* FConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6570C37B1C3693F300391EB8 /* FConfiguration.swift */; };
+		6570C37E1C36C83400391EB8 /* CatCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6570C37D1C36C83400391EB8 /* CatCalloutView.swift */; };
+		6570C3801C36D4D200391EB8 /* CatAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6570C37F1C36D4D200391EB8 /* CatAnnotationView.swift */; };
+		6577B2C01C34255C0096F72A /* CatArchiveEditLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6577B2BF1C34255C0096F72A /* CatArchiveEditLocationViewController.swift */; };
+		659606F11C3BC79100EE5A80 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659606F01C3BC79100EE5A80 /* SegmentedControl.swift */; };
 		65CE59981C2A7405008809B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59971C2A7405008809B0 /* AppDelegate.swift */; };
 		65CE599A1C2A7405008809B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59991C2A7405008809B0 /* ViewController.swift */; };
 		65CE599D1C2A7405008809B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65CE599B1C2A7405008809B0 /* Main.storyboard */; };
@@ -45,6 +62,7 @@
 		65D54D1A1C30340100F7B450 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65D54D181C30340100F7B450 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65D54D231C312F0A00F7B450 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D54D221C312F0A00F7B450 /* Action.swift */; };
 		65D54D261C3141F800F7B450 /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D54D251C3141F800F7B450 /* Delay.swift */; };
+		65D54D281C31ACB000F7B450 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D54D271C31ACB000F7B450 /* Location.swift */; };
 		65DAC81B1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC81A1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift */; };
 		65DAC81D1C2D902A00335EFC /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC81C1C2D902A00335EFC /* FeedbackViewController.swift */; };
 		65DAC82A1C2E55EF00335EFC /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC8291C2E55EF00335EFC /* MainNavigationController.swift */; };
@@ -53,8 +71,6 @@
 		65DAC83A1C2E5C7C00335EFC /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC8391C2E5C7C00335EFC /* Constant.swift */; };
 		65DAC8401C2EB97F00335EFC /* NotificationAlertObserverProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC83F1C2EB97F00335EFC /* NotificationAlertObserverProtocol.swift */; };
 		65DAC8421C2EBDA700335EFC /* LoginRequesterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC8411C2EBDA700335EFC /* LoginRequesterProtocol.swift */; };
-		65EE13781C2C15CB000CA852 /* FServiceManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65EE13771C2C15CB000CA852 /* FServiceManager.framework */; };
-		65EE13791C2C15CB000CA852 /* FServiceManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65EE13771C2C15CB000CA852 /* FServiceManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,7 +92,6 @@
 			files = (
 				65D54D1A1C30340100F7B450 /* SwiftyJSON.framework in Embed Frameworks */,
 				6557F7AF1C2C655D00E6780D /* KeychainAccess.framework in Embed Frameworks */,
-				65EE13791C2C15CB000CA852 /* FServiceManager.framework in Embed Frameworks */,
 				6557F7AD1C2C655D00E6780D /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -95,6 +110,23 @@
 		6557F7BC1C2D02D300E6780D /* CatArchiveAvatarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveAvatarTableViewCell.swift; sourceTree = "<group>"; };
 		6557F7C31C2D2B1A00E6780D /* CatArchiveListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveListTableViewController.swift; sourceTree = "<group>"; };
 		6557F7C51C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveDetailTableViewController.swift; sourceTree = "<group>"; };
+		6558EC561C359C67000783A2 /* CatArchiveDetailMapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveDetailMapTableViewCell.swift; sourceTree = "<group>"; };
+		6570C3641C36936C00391EB8 /* Alamofire-SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Alamofire-SwiftyJSON.swift"; path = "NearCat/FServiceManager/Alamofire-SwiftyJSON.swift"; sourceTree = "<group>"; };
+		6570C3651C36936C00391EB8 /* DeviceGuru.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DeviceGuru.swift; path = NearCat/FServiceManager/DeviceGuru.swift; sourceTree = "<group>"; };
+		6570C3661C36936C00391EB8 /* FAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FAction.swift; path = NearCat/FServiceManager/FAction.swift; sourceTree = "<group>"; };
+		6570C3671C36936C00391EB8 /* FConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FConstant.swift; path = NearCat/FServiceManager/FConstant.swift; sourceTree = "<group>"; };
+		6570C3681C36936C00391EB8 /* FHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FHelper.swift; path = NearCat/FServiceManager/FHelper.swift; sourceTree = "<group>"; };
+		6570C3691C36936C00391EB8 /* FNetManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FNetManager.h; path = NearCat/FServiceManager/FNetManager.h; sourceTree = "<group>"; };
+		6570C36A1C36936C00391EB8 /* FNetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FNetManager.swift; path = NearCat/FServiceManager/FNetManager.swift; sourceTree = "<group>"; };
+		6570C36B1C36936C00391EB8 /* FStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FStatus.swift; path = NearCat/FServiceManager/FStatus.swift; sourceTree = "<group>"; };
+		6570C36C1C36936C00391EB8 /* FTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FTool.swift; path = NearCat/FServiceManager/FTool.swift; sourceTree = "<group>"; };
+		6570C3771C36939200391EB8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = NearCat/FServiceManager/Models/User.swift; sourceTree = "<group>"; };
+		6570C3791C3693A000391EB8 /* FStatusProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FStatusProtocols.swift; path = NearCat/FServiceManager/Protocols/FStatusProtocols.swift; sourceTree = "<group>"; };
+		6570C37B1C3693F300391EB8 /* FConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FConfiguration.swift; path = NearCat/FServiceManager/FConfiguration.swift; sourceTree = "<group>"; };
+		6570C37D1C36C83400391EB8 /* CatCalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CatCalloutView.swift; path = ../Controllers/CatCalloutView.swift; sourceTree = "<group>"; };
+		6570C37F1C36D4D200391EB8 /* CatAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatAnnotationView.swift; sourceTree = "<group>"; };
+		6577B2BF1C34255C0096F72A /* CatArchiveEditLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveEditLocationViewController.swift; sourceTree = "<group>"; };
+		659606F01C3BC79100EE5A80 /* SegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
 		65CE59941C2A7405008809B0 /* NearCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CE59971C2A7405008809B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = NearCat/AppDelegate.swift; sourceTree = "<group>"; };
 		65CE59991C2A7405008809B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +159,7 @@
 		65D54D181C30340100F7B450 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		65D54D221C312F0A00F7B450 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Action.swift; path = NearCat/Action.swift; sourceTree = "<group>"; };
 		65D54D251C3141F800F7B450 /* Delay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
+		65D54D271C31ACB000F7B450 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		65DAC81A1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveDetailItemTableViewCell.swift; sourceTree = "<group>"; };
 		65DAC81C1C2D902A00335EFC /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		65DAC8291C2E55EF00335EFC /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
@@ -135,7 +168,6 @@
 		65DAC8391C2E5C7C00335EFC /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constant.swift; path = NearCat/Constant.swift; sourceTree = "<group>"; };
 		65DAC83F1C2EB97F00335EFC /* NotificationAlertObserverProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationAlertObserverProtocol.swift; sourceTree = "<group>"; };
 		65DAC8411C2EBDA700335EFC /* LoginRequesterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRequesterProtocol.swift; sourceTree = "<group>"; };
-		65EE13771C2C15CB000CA852 /* FServiceManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FServiceManager.framework; path = Carthage/Build/iOS/FServiceManager.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,7 +187,6 @@
 				65CE59C61C2A7532008809B0 /* CoreLocation.framework in Frameworks */,
 				6557F7AE1C2C655D00E6780D /* KeychainAccess.framework in Frameworks */,
 				65CE59C41C2A7528008809B0 /* QuartzCore.framework in Frameworks */,
-				65EE13781C2C15CB000CA852 /* FServiceManager.framework in Frameworks */,
 				65CE59C21C2A751A008809B0 /* CoreGraphics.framework in Frameworks */,
 				65CE59C01C2A7512008809B0 /* Foundation.framework in Frameworks */,
 				65CE59BE1C2A7507008809B0 /* UIKit.framework in Frameworks */,
@@ -206,13 +237,50 @@
 				6557F7BA1C2CFFD100E6780D /* CatArchiveEditTableViewController.swift */,
 				6557F7C31C2D2B1A00E6780D /* CatArchiveListTableViewController.swift */,
 				6557F7C51C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift */,
+				6577B2BF1C34255C0096F72A /* CatArchiveEditLocationViewController.swift */,
 			);
 			name = CatArchive;
+			sourceTree = "<group>";
+		};
+		6570C3761C36937700391EB8 /* FServiceManager */ = {
+			isa = PBXGroup;
+			children = (
+				657AD3BA1C37D7E80001CB74 /* Model */,
+				6570C3641C36936C00391EB8 /* Alamofire-SwiftyJSON.swift */,
+				6570C37B1C3693F300391EB8 /* FConfiguration.swift */,
+				6570C3791C3693A000391EB8 /* FStatusProtocols.swift */,
+				6570C3651C36936C00391EB8 /* DeviceGuru.swift */,
+				6570C3661C36936C00391EB8 /* FAction.swift */,
+				6570C3671C36936C00391EB8 /* FConstant.swift */,
+				6570C3681C36936C00391EB8 /* FHelper.swift */,
+				6570C3691C36936C00391EB8 /* FNetManager.h */,
+				6570C36A1C36936C00391EB8 /* FNetManager.swift */,
+				6570C36B1C36936C00391EB8 /* FStatus.swift */,
+				6570C36C1C36936C00391EB8 /* FTool.swift */,
+			);
+			name = FServiceManager;
+			sourceTree = "<group>";
+		};
+		657AD3BA1C37D7E80001CB74 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6570C3771C36939200391EB8 /* User.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		659606EF1C3BC72E00EE5A80 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				659606F01C3BC79100EE5A80 /* SegmentedControl.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		65CE598B1C2A7405008809B0 = {
 			isa = PBXGroup;
 			children = (
+				6570C3761C36937700391EB8 /* FServiceManager */,
 				65CE59D31C2A758C008809B0 /* Framworks */,
 				65CE59961C2A7405008809B0 /* NearCat */,
 				65CE59971C2A7405008809B0 /* AppDelegate.swift */,
@@ -258,7 +326,6 @@
 		65CE59D31C2A758C008809B0 /* Framworks */ = {
 			isa = PBXGroup;
 			children = (
-				65EE13771C2C15CB000CA852 /* FServiceManager.framework */,
 				6557F7BE1C2D211D00E6780D /* Third Party */,
 			);
 			name = Framworks;
@@ -267,6 +334,7 @@
 		65CE59E61C2AF9CD008809B0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				659606EF1C3BC72E00EE5A80 /* Components */,
 				65DAC8311C2E584D00335EFC /* Map */,
 				65DAC8191C2D747800335EFC /* Settings */,
 				65DAC8181C2D746C00335EFC /* CatArchive */,
@@ -289,6 +357,7 @@
 			isa = PBXGroup;
 			children = (
 				65D54D251C3141F800F7B450 /* Delay.swift */,
+				65D54D271C31ACB000F7B450 /* Location.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -299,6 +368,7 @@
 				6557F7B81C2CFFB300E6780D /* CatArchiveItemTableViewCell.swift */,
 				6557F7BC1C2D02D300E6780D /* CatArchiveAvatarTableViewCell.swift */,
 				65DAC81A1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift */,
+				6558EC561C359C67000783A2 /* CatArchiveDetailMapTableViewCell.swift */,
 			);
 			name = CatArchive;
 			sourceTree = "<group>";
@@ -334,7 +404,9 @@
 		65DAC8311C2E584D00335EFC /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				6570C37D1C36C83400391EB8 /* CatCalloutView.swift */,
 				65CE59E71C2AF9E4008809B0 /* SearchResultTableViewCell.swift */,
+				6570C37F1C36D4D200391EB8 /* CatAnnotationView.swift */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -380,6 +452,7 @@
 				65EE137A1C2C15CB000CA852 /* Embed Frameworks */,
 				65EE137B1C2C1676000CA852 /* Run Script For Carthage */,
 				65DAC81E1C2D9B7900335EFC /* Run Script For Build Version */,
+				65D94AC11C36759700BB4ECF /* Run Script fix 90087 error */,
 			);
 			buildRules = (
 			);
@@ -469,6 +542,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		65D94AC11C36759700BB4ECF /* Run Script fix 90087 error */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script fix 90087 error";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\nEXTRACTED_ARCHS=()\n\nfor ARCH in $ARCHS\ndo\necho \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\n\necho \"Merging extracted architectures: ${ARCHS}\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\n\necho \"Replacing original executable with thinned version\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone";
+		};
 		65DAC81E1C2D9B7900335EFC /* Run Script For Build Version */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -490,7 +577,6 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/FServiceManager.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 			);
@@ -508,6 +594,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6570C37C1C3693F300391EB8 /* FConfiguration.swift in Sources */,
+				6570C37A1C3693A000391EB8 /* FStatusProtocols.swift in Sources */,
+				6570C3781C36939200391EB8 /* User.swift in Sources */,
+				6570C36D1C36936C00391EB8 /* Alamofire-SwiftyJSON.swift in Sources */,
+				6570C36E1C36936C00391EB8 /* DeviceGuru.swift in Sources */,
+				6570C36F1C36936D00391EB8 /* FAction.swift in Sources */,
+				6570C3701C36936D00391EB8 /* FConstant.swift in Sources */,
+				6570C3711C36936D00391EB8 /* FHelper.swift in Sources */,
+				659606F11C3BC79100EE5A80 /* SegmentedControl.swift in Sources */,
+				6570C3721C36936D00391EB8 /* FNetManager.h in Sources */,
+				6570C3731C36936D00391EB8 /* FNetManager.swift in Sources */,
+				6570C3741C36936D00391EB8 /* FStatus.swift in Sources */,
+				6570C3751C36936D00391EB8 /* FTool.swift in Sources */,
 				6557F7B31C2CF13800E6780D /* SettingsTableViewController.swift in Sources */,
 				65DAC8401C2EB97F00335EFC /* NotificationAlertObserverProtocol.swift in Sources */,
 				65DAC83A1C2E5C7C00335EFC /* Constant.swift in Sources */,
@@ -515,20 +614,25 @@
 				65DAC8421C2EBDA700335EFC /* LoginRequesterProtocol.swift in Sources */,
 				65DAC82C1C2E569600335EFC /* MainTabBarController.swift in Sources */,
 				65CE599A1C2A7405008809B0 /* ViewController.swift in Sources */,
+				6577B2C01C34255C0096F72A /* CatArchiveEditLocationViewController.swift in Sources */,
 				6557F7BD1C2D02D300E6780D /* CatArchiveAvatarTableViewCell.swift in Sources */,
 				65DAC82A1C2E55EF00335EFC /* MainNavigationController.swift in Sources */,
 				6557F7B71C2CF67700E6780D /* Settings_CatArchives_TableViewCell.swift in Sources */,
 				6557F7B51C2CF5ED00E6780D /* Settings_FindMe_TableViewCell.swift in Sources */,
 				65CE59981C2A7405008809B0 /* AppDelegate.swift in Sources */,
+				65D54D281C31ACB000F7B450 /* Location.swift in Sources */,
 				65CE59E81C2AF9E4008809B0 /* SearchResultTableViewCell.swift in Sources */,
+				6558EC571C359C67000783A2 /* CatArchiveDetailMapTableViewCell.swift in Sources */,
 				65D54D231C312F0A00F7B450 /* Action.swift in Sources */,
 				6557F7B91C2CFFB300E6780D /* CatArchiveItemTableViewCell.swift in Sources */,
 				65DAC81B1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift in Sources */,
 				65DAC81D1C2D902A00335EFC /* FeedbackViewController.swift in Sources */,
+				6570C3801C36D4D200391EB8 /* CatAnnotationView.swift in Sources */,
 				6557F7C61C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift in Sources */,
 				65D54D261C3141F800F7B450 /* Delay.swift in Sources */,
 				6557F7C41C2D2B1A00E6780D /* CatArchiveListTableViewController.swift in Sources */,
 				65DAC82F1C2E578300335EFC /* MainRootViewController.swift in Sources */,
+				6570C37E1C36C83400391EB8 /* CatCalloutView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

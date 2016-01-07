@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  MAMapKitDemo
+//  NearCat
 //
 //  Created by huchunbo on 15/12/23.
 //  Copyright © 2015年 Bijiabo. All rights reserved.
@@ -15,9 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var status: FStatus = FStatus()
     
+    let productionMode: Bool = true
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         window?.backgroundColor = UIColor.whiteColor()
+        FConfiguration.sharedInstance.host = productionMode ? "http://near.cat/" : "http://192.168.31.200:3000/"
         
         return true
     }
@@ -44,6 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    
 }
 
