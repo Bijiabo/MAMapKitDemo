@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Tabbar Shoot View Controller-->
+        <!--Camera-->
         <scene sceneID="HWm-Va-xc7">
             <objects>
                 <viewController id="Nkz-vq-LcX" customClass="TabbarShootViewController" customModule="NearCat" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,7 +20,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="search" id="xxA-Af-j2U"/>
+                    <tabBarItem key="tabBarItem" title="Camera" image="tab bar_icon_camera_nor" selectedImage="tab bar_icon_camera_sel" id="xxA-Af-j2U"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Crv-y6-U0f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -30,7 +30,7 @@
         <scene sceneID="ymA-BK-k87">
             <objects>
                 <navigationController id="g23-5L-w3v" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" image="nearby" id="3WO-8T-tU3"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="tab bar_icon_map_nor" selectedImage="tab bar_icon_map_sel" id="3WO-8T-tU3"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sLw-S8-QUK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -48,7 +48,7 @@
         <scene sceneID="CQl-Fj-1L0">
             <objects>
                 <navigationController id="09e-Lx-qmB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="OWP-ZX-yZR"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="tab bar_icon_set_nor" selectedImage="tab bar_icon_set_sel" id="OWP-ZX-yZR"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="i25-Fg-mlz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -111,7 +111,7 @@
                             <constraint firstItem="62N-do-kQd" firstAttribute="top" secondItem="tok-3t-JR0" secondAttribute="bottom" id="yJl-h2-kjR"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Fluxes" image="settings" id="iGT-6R-Vnk"/>
+                    <tabBarItem key="tabBarItem" title="Fluxes" image="tab bar_icon_home_nor" selectedImage="tab bat_icon_home_sel" id="iGT-6R-Vnk"/>
                     <connections>
                         <outlet property="contentContainerView" destination="62N-do-kQd" id="wxN-Nz-fyf"/>
                         <outlet property="headerSegmentedControl" destination="Y4w-jg-v8C" id="cN7-16-t0B"/>
@@ -1525,7 +1525,7 @@
                         </variation>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <tabBarItem key="tabBarItem" title="Inbox" image="settings" id="7We-fX-Qui"/>
+                    <tabBarItem key="tabBarItem" title="Inbox" image="tab bar_icon_massage_nor" selectedImage="tab bar_icon_massage_sel" id="7We-fX-Qui"/>
                     <connections>
                         <outlet property="contentContainerView" destination="2Tu-LB-az8" id="tit-Ts-cKb"/>
                         <outlet property="headerSegmentedControl" destination="IiW-rv-bhn" id="RWa-eE-QmU"/>
@@ -1538,8 +1538,16 @@
     </scenes>
     <resources>
         <image name="myLoationAnnotation" width="29" height="40"/>
-        <image name="nearby" width="25" height="25"/>
-        <image name="settings" width="25" height="25"/>
+        <image name="tab bar_icon_camera_nor" width="48" height="48"/>
+        <image name="tab bar_icon_camera_sel" width="48" height="48"/>
+        <image name="tab bar_icon_home_nor" width="48" height="48"/>
+        <image name="tab bar_icon_map_nor" width="48" height="48"/>
+        <image name="tab bar_icon_map_sel" width="48" height="48"/>
+        <image name="tab bar_icon_massage_nor" width="48" height="48"/>
+        <image name="tab bar_icon_massage_sel" width="48" height="48"/>
+        <image name="tab bar_icon_set_nor" width="48" height="48"/>
+        <image name="tab bar_icon_set_sel" width="48" height="48"/>
+        <image name="tab bat_icon_home_sel" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="j3f-S4-QfP"/>
