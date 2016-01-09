@@ -160,7 +160,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="content" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9BR-FJ-weE">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9BR-FJ-weE">
                                             <rect key="frame" x="8" y="93" width="584" height="20.5"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -170,6 +170,7 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YQF-ue-Si8">
                                             <rect key="frame" x="8" y="126.5" width="584" height="183.5"/>
                                             <animations/>
+                                            <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016年1月9日 18:36" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ukJ-vy-m6O">
                                             <rect key="frame" x="8" y="335" width="130" height="17"/>
@@ -239,6 +240,12 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <outlet property="catNameAndAgeLabel" destination="je5-c2-caH" id="e7T-yd-ENb"/>
+                                    <outlet property="contentLabel" destination="9BR-FJ-weE" id="4Bz-k4-87Q"/>
+                                    <outlet property="dateLabel" destination="ukJ-vy-m6O" id="inJ-Mx-GZd"/>
+                                    <outlet property="userNameLabel" destination="4J1-lT-3aI" id="pa4-22-ixB"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

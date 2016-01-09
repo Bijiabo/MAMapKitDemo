@@ -10,6 +10,11 @@ import UIKit
 
 class FluxesListTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var catNameAndAgeLabel: UILabel!
+    @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +24,18 @@ class FluxesListTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    var userName: String = String() {
+        didSet {
+            userNameLabel.text = userName
+        }
+    }
+    
+    var content: String = String() {
+        didSet {
+            contentLabel.text = content
+        }
     }
 
 }

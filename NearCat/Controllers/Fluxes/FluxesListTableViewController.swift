@@ -7,15 +7,19 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class FluxesListTableViewController: UITableViewController {
     
     var listType: String = "follow"
+    private var _fluxes: JSON = JSON([])
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.clearsSelectionOnViewWillAppear = false
+        
+        _loadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,13 +36,16 @@ class FluxesListTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 20
+        return _fluxes.count
     }
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("fluxesListCell", forIndexPath: indexPath) as! FluxesListTableViewCell
 
+        let currentData = _fluxes[indexPath.row]
+        cell.content = currentData["content"].stringValue
+        
         return cell
     }
 
@@ -50,5 +57,25 @@ class FluxesListTableViewController: UITableViewController {
         
         navigationController?.pushViewController(detailViewController, animated: true)
         
+    }
+    
+    // MARK: - data functions
+    
+    private func _loadData() {
+        Action.fluxes.list(page: 0) { (success, data, description) -> Void in
+            if success {
+                self._fluxes = data
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadData()
+                })
+            } else {
+                let errorMessage: [String: AnyObject] = [
+                    "title": "数据获取失败",
+                    "message": "请下拉刷新重试",
+                    "animated": true
+                ]
+                NSNotificationCenter.defaultCenter().postNotificationName(Constant.Notification.Alert.showError, object: errorMessage)
+            }
+        }
     }
 }

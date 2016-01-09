@@ -50,6 +50,8 @@
 		65BB67831C41417600355BBE /* NotificationListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67821C41417600355BBE /* NotificationListTableViewCell.swift */; };
 		65BB67851C4141B500355BBE /* PrivateMessageListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67841C4141B500355BBE /* PrivateMessageListTableViewCell.swift */; };
 		65BB67871C4141E500355BBE /* TrendsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67861C4141E500355BBE /* TrendsListTableViewCell.swift */; };
+		65BB678A1C4145A500355BBE /* Cats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67891C4145A500355BBE /* Cats.swift */; };
+		65BB678C1C4145B100355BBE /* Fluxes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB678B1C4145B100355BBE /* Fluxes.swift */; };
 		65CE59981C2A7405008809B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59971C2A7405008809B0 /* AppDelegate.swift */; };
 		65CE599A1C2A7405008809B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59991C2A7405008809B0 /* ViewController.swift */; };
 		65CE599D1C2A7405008809B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65CE599B1C2A7405008809B0 /* Main.storyboard */; };
@@ -155,6 +157,8 @@
 		65BB67821C41417600355BBE /* NotificationListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationListTableViewCell.swift; sourceTree = "<group>"; };
 		65BB67841C4141B500355BBE /* PrivateMessageListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessageListTableViewCell.swift; sourceTree = "<group>"; };
 		65BB67861C4141E500355BBE /* TrendsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendsListTableViewCell.swift; sourceTree = "<group>"; };
+		65BB67891C4145A500355BBE /* Cats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cats.swift; sourceTree = "<group>"; };
+		65BB678B1C4145B100355BBE /* Fluxes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fluxes.swift; sourceTree = "<group>"; };
 		65CE59941C2A7405008809B0 /* NearCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CE59971C2A7405008809B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = NearCat/AppDelegate.swift; sourceTree = "<group>"; };
 		65CE59991C2A7405008809B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
@@ -185,7 +189,7 @@
 		65CE59E01C2AC68C008809B0 /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMap.bundle; path = ../SDK/MAMapKit.framework/Versions/3.2.1.94eef6d.752/Resources/AMap.bundle; sourceTree = "<group>"; };
 		65CE59E71C2AF9E4008809B0 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		65D54D181C30340100F7B450 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
-		65D54D221C312F0A00F7B450 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Action.swift; path = NearCat/Action.swift; sourceTree = "<group>"; };
+		65D54D221C312F0A00F7B450 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		65D54D251C3141F800F7B450 /* Delay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
 		65D54D271C31ACB000F7B450 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		65DAC81A1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveDetailItemTableViewCell.swift; sourceTree = "<group>"; };
@@ -354,6 +358,16 @@
 			path = Inbox;
 			sourceTree = "<group>";
 		};
+		65BB67881C41456200355BBE /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				65D54D221C312F0A00F7B450 /* Action.swift */,
+				65BB67891C4145A500355BBE /* Cats.swift */,
+				65BB678B1C4145B100355BBE /* Fluxes.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
 		65CE598B1C2A7405008809B0 = {
 			isa = PBXGroup;
 			children = (
@@ -361,7 +375,6 @@
 				65CE59D31C2A758C008809B0 /* Framworks */,
 				65CE59961C2A7405008809B0 /* NearCat */,
 				65CE59971C2A7405008809B0 /* AppDelegate.swift */,
-				65D54D221C312F0A00F7B450 /* Action.swift */,
 				65DAC8391C2E5C7C00335EFC /* Constant.swift */,
 				65CE59A31C2A7405008809B0 /* Info.plist */,
 				65CE59D61C2A7660008809B0 /* AMapDemoSwift-Bridging-Header.h */,
@@ -382,6 +395,7 @@
 		65CE59961C2A7405008809B0 /* NearCat */ = {
 			isa = PBXGroup;
 			children = (
+				65BB67881C41456200355BBE /* Actions */,
 				65D54D241C3141D500F7B450 /* Tool */,
 				65DAC83E1C2E604C00335EFC /* Protocols */,
 				65CE59E91C2AFA76008809B0 /* Controllers */,
@@ -686,6 +700,8 @@
 				6570C3701C36936D00391EB8 /* FConstant.swift in Sources */,
 				65BB677A1C413D1B00355BBE /* InboxContainerViewController.swift in Sources */,
 				65BB676C1C412FA700355BBE /* SegmentedControlDelegate.swift in Sources */,
+				65BB678A1C4145A500355BBE /* Cats.swift in Sources */,
+				65BB678C1C4145B100355BBE /* Fluxes.swift in Sources */,
 				6570C3711C36936D00391EB8 /* FHelper.swift in Sources */,
 				659606F11C3BC79100EE5A80 /* SegmentedControl.swift in Sources */,
 				6570C3731C36936D00391EB8 /* FNetManager.swift in Sources */,
