@@ -52,6 +52,8 @@ import UIKit
         backgroundColor = bgColor
         setupLabels()
         insertSubview(thumbView, atIndex: 0)
+
+        clipsToBounds = true
     }
     
     func setupLabels(){

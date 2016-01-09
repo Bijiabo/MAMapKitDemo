@@ -327,13 +327,13 @@ extension ViewController: UISearchBarDelegate {
         
         //通过 AMapPOISearchResponse 对象处理搜索结果
         let strCount: String = "count: \(response.count)"
-        let strSuggestion: String = "Suggestion: \(response.suggestion)"
+        // let strSuggestion: String = "Suggestion: \(response.suggestion)"
         var strPoi: String = ""
         for p in response.pois as! [AMapPOI] {
             strPoi = "\(strPoi)\nPOI: \(p.name)"
             searchResults.append(p)
         }
-        let result: String = "\(strCount) \n \(strSuggestion) \n \(strPoi)"
+        // let result: String = "\(strCount) \n \(strSuggestion) \n \(strPoi)"
         // NSLog("Place: %@", result);
         
         searchDisplayController?.searchResultsTableView.reloadData()
