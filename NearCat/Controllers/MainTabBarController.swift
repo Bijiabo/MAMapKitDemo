@@ -33,10 +33,14 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         for item in tabBar.items! {
             // hide tabbar titles
             item.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 50.0)
+            
             // setup tabbar image offset
             let offset: CGFloat = 6.0
             item.imageInsets = UIEdgeInsets(top: offset, left: 0, bottom: -offset, right: 0)
         }
+        
+        // setup tint color
+        tabBar.tintColor = Constant.Color.Theme
     }
     
     override func viewWillAppear(animated: Bool) {

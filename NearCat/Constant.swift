@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public struct Constant {
 
@@ -28,6 +29,10 @@ public struct Constant {
         struct Location {
             static let didUpdate = "Location_didUpdate"
         }
+    }
+    
+    struct Color {
+        static let Theme: UIColor = UIColor(red:0.36, green:0.5, blue:0.66, alpha:1)
     }
     
 }

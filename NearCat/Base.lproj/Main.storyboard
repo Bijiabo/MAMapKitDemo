@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Tabbar Shoot View Controller-->
         <scene sceneID="HWm-Va-xc7">
             <objects>
                 <viewController id="Nkz-vq-LcX" customClass="TabbarShootViewController" customModule="NearCat" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,7 +20,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="nearby" id="xxA-Af-j2U"/>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="xxA-Af-j2U"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Crv-y6-U0f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

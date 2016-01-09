@@ -69,7 +69,7 @@ import UIKit
             label.font = UIFont.systemFontOfSize(12.0)
             label.text = items[index - 1]
             label.textAlignment = .Center
-            label.textColor = normalTextColor
+            label.textColor = (index-1) == selectedIndex ? highlightTextColor : normalTextColor
             self.addSubview(label)
             labels.append(label)
         }
