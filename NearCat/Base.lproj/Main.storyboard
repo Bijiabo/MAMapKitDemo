@@ -65,7 +65,7 @@
         <!--Fluxes-->
         <scene sceneID="Wz9-8D-Es1">
             <objects>
-                <viewController id="z5X-Ul-iyD" sceneMemberID="viewController">
+                <viewController id="z5X-Ul-iyD" customClass="FluxesContainerViewController" customModule="NearCat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9JH-W0-1rH"/>
                         <viewControllerLayoutGuide type="bottom" id="D1j-TQ-sXy"/>
@@ -112,6 +112,10 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Fluxes" image="settings" id="iGT-6R-Vnk"/>
+                    <connections>
+                        <outlet property="contentContainerView" destination="62N-do-kQd" id="wxN-Nz-fyf"/>
+                        <outlet property="headerSegmentedControl" destination="Y4w-jg-v8C" id="cN7-16-t0B"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CB4-Ni-8mQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -120,21 +124,21 @@
         <!--Fluxes View Controller-->
         <scene sceneID="rAE-Hg-j2e">
             <objects>
-                <tableViewController storyboardIdentifier="fluxesViewController" id="9tY-M3-rvg" userLabel="Fluxes View Controller" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="fluxesList" id="9tY-M3-rvg" userLabel="Fluxes View Controller" customClass="FluxesListTableViewController" customModule="NearCat" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="368" sectionHeaderHeight="28" sectionFooterHeight="28" id="cui-cZ-Mz6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="368" id="xpe-1L-1Au">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fluxesListCell" rowHeight="368" id="xpe-1L-1Au" customClass="FluxesListTableViewCell" customModule="NearCat" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="600" height="368"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xpe-1L-1Au" id="MHf-cO-77m">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="367.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fhz-B0-La2">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fhz-B0-La2" customClass="AvatarImageView" customModule="NearCat" customModuleProvider="target">
                                             <rect key="frame" x="8" y="8" width="70" height="70"/>
                                             <animations/>
                                             <constraints>
@@ -235,9 +239,6 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <animations/>
-                                <connections>
-                                    <segue destination="z7G-e0-3st" kind="show" trigger="accessoryAction" id="Q9R-ld-0MU"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -254,14 +255,14 @@
         <!--Flux Detail View Controller-->
         <scene sceneID="tPQ-rB-960">
             <objects>
-                <tableViewController id="z7G-e0-3st" userLabel="Flux Detail View Controller" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="fluxDetail" id="z7G-e0-3st" userLabel="Flux Detail View Controller" customClass="FluxDetailTableViewController" customModule="NearCat" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="419" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZFH-vp-xDY">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="419" id="n7A-VN-veu">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fluxDetailCell" rowHeight="419" id="n7A-VN-veu">
                                 <rect key="frame" x="0.0" y="28" width="600" height="419"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="n7A-VN-veu" id="Qc6-Pb-Geq">
@@ -365,7 +366,7 @@
                                 </tableViewCellContentView>
                                 <animations/>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="103" id="uPL-ct-oYB">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fluxCommentCell" rowHeight="103" id="uPL-ct-oYB">
                                 <rect key="frame" x="0.0" y="447" width="600" height="103"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uPL-ct-oYB" id="QSs-Ev-dog">
@@ -436,14 +437,14 @@
         <!--Notification View Controller-->
         <scene sceneID="Bcl-cj-2ta">
             <objects>
-                <tableViewController storyboardIdentifier="NotificationViewController" id="yaj-yS-qPr" userLabel="Notification View Controller" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="NotificationViewController" id="yaj-yS-qPr" userLabel="Notification View Controller" customClass="NotificationListTableViewController" customModule="NearCat" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="28" sectionFooterHeight="28" id="5YC-vd-ilc">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="78" id="ixd-qi-NpL">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="notificationListCell" rowHeight="78" id="ixd-qi-NpL" customClass="NotificationListTableViewCell" customModule="NearCat" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="600" height="78"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ixd-qi-NpL" id="FR1-BH-5OB">
@@ -514,21 +515,21 @@
         <!--Message View Controller-->
         <scene sceneID="gCI-03-qDa">
             <objects>
-                <tableViewController id="dw3-NL-RMY" userLabel="Message View Controller" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="privateMessageViewController" id="dw3-NL-RMY" userLabel="Message View Controller" customClass="PrivateMessageListTableViewController" customModule="NearCat" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="115" sectionHeaderHeight="28" sectionFooterHeight="28" id="K8a-8S-9iC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="115" id="nLc-3A-RLa">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="privateMessageListCell" rowHeight="115" id="nLc-3A-RLa" customClass="PrivateMessageListTableViewCell" customModule="NearCat" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="600" height="115"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nLc-3A-RLa" id="dHv-S0-awe">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="114.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m2T-En-gBR">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m2T-En-gBR" customClass="AvatarImageView" customModule="NearCat" customModuleProvider="target">
                                             <rect key="frame" x="8" y="8" width="70" height="70"/>
                                             <animations/>
                                             <constraints>
@@ -587,21 +588,21 @@
         <!--Trends Table View Controller-->
         <scene sceneID="Le3-4x-dDa">
             <objects>
-                <tableViewController id="y6z-hf-uau" userLabel="Trends Table View Controller" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TrendsViewController" id="y6z-hf-uau" userLabel="Trends Table View Controller" customClass="TrendsListTableViewController" customModule="NearCat" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="125" sectionHeaderHeight="28" sectionFooterHeight="28" id="X1R-1S-gQk">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="125" id="3JZ-XS-yWM">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="trendsListCell" rowHeight="125" id="3JZ-XS-yWM" customClass="TrendsListTableViewCell" customModule="NearCat" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="600" height="125"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3JZ-XS-yWM" id="94a-WA-t1n">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="124.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uDZ-x0-ndh">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uDZ-x0-ndh" customClass="AvatarImageView" customModule="NearCat" customModuleProvider="target">
                                             <rect key="frame" x="8" y="8" width="70" height="70"/>
                                             <animations/>
                                             <constraints>
@@ -1462,7 +1463,7 @@
         <!--Inbox View Controller-->
         <scene sceneID="Wm1-8w-msf">
             <objects>
-                <viewController id="Sds-CX-dJN" userLabel="Inbox View Controller" sceneMemberID="viewController">
+                <viewController id="Sds-CX-dJN" userLabel="Inbox View Controller" customClass="InboxContainerViewController" customModule="NearCat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jCs-o7-TVZ"/>
                         <viewControllerLayoutGuide type="bottom" id="A6z-l4-zYp"/>
@@ -1518,6 +1519,10 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <tabBarItem key="tabBarItem" title="Inbox" image="settings" id="7We-fX-Qui"/>
+                    <connections>
+                        <outlet property="contentContainerView" destination="2Tu-LB-az8" id="tit-Ts-cKb"/>
+                        <outlet property="headerSegmentedControl" destination="IiW-rv-bhn" id="RWa-eE-QmU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SEQ-JA-1jz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

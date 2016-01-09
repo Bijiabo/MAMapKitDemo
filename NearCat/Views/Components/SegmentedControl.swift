@@ -12,6 +12,8 @@ import UIKit
     private var labels = [UILabel]()
     var thumbView = UIView()
     
+    var delegate: SegmentedControlDelegate?
+    
     let highlightTextColor: UIColor = UIColor(red:0.36, green:0.5, blue:0.66, alpha:1)
     let normalTextColor: UIColor = UIColor(red:0.58, green:0.58, blue:0.58, alpha:1)
     
@@ -122,7 +124,7 @@ import UIKit
             label.textColor = self.highlightTextColor
         }
         
-        print(label.text)
+        delegate?.segementedControlSelectedIndexUpdated(index: selectedIndex)
     }
     
 }

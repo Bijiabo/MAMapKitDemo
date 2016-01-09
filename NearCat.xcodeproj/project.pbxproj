@@ -37,6 +37,19 @@
 		659606F11C3BC79100EE5A80 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659606F01C3BC79100EE5A80 /* SegmentedControl.swift */; };
 		65BB67651C41029000355BBE /* TabbarShootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67641C41029000355BBE /* TabbarShootViewController.swift */; };
 		65BB67671C4103C200355BBE /* ShootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67661C4103C200355BBE /* ShootViewController.swift */; };
+		65BB676A1C412F5C00355BBE /* FluxesContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67691C412F5C00355BBE /* FluxesContainerViewController.swift */; };
+		65BB676C1C412FA700355BBE /* SegmentedControlDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB676B1C412FA700355BBE /* SegmentedControlDelegate.swift */; };
+		65BB676E1C41313500355BBE /* FluxesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB676D1C41313500355BBE /* FluxesListTableViewController.swift */; };
+		65BB67731C41371200355BBE /* FluxesListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67721C41371200355BBE /* FluxesListTableViewCell.swift */; };
+		65BB67751C4137E500355BBE /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67741C4137E500355BBE /* AvatarImageView.swift */; };
+		65BB67771C4139CB00355BBE /* FluxDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67761C4139CB00355BBE /* FluxDetailTableViewController.swift */; };
+		65BB677A1C413D1B00355BBE /* InboxContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67791C413D1B00355BBE /* InboxContainerViewController.swift */; };
+		65BB677C1C4140B100355BBE /* NotificationListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB677B1C4140B100355BBE /* NotificationListTableViewController.swift */; };
+		65BB677E1C4140C200355BBE /* TrendsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB677D1C4140C200355BBE /* TrendsListTableViewController.swift */; };
+		65BB67801C4140D100355BBE /* PrivateMessageListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB677F1C4140D100355BBE /* PrivateMessageListTableViewController.swift */; };
+		65BB67831C41417600355BBE /* NotificationListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67821C41417600355BBE /* NotificationListTableViewCell.swift */; };
+		65BB67851C4141B500355BBE /* PrivateMessageListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67841C4141B500355BBE /* PrivateMessageListTableViewCell.swift */; };
+		65BB67871C4141E500355BBE /* TrendsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67861C4141E500355BBE /* TrendsListTableViewCell.swift */; };
 		65CE59981C2A7405008809B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59971C2A7405008809B0 /* AppDelegate.swift */; };
 		65CE599A1C2A7405008809B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59991C2A7405008809B0 /* ViewController.swift */; };
 		65CE599D1C2A7405008809B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65CE599B1C2A7405008809B0 /* Main.storyboard */; };
@@ -129,6 +142,19 @@
 		659606F01C3BC79100EE5A80 /* SegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
 		65BB67641C41029000355BBE /* TabbarShootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarShootViewController.swift; sourceTree = "<group>"; };
 		65BB67661C4103C200355BBE /* ShootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShootViewController.swift; sourceTree = "<group>"; };
+		65BB67691C412F5C00355BBE /* FluxesContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FluxesContainerViewController.swift; sourceTree = "<group>"; };
+		65BB676B1C412FA700355BBE /* SegmentedControlDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControlDelegate.swift; sourceTree = "<group>"; };
+		65BB676D1C41313500355BBE /* FluxesListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FluxesListTableViewController.swift; sourceTree = "<group>"; };
+		65BB67721C41371200355BBE /* FluxesListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FluxesListTableViewCell.swift; sourceTree = "<group>"; };
+		65BB67741C4137E500355BBE /* AvatarImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
+		65BB67761C4139CB00355BBE /* FluxDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FluxDetailTableViewController.swift; sourceTree = "<group>"; };
+		65BB67791C413D1B00355BBE /* InboxContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxContainerViewController.swift; sourceTree = "<group>"; };
+		65BB677B1C4140B100355BBE /* NotificationListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationListTableViewController.swift; sourceTree = "<group>"; };
+		65BB677D1C4140C200355BBE /* TrendsListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendsListTableViewController.swift; sourceTree = "<group>"; };
+		65BB677F1C4140D100355BBE /* PrivateMessageListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessageListTableViewController.swift; sourceTree = "<group>"; };
+		65BB67821C41417600355BBE /* NotificationListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationListTableViewCell.swift; sourceTree = "<group>"; };
+		65BB67841C4141B500355BBE /* PrivateMessageListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessageListTableViewCell.swift; sourceTree = "<group>"; };
+		65BB67861C4141E500355BBE /* TrendsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendsListTableViewCell.swift; sourceTree = "<group>"; };
 		65CE59941C2A7405008809B0 /* NearCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CE59971C2A7405008809B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = NearCat/AppDelegate.swift; sourceTree = "<group>"; };
 		65CE59991C2A7405008809B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
@@ -274,6 +300,8 @@
 			isa = PBXGroup;
 			children = (
 				659606F01C3BC79100EE5A80 /* SegmentedControl.swift */,
+				65BB676B1C412FA700355BBE /* SegmentedControlDelegate.swift */,
+				65BB67741C4137E500355BBE /* AvatarImageView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -285,6 +313,45 @@
 				65BB67661C4103C200355BBE /* ShootViewController.swift */,
 			);
 			path = Shoot;
+			sourceTree = "<group>";
+		};
+		65BB67681C412F3100355BBE /* Fluxes */ = {
+			isa = PBXGroup;
+			children = (
+				65BB67691C412F5C00355BBE /* FluxesContainerViewController.swift */,
+				65BB676D1C41313500355BBE /* FluxesListTableViewController.swift */,
+				65BB67761C4139CB00355BBE /* FluxDetailTableViewController.swift */,
+			);
+			path = Fluxes;
+			sourceTree = "<group>";
+		};
+		65BB67711C4136E300355BBE /* Fluxes */ = {
+			isa = PBXGroup;
+			children = (
+				65BB67721C41371200355BBE /* FluxesListTableViewCell.swift */,
+			);
+			path = Fluxes;
+			sourceTree = "<group>";
+		};
+		65BB67781C413CFD00355BBE /* Inbox */ = {
+			isa = PBXGroup;
+			children = (
+				65BB67791C413D1B00355BBE /* InboxContainerViewController.swift */,
+				65BB677B1C4140B100355BBE /* NotificationListTableViewController.swift */,
+				65BB677D1C4140C200355BBE /* TrendsListTableViewController.swift */,
+				65BB677F1C4140D100355BBE /* PrivateMessageListTableViewController.swift */,
+			);
+			path = Inbox;
+			sourceTree = "<group>";
+		};
+		65BB67811C41415900355BBE /* Inbox */ = {
+			isa = PBXGroup;
+			children = (
+				65BB67821C41417600355BBE /* NotificationListTableViewCell.swift */,
+				65BB67841C4141B500355BBE /* PrivateMessageListTableViewCell.swift */,
+				65BB67861C4141E500355BBE /* TrendsListTableViewCell.swift */,
+			);
+			path = Inbox;
 			sourceTree = "<group>";
 		};
 		65CE598B1C2A7405008809B0 = {
@@ -344,6 +411,8 @@
 		65CE59E61C2AF9CD008809B0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				65BB67811C41415900355BBE /* Inbox */,
+				65BB67711C4136E300355BBE /* Fluxes */,
 				659606EF1C3BC72E00EE5A80 /* Components */,
 				65DAC8311C2E584D00335EFC /* Map */,
 				65DAC8191C2D747800335EFC /* Settings */,
@@ -355,6 +424,8 @@
 		65CE59E91C2AFA76008809B0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				65BB67781C413CFD00355BBE /* Inbox */,
+				65BB67681C412F3100355BBE /* Fluxes */,
 				65BB67631C41026200355BBE /* Shoot */,
 				65DAC8321C2E585500335EFC /* Map */,
 				6557F7C21C2D2AFB00E6780D /* CatArchive */,
@@ -610,8 +681,11 @@
 				6570C3781C36939200391EB8 /* User.swift in Sources */,
 				6570C36D1C36936C00391EB8 /* Alamofire-SwiftyJSON.swift in Sources */,
 				6570C36E1C36936C00391EB8 /* DeviceGuru.swift in Sources */,
+				65BB67801C4140D100355BBE /* PrivateMessageListTableViewController.swift in Sources */,
 				6570C36F1C36936D00391EB8 /* FAction.swift in Sources */,
 				6570C3701C36936D00391EB8 /* FConstant.swift in Sources */,
+				65BB677A1C413D1B00355BBE /* InboxContainerViewController.swift in Sources */,
+				65BB676C1C412FA700355BBE /* SegmentedControlDelegate.swift in Sources */,
 				6570C3711C36936D00391EB8 /* FHelper.swift in Sources */,
 				659606F11C3BC79100EE5A80 /* SegmentedControl.swift in Sources */,
 				6570C3731C36936D00391EB8 /* FNetManager.swift in Sources */,
@@ -629,21 +703,31 @@
 				6557F7BD1C2D02D300E6780D /* CatArchiveAvatarTableViewCell.swift in Sources */,
 				65DAC82A1C2E55EF00335EFC /* MainNavigationController.swift in Sources */,
 				6557F7B71C2CF67700E6780D /* Settings_CatArchives_TableViewCell.swift in Sources */,
+				65BB676E1C41313500355BBE /* FluxesListTableViewController.swift in Sources */,
 				6557F7B51C2CF5ED00E6780D /* Settings_FindMe_TableViewCell.swift in Sources */,
+				65BB67771C4139CB00355BBE /* FluxDetailTableViewController.swift in Sources */,
 				65CE59981C2A7405008809B0 /* AppDelegate.swift in Sources */,
 				65D54D281C31ACB000F7B450 /* Location.swift in Sources */,
+				65BB677E1C4140C200355BBE /* TrendsListTableViewController.swift in Sources */,
 				65CE59E81C2AF9E4008809B0 /* SearchResultTableViewCell.swift in Sources */,
 				6558EC571C359C67000783A2 /* CatArchiveDetailMapTableViewCell.swift in Sources */,
 				65D54D231C312F0A00F7B450 /* Action.swift in Sources */,
+				65BB676A1C412F5C00355BBE /* FluxesContainerViewController.swift in Sources */,
 				6557F7B91C2CFFB300E6780D /* CatArchiveItemTableViewCell.swift in Sources */,
 				65DAC81B1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift in Sources */,
 				65DAC81D1C2D902A00335EFC /* FeedbackViewController.swift in Sources */,
+				65BB67751C4137E500355BBE /* AvatarImageView.swift in Sources */,
 				6570C3801C36D4D200391EB8 /* CatAnnotationView.swift in Sources */,
 				6557F7C61C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift in Sources */,
+				65BB67851C4141B500355BBE /* PrivateMessageListTableViewCell.swift in Sources */,
 				65D54D261C3141F800F7B450 /* Delay.swift in Sources */,
 				6557F7C41C2D2B1A00E6780D /* CatArchiveListTableViewController.swift in Sources */,
 				65DAC82F1C2E578300335EFC /* MainRootViewController.swift in Sources */,
+				65BB67871C4141E500355BBE /* TrendsListTableViewCell.swift in Sources */,
 				65BB67671C4103C200355BBE /* ShootViewController.swift in Sources */,
+				65BB67731C41371200355BBE /* FluxesListTableViewCell.swift in Sources */,
+				65BB67831C41417600355BBE /* NotificationListTableViewCell.swift in Sources */,
+				65BB677C1C4140B100355BBE /* NotificationListTableViewController.swift in Sources */,
 				6570C37E1C36C83400391EB8 /* CatCalloutView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
