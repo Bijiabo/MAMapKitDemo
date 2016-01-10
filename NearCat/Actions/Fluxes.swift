@@ -57,5 +57,21 @@ extension Action {
                 }
             }
         }
+        
+        // get comments
+        public class func comments(id id: String, completeHandler: (success: Bool, data: JSON, description: String)->Void) {
+            FNetManager.sharedInstance.GET(path: "fluxes/\(id)/comments.json") { (request, response, json, error) -> Void in
+                Action.requestCompleteHandler(json: json, error: error, completeHandler: completeHandler)
+            }
+        }
+        
+        // get flux detail
+        
+        public class func detail(id id: String, completeHandler: (success: Bool, data: JSON, description: String)->Void) {
+            FNetManager.sharedInstance.GET(path: "fluxes/\(id).json") { (request, response, json, error) -> Void in
+                Action.requestCompleteHandler(json: json, error: error, completeHandler: completeHandler)
+            }
+        }
+
     }
 }

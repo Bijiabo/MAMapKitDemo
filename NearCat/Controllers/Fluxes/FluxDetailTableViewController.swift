@@ -7,14 +7,22 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class FluxDetailTableViewController: UITableViewController {
 
+    var id: Int = 0
+    private var _flux: JSON = JSON([])
+    private var _comments: JSON = JSON([])
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.clearsSelectionOnViewWillAppear = true
         
+        _setupViews()
+        
+        _loadData()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -38,67 +46,127 @@ class FluxDetailTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 2
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        switch section {
+        case 0:
+            return 1
+        default: // 1
+            return _comments.count
+        }
     }
 
-    /*
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        switch indexPath.section {
+        case 0: // is for flux detail cell
+            let cell = tableView.dequeueReusableCellWithIdentifier("fluxDetailCell", forIndexPath: indexPath) as! FluxDetailTableViewCell
+            
+            let fluxData = _flux["flux"]
+            let userData = _flux["user"]
+            cell.userName = userData["name"].stringValue
+            cell.content = fluxData["content"].stringValue
+            cell.date = fluxData["created_at"].stringValue
+            
+            // TODO: - update counts
+            cell.commentCount = 0
+            cell.likeCount = 0
+            cell.distance = 0
+            
+            return cell
+            
+        default: // section == 1, is for comments
+            let cell = tableView.dequeueReusableCellWithIdentifier("fluxCommentCell", forIndexPath: indexPath) as! FluxCommentTableViewCell
+            
+            let currentCommentData = _comments[indexPath.row]
+            let commentData = currentCommentData["comment"]
+            let userData = currentCommentData["user"]
+            
+            let userName = userData["name"].stringValue
+            let commentContent = commentData["content"].stringValue
+            
+            cell.thumbsCount = 0 // TODO: complete this function
+            cell.content = "\(userName): \(commentContent)"
+            cell.date = commentData["created_at"].stringValue
+            
+            return cell
+            
+        }
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    // MARK: - setup views
+    
+    private func _setupViews() {
+        _setupNavigationBar()
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    private func _setupNavigationBar() {
+        title = ""
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: Selector("tapNavigationBarShareButton:")),
+            UIBarButtonItem(title: "like", style: UIBarButtonItemStyle.Done, target: self, action: Selector("tapNavigaionBarLikeButton:"))
+        ]
+        
+        // custom back button text
+        self.navigationController!.navigationBar.topItem!.title = ""
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
+    
+    // MARK: - user actions
+    
+    func tapNavigaionBarLikeButton(sender: UIBarButtonItem) {
+        // TODO: complete function
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    func tapNavigationBarShareButton(sender: UIBarButtonItem) {
+        // TODO: complete function
     }
-    */
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // MARK: - data functions
+    
+    private func _loadData() {
+        _loadFluxData()
+        _loadCommentData()
     }
-    */
+    
+    private func _loadFluxData() {
+        Action.fluxes.detail(id: String(id) ) { (success, data, description) -> Void in
+            if success {
+                self._flux = data
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadData()
+                })
+            } else {
+                self._showErrorAlert(title: "数据获取失败")
+            }
+        }
+    }
+    
+    private func _loadCommentData() {
+        Action.fluxes.comments(id: String(id) ) { (success, data, description) -> Void in
+            if success {
+                self._comments = data
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadData()
+                })
+            } else {
+                self._showErrorAlert(title: "评论获取失败")
+            }
+        }
+    }
+    
+    private func _showErrorAlert(title title: String = "数据获取失败") {
+        let errorMessage: [String: AnyObject] = [
+        "title": title,
+        "message": "请下拉刷新重试",
+        "animated": true
+        ]
+        NSNotificationCenter.defaultCenter().postNotificationName(Constant.Notification.Alert.showError, object: errorMessage)
+    }
 
 }

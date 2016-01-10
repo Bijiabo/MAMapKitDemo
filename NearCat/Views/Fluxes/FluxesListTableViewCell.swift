@@ -15,6 +15,8 @@ class FluxesListTableViewCell: UITableViewCell {
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
+    var id: Int = 0
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

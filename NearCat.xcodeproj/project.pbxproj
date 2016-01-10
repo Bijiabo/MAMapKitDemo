@@ -52,6 +52,8 @@
 		65BB67871C4141E500355BBE /* TrendsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67861C4141E500355BBE /* TrendsListTableViewCell.swift */; };
 		65BB678A1C4145A500355BBE /* Cats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67891C4145A500355BBE /* Cats.swift */; };
 		65BB678C1C4145B100355BBE /* Fluxes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB678B1C4145B100355BBE /* Fluxes.swift */; };
+		65BB678E1C422CF600355BBE /* FluxDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB678D1C422CF600355BBE /* FluxDetailTableViewCell.swift */; };
+		65BB67901C422D0100355BBE /* FluxCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB678F1C422D0100355BBE /* FluxCommentTableViewCell.swift */; };
 		65CE59981C2A7405008809B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59971C2A7405008809B0 /* AppDelegate.swift */; };
 		65CE599A1C2A7405008809B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59991C2A7405008809B0 /* ViewController.swift */; };
 		65CE599D1C2A7405008809B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65CE599B1C2A7405008809B0 /* Main.storyboard */; };
@@ -159,6 +161,8 @@
 		65BB67861C4141E500355BBE /* TrendsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendsListTableViewCell.swift; sourceTree = "<group>"; };
 		65BB67891C4145A500355BBE /* Cats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cats.swift; sourceTree = "<group>"; };
 		65BB678B1C4145B100355BBE /* Fluxes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fluxes.swift; sourceTree = "<group>"; };
+		65BB678D1C422CF600355BBE /* FluxDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FluxDetailTableViewCell.swift; sourceTree = "<group>"; };
+		65BB678F1C422D0100355BBE /* FluxCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FluxCommentTableViewCell.swift; sourceTree = "<group>"; };
 		65CE59941C2A7405008809B0 /* NearCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CE59971C2A7405008809B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = NearCat/AppDelegate.swift; sourceTree = "<group>"; };
 		65CE59991C2A7405008809B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
@@ -333,6 +337,8 @@
 			isa = PBXGroup;
 			children = (
 				65BB67721C41371200355BBE /* FluxesListTableViewCell.swift */,
+				65BB678D1C422CF600355BBE /* FluxDetailTableViewCell.swift */,
+				65BB678F1C422D0100355BBE /* FluxCommentTableViewCell.swift */,
 			);
 			path = Fluxes;
 			sourceTree = "<group>";
@@ -727,6 +733,7 @@
 				65BB677E1C4140C200355BBE /* TrendsListTableViewController.swift in Sources */,
 				65CE59E81C2AF9E4008809B0 /* SearchResultTableViewCell.swift in Sources */,
 				6558EC571C359C67000783A2 /* CatArchiveDetailMapTableViewCell.swift in Sources */,
+				65BB67901C422D0100355BBE /* FluxCommentTableViewCell.swift in Sources */,
 				65D54D231C312F0A00F7B450 /* Action.swift in Sources */,
 				65BB676A1C412F5C00355BBE /* FluxesContainerViewController.swift in Sources */,
 				6557F7B91C2CFFB300E6780D /* CatArchiveItemTableViewCell.swift in Sources */,
@@ -735,6 +742,7 @@
 				65BB67751C4137E500355BBE /* AvatarImageView.swift in Sources */,
 				6570C3801C36D4D200391EB8 /* CatAnnotationView.swift in Sources */,
 				6557F7C61C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift in Sources */,
+				65BB678E1C422CF600355BBE /* FluxDetailTableViewCell.swift in Sources */,
 				65BB67851C4141B500355BBE /* PrivateMessageListTableViewCell.swift in Sources */,
 				65D54D261C3141F800F7B450 /* Delay.swift in Sources */,
 				6557F7C41C2D2B1A00E6780D /* CatArchiveListTableViewController.swift in Sources */,

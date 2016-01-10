@@ -44,7 +44,9 @@ class FluxesListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("fluxesListCell", forIndexPath: indexPath) as! FluxesListTableViewCell
 
         let currentData = _fluxes[indexPath.row]
-        cell.content = currentData["content"].stringValue
+        cell.content = currentData["flux"]["content"].stringValue
+        cell.userName = currentData["user"]["name"].stringValue
+        cell.id = currentData["flux"]["id"].intValue
         
         return cell
     }
@@ -53,7 +55,10 @@ class FluxesListTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? FluxesListTableViewCell else {return}
+        
         let detailViewController = storyboard?.instantiateViewControllerWithIdentifier("fluxDetail") as! FluxDetailTableViewController
+        detailViewController.id = cell.id
         
         navigationController?.pushViewController(detailViewController, animated: true)
         

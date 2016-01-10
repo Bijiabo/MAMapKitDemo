@@ -269,14 +269,14 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fluxDetailCell" rowHeight="419" id="n7A-VN-veu">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fluxDetailCell" rowHeight="419" id="n7A-VN-veu" customClass="FluxDetailTableViewCell" customModule="NearCat" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="600" height="419"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="n7A-VN-veu" id="Qc6-Pb-Geq">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="418.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Icj-O4-5Ot">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Icj-O4-5Ot" customClass="AvatarImageView" customModule="NearCat" customModuleProvider="target">
                                             <rect key="frame" x="8" y="8" width="100" height="100"/>
                                             <animations/>
                                             <constraints>
@@ -372,8 +372,20 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <outlet property="avatarImageView" destination="Icj-O4-5Ot" id="ttf-4u-7uo"/>
+                                    <outlet property="catNameAndAgeLabel" destination="PnZ-1j-Y6o" id="WSL-fz-BeP"/>
+                                    <outlet property="commentCountButton" destination="YJ1-EA-1OI" id="hKb-Nd-GlL"/>
+                                    <outlet property="contentLabel" destination="m2h-bi-FQm" id="sro-di-TfP"/>
+                                    <outlet property="dateLabel" destination="fjS-jb-hsy" id="VlK-eK-e0r"/>
+                                    <outlet property="distanceCountButton" destination="3Xp-8a-RcI" id="X3k-OC-vb0"/>
+                                    <outlet property="followButton" destination="GYh-Q4-eVS" id="5LH-Ii-1ya"/>
+                                    <outlet property="imageContainerView" destination="nVC-Jd-KRd" id="NDZ-yZ-RJe"/>
+                                    <outlet property="likeCountButton" destination="9aP-Yv-mcV" id="CO9-0B-gQH"/>
+                                    <outlet property="userNameLabel" destination="205-eh-HZh" id="XvV-LR-Rnv"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fluxCommentCell" rowHeight="103" id="uPL-ct-oYB">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fluxCommentCell" rowHeight="103" id="uPL-ct-oYB" customClass="FluxCommentTableViewCell" customModule="NearCat" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="447" width="600" height="103"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uPL-ct-oYB" id="QSs-Ev-dog">
@@ -428,6 +440,13 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <outlet property="avatarImageView" destination="Z30-Mo-f7V" id="IhL-VO-bfC"/>
+                                    <outlet property="contentLabel" destination="4sD-xv-Xpz" id="W5y-Gz-gbA"/>
+                                    <outlet property="dateLabel" destination="db8-5r-lmy" id="TVd-EU-uvj"/>
+                                    <outlet property="replyButton" destination="4Lh-PJ-Zu9" id="OCL-UI-0r7"/>
+                                    <outlet property="thumbsCountButton" destination="aWm-7e-rDe" id="E7l-oM-LGO"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1354,8 +1373,8 @@
                         <segue destination="z5X-Ul-iyD" kind="relationship" relationship="viewControllers" id="thS-FP-rc4"/>
                         <segue destination="g23-5L-w3v" kind="relationship" relationship="viewControllers" id="wcf-ZF-tse"/>
                         <segue destination="Nkz-vq-LcX" kind="relationship" relationship="viewControllers" id="ea6-Q3-sub"/>
-                        <segue destination="09e-Lx-qmB" kind="relationship" relationship="viewControllers" id="rfO-1l-lEF"/>
                         <segue destination="Sds-CX-dJN" kind="relationship" relationship="viewControllers" id="eBq-Jo-qZd"/>
+                        <segue destination="09e-Lx-qmB" kind="relationship" relationship="viewControllers" id="rfO-1l-lEF"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xkk-ds-S1O" userLabel="First Responder" sceneMemberID="firstResponder"/>
