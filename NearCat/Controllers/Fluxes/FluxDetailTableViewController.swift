@@ -14,6 +14,7 @@ class FluxDetailTableViewController: UITableViewController {
     var id: Int = 0
     private var _flux: JSON = JSON([])
     private var _comments: JSON = JSON([])
+    var containerDelegate: FluxDetailViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -145,6 +146,12 @@ class FluxDetailTableViewController: UITableViewController {
         "animated": true
         ]
         NSNotificationCenter.defaultCenter().postNotificationName(Constant.Notification.Alert.showError, object: errorMessage)
+    }
+    
+    // MARK: - scroll view delegate
+    
+    override func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        containerDelegate?.didBeginScroll()
     }
 
 }
