@@ -57,7 +57,7 @@ class FluxesListTableViewController: UITableViewController {
         
         guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? FluxesListTableViewCell else {return}
         
-        let detailViewController = storyboard?.instantiateViewControllerWithIdentifier("fluxDetail") as! FluxDetailTableViewController
+        let detailViewController = storyboard?.instantiateViewControllerWithIdentifier("fluxDetail") as! FluxDetailViewController
         detailViewController.id = cell.id
         
         navigationController?.pushViewController(detailViewController, animated: true)

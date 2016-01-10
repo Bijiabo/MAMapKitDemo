@@ -72,6 +72,15 @@ extension Action {
                 Action.requestCompleteHandler(json: json, error: error, completeHandler: completeHandler)
             }
         }
+        
+        // create a flux comment
+        
+        public class func createComment(commentData commentData: [String: AnyObject], completeHandler: (success: Bool, data: JSON, description: String)->Void) {
+            FNetManager.sharedInstance.POST(path: "flux_comments.json", parameters: commentData) { (request, response, json, error) -> Void in
+                
+                Action.requestCompleteHandler(json: json, error: error, completeHandler: completeHandler)
+            }
+        }
 
     }
 }

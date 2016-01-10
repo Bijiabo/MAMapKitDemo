@@ -54,6 +54,7 @@
 		65BB678C1C4145B100355BBE /* Fluxes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB678B1C4145B100355BBE /* Fluxes.swift */; };
 		65BB678E1C422CF600355BBE /* FluxDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB678D1C422CF600355BBE /* FluxDetailTableViewCell.swift */; };
 		65BB67901C422D0100355BBE /* FluxCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB678F1C422D0100355BBE /* FluxCommentTableViewCell.swift */; };
+		65BB67921C4254AD00355BBE /* FluxDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67911C4254AD00355BBE /* FluxDetailViewController.swift */; };
 		65CE59981C2A7405008809B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59971C2A7405008809B0 /* AppDelegate.swift */; };
 		65CE599A1C2A7405008809B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59991C2A7405008809B0 /* ViewController.swift */; };
 		65CE599D1C2A7405008809B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65CE599B1C2A7405008809B0 /* Main.storyboard */; };
@@ -163,6 +164,7 @@
 		65BB678B1C4145B100355BBE /* Fluxes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fluxes.swift; sourceTree = "<group>"; };
 		65BB678D1C422CF600355BBE /* FluxDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FluxDetailTableViewCell.swift; sourceTree = "<group>"; };
 		65BB678F1C422D0100355BBE /* FluxCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FluxCommentTableViewCell.swift; sourceTree = "<group>"; };
+		65BB67911C4254AD00355BBE /* FluxDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FluxDetailViewController.swift; sourceTree = "<group>"; };
 		65CE59941C2A7405008809B0 /* NearCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CE59971C2A7405008809B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = NearCat/AppDelegate.swift; sourceTree = "<group>"; };
 		65CE59991C2A7405008809B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 				65BB67691C412F5C00355BBE /* FluxesContainerViewController.swift */,
 				65BB676D1C41313500355BBE /* FluxesListTableViewController.swift */,
 				65BB67761C4139CB00355BBE /* FluxDetailTableViewController.swift */,
+				65BB67911C4254AD00355BBE /* FluxDetailViewController.swift */,
 			);
 			path = Fluxes;
 			sourceTree = "<group>";
@@ -700,6 +703,7 @@
 				6570C37A1C3693A000391EB8 /* FStatusProtocols.swift in Sources */,
 				6570C3781C36939200391EB8 /* User.swift in Sources */,
 				6570C36D1C36936C00391EB8 /* Alamofire-SwiftyJSON.swift in Sources */,
+				65BB67921C4254AD00355BBE /* FluxDetailViewController.swift in Sources */,
 				6570C36E1C36936C00391EB8 /* DeviceGuru.swift in Sources */,
 				65BB67801C4140D100355BBE /* PrivateMessageListTableViewController.swift in Sources */,
 				6570C36F1C36936D00391EB8 /* FAction.swift in Sources */,

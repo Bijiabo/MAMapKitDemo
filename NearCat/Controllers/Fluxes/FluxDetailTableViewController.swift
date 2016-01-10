@@ -100,28 +100,6 @@ class FluxDetailTableViewController: UITableViewController {
     // MARK: - setup views
     
     private func _setupViews() {
-        _setupNavigationBar()
-    }
-    
-    private func _setupNavigationBar() {
-        title = ""
-        navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: Selector("tapNavigationBarShareButton:")),
-            UIBarButtonItem(title: "like", style: UIBarButtonItemStyle.Done, target: self, action: Selector("tapNavigaionBarLikeButton:"))
-        ]
-        
-        // custom back button text
-        self.navigationController!.navigationBar.topItem!.title = ""
-    }
-    
-    // MARK: - user actions
-    
-    func tapNavigaionBarLikeButton(sender: UIBarButtonItem) {
-        // TODO: complete function
-    }
-    
-    func tapNavigationBarShareButton(sender: UIBarButtonItem) {
-        // TODO: complete function
     }
 
 
