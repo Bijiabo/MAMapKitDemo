@@ -20,7 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         window?.backgroundColor = UIColor.whiteColor()
-        FConfiguration.sharedInstance.host = productionMode ? "http://near.cat/" : "http://localhost:3000/"
+        FConfiguration.sharedInstance.host = productionMode ? "http://near.cat/" : "http://192.168.31.200:3000/"
+        
+        let userNotificationSettings = UIUserNotificationSettings(
+            forTypes: [.Alert, .Badge, .Sound],
+            categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(userNotificationSettings)
+        UIApplication.sharedApplication().registerForRemoteNotifications()
         
         return true
     }
@@ -45,6 +51,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        // get token string
+        let tokenChars = UnsafePointer<CChar>(deviceToken.bytes)
+        var tokenString = ""
+        for var i = 0; i < deviceToken.length; i++ {
+            tokenString += String(format: "%02.2hhx", arguments: [tokenChars[i]])
+        }
+        
+        // send tokenString to backend
+        _sendProviderDeviceToken(tokenString)
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        print("application did failed to register remote notification.")
+        print(error)
+    }
+    
+    private func _sendProviderDeviceToken(token: String) {
+        // TODO: send token
+        Action.remoteNotificationTokens.create(token: token) { (success, data, description) -> Void in
+            print(success)
+            print(data)
+        }
     }
 
     

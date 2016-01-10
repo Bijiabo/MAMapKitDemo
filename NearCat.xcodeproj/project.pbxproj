@@ -55,6 +55,8 @@
 		65BB678E1C422CF600355BBE /* FluxDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB678D1C422CF600355BBE /* FluxDetailTableViewCell.swift */; };
 		65BB67901C422D0100355BBE /* FluxCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB678F1C422D0100355BBE /* FluxCommentTableViewCell.swift */; };
 		65BB67921C4254AD00355BBE /* FluxDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67911C4254AD00355BBE /* FluxDetailViewController.swift */; };
+		65BB67941C42A44100355BBE /* Trends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67931C42A44100355BBE /* Trends.swift */; };
+		65BB67961C42D29D00355BBE /* remoteNotificationTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67951C42D29D00355BBE /* remoteNotificationTokens.swift */; };
 		65CE59981C2A7405008809B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59971C2A7405008809B0 /* AppDelegate.swift */; };
 		65CE599A1C2A7405008809B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59991C2A7405008809B0 /* ViewController.swift */; };
 		65CE599D1C2A7405008809B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65CE599B1C2A7405008809B0 /* Main.storyboard */; };
@@ -165,6 +167,8 @@
 		65BB678D1C422CF600355BBE /* FluxDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FluxDetailTableViewCell.swift; sourceTree = "<group>"; };
 		65BB678F1C422D0100355BBE /* FluxCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FluxCommentTableViewCell.swift; sourceTree = "<group>"; };
 		65BB67911C4254AD00355BBE /* FluxDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FluxDetailViewController.swift; sourceTree = "<group>"; };
+		65BB67931C42A44100355BBE /* Trends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trends.swift; sourceTree = "<group>"; };
+		65BB67951C42D29D00355BBE /* remoteNotificationTokens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = remoteNotificationTokens.swift; sourceTree = "<group>"; };
 		65CE59941C2A7405008809B0 /* NearCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CE59971C2A7405008809B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = NearCat/AppDelegate.swift; sourceTree = "<group>"; };
 		65CE59991C2A7405008809B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
@@ -373,6 +377,8 @@
 				65D54D221C312F0A00F7B450 /* Action.swift */,
 				65BB67891C4145A500355BBE /* Cats.swift */,
 				65BB678B1C4145B100355BBE /* Fluxes.swift */,
+				65BB67931C42A44100355BBE /* Trends.swift */,
+				65BB67951C42D29D00355BBE /* remoteNotificationTokens.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -599,6 +605,11 @@
 					65CE59931C2A7405008809B0 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = UJX2Y9KP7Y;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					65CE59A71C2A7405008809B0 = {
 						CreatedOnToolsVersion = 7.2;
@@ -739,6 +750,7 @@
 				6558EC571C359C67000783A2 /* CatArchiveDetailMapTableViewCell.swift in Sources */,
 				65BB67901C422D0100355BBE /* FluxCommentTableViewCell.swift in Sources */,
 				65D54D231C312F0A00F7B450 /* Action.swift in Sources */,
+				65BB67961C42D29D00355BBE /* remoteNotificationTokens.swift in Sources */,
 				65BB676A1C412F5C00355BBE /* FluxesContainerViewController.swift in Sources */,
 				6557F7B91C2CFFB300E6780D /* CatArchiveItemTableViewCell.swift in Sources */,
 				65DAC81B1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift in Sources */,
@@ -751,6 +763,7 @@
 				65D54D261C3141F800F7B450 /* Delay.swift in Sources */,
 				6557F7C41C2D2B1A00E6780D /* CatArchiveListTableViewController.swift in Sources */,
 				65DAC82F1C2E578300335EFC /* MainRootViewController.swift in Sources */,
+				65BB67941C42A44100355BBE /* Trends.swift in Sources */,
 				65BB67871C4141E500355BBE /* TrendsListTableViewCell.swift in Sources */,
 				65BB67671C4103C200355BBE /* ShootViewController.swift in Sources */,
 				65BB67731C41371200355BBE /* FluxesListTableViewCell.swift in Sources */,
