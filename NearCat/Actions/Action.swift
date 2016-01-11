@@ -12,9 +12,6 @@ import FServiceManager
 
 public class Action {
     
-    
-    
-    
     // MARK: - tool functions
     // TODO: - pick up to FAction for FServiceManager
     public class func requestCompleteHandler( json json: JSON, error: ErrorType?,  completeHandler: (success: Bool, description: String)->Void ) {

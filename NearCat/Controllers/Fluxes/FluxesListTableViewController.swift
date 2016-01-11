@@ -17,9 +17,14 @@ class FluxesListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.clearsSelectionOnViewWillAppear = false
-        
+        _initViews()
         _loadData()
+    }
+    
+    private func _initViews() {
+        clearsSelectionOnViewWillAppear = false
+        tableView.estimatedRowHeight = 280.0
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
 
     override func didReceiveMemoryWarning() {

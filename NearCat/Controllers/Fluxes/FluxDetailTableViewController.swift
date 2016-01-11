@@ -18,11 +18,8 @@ class FluxDetailTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.clearsSelectionOnViewWillAppear = true
         
         _setupViews()
-        
         _loadData()
     }
     
@@ -101,6 +98,9 @@ class FluxDetailTableViewController: UITableViewController {
     // MARK: - setup views
     
     private func _setupViews() {
+        clearsSelectionOnViewWillAppear = false
+        tableView.estimatedRowHeight = 100.0
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
 
 

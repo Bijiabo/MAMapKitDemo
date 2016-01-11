@@ -13,11 +13,19 @@ class PrivateMessageListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        _initViews()
+    }
+    
+    private func _initViews() {
+        clearsSelectionOnViewWillAppear = false
+        tableView.estimatedRowHeight = 44.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        // setup tableview footer view
+        let tableFooterView: UIView = UIView()
+        tableFooterView.backgroundColor = UIColor.clearColor()
+        tableView.tableFooterView = tableFooterView
+        tableView.backgroundColor = UIColor(red:0.97, green:0.97, blue:0.97, alpha:1)
     }
 
     override func didReceiveMemoryWarning() {

@@ -49,7 +49,7 @@ public class FAction: NSObject {
         FNetManager.sharedInstance.POST(path: "request_new_token.json", parameters: parameters) { (request, response, json, error) -> Void in
             var success: Bool = false
             var description: String = error.debugDescription
-
+            
             if error == nil {
                 success = !json["error"].boolValue
                 if !success {

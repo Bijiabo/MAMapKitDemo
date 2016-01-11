@@ -10,6 +10,12 @@ import UIKit
 
 class TrendsListTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var avatarImageView: AvatarImageView!
+    @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var previewImageView: UIImageView!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +25,18 @@ class TrendsListTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    var content: String = String() {
+        didSet {
+            contentLabel.text = content
+        }
+    }
+    
+    var date: String = String() {
+        didSet {
+            dateLabel.text = date
+        }
     }
 
 }

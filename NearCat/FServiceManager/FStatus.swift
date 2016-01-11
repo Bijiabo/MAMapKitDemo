@@ -84,8 +84,8 @@ public class FStatus: NSObject {
         guard let object = n_object as? [String: AnyObject] else {return nil}
         
         if
-            let name = object["name"] as? String,
-            let observer = object["observer"] as? FStatusObserver
+        let name = object["name"] as? String,
+        let observer = object["observer"] as? FStatusObserver
         {
             return (name: name, observer: observer)
         }

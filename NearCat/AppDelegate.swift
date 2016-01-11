@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         window?.backgroundColor = UIColor.whiteColor()
-        FConfiguration.sharedInstance.host = productionMode ? "http://near.cat/" : "http://localhost:3000/"
+        FConfiguration.sharedInstance.host = productionMode ? "http://near.cat/" : "http://192.168.31.200:3000/"
         
         let userNotificationSettings = UIUserNotificationSettings(
             forTypes: [.Alert, .Badge, .Sound],
