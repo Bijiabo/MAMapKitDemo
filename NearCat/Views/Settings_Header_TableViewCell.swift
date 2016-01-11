@@ -10,6 +10,12 @@ import UIKit
 
 class Settings_Header_TableViewCell: UITableViewCell {
 
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var avatarImageView: AvatarImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var catsLabel: UILabel!
+    @IBOutlet weak var followAndThumbCountLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -11,6 +11,14 @@ import FServiceManager
 
 class SettingsTableViewController: UITableViewController, LoginRequesterProtocol {
 
+    private var headerBackgroundImageViewOriginalHeight: CGFloat = 0
+    private var headerBackgroundImageView: UIImageView? = nil {
+        didSet {
+            guard let headerBackgroundImageView = headerBackgroundImageView else {return}
+            headerBackgroundImageViewOriginalHeight = headerBackgroundImageView.frame.height
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -123,6 +131,7 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
         
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("settingHeaderCell", forIndexPath: indexPath) as! Settings_Header_TableViewCell
+            headerBackgroundImageView = cell.backgroundImageView
             
             return cell
         } else {
@@ -196,6 +205,20 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
     
     private func _showLoginAlert() {
         NSNotificationCenter.defaultCenter().postNotificationName(Constant.Notification.Alert.showLoginTextField, object: self)
+    }
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        if scrollView.contentOffset.y < 0 {
+            headerBackgroundImageView?.alpha = 1.0
+            guard let headerBackgroundImageView = headerBackgroundImageView else {return}
+            headerBackgroundImageView.layer.frame.size.height = headerBackgroundImageViewOriginalHeight - scrollView.contentOffset.y
+            headerBackgroundImageView.layer.frame.origin.y = scrollView.contentOffset.y
+        } else {
+            headerBackgroundImageView?.layer.frame.origin.y = scrollView.contentOffset.y/2
+            headerBackgroundImageView?.alpha = 1.0 - scrollView.contentOffset.y/headerBackgroundImageViewOriginalHeight
+        }
+
+    
     }
     
     // MARK: - LoginRequesterProtocol
