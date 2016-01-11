@@ -435,7 +435,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F3J-ZM-zZE">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3J-ZM-zZE">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <connections>
                                     <segue destination="z7G-e0-3st" kind="embed" identifier="detailContainerSegue" id="wRS-Pm-B9m"/>
@@ -478,7 +478,11 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="QDd-I0-Hjf" secondAttribute="bottom" id="0Yf-8Q-7hY"/>
                             <constraint firstAttribute="trailing" secondItem="QDd-I0-Hjf" secondAttribute="trailing" id="R0p-tb-p6n"/>
+                            <constraint firstItem="F3J-ZM-zZE" firstAttribute="top" secondItem="ec2-jS-qv2" secondAttribute="top" id="gL0-xA-9p6"/>
+                            <constraint firstAttribute="trailing" secondItem="F3J-ZM-zZE" secondAttribute="trailing" id="rcr-br-Sk5"/>
+                            <constraint firstItem="cf3-GY-rEU" firstAttribute="top" secondItem="F3J-ZM-zZE" secondAttribute="bottom" id="sQp-2l-UMC"/>
                             <constraint firstItem="QDd-I0-Hjf" firstAttribute="leading" secondItem="ec2-jS-qv2" secondAttribute="leading" id="st5-19-RHZ"/>
+                            <constraint firstItem="F3J-ZM-zZE" firstAttribute="leading" secondItem="ec2-jS-qv2" secondAttribute="leading" id="zsS-cy-MBb"/>
                         </constraints>
                     </view>
                     <connections>

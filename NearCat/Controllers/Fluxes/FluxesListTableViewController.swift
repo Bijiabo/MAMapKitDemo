@@ -22,7 +22,7 @@ class FluxesListTableViewController: UITableViewController {
     }
     
     private func _initViews() {
-        clearsSelectionOnViewWillAppear = false
+        clearsSelectionOnViewWillAppear = true
         tableView.estimatedRowHeight = 280.0
         tableView.rowHeight = UITableViewAutomaticDimension
     }

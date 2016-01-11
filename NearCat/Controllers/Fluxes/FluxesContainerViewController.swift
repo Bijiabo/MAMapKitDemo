@@ -30,7 +30,7 @@ class FluxesContainerViewController: UIViewController {
     }
     
     private func _setupSegmentedControl() {
-        headerSegmentedControl.items = ["关注", "热门", "全部"]
+        headerSegmentedControl.items = ["关注", "热门", "最新"]
         headerSegmentedControl.delegate = self
     }
     

@@ -98,7 +98,7 @@ class FluxDetailTableViewController: UITableViewController {
     // MARK: - setup views
     
     private func _setupViews() {
-        clearsSelectionOnViewWillAppear = false
+        clearsSelectionOnViewWillAppear = true
         tableView.estimatedRowHeight = 100.0
         tableView.rowHeight = UITableViewAutomaticDimension
     }
