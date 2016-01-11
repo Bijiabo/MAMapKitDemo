@@ -12,14 +12,14 @@
 		6557F7AE1C2C655D00E6780D /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6557F7AB1C2C655D00E6780D /* KeychainAccess.framework */; };
 		6557F7AF1C2C655D00E6780D /* KeychainAccess.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6557F7AB1C2C655D00E6780D /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6557F7B31C2CF13800E6780D /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F7B21C2CF13800E6780D /* SettingsTableViewController.swift */; };
-		6557F7B51C2CF5ED00E6780D /* Settings_FindMe_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F7B41C2CF5ED00E6780D /* Settings_FindMe_TableViewCell.swift */; };
-		6557F7B71C2CF67700E6780D /* Settings_CatArchives_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F7B61C2CF67700E6780D /* Settings_CatArchives_TableViewCell.swift */; };
 		6557F7B91C2CFFB300E6780D /* CatArchiveItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F7B81C2CFFB300E6780D /* CatArchiveItemTableViewCell.swift */; };
 		6557F7BB1C2CFFD100E6780D /* CatArchiveEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F7BA1C2CFFD100E6780D /* CatArchiveEditTableViewController.swift */; };
 		6557F7BD1C2D02D300E6780D /* CatArchiveAvatarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F7BC1C2D02D300E6780D /* CatArchiveAvatarTableViewCell.swift */; };
 		6557F7C41C2D2B1A00E6780D /* CatArchiveListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F7C31C2D2B1A00E6780D /* CatArchiveListTableViewController.swift */; };
 		6557F7C61C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F7C51C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift */; };
 		6558EC571C359C67000783A2 /* CatArchiveDetailMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6558EC561C359C67000783A2 /* CatArchiveDetailMapTableViewCell.swift */; };
+		65625BEE1C43F0A90068176F /* Settings_Header_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65625BED1C43F0A90068176F /* Settings_Header_TableViewCell.swift */; };
+		65625BF01C43F5D60068176F /* SettingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65625BEF1C43F5D60068176F /* SettingListTableViewCell.swift */; };
 		6570C36D1C36936C00391EB8 /* Alamofire-SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6570C3641C36936C00391EB8 /* Alamofire-SwiftyJSON.swift */; };
 		6570C36E1C36936C00391EB8 /* DeviceGuru.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6570C3651C36936C00391EB8 /* DeviceGuru.swift */; };
 		6570C36F1C36936D00391EB8 /* FAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6570C3661C36936C00391EB8 /* FAction.swift */; };
@@ -124,14 +124,14 @@
 		6557F7AA1C2C655D00E6780D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		6557F7AB1C2C655D00E6780D /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		6557F7B21C2CF13800E6780D /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
-		6557F7B41C2CF5ED00E6780D /* Settings_FindMe_TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings_FindMe_TableViewCell.swift; sourceTree = "<group>"; };
-		6557F7B61C2CF67700E6780D /* Settings_CatArchives_TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings_CatArchives_TableViewCell.swift; sourceTree = "<group>"; };
 		6557F7B81C2CFFB300E6780D /* CatArchiveItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveItemTableViewCell.swift; sourceTree = "<group>"; };
 		6557F7BA1C2CFFD100E6780D /* CatArchiveEditTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveEditTableViewController.swift; sourceTree = "<group>"; };
 		6557F7BC1C2D02D300E6780D /* CatArchiveAvatarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveAvatarTableViewCell.swift; sourceTree = "<group>"; };
 		6557F7C31C2D2B1A00E6780D /* CatArchiveListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveListTableViewController.swift; sourceTree = "<group>"; };
 		6557F7C51C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveDetailTableViewController.swift; sourceTree = "<group>"; };
 		6558EC561C359C67000783A2 /* CatArchiveDetailMapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveDetailMapTableViewCell.swift; sourceTree = "<group>"; };
+		65625BED1C43F0A90068176F /* Settings_Header_TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings_Header_TableViewCell.swift; sourceTree = "<group>"; };
+		65625BEF1C43F5D60068176F /* SettingListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingListTableViewCell.swift; sourceTree = "<group>"; };
 		6570C3641C36936C00391EB8 /* Alamofire-SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Alamofire-SwiftyJSON.swift"; path = "NearCat/FServiceManager/Alamofire-SwiftyJSON.swift"; sourceTree = "<group>"; };
 		6570C3651C36936C00391EB8 /* DeviceGuru.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DeviceGuru.swift; path = NearCat/FServiceManager/DeviceGuru.swift; sourceTree = "<group>"; };
 		6570C3661C36936C00391EB8 /* FAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FAction.swift; path = NearCat/FServiceManager/FAction.swift; sourceTree = "<group>"; };
@@ -487,8 +487,8 @@
 		65DAC8191C2D747800335EFC /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				6557F7B41C2CF5ED00E6780D /* Settings_FindMe_TableViewCell.swift */,
-				6557F7B61C2CF67700E6780D /* Settings_CatArchives_TableViewCell.swift */,
+				65625BED1C43F0A90068176F /* Settings_Header_TableViewCell.swift */,
+				65625BEF1C43F5D60068176F /* SettingListTableViewCell.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -720,6 +720,7 @@
 				6570C36F1C36936D00391EB8 /* FAction.swift in Sources */,
 				6570C3701C36936D00391EB8 /* FConstant.swift in Sources */,
 				65BB677A1C413D1B00355BBE /* InboxContainerViewController.swift in Sources */,
+				65625BF01C43F5D60068176F /* SettingListTableViewCell.swift in Sources */,
 				65BB676C1C412FA700355BBE /* SegmentedControlDelegate.swift in Sources */,
 				65BB678A1C4145A500355BBE /* Cats.swift in Sources */,
 				65BB678C1C4145B100355BBE /* Fluxes.swift in Sources */,
@@ -739,9 +740,7 @@
 				6577B2C01C34255C0096F72A /* CatArchiveEditLocationViewController.swift in Sources */,
 				6557F7BD1C2D02D300E6780D /* CatArchiveAvatarTableViewCell.swift in Sources */,
 				65DAC82A1C2E55EF00335EFC /* MainNavigationController.swift in Sources */,
-				6557F7B71C2CF67700E6780D /* Settings_CatArchives_TableViewCell.swift in Sources */,
 				65BB676E1C41313500355BBE /* FluxesListTableViewController.swift in Sources */,
-				6557F7B51C2CF5ED00E6780D /* Settings_FindMe_TableViewCell.swift in Sources */,
 				65BB67771C4139CB00355BBE /* FluxDetailTableViewController.swift in Sources */,
 				65CE59981C2A7405008809B0 /* AppDelegate.swift in Sources */,
 				65D54D281C31ACB000F7B450 /* Location.swift in Sources */,
@@ -762,6 +761,7 @@
 				65BB67851C4141B500355BBE /* PrivateMessageListTableViewCell.swift in Sources */,
 				65D54D261C3141F800F7B450 /* Delay.swift in Sources */,
 				6557F7C41C2D2B1A00E6780D /* CatArchiveListTableViewController.swift in Sources */,
+				65625BEE1C43F0A90068176F /* Settings_Header_TableViewCell.swift in Sources */,
 				65DAC82F1C2E578300335EFC /* MainRootViewController.swift in Sources */,
 				65BB67941C42A44100355BBE /* Trends.swift in Sources */,
 				65BB67871C4141E500355BBE /* TrendsListTableViewCell.swift in Sources */,

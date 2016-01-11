@@ -29,7 +29,13 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
         tableView.tableFooterView = tableFooterView
         tableView.backgroundColor = UIColor(red:0.97, green:0.97, blue:0.97, alpha:1)
         
-        tableView.contentInset.top = 44.0
+        // tableView.contentInset.top = 44.0
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     private func _addNotificationObserver() {
@@ -43,102 +49,153 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
     }
     
     // MARK: - Table view data source
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 280.0
+        }
+        
+        return 44.0
+    }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // TODO: - split logged in or did not logged in
-        return FHelper.logged_in ? 3 : 2
+        return 3
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return FHelper.logged_in ? 2 : 1
+            return 1
         case 1:
-            return 1
+            return 4
         case 2:
-            return 1
+            return FHelper.logged_in ? 3 : 2
         default:
             return 0
         }
     }
-
+    
+    private var _cellData = [
+        [["id": "settingHeaderCell"]],
+        [
+            [
+                "id": "myArchive",
+                "title": "我的资料",
+                "icon": ""
+            ],
+            [
+                "id": "catArchive",
+                "title": "猫咪资料",
+                "icon": ""
+            ],
+            [
+                "id": "myFollow",
+                "title": "我关注的",
+                "icon": ""
+            ],
+            [
+                "id": "myThumbs",
+                "title": "我赞过的",
+                "icon": ""
+            ]
+        ],
+        [
+            [
+                "id": "setting",
+                "title": "设置",
+                "icon": ""
+            ],
+            [
+                "id": "feedback",
+                "title": "反馈",
+                "icon": ""
+            ],
+            [
+                "id": "quit",
+                "title": "退出",
+                "icon": ""
+            ]
+        ]
+    ]
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
-            if FHelper.logged_in {
-                switch indexPath.row {
-                case 0:
-                    let cell = tableView.dequeueReusableCellWithIdentifier("catArchives", forIndexPath: indexPath) as! Settings_CatArchives_TableViewCell
-                    return cell
-                default: // indexPath.row == 1
-                    let cell = tableView.dequeueReusableCellWithIdentifier("findMe", forIndexPath: indexPath) as! Settings_FindMe_TableViewCell
-                    return cell
+        
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("settingHeaderCell", forIndexPath: indexPath) as! Settings_Header_TableViewCell
+            
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("settingCell", forIndexPath: indexPath) as! SettingListTableViewCell
+            let currentData = _cellData[indexPath.section][indexPath.row]
+            
+            cell.title = currentData["title"]
+            
+            if let iconName = currentData["icon"] {
+                if !iconName.isEmpty {
+                    cell.iconImageView.image = UIImage(named: iconName)
                 }
-            } else {
-                let cell = tableView.dequeueReusableCellWithIdentifier("pleaseLogin", forIndexPath: indexPath)
-                return cell
             }
             
-        case 1:
-            let cell = tableView.dequeueReusableCellWithIdentifier("feedback", forIndexPath: indexPath)
             return cell
-            
-        case 2:
-            let cell = tableView.dequeueReusableCellWithIdentifier("quit", forIndexPath: indexPath)
-            return cell
-            
-        default:
-            break
         }
-
-        return UITableViewCell()
+        
     }
 
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            return " "
-        case 1:
-            return " "
-        case 2:
-            return " "
-        default:
-            return nil
-        }
+        return " "
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
-    }
-    
-    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section < 2 {return 0}
         return 44.0
     }
     
+    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
     override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 44.0))
-        footerView.backgroundColor = UIColor.clearColor()
-        return footerView
+        return nil
+    }
+    
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 44.0))
+        headerView.backgroundColor = UIColor.clearColor()
+        return headerView
     }
 
     // MARK: - table view delegate
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        guard let cell = tableView.cellForRowAtIndexPath(indexPath) else {return}
-        guard let cellReuseIdentifier = cell.reuseIdentifier else {return}
-        
-        // user tap login cell
-        switch cellReuseIdentifier {
-        case "pleaseLogin":
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            NSNotificationCenter.defaultCenter().postNotificationName(Constant.Notification.Alert.showLoginTextField, object: self)
-        case "quit":
-            FAction.logout()
-            // TODO: - refresh views
-        default:
-            break
+    
+    override func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if indexPath.section == 0 {
+            return false
         }
+        
+        return true
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        if indexPath.section == 0 {
+            return
+        } else {
+            guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? SettingListTableViewCell else {return}
+            switch cell.identifier {
+            case "quit":
+                FAction.logout()
+            default:
+                break
+            }
+        }
+        
+    }
+    
+    private func _showLoginAlert() {
+        NSNotificationCenter.defaultCenter().postNotificationName(Constant.Notification.Alert.showLoginTextField, object: self)
     }
     
     // MARK: - LoginRequesterProtocol

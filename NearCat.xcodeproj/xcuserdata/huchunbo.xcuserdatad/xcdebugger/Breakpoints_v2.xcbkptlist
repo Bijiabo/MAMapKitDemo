@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NearCat/Controllers/SettingsTableViewController.swift"
-            timestampString = "473266172.07108"
+            timestampString = "474217888.424394"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "didLoginSuccess()"
             landmarkType = "5">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NearCat/Controllers/SettingsTableViewController.swift"
-            timestampString = "473266172.07108"
+            timestampString = "474217888.424394"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
             landmarkName = "didLoginCancel()"
             landmarkType = "5">
          </BreakpointContent>
