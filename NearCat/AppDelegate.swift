@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         window?.backgroundColor = UIColor.whiteColor()
-        FConfiguration.sharedInstance.host = productionMode ? "http://near.cat/" : "http://192.168.31.200:3000/"
+        FConfiguration.sharedInstance.host = productionMode ? "http://near.cat/" : "http://localhost:3000/"
         
         let userNotificationSettings = UIUserNotificationSettings(
             forTypes: [.Alert, .Badge, .Sound],
@@ -56,13 +56,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         // get token string
         let tokenChars = UnsafePointer<CChar>(deviceToken.bytes)
-        var tokenString = ""
+        var deviceTokenString = ""
         for var i = 0; i < deviceToken.length; i++ {
-            tokenString += String(format: "%02.2hhx", arguments: [tokenChars[i]])
+            deviceTokenString += String(format: "%02.2hhx", arguments: [tokenChars[i]])
         }
         
-        // send tokenString to backend
-        _sendProviderDeviceToken(tokenString)
+        // save device token string
+        FHelper.deviceToken = deviceTokenString
+        // send device token string to backend
+        _sendProviderDeviceToken(deviceTokenString)
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
@@ -71,11 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func _sendProviderDeviceToken(token: String) {
-        // TODO: send token
-        Action.remoteNotificationTokens.create(token: token) { (success, data, description) -> Void in
-            print(success)
-            print(data)
-        }
+        Action.remoteNotificationTokens.create(token: token)
     }
 
     

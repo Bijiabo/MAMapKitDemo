@@ -10,7 +10,6 @@ import Foundation
 
 public struct FHelper {
     
-    // MARK:
     // MARK: - token
     
     public static var token: String {
@@ -31,7 +30,20 @@ public struct FHelper {
         FTool.keychain.defaultKeychain()["tokenID"] = nil
     }
     
-    // MARK:
+    // MARK: - device token
+    public static var deviceToken: String {
+        set (newValue) {
+            FTool.keychain.defaultKeychain()["deviceToken"] = newValue
+        }
+        
+        get {
+            if let device_token = FTool.keychain.defaultKeychain()["deviceToken"] {
+                return device_token
+            }
+            return String()
+        }
+    }
+    
     // MARK: - user information
     public static var current_user: User {
         set (newValue) {

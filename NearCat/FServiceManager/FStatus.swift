@@ -69,10 +69,14 @@ public class FStatus: NSObject {
 
     func didLogin(notification: NSNotification) {
         _saveLoggedInStatus(loggedIn: true)
+        
+        Action.remoteNotificationTokens.create(token: FHelper.deviceToken)
     }
 
     func didLogout(notification: NSNotification) {
         _saveLoggedInStatus(loggedIn: false)
+        
+        Action.remoteNotificationTokens.removeRelationship(token: FHelper.deviceToken)
     }
     
     private func _convertNotificationObject(notificationObject notificationObject: AnyObject?) -> (name: String, observer: FStatusObserver)? {
