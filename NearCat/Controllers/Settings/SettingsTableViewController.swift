@@ -29,8 +29,10 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
     
     private func _initViews() {
         
-        title = "Settings"
+        title = "我"
         clearsSelectionOnViewWillAppear = true
+        tableView.showsHorizontalScrollIndicator = false
+        tableView.showsVerticalScrollIndicator = false
         
         let tableFooterView: UIView = UIView()
         tableFooterView.backgroundColor = UIColor.clearColor()
@@ -88,29 +90,30 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
         [["id": "settingHeaderCell"]],
         [
             [
-                "id": "myArchive",
+                "id": "myArchiveList",
                 "title": "我的资料",
-                "icon": ""
+                "icon": "",
+                
             ],
             [
-                "id": "catArchive",
+                "id": "catArchiveList",
                 "title": "猫咪资料",
                 "icon": ""
             ],
             [
-                "id": "myFollow",
+                "id": "myFollowList",
                 "title": "我关注的",
                 "icon": ""
             ],
             [
-                "id": "myThumbs",
-                "title": "我赞过的",
+                "id": "myShare",
+                "title": "我的分享",
                 "icon": ""
             ]
         ],
         [
             [
-                "id": "setting",
+                "id": "settingsList",
                 "title": "设置",
                 "icon": ""
             ],
@@ -144,6 +147,10 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
                 if !iconName.isEmpty {
                     cell.iconImageView.image = UIImage(named: iconName)
                 }
+            }
+            
+            if let id = currentData["id"] {
+                cell.identifier = id
             }
             
             return cell
@@ -189,6 +196,11 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
+        if !FHelper.logged_in {
+            _showLoginAlert()
+            return
+        }
+        
         if indexPath.section == 0 {
             return
         } else {
@@ -196,7 +208,15 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
             switch cell.identifier {
             case "quit":
                 FAction.logout()
+            case "myShare":
+                let vc = storyboard?.instantiateViewControllerWithIdentifier("fluxesList") as! FluxesListTableViewController
+                vc.title = "我的分享"
+                vc.hideNavigationBar = false
+                navigationController?.pushViewController(vc, animated: true)
             default:
+                let vc = Helper.Controller.getByStoryboardIdentifier(cell.identifier)
+                vc.title = cell.title
+                navigationController?.pushViewController(vc, animated: true)
                 break
             }
         }

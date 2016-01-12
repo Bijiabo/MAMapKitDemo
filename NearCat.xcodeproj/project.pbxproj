@@ -18,6 +18,13 @@
 		6557F7C41C2D2B1A00E6780D /* CatArchiveListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F7C31C2D2B1A00E6780D /* CatArchiveListTableViewController.swift */; };
 		6557F7C61C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557F7C51C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift */; };
 		6558EC571C359C67000783A2 /* CatArchiveDetailMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6558EC561C359C67000783A2 /* CatArchiveDetailMapTableViewCell.swift */; };
+		6559A0551C45398C0027CECE /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6559A0541C45398C0027CECE /* Helper.swift */; };
+		6559A0571C4539C20027CECE /* Helper.Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6559A0561C4539C20027CECE /* Helper.Controller.swift */; };
+		6559A0591C453D170027CECE /* MyArchiveTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6559A0581C453D170027CECE /* MyArchiveTableViewController.swift */; };
+		6559A05C1C4544E10027CECE /* SettingSecondaryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6559A05B1C4544E10027CECE /* SettingSecondaryTableViewController.swift */; };
+		6559A05E1C4546610027CECE /* SettingsNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6559A05D1C4546610027CECE /* SettingsNavigationViewController.swift */; };
+		6559A0611C4548E90027CECE /* MyFollowTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6559A0601C4548E90027CECE /* MyFollowTableViewController.swift */; };
+		6559A0641C454CDA0027CECE /* SettingsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6559A0631C454CDA0027CECE /* SettingsListTableViewController.swift */; };
 		65625BEE1C43F0A90068176F /* Settings_Header_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65625BED1C43F0A90068176F /* Settings_Header_TableViewCell.swift */; };
 		65625BF01C43F5D60068176F /* SettingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65625BEF1C43F5D60068176F /* SettingListTableViewCell.swift */; };
 		6570C36D1C36936C00391EB8 /* Alamofire-SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6570C3641C36936C00391EB8 /* Alamofire-SwiftyJSON.swift */; };
@@ -130,6 +137,13 @@
 		6557F7C31C2D2B1A00E6780D /* CatArchiveListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveListTableViewController.swift; sourceTree = "<group>"; };
 		6557F7C51C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveDetailTableViewController.swift; sourceTree = "<group>"; };
 		6558EC561C359C67000783A2 /* CatArchiveDetailMapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveDetailMapTableViewCell.swift; sourceTree = "<group>"; };
+		6559A0541C45398C0027CECE /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		6559A0561C4539C20027CECE /* Helper.Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.Controller.swift; sourceTree = "<group>"; };
+		6559A0581C453D170027CECE /* MyArchiveTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyArchiveTableViewController.swift; path = NearCat/Controllers/Settings/MyArchive/MyArchiveTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		6559A05B1C4544E10027CECE /* SettingSecondaryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingSecondaryTableViewController.swift; sourceTree = "<group>"; };
+		6559A05D1C4546610027CECE /* SettingsNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsNavigationViewController.swift; sourceTree = "<group>"; };
+		6559A0601C4548E90027CECE /* MyFollowTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFollowTableViewController.swift; sourceTree = "<group>"; };
+		6559A0631C454CDA0027CECE /* SettingsListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsListTableViewController.swift; sourceTree = "<group>"; };
 		65625BED1C43F0A90068176F /* Settings_Header_TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings_Header_TableViewCell.swift; sourceTree = "<group>"; };
 		65625BEF1C43F5D60068176F /* SettingListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingListTableViewCell.swift; sourceTree = "<group>"; };
 		6570C3641C36936C00391EB8 /* Alamofire-SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Alamofire-SwiftyJSON.swift"; path = "NearCat/FServiceManager/Alamofire-SwiftyJSON.swift"; sourceTree = "<group>"; };
@@ -282,6 +296,30 @@
 				6577B2BF1C34255C0096F72A /* CatArchiveEditLocationViewController.swift */,
 			);
 			name = CatArchive;
+			sourceTree = "<group>";
+		};
+		6559A05A1C453F230027CECE /* MyArchive */ = {
+			isa = PBXGroup;
+			children = (
+				6559A0581C453D170027CECE /* MyArchiveTableViewController.swift */,
+			);
+			path = MyArchive;
+			sourceTree = "<group>";
+		};
+		6559A05F1C4547480027CECE /* MyFollow */ = {
+			isa = PBXGroup;
+			children = (
+				6559A0601C4548E90027CECE /* MyFollowTableViewController.swift */,
+			);
+			path = MyFollow;
+			sourceTree = "<group>";
+		};
+		6559A0621C454CA80027CECE /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				6559A0631C454CDA0027CECE /* SettingsListTableViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		6570C3761C36937700391EB8 /* FServiceManager */ = {
@@ -469,6 +507,8 @@
 			children = (
 				65D54D251C3141F800F7B450 /* Delay.swift */,
 				65D54D271C31ACB000F7B450 /* Location.swift */,
+				6559A0541C45398C0027CECE /* Helper.swift */,
+				6559A0561C4539C20027CECE /* Helper.Controller.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -506,10 +546,15 @@
 		65DAC8301C2E583B00335EFC /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				6559A0621C454CA80027CECE /* Settings */,
+				6559A05F1C4547480027CECE /* MyFollow */,
+				6559A05D1C4546610027CECE /* SettingsNavigationViewController.swift */,
 				6557F7B21C2CF13800E6780D /* SettingsTableViewController.swift */,
+				6559A05B1C4544E10027CECE /* SettingSecondaryTableViewController.swift */,
 				65DAC81C1C2D902A00335EFC /* FeedbackViewController.swift */,
+				6559A05A1C453F230027CECE /* MyArchive */,
 			);
-			name = Settings;
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		65DAC8311C2E584D00335EFC /* Map */ = {
@@ -716,8 +761,10 @@
 				6570C36D1C36936C00391EB8 /* Alamofire-SwiftyJSON.swift in Sources */,
 				65BB67921C4254AD00355BBE /* FluxDetailViewController.swift in Sources */,
 				6570C36E1C36936C00391EB8 /* DeviceGuru.swift in Sources */,
+				6559A0611C4548E90027CECE /* MyFollowTableViewController.swift in Sources */,
 				65BB67801C4140D100355BBE /* PrivateMessageListTableViewController.swift in Sources */,
 				6570C36F1C36936D00391EB8 /* FAction.swift in Sources */,
+				6559A0641C454CDA0027CECE /* SettingsListTableViewController.swift in Sources */,
 				6570C3701C36936D00391EB8 /* FConstant.swift in Sources */,
 				65BB677A1C413D1B00355BBE /* InboxContainerViewController.swift in Sources */,
 				65625BF01C43F5D60068176F /* SettingListTableViewCell.swift in Sources */,
@@ -738,6 +785,7 @@
 				65DAC82C1C2E569600335EFC /* MainTabBarController.swift in Sources */,
 				65CE599A1C2A7405008809B0 /* ViewController.swift in Sources */,
 				6577B2C01C34255C0096F72A /* CatArchiveEditLocationViewController.swift in Sources */,
+				6559A0591C453D170027CECE /* MyArchiveTableViewController.swift in Sources */,
 				6557F7BD1C2D02D300E6780D /* CatArchiveAvatarTableViewCell.swift in Sources */,
 				65DAC82A1C2E55EF00335EFC /* MainNavigationController.swift in Sources */,
 				65BB676E1C41313500355BBE /* FluxesListTableViewController.swift in Sources */,
@@ -752,13 +800,16 @@
 				65BB67961C42D29D00355BBE /* remoteNotificationTokens.swift in Sources */,
 				65BB676A1C412F5C00355BBE /* FluxesContainerViewController.swift in Sources */,
 				6557F7B91C2CFFB300E6780D /* CatArchiveItemTableViewCell.swift in Sources */,
+				6559A05E1C4546610027CECE /* SettingsNavigationViewController.swift in Sources */,
 				65DAC81B1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift in Sources */,
 				65DAC81D1C2D902A00335EFC /* FeedbackViewController.swift in Sources */,
 				65BB67751C4137E500355BBE /* AvatarImageView.swift in Sources */,
 				6570C3801C36D4D200391EB8 /* CatAnnotationView.swift in Sources */,
 				6557F7C61C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift in Sources */,
 				65BB678E1C422CF600355BBE /* FluxDetailTableViewCell.swift in Sources */,
+				6559A05C1C4544E10027CECE /* SettingSecondaryTableViewController.swift in Sources */,
 				65BB67851C4141B500355BBE /* PrivateMessageListTableViewCell.swift in Sources */,
+				6559A0551C45398C0027CECE /* Helper.swift in Sources */,
 				65D54D261C3141F800F7B450 /* Delay.swift in Sources */,
 				6557F7C41C2D2B1A00E6780D /* CatArchiveListTableViewController.swift in Sources */,
 				65625BEE1C43F0A90068176F /* Settings_Header_TableViewCell.swift in Sources */,
@@ -769,6 +820,7 @@
 				65BB67731C41371200355BBE /* FluxesListTableViewCell.swift in Sources */,
 				65BB67831C41417600355BBE /* NotificationListTableViewCell.swift in Sources */,
 				65BB677C1C4140B100355BBE /* NotificationListTableViewController.swift in Sources */,
+				6559A0571C4539C20027CECE /* Helper.Controller.swift in Sources */,
 				6570C37E1C36C83400391EB8 /* CatCalloutView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

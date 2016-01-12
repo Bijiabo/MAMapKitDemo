@@ -12,6 +12,7 @@ import SwiftyJSON
 class FluxesListTableViewController: UITableViewController {
     
     var listType: String = "follow"
+    var hideNavigationBar: Bool = true
     private var _fluxes: JSON = JSON([])
 
     override func viewDidLoad() {
@@ -25,6 +26,12 @@ class FluxesListTableViewController: UITableViewController {
         clearsSelectionOnViewWillAppear = true
         tableView.estimatedRowHeight = 280.0
         tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(hideNavigationBar, animated: true)
     }
 
     override func didReceiveMemoryWarning() {

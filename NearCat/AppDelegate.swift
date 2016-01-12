@@ -13,11 +13,13 @@ import FServiceManager
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var status: FStatus = FStatus()
+    var status: FStatus!
     
     let productionMode: Bool = false
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        status = FStatus()
         
         window?.backgroundColor = UIColor.whiteColor()
         FConfiguration.sharedInstance.host = productionMode ? "http://near.cat/" : "http://192.168.31.200:3000/"

@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 import FServiceManager
 
-class CatArchiveListTableViewController: UITableViewController {
+class CatArchiveListTableViewController: SettingSecondaryTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
