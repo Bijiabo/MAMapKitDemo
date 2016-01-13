@@ -1,1 +1,2 @@
 github "Bijiabo/FServiceManager"
+github "Alamofire/AlamofireImage" ~> 2.0

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FServiceManager
 
 class SettingsTableViewController: UITableViewController, LoginRequesterProtocol {
 

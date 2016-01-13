@@ -25,6 +25,8 @@
 		6559A05E1C4546610027CECE /* SettingsNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6559A05D1C4546610027CECE /* SettingsNavigationViewController.swift */; };
 		6559A0611C4548E90027CECE /* MyFollowTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6559A0601C4548E90027CECE /* MyFollowTableViewController.swift */; };
 		6559A0641C454CDA0027CECE /* SettingsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6559A0631C454CDA0027CECE /* SettingsListTableViewController.swift */; };
+		6559A0661C4564C50027CECE /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6559A0651C4564C50027CECE /* AlamofireImage.framework */; };
+		6559A0671C4564C50027CECE /* AlamofireImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6559A0651C4564C50027CECE /* AlamofireImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65625BEE1C43F0A90068176F /* Settings_Header_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65625BED1C43F0A90068176F /* Settings_Header_TableViewCell.swift */; };
 		65625BF01C43F5D60068176F /* SettingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65625BEF1C43F5D60068176F /* SettingListTableViewCell.swift */; };
 		6570C36D1C36936C00391EB8 /* Alamofire-SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6570C3641C36936C00391EB8 /* Alamofire-SwiftyJSON.swift */; };
@@ -41,6 +43,8 @@
 		6570C37E1C36C83400391EB8 /* CatCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6570C37D1C36C83400391EB8 /* CatCalloutView.swift */; };
 		6570C3801C36D4D200391EB8 /* CatAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6570C37F1C36D4D200391EB8 /* CatAnnotationView.swift */; };
 		6577B2C01C34255C0096F72A /* CatArchiveEditLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6577B2BF1C34255C0096F72A /* CatArchiveEditLocationViewController.swift */; };
+		657C51851C46A53F0047A568 /* Follow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C51841C46A53F0047A568 /* Follow.swift */; };
+		657C51881C46A6150047A568 /* FollowingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C51871C46A6150047A568 /* FollowingTableViewCell.swift */; };
 		659606F11C3BC79100EE5A80 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659606F01C3BC79100EE5A80 /* SegmentedControl.swift */; };
 		65BB67651C41029000355BBE /* TabbarShootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67641C41029000355BBE /* TabbarShootViewController.swift */; };
 		65BB67671C4103C200355BBE /* ShootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67661C4103C200355BBE /* ShootViewController.swift */; };
@@ -121,6 +125,7 @@
 				65D54D1A1C30340100F7B450 /* SwiftyJSON.framework in Embed Frameworks */,
 				6557F7AF1C2C655D00E6780D /* KeychainAccess.framework in Embed Frameworks */,
 				6557F7AD1C2C655D00E6780D /* Alamofire.framework in Embed Frameworks */,
+				6559A0671C4564C50027CECE /* AlamofireImage.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,6 +149,7 @@
 		6559A05D1C4546610027CECE /* SettingsNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsNavigationViewController.swift; sourceTree = "<group>"; };
 		6559A0601C4548E90027CECE /* MyFollowTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFollowTableViewController.swift; sourceTree = "<group>"; };
 		6559A0631C454CDA0027CECE /* SettingsListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsListTableViewController.swift; sourceTree = "<group>"; };
+		6559A0651C4564C50027CECE /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		65625BED1C43F0A90068176F /* Settings_Header_TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings_Header_TableViewCell.swift; sourceTree = "<group>"; };
 		65625BEF1C43F5D60068176F /* SettingListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingListTableViewCell.swift; sourceTree = "<group>"; };
 		6570C3641C36936C00391EB8 /* Alamofire-SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Alamofire-SwiftyJSON.swift"; path = "NearCat/FServiceManager/Alamofire-SwiftyJSON.swift"; sourceTree = "<group>"; };
@@ -160,6 +166,8 @@
 		6570C37D1C36C83400391EB8 /* CatCalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CatCalloutView.swift; path = ../Controllers/CatCalloutView.swift; sourceTree = "<group>"; };
 		6570C37F1C36D4D200391EB8 /* CatAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatAnnotationView.swift; sourceTree = "<group>"; };
 		6577B2BF1C34255C0096F72A /* CatArchiveEditLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveEditLocationViewController.swift; sourceTree = "<group>"; };
+		657C51841C46A53F0047A568 /* Follow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Follow.swift; sourceTree = "<group>"; };
+		657C51871C46A6150047A568 /* FollowingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowingTableViewCell.swift; sourceTree = "<group>"; };
 		659606F01C3BC79100EE5A80 /* SegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
 		65BB67641C41029000355BBE /* TabbarShootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarShootViewController.swift; sourceTree = "<group>"; };
 		65BB67661C4103C200355BBE /* ShootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShootViewController.swift; sourceTree = "<group>"; };
@@ -240,6 +248,7 @@
 				65CE59CE1C2A7568008809B0 /* libstdc++.6.0.9.tbd in Frameworks */,
 				65CE59CA1C2A7545008809B0 /* SystemConfiguration.framework in Frameworks */,
 				65CE59C81C2A753A008809B0 /* CoreTelephony.framework in Frameworks */,
+				6559A0661C4564C50027CECE /* AlamofireImage.framework in Frameworks */,
 				65CE59C61C2A7532008809B0 /* CoreLocation.framework in Frameworks */,
 				6557F7AE1C2C655D00E6780D /* KeychainAccess.framework in Frameworks */,
 				65CE59C41C2A7528008809B0 /* QuartzCore.framework in Frameworks */,
@@ -264,6 +273,7 @@
 		6557F7BE1C2D211D00E6780D /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
+				6559A0651C4564C50027CECE /* AlamofireImage.framework */,
 				65D54D181C30340100F7B450 /* SwiftyJSON.framework */,
 				6557F7AA1C2C655D00E6780D /* Alamofire.framework */,
 				6557F7AB1C2C655D00E6780D /* KeychainAccess.framework */,
@@ -348,6 +358,14 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		657C51861C46A5C80047A568 /* Follow */ = {
+			isa = PBXGroup;
+			children = (
+				657C51871C46A6150047A568 /* FollowingTableViewCell.swift */,
+			);
+			path = Follow;
+			sourceTree = "<group>";
+		};
 		659606EF1C3BC72E00EE5A80 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -417,6 +435,7 @@
 				65BB678B1C4145B100355BBE /* Fluxes.swift */,
 				65BB67931C42A44100355BBE /* Trends.swift */,
 				65BB67951C42D29D00355BBE /* remoteNotificationTokens.swift */,
+				657C51841C46A53F0047A568 /* Follow.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -478,6 +497,7 @@
 		65CE59E61C2AF9CD008809B0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				657C51861C46A5C80047A568 /* Follow */,
 				65BB67811C41415900355BBE /* Inbox */,
 				65BB67711C4136E300355BBE /* Fluxes */,
 				659606EF1C3BC72E00EE5A80 /* Components */,
@@ -740,6 +760,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
 			);
 			name = "Run Script For Carthage";
 			outputPaths = (
@@ -771,6 +792,7 @@
 				65BB676C1C412FA700355BBE /* SegmentedControlDelegate.swift in Sources */,
 				65BB678A1C4145A500355BBE /* Cats.swift in Sources */,
 				65BB678C1C4145B100355BBE /* Fluxes.swift in Sources */,
+				657C51881C46A6150047A568 /* FollowingTableViewCell.swift in Sources */,
 				6570C3711C36936D00391EB8 /* FHelper.swift in Sources */,
 				659606F11C3BC79100EE5A80 /* SegmentedControl.swift in Sources */,
 				6570C3731C36936D00391EB8 /* FNetManager.swift in Sources */,
@@ -813,6 +835,7 @@
 				65D54D261C3141F800F7B450 /* Delay.swift in Sources */,
 				6557F7C41C2D2B1A00E6780D /* CatArchiveListTableViewController.swift in Sources */,
 				65625BEE1C43F0A90068176F /* Settings_Header_TableViewCell.swift in Sources */,
+				657C51851C46A53F0047A568 /* Follow.swift in Sources */,
 				65DAC82F1C2E578300335EFC /* MainRootViewController.swift in Sources */,
 				65BB67941C42A44100355BBE /* Trends.swift in Sources */,
 				65BB67871C4141E500355BBE /* TrendsListTableViewCell.swift in Sources */,

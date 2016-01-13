@@ -8,12 +8,20 @@
 
 import UIKit
 import SwiftyJSON
+import AlamofireImage
 
 class FluxesListTableViewController: UITableViewController {
     
     var listType: String = "follow"
     var hideNavigationBar: Bool = true
     private var _fluxes: JSON = JSON([])
+    let downloader = ImageDownloader(
+        configuration: ImageDownloader.defaultURLSessionConfiguration(),
+        downloadPrioritization: .FIFO,
+        maximumActiveDownloads: 4,
+        imageCache: AutoPurgingImageCache()
+    )
+//    let imageCache = AutoPurgingImageCache()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +67,28 @@ class FluxesListTableViewController: UITableViewController {
         cell.content = currentData["flux"]["content"].stringValue
         cell.userName = currentData["user"]["name"].stringValue
         cell.id = currentData["flux"]["id"].intValue
+        
+        if let pictureURLString = currentData["flux"]["picture"]["picture"]["url"].string {
+             let URL = NSURL(string: "\(FConfiguration.sharedInstance.host)\(pictureURLString)")!
+            // cell.contentImageView.af_setImageWithURL(URL)
+            
+            let URLRequest = NSURLRequest(URL: URL)
+            
+            
+            downloader.downloadImage(URLRequest: URLRequest) { response in
+                print(response.request)
+                print(response.response)
+                debugPrint(response.result)
+                
+                if let image = response.result.value {
+                    print(image)
+                    cell.contentImageView.image = image
+                    cell.contentImageView.frame.size.height = cell.contentImageView.frame.size.width / image.size.width * image.size.height
+                }
+            }
+        } else {
+            cell.contentImageView.image = nil
+        }
         
         return cell
     }

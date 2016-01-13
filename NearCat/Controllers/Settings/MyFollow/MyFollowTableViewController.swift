@@ -7,77 +7,109 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class MyFollowTableViewController: SettingSecondaryTableViewController {
+    
+    private var _following: [JSON] = [JSON]()
+    private var _followingPage: Int = 1
+    private var _followingMaxPageCount: Int = Int.max
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        _loadData()
     }
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 2
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        switch section {
+        case 0:
+            return _following.count
+        default:
+            return 1
+        }
+        
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        switch indexPath.section {
+        case 0:
+            let cell = tableView.dequeueReusableCellWithIdentifier("followingCell", forIndexPath: indexPath) as! FollowingTableViewCell
+            let currentData = _following[indexPath.row]
+            
+            cell.userName = currentData["name"].stringValue
+            cell.id = currentData["id"].intValue
+            
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCellWithIdentifier("loadmore", forIndexPath: indexPath)
+            
+            if _followingPage < _followingMaxPageCount {
+                _followingPage += 1
+                _loadData()
+            }
+            
+            return cell
+        }
+        
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
+    
+    // MARK: - cancel following
+    
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        
+        let deleteButton = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "取消关注") { (rowAction, indexPath) -> Void in
+            guard let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? FollowingTableViewCell else {return}
+            let userId = cell.id
+            Action.follow.unfollow(userId: userId, completeHandler: { (success, description) -> Void in
+                print(success)
+                print(description)
+            })
+            
+            self._following.removeAtIndex(indexPath.row)
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left)
+        }
+        
+        deleteButton.backgroundColor = Constant.Color.Theme
+        
+        return [deleteButton]
+    }
+    
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+        if indexPath.section == 0 {return true}
+        return false
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    // MARK: - data function
+    
+    private func _loadData() {
+        if _followingPage >= _followingMaxPageCount {return}
+        Action.follow.following(userId: FHelper.current_user.id, page: _followingPage) { (success, data, description) -> Void in
+            if success {
+                if data.count == 0 {
+                    self._followingMaxPageCount = self._followingPage
+                    return
+                }
+                
+                self._following += data.arrayValue
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadData()
+                })
+                
+            } else {
+                print(description)
+            }
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
