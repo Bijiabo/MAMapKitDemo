@@ -17,6 +17,7 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
             headerBackgroundImageViewOriginalHeight = headerBackgroundImageView.frame.height
         }
     }
+    private var headerAvatarImageView: UIImageView? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,7 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
         _initViews()
         
         _addNotificationObserver()
+        
     }
     
     private func _initViews() {
@@ -134,7 +136,9 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("settingHeaderCell", forIndexPath: indexPath) as! Settings_Header_TableViewCell
             headerBackgroundImageView = cell.backgroundImageView
+            headerAvatarImageView = cell.avatarImageView
             
+            _updateAvatar()
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("settingCell", forIndexPath: indexPath) as! SettingListTableViewCell
@@ -242,10 +246,18 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
     
     // MARK: - LoginRequesterProtocol
     func didLoginSuccess() {
-        
+        _updateAvatar()
     }
     
     func didLoginCancel() {
         
+    }
+    
+    private func _updateAvatar() {
+        guard let headerAvatarImageView = headerAvatarImageView else {return}
+        if FHelper.logged_in {
+            let avatarURLString = "\(FConfiguration.sharedInstance.host)\(FHelper.current_user.avatar)"
+            Helper.setRemoteImageForImageView(headerAvatarImageView, avatarURLString: avatarURLString)
+        }
     }
 }

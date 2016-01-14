@@ -155,14 +155,19 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YQF-ue-Si8">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YQF-ue-Si8">
                                             <rect key="frame" x="8" y="126" width="584" height="183.5"/>
-                                            <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.86302219680000003" green="0.86302219680000003" blue="0.86302219680000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
+                                                <constraint firstAttribute="height" constant="183.5" id="AWl-2z-AZt"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="BHE-dI-i6m"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" id="gUN-NY-jhN"/>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="hEZ-wT-B7X"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
+                                                    <exclude reference="BHE-dI-i6m"/>
+                                                    <exclude reference="gUN-NY-jhN"/>
                                                     <exclude reference="hEZ-wT-B7X"/>
                                                 </mask>
                                             </variation>
@@ -215,7 +220,7 @@
                                         <constraint firstItem="72H-Y4-FDb" firstAttribute="leading" secondItem="WGj-mX-6YH" secondAttribute="trailing" constant="19" id="gk5-ue-V7W"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="9BR-FJ-weE" secondAttribute="trailing" id="jHC-GU-XL2"/>
                                         <constraint firstItem="YQF-ue-Si8" firstAttribute="top" secondItem="9BR-FJ-weE" secondAttribute="bottom" constant="13" id="jkQ-ah-AxV"/>
-                                        <constraint firstItem="ukJ-vy-m6O" firstAttribute="top" secondItem="YQF-ue-Si8" secondAttribute="bottom" constant="25" id="oOK-ia-b88"/>
+                                        <constraint firstItem="ukJ-vy-m6O" firstAttribute="top" secondItem="YQF-ue-Si8" secondAttribute="bottom" priority="750" constant="25" id="oOK-ia-b88"/>
                                         <constraint firstAttribute="trailing" secondItem="YQF-ue-Si8" secondAttribute="trailing" constant="8" id="qRp-ro-6Ue"/>
                                         <constraint firstItem="ukJ-vy-m6O" firstAttribute="leading" secondItem="MHf-cO-77m" secondAttribute="leading" constant="8" id="qnU-jM-mtr"/>
                                         <constraint firstItem="je5-c2-caH" firstAttribute="leading" secondItem="Fhz-B0-La2" secondAttribute="trailing" constant="16" id="uMb-QE-of4"/>
@@ -229,8 +234,10 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="avatarImageView" destination="Fhz-B0-La2" id="hyO-2n-Xf2"/>
                                     <outlet property="catNameAndAgeLabel" destination="je5-c2-caH" id="e7T-yd-ENb"/>
                                     <outlet property="contentImageView" destination="YQF-ue-Si8" id="Awo-BN-fg0"/>
+                                    <outlet property="contentImageViewHeight" destination="AWl-2z-AZt" id="sLZ-XZ-elc"/>
                                     <outlet property="contentLabel" destination="9BR-FJ-weE" id="4Bz-k4-87Q"/>
                                     <outlet property="dateLabel" destination="ukJ-vy-m6O" id="inJ-Mx-GZd"/>
                                     <outlet property="userNameLabel" destination="4J1-lT-3aI" id="pa4-22-ixB"/>
@@ -791,7 +798,7 @@
                                             <rect key="frame" x="0.0" y="130.5" width="600" height="147.5"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yd7-S8-aWW" customClass="AvatarImageView" customModule="NearCat" customModuleProvider="target">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yd7-S8-aWW" customClass="AvatarImageView" customModule="NearCat" customModuleProvider="target">
                                             <rect key="frame" x="250" y="80" width="100" height="100"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="100" id="6wO-yC-7s5"/>

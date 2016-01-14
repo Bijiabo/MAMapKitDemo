@@ -7,7 +7,25 @@
 //
 
 import Foundation
+import AlamofireImage
+
+private let _imageDownloader = ImageDownloader(
+    configuration: ImageDownloader.defaultURLSessionConfiguration(),
+    downloadPrioritization: .FIFO,
+    maximumActiveDownloads: 4,
+    imageCache: AutoPurgingImageCache()
+)
 
 public class Helper {
-    
+    public class func setRemoteImageForImageView(imageView: UIImageView, avatarURLString: String) {
+        
+        let avatarURL = NSURL(string: avatarURLString)!
+        let avatarURLRequest = NSURLRequest(URL: avatarURL)
+        _imageDownloader.downloadImage(URLRequest: avatarURLRequest) { (response) -> Void in
+            if let image = response.result.value {
+                imageView.image = image
+            }
+        }
+        
+    }
 }

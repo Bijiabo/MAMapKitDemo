@@ -10,11 +10,13 @@ import UIKit
 
 class FluxesListTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var avatarImageView: AvatarImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var catNameAndAgeLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var contentImageView: UIImageView!
+    @IBOutlet weak var contentImageViewHeight: NSLayoutConstraint!
     
     var id: Int = 0
     
@@ -22,8 +24,8 @@ class FluxesListTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        contentImageView.contentMode = .ScaleAspectFill
         contentImageView.clipsToBounds = true
+        contentImageView.translatesAutoresizingMaskIntoConstraints = false
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -41,6 +43,14 @@ class FluxesListTableViewCell: UITableViewCell {
     var content: String = String() {
         didSet {
             contentLabel.text = content
+        }
+    }
+    
+    var imageHeight: Int = 0 {
+        didSet {
+            contentImageViewHeight.constant = CGFloat(imageHeight)
+            contentImageView.updateConstraintsIfNeeded()
+            self.updateConstraintsIfNeeded()
         }
     }
 

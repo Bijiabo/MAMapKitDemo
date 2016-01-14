@@ -50,6 +50,7 @@ public struct FHelper {
         let userDefaults = NSUserDefaults.standardUserDefaults()
         userDefaults.setObject(newValue.name, forKey: "name")
         userDefaults.setObject(newValue.email, forKey: "email")
+        userDefaults.setObject(newValue.avatar, forKey: "avatar")
         userDefaults.setInteger(newValue.id, forKey: "id")
         userDefaults.synchronize()
         }
@@ -62,7 +63,12 @@ public struct FHelper {
             guard let email = userDefaults.stringForKey("email") else {return invalidUser}
             let id = userDefaults.integerForKey("id")
             
-            return User(id: id, name: name, email: email, valid: valid)
+            var avatar: String = String()
+            if let savedAvatar = userDefaults.stringForKey("avatar") {
+                avatar = savedAvatar
+            }
+            
+            return User(id: id, name: name, email: email, valid: valid, avatar: avatar)
         }
     }
     

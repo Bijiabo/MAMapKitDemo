@@ -58,7 +58,18 @@ class FluxesListTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return _fluxes.count
     }
-
+    /*
+    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let currentData = _fluxes[indexPath.row]
+        let pictures = currentData["flux"]["picture"]
+        if pictures.count > 0 {
+            print("estimatedHeightForRowAtIndexPath")
+            return 400.0
+        }
+        print("estimatedHeightForRowAtIndexPath 200")
+        return 280.0
+    }
+    */
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("fluxesListCell", forIndexPath: indexPath) as! FluxesListTableViewCell
@@ -68,25 +79,23 @@ class FluxesListTableViewController: UITableViewController {
         cell.userName = currentData["user"]["name"].stringValue
         cell.id = currentData["flux"]["id"].intValue
         
-        if let pictureURLString = currentData["flux"]["picture"]["picture"]["url"].string {
-             let URL = NSURL(string: "\(FConfiguration.sharedInstance.host)\(pictureURLString)")!
-            // cell.contentImageView.af_setImageWithURL(URL)
-            
-            let URLRequest = NSURLRequest(URL: URL)
-            
-            
-            downloader.downloadImage(URLRequest: URLRequest) { response in
-                print(response.request)
-                print(response.response)
-                debugPrint(response.result)
-                
-                if let image = response.result.value {
-                    print(image)
-                    cell.contentImageView.image = image
-                    cell.contentImageView.frame.size.height = cell.contentImageView.frame.size.width / image.size.width * image.size.height
-                }
+        // set user's avatar
+        let avatarPath: String = currentData["user"]["avatar"].stringValue
+        Helper.setRemoteImageForImageView(cell.avatarImageView, avatarURLString: "\(FConfiguration.sharedInstance.host)\(avatarPath)")
+        
+        // set content picture
+        let pictures = currentData["flux"]["picture"]
+        if pictures.count > 0 {
+            let currentPicture = pictures[0]
+            if currentPicture["height"].floatValue != 0 {
+                let imageHeight = Int( Float(view.frame.width - 16.0) / currentPicture["width"].floatValue * currentPicture["height"].floatValue )
+                cell.contentImageViewHeight.constant = CGFloat(imageHeight)
             }
+            let picturePath: String = currentPicture["path"].stringValue
+            Helper.setRemoteImageForImageView(cell.contentImageView, avatarURLString: "\(FConfiguration.sharedInstance.host)\(picturePath)")
+            
         } else {
+            cell.contentImageViewHeight.constant = 0
             cell.contentImageView.image = nil
         }
         
