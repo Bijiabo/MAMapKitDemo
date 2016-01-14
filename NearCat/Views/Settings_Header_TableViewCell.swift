@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class Settings_Header_TableViewCell: UITableViewCell {
 
@@ -28,5 +29,35 @@ class Settings_Header_TableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    var userName: String = String() {
+        didSet {
+            usernameLabel.text = userName
+        }
+    }
+    
+    var cats: [JSON] = [JSON]() {
+        didSet {
+            let catsNamses = cats.map { (cat) -> String in
+                cat["name"].stringValue
+            }
+            catsLabel.text = catsNamses.joinWithSeparator(", ")
+        }
+    }
+    
+    var followingCount: Int = 0 {
+        didSet {
+            _updateFollowAndThumbCountLabel()
+        }
+    }
+    
+    var thumbCount: Int = 0 {
+        didSet {
+            _updateFollowAndThumbCountLabel()
+        }
+    }
 
+    private func _updateFollowAndThumbCountLabel() {
+        followAndThumbCountLabel.text = "\(followingCount)人关注 \(thumbCount)个赞"
+    }
 }

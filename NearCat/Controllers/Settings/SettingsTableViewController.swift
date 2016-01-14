@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class SettingsTableViewController: UITableViewController, LoginRequesterProtocol {
 
@@ -17,7 +18,8 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
             headerBackgroundImageViewOriginalHeight = headerBackgroundImageView.frame.height
         }
     }
-    private var headerAvatarImageView: UIImageView? = nil
+    private var headerCell: Settings_Header_TableViewCell? = nil
+    private var _userInformation: JSON = JSON([])
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -136,9 +138,8 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("settingHeaderCell", forIndexPath: indexPath) as! Settings_Header_TableViewCell
             headerBackgroundImageView = cell.backgroundImageView
-            headerAvatarImageView = cell.avatarImageView
-            
-            _updateAvatar()
+            headerCell = cell
+            _updateHeaderCellContent()
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("settingCell", forIndexPath: indexPath) as! SettingListTableViewCell
@@ -246,18 +247,37 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
     
     // MARK: - LoginRequesterProtocol
     func didLoginSuccess() {
-        _updateAvatar()
+        _loadUserInformation()
+        
     }
     
     func didLoginCancel() {
         
     }
     
-    private func _updateAvatar() {
-        guard let headerAvatarImageView = headerAvatarImageView else {return}
+    private func _updateHeaderCellContent() {
+        guard let headerCell = headerCell else {return}
         if FHelper.logged_in {
             let avatarURLString = "\(FConfiguration.sharedInstance.host)\(FHelper.current_user.avatar)"
-            Helper.setRemoteImageForImageView(headerAvatarImageView, avatarURLString: avatarURLString)
+            Helper.setRemoteImageForImageView(headerCell.avatarImageView, avatarURLString: avatarURLString)
+            headerCell.userName = FHelper.current_user.name
+            headerCell.thumbCount = _userInformation["thumb_count"].intValue
+            headerCell.followingCount = _userInformation["followers_count"].intValue
+            headerCell.cats = _userInformation["cats"].arrayValue
+        }
+    }
+    
+    // MARK: - data functions
+    
+    private func _loadUserInformation() {
+        guard FHelper.logged_in else {return}
+        Action.users.informationFor(userId: FHelper.current_user.id) { (success, data, description) -> Void in
+            if success {
+                self._userInformation = data
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self._updateHeaderCellContent()
+                })
+            }
         }
     }
 }

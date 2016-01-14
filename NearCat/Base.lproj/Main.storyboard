@@ -795,7 +795,7 @@
                                             </constraints>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v0R-lL-vdX" userLabel="white view">
-                                            <rect key="frame" x="0.0" y="130.5" width="600" height="147.5"/>
+                                            <rect key="frame" x="0.0" y="130" width="600" height="147.5"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yd7-S8-aWW" customClass="AvatarImageView" customModule="NearCat" customModuleProvider="target">
@@ -812,7 +812,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cat0 cat1 cat2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfQ-4F-2ZD">
-                                            <rect key="frame" x="254" y="210" width="92" height="17"/>
+                                            <rect key="frame" x="8" y="210" width="584" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.29411764709999999" green="0.42352941179999998" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -827,6 +827,8 @@
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="v0R-lL-vdX" secondAttribute="bottom" id="EeM-TE-AbM"/>
                                         <constraint firstItem="mfQ-4F-2ZD" firstAttribute="top" secondItem="ulA-5a-xKK" secondAttribute="bottom" constant="4" id="JVf-M4-4ta"/>
+                                        <constraint firstItem="mfQ-4F-2ZD" firstAttribute="leading" secondItem="GRx-XO-ZuE" secondAttribute="leading" constant="8" id="L37-1r-TC8"/>
+                                        <constraint firstAttribute="trailing" secondItem="mfQ-4F-2ZD" secondAttribute="trailing" constant="8" id="MBe-X9-8f3"/>
                                         <constraint firstItem="Yd7-S8-aWW" firstAttribute="top" secondItem="EYN-KY-371" secondAttribute="bottom" constant="-50" id="NMX-5Q-7n2"/>
                                         <constraint firstAttribute="trailing" secondItem="v0R-lL-vdX" secondAttribute="trailing" id="Oar-aV-Ssk"/>
                                         <constraint firstItem="mfQ-4F-2ZD" firstAttribute="centerX" secondItem="GRx-XO-ZuE" secondAttribute="centerX" id="RM4-kf-DSA"/>
