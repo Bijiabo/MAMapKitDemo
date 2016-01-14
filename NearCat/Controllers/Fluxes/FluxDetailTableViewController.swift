@@ -70,9 +70,12 @@ class FluxDetailTableViewController: UITableViewController {
             cell.date = fluxData["created_at"].stringValue
             
             // TODO: - update counts
-            cell.commentCount = 0
-            cell.likeCount = 0
+            cell.commentCount = fluxData["comment_count"].intValue
+            cell.likeCount = fluxData["like_count"].intValue
             cell.distance = 0
+            
+            let avatarPath: String = userData["avatar"].stringValue
+            Helper.setRemoteImageForImageView(cell.avatarImageView, avatarURLString: "\(FConfiguration.sharedInstance.host)\(avatarPath)")
             
             return cell
             
