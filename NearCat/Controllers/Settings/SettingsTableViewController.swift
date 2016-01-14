@@ -28,6 +28,7 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
         
         _addNotificationObserver()
         
+        _loadUserInformation()
     }
     
     private func _initViews() {
@@ -59,6 +60,12 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
 
     func logStatusChanged(notification: NSNotification) {
         tableView.reloadData()
+        
+        if FHelper.logged_in {
+            _loadUserInformation()
+        } else {
+            _clearUserInformation()
+        }
     }
     
     // MARK: - Table view data source
@@ -139,6 +146,8 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
             let cell = tableView.dequeueReusableCellWithIdentifier("settingHeaderCell", forIndexPath: indexPath) as! Settings_Header_TableViewCell
             headerBackgroundImageView = cell.backgroundImageView
             headerCell = cell
+            
+            _clearUserInformation()
             _updateHeaderCellContent()
             return cell
         } else {
@@ -247,7 +256,6 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
     
     // MARK: - LoginRequesterProtocol
     func didLoginSuccess() {
-        _loadUserInformation()
         
     }
     
@@ -279,5 +287,14 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
                 })
             }
         }
+    }
+    
+    private func _clearUserInformation() {
+        guard let headerCell = headerCell else {return}
+        headerCell.userName = "未登录"
+        headerCell.thumbCount = 0
+        headerCell.followingCount = 0
+        headerCell.cats = [JSON(["name":"请登录喵喵喵"])]
+        headerCell.avatarImageView.image = nil
     }
 }
