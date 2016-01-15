@@ -1,23 +1,24 @@
 //
-//  PrivateMessageListTableViewController.swift
+//  PrivateMessageChatTableViewController.swift
 //  NearCat
 //
-//  Created by huchunbo on 16/1/9.
+//  Created by huchunbo on 16/1/15.
 //  Copyright © 2016年 Bijiabo. All rights reserved.
 //
 
 import UIKit
 import SwiftyJSON
 
-class PrivateMessageListTableViewController: UITableViewController {
+class PrivateMessageChatTableViewController: InputInterfaceTableViewController {
     
-    private var _listData: JSON = JSON([])
+    var toUserId: Int = 0
+    private var _chatData: JSON = JSON([])
+    var containerDelegate: InputContainerViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        _initViews()
         
+        _initViews()
         _loadData()
     }
     
@@ -47,45 +48,34 @@ class PrivateMessageListTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return _listData.count
+        return _chatData.count
     }
 
-
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("privateMessageListCell", forIndexPath: indexPath) as! PrivateMessageListTableViewCell
-        // TODO: load user's avatar
-        let currentData = _listData[indexPath.row]
-        let currentUser = currentData["user"]
-        cell.userId = currentUser["id"].intValue
-        cell.userName = currentUser["name"].stringValue
-        cell.content = currentData["latestMessage"]["content"].stringValue
-
+        let cell = tableView.dequeueReusableCellWithIdentifier("chatCell", forIndexPath: indexPath)
+        let currentData = _chatData[indexPath.row]
+        cell.textLabel?.text = currentData["content"].stringValue
         return cell
     }
-
-
+    
+    // MARK: - scroll view delegate
+    
+    override func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        containerDelegate?.didBeginScroll()
+    }
+    
     // MARK: - data functions
     
     private func _loadData() {
-        Action.privateMessages.list { (success, data, description) -> Void in
+        Action.privateMessages.withUser(userId: toUserId) { (success, data, description) -> Void in
             if success {
-                self._listData = data
+                self._chatData = data
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.tableView.reloadData()
                 })
             }
         }
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showChatView" {
-            if
-            let targetVC = segue.destinationViewController as? PrivateMessageChatContainerViewController,
-            let cell = sender as? PrivateMessageListTableViewCell
-            {
-                targetVC.toUserId = cell.userId
-                targetVC.title = cell.userName
-            }
-        }
-    }
+
 }

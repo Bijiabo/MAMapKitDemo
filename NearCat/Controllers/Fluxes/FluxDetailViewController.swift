@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FluxDetailViewController: UIViewController {
+class FluxDetailViewController: InputContainerViewController {
 
     var id: Int = 0
     private var _defalutKeyboardHeight: CGFloat = 258.0
@@ -21,20 +21,15 @@ class FluxDetailViewController: UIViewController {
         super.viewDidLoad()
         
         _setupViews()
-        _addNotificationObservers()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
 
     // MARK: - setup views
     
     private func _setupViews() {
-        _setupNavigationBar()
+        inputTextField = commentTextField
+        inputViewContainer = commentInputViewContainer
         
-        _defaultViewOriginY = view.frame.origin.y
+        _setupNavigationBar()
     }
     
     private func _setupNavigationBar() {
@@ -65,46 +60,12 @@ class FluxDetailViewController: UIViewController {
             if let detailTableViewController = segue.destinationViewController as? FluxDetailTableViewController {
                 detailTableViewController.id = id
                 detailTableViewController.containerDelegate = self
+                inputInterfaceTableVC = detailTableViewController
             }
         }
     }
     
-    // MARK: - add notification observers
     
-    private func _addNotificationObservers() {
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
-        notificationCenter.addObserver(self, selector: Selector("keyboardDidShow:"), name: UIKeyboardDidShowNotification, object: nil)
-        notificationCenter.addObserver(self, selector: Selector("keyboardWillChangeFrame:"), name: UIKeyboardWillChangeFrameNotification, object: nil)
-    }
-    
-    func keyboardWillShow(notification: NSNotification) {
-        UIView.animateWithDuration(0.1, delay: 0, options: UIViewAnimationOptions.AllowUserInteraction, animations: { () -> Void in
-            self.view.frame.origin.y = self._defaultViewOriginY - self._defalutKeyboardHeight
-            }, completion: nil)
-    }
-    
-    func keyboardDidShow(notification: NSNotification) {
-        let keyboardSize = (notification.userInfo![UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue().size
-        
-        UIView.animateWithDuration(0.01, delay: 0, options: UIViewAnimationOptions.AllowUserInteraction, animations: { () -> Void in
-            self.view.frame.origin.y = self._defaultViewOriginY - keyboardSize.height
-            }, completion: nil)
-    }
-    
-    func keyboardWillChangeFrame(notification: NSNotification) {
-        let keyboardSize = (notification.userInfo![UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue().size
-        
-        UIView.animateWithDuration(0.05, delay: 0, options: UIViewAnimationOptions.AllowUserInteraction, animations: { () -> Void in
-            self.view.frame.origin.y = self._defaultViewOriginY - keyboardSize.height
-            }, completion: nil)
-    }
-    
-    // MARK: - flux detail tableview controller's container delegate
-    
-    func didBeginScroll() {
-        _hideKeyboard()
-    }
     
     // MARK: - user actions
     
