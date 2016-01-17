@@ -8,7 +8,7 @@
 
 import Foundation
 import SwiftyJSON
-import FServiceManager
+//import FServiceManager
 
 public class Action {
     

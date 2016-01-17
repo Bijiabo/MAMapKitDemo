@@ -15,11 +15,11 @@ extension Action {
         // create token
         
         public class func create(token token: String, completeHandler: ((success: Bool, data: JSON, description: String)->Void) = {(success: Bool, data: JSON, description: String) in} ) {
-            let parameters = [
+            let parameters: [String : AnyObject] = [
                 "remote_notification_token": [
-                    "token": token,
-                    "user_token": FHelper.logged_in ? FHelper.token : String()
-                ]
+                    "token": token
+                ],
+                "token": FHelper.logged_in ? FHelper.token : String()
             ]
             FNetManager.sharedInstance.POST(path: "remote_notification_tokens.json", parameters: parameters) { (request, response, json, error) -> Void in
                 Action.requestCompleteHandler(json: json, error: error, completeHandler: completeHandler)

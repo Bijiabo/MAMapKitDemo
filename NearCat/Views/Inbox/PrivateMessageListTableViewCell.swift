@@ -10,6 +10,10 @@ import UIKit
 
 class PrivateMessageListTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var avatarImageView: AvatarImageView!
+    @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +24,23 @@ class PrivateMessageListTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    var userName: String = String() {
+        didSet {
+            _updateContentLabel()
+        }
+    }
+    
+    var content: String = String() {
+        didSet {
+            _updateContentLabel()
+        }
+    }
+    
+    private func _updateContentLabel() {
+        contentLabel.text = "\(userName): \(content)"
+    }
+    
+    var userId: Int = 0 
 
 }

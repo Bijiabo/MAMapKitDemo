@@ -9,12 +9,12 @@
 import UIKit
 import SwiftyJSON
 
-class FluxDetailTableViewController: UITableViewController {
+class FluxDetailTableViewController: InputInterfaceTableViewController {
 
     var id: Int = 0
     private var _flux: JSON = JSON([])
     private var _comments: JSON = JSON([])
-    var containerDelegate: FluxDetailViewController?
+    var containerDelegate: InputContainerViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()

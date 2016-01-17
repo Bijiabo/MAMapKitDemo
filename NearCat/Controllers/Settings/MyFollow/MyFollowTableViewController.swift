@@ -48,14 +48,19 @@ class MyFollowTableViewController: SettingSecondaryTableViewController {
             
             cell.userName = currentData["name"].stringValue
             cell.id = currentData["id"].intValue
+            let avatarURLString: String = FConfiguration.sharedInstance.host+currentData["avatar"].stringValue
+            Helper.setRemoteImageForImageView(cell.avatarImageView, avatarURLString: avatarURLString)
             
             return cell
         default:
-            let cell = tableView.dequeueReusableCellWithIdentifier("loadmore", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCellWithIdentifier("loadmore", forIndexPath: indexPath) as! LoadingTableViewCell
             
             if _followingPage < _followingMaxPageCount {
+                cell.loading = true
                 _followingPage += 1
                 _loadData()
+            } else {
+                cell.loading = false
             }
             
             return cell
@@ -97,6 +102,7 @@ class MyFollowTableViewController: SettingSecondaryTableViewController {
             if success {
                 if data.count == 0 {
                     self._followingMaxPageCount = self._followingPage
+                    self._setLoadingCellStatus(loading: false)
                     return
                 }
                 
@@ -110,6 +116,11 @@ class MyFollowTableViewController: SettingSecondaryTableViewController {
                 print(description)
             }
         }
+    }
+    
+    private func _setLoadingCellStatus(loading loading: Bool) {
+        guard let loadingCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)) as? LoadingTableViewCell else {return}
+        loadingCell.loading = loading
     }
 
 }
