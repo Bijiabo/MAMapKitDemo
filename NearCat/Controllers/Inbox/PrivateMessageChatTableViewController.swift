@@ -12,7 +12,7 @@ import SwiftyJSON
 class PrivateMessageChatTableViewController: InputInterfaceTableViewController {
     
     var toUserId: Int = 0
-    private var _chatData: JSON = JSON([])
+    var chatData: JSON = JSON([])
     var containerDelegate: InputContainerViewController?
 
     override func viewDidLoad() {
@@ -48,14 +48,20 @@ class PrivateMessageChatTableViewController: InputInterfaceTableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return _chatData.count
+        return chatData.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("chatCell", forIndexPath: indexPath)
-        let currentData = _chatData[indexPath.row]
+        let currentData = chatData[indexPath.row]
+        let send: Bool = currentData["fromUser_id"].intValue == FHelper.current_user.id
         cell.textLabel?.text = currentData["content"].stringValue
+        if send {
+            cell.textLabel?.textAlignment = .Right
+        } else {
+            cell.textLabel?.textAlignment = .Left
+        }
         return cell
     }
     
@@ -70,12 +76,14 @@ class PrivateMessageChatTableViewController: InputInterfaceTableViewController {
     private func _loadData() {
         Action.privateMessages.withUser(userId: toUserId) { (success, data, description) -> Void in
             if success {
-                self._chatData = data
+                self.chatData = data
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.tableView.reloadData()
+                    self.tableView.scrollToBottom()
                 })
             }
         }
     }
-
+    
 }
+

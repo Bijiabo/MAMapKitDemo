@@ -1028,13 +1028,42 @@
                                     <outlet property="userNameLabel" destination="3lr-YV-3wZ" id="d9a-2Y-JHi"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="loadmore" id="Pm4-A7-Xlx">
-                                <rect key="frame" x="0.0" y="130" width="600" height="102"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="loadmore" rowHeight="77" id="Pm4-A7-Xlx" customClass="LoadingTableViewCell" customModule="NearCat" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="130" width="600" height="77"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pm4-A7-Xlx" id="9FM-n0-THm">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="101.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="76.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zuW-al-bbk">
+                                            <rect key="frame" x="240" y="10" width="120" height="56.5"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="120" id="R0T-nC-a2q"/>
+                                            </constraints>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="没有更多啦喵" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3j-b2-lNb">
+                                            <rect key="frame" x="16" y="31.5" width="568" height="14.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.86302219680000003" green="0.86302219680000003" blue="0.86302219680000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="zuW-al-bbk" firstAttribute="centerY" secondItem="9FM-n0-THm" secondAttribute="centerY" id="0wf-C4-HH8"/>
+                                        <constraint firstAttribute="bottom" secondItem="zuW-al-bbk" secondAttribute="bottom" constant="10" id="C3u-CD-1Pr"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="i3j-b2-lNb" secondAttribute="trailing" constant="8" id="Nsk-IQ-ih3"/>
+                                        <constraint firstItem="i3j-b2-lNb" firstAttribute="centerY" secondItem="9FM-n0-THm" secondAttribute="centerY" id="V88-7q-7ny"/>
+                                        <constraint firstItem="i3j-b2-lNb" firstAttribute="centerX" secondItem="9FM-n0-THm" secondAttribute="centerX" id="Vml-SA-VgN"/>
+                                        <constraint firstItem="i3j-b2-lNb" firstAttribute="leading" secondItem="9FM-n0-THm" secondAttribute="leadingMargin" constant="8" id="Ync-ST-iZ9"/>
+                                        <constraint firstItem="zuW-al-bbk" firstAttribute="top" secondItem="9FM-n0-THm" secondAttribute="top" constant="10" id="wEB-e7-H46"/>
+                                        <constraint firstItem="zuW-al-bbk" firstAttribute="centerX" secondItem="9FM-n0-THm" secondAttribute="centerX" id="wYx-O6-Qua"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="loadingContainerView" destination="zuW-al-bbk" id="Nqf-92-EQm"/>
+                                    <outlet property="noMoreDataTipLabel" destination="i3j-b2-lNb" id="WGj-89-mRL"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1770,6 +1799,9 @@
                                             <constraint firstAttribute="width" constant="60" id="VmS-wV-tse"/>
                                         </constraints>
                                         <state key="normal" title="回复"/>
+                                        <connections>
+                                            <action selector="tapSendButton:" destination="Bc2-Yj-Cap" eventType="touchUpInside" id="q4T-l8-pw3"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

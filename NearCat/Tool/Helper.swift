@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import AlamofireImage
 
 private let _imageDownloader = ImageDownloader(

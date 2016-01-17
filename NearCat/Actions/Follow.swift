@@ -17,7 +17,7 @@ extension Action {
         public class func following(userId userId: Int, var page: Int = 1, completeHandler: (success: Bool, data: JSON, description: String)->Void) {
             if page < 1 { page = 1 }
             let path = "users/\(userId)/following.json?page=\(page)&token=\(FHelper.token)"
-            print(path)
+            
             FNetManager.sharedInstance.GET(path: path) { (request, response, json, error) -> Void in
                 Action.requestCompleteHandler(json: json, error: error, completeHandler: { (success, data, description) -> Void in
                     completeHandler(success: success, data: data, description: description)

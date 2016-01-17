@@ -18,6 +18,10 @@ class FollowingTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+//        selectionStyle = .None
+        selectedBackgroundView = UIView(frame: bounds)
+        selectedBackgroundView!.backgroundColor = Constant.Color.CellSelected
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
