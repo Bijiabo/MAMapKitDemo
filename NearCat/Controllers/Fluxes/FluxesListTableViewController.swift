@@ -76,6 +76,7 @@ class FluxesListTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("fluxItemCell", forIndexPath: indexPath) as! FluxesListTableViewCell
+        cell.navigationController = navigationController
 
         let currentData = _fluxes[indexPath.row]
         let fluxData = currentData["flux"]
@@ -108,6 +109,8 @@ class FluxesListTableViewController: UITableViewController {
         cell.commentCount = fluxData["comment_count"].intValue
         cell.likeCount = fluxData["like_count"].intValue
         cell.distance = 0
+        
+        cell.following = userData["following"].boolValue
         
         return cell
     }

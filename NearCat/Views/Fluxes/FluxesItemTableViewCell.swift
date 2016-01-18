@@ -23,6 +23,7 @@ class FluxesListTableViewCell: UITableViewCell {
     @IBOutlet weak var followButton: UIButton!
     
     var id: Int = 0
+    weak var navigationController: UINavigationController?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,6 +34,9 @@ class FluxesListTableViewCell: UITableViewCell {
         
         selectedBackgroundView = UIView(frame: bounds)
         selectedBackgroundView!.backgroundColor = Constant.Color.CellSelected
+        
+        // add tap avatar action
+        avatarImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("tapAvatar:")))
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -97,9 +101,9 @@ class FluxesListTableViewCell: UITableViewCell {
         }
     }
     
-    var showFollowButton: Bool = true {
+    var following: Bool = true {
         didSet {
-            followButton.hidden = !showFollowButton
+            followButton.hidden = following
         }
     }
 
@@ -107,6 +111,11 @@ class FluxesListTableViewCell: UITableViewCell {
         didSet {
             dateLabel.text = date
         }
+    }
+    
+    func tapAvatar(sender: UITapGestureRecognizer) {
+        let personalPageVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("personalPage")
+        navigationController?.pushViewController(personalPageVC, animated: true)
     }
 
 }

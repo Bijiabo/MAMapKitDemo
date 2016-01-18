@@ -15,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="600" height="367.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bR2-mG-qlY" customClass="AvatarImageView" customModule="NearCat" customModuleProvider="target">
+                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bR2-mG-qlY" customClass="AvatarImageView" customModule="NearCat" customModuleProvider="target">
                         <rect key="frame" x="8" y="8" width="70" height="70"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="70" id="hh5-h3-cXT"/>
@@ -63,8 +63,8 @@
                         <color key="textColor" red="0.83328561300000004" green="0.83328561300000004" blue="0.83328561300000004" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wni-oN-A9H">
-                        <rect key="frame" x="533" y="17" width="49" height="30"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wni-oN-A9H">
+                        <rect key="frame" x="552" y="17" width="30" height="30"/>
                         <state key="normal" title="关注"/>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbd-NI-KS3">
@@ -94,6 +94,7 @@
                     <constraint firstItem="jnR-0U-7P0" firstAttribute="leading" secondItem="wpP-fu-WXT" secondAttribute="trailing" constant="-584" id="507-VE-1dQ"/>
                     <constraint firstAttribute="bottom" secondItem="wbd-NI-KS3" secondAttribute="bottom" constant="8.5" id="ENB-Z4-njb"/>
                     <constraint firstAttribute="trailingMargin" secondItem="wpP-fu-WXT" secondAttribute="trailing" id="GLb-5L-lwO"/>
+                    <constraint firstItem="wni-oN-A9H" firstAttribute="top" secondItem="m8d-j4-aPm" secondAttribute="top" constant="17" id="GXy-VT-T9q"/>
                     <constraint firstItem="bJi-iS-j1h" firstAttribute="top" secondItem="pVH-jH-TPE" secondAttribute="bottom" constant="14" id="H0L-ar-8XW"/>
                     <constraint firstItem="wbd-NI-KS3" firstAttribute="leading" secondItem="2eX-nc-ql7" secondAttribute="trailing" constant="19" id="KWw-dp-tH1"/>
                     <constraint firstAttribute="leadingMargin" secondItem="wpP-fu-WXT" secondAttribute="leading" id="Mf5-YR-Zo1"/>
@@ -108,6 +109,7 @@
                     <constraint firstAttribute="trailing" secondItem="jnR-0U-7P0" secondAttribute="trailing" constant="8" id="jxl-CC-eyU"/>
                     <constraint firstAttribute="bottom" secondItem="2eX-nc-ql7" secondAttribute="bottom" constant="8.5" id="laj-zD-Qgg"/>
                     <constraint firstItem="jnR-0U-7P0" firstAttribute="top" secondItem="wpP-fu-WXT" secondAttribute="bottom" constant="13" id="rbQ-aF-arR"/>
+                    <constraint firstAttribute="trailing" secondItem="wni-oN-A9H" secondAttribute="trailing" constant="18" id="x9r-nj-83r"/>
                     <constraint firstAttribute="topMargin" secondItem="pVH-jH-TPE" secondAttribute="top" id="yEF-O2-QeC"/>
                     <constraint firstItem="jnR-0U-7P0" firstAttribute="leading" secondItem="m8d-j4-aPm" secondAttribute="leading" constant="8" id="yyb-q8-hZk"/>
                 </constraints>

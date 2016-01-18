@@ -62,6 +62,7 @@ class FluxDetailTableViewController: InputInterfaceTableViewController {
         switch indexPath.section {
         case 0: // is for flux detail cell
             let cell = tableView.dequeueReusableCellWithIdentifier("fluxItemCell", forIndexPath: indexPath) as! FluxesListTableViewCell
+            cell.navigationController = navigationController
             
             let fluxData = _flux["flux"]
             let userData = _flux["user"]
@@ -90,6 +91,8 @@ class FluxDetailTableViewController: InputInterfaceTableViewController {
             cell.likeCount = fluxData["like_count"].intValue
             cell.distance = 0
             
+            cell.following = userData["following"].boolValue
+            
             let avatarPath: String = userData["avatar"].stringValue
             Helper.setRemoteImageForImageView(cell.avatarImageView, avatarURLString: "\(FConfiguration.sharedInstance.host)\(avatarPath)")
             
@@ -103,14 +106,22 @@ class FluxDetailTableViewController: InputInterfaceTableViewController {
             let currentCommentData = comments[indexPath.row]
             let commentData = currentCommentData["comment"]
             let userData = currentCommentData["user"]
+            let parentCommentData = currentCommentData["parent_comment"]["comment"]
+            let parentCommentUserData = currentCommentData["parent_comment"]["user"]
             
             let userName = userData["name"].stringValue
             let commentContent = commentData["content"].stringValue
             
             cell.thumbsCount = 0 // TODO: complete this function
-            cell.content = "\(userName): \(commentContent)"
+            if parentCommentData.isExists() && parentCommentUserData.isExists() {
+                cell.content = "\(userName) 回复 \(parentCommentUserData["name"].stringValue): \(commentContent)"
+            } else {
+                cell.content = "\(userName): \(commentContent)"
+            }
+            
             cell.date = commentData["created_at"].stringValue
             cell.id = commentData["id"].intValue
+            Helper.setRemoteImageForImageView(cell.avatarImageView, avatarURLString: "\(FConfiguration.sharedInstance.host)\(userData["avatar"].stringValue)")
             
             return cell
             
