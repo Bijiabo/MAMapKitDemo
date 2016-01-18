@@ -23,6 +23,7 @@ class FluxesListTableViewCell: UITableViewCell {
     @IBOutlet weak var followButton: UIButton!
     
     var id: Int = 0
+    var userId: Int = 0
     weak var navigationController: UINavigationController?
     
     override func awakeFromNib() {
@@ -116,6 +117,16 @@ class FluxesListTableViewCell: UITableViewCell {
     func tapAvatar(sender: UITapGestureRecognizer) {
         let personalPageVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("personalPage")
         navigationController?.pushViewController(personalPageVC, animated: true)
+    }
+    
+    @IBAction func tapFollowButton(sender: AnyObject) {
+        Action.follow.follow(userId: userId) { (success, description) -> Void in
+            if success {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.followButton.hidden = true
+                })
+            }
+        }
     }
 
 }

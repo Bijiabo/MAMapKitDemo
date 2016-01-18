@@ -111,6 +111,7 @@ class FluxesListTableViewController: UITableViewController {
         cell.distance = 0
         
         cell.following = userData["following"].boolValue
+        cell.userId = userData["id"].intValue
         
         return cell
     }

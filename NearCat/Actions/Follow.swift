@@ -30,7 +30,7 @@ extension Action {
         public class func follow(userId userId: Int, completeHandler: (success: Bool, description: String)->Void = {(success, description) in }) {
             let path = "relationships.json"
             let parameters: [String: AnyObject] = [
-                "id": userId,
+                "followed_id": userId,
                 "token": FHelper.token
             ]
             

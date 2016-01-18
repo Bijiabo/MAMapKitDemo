@@ -92,6 +92,7 @@ class FluxDetailTableViewController: InputInterfaceTableViewController {
             cell.distance = 0
             
             cell.following = userData["following"].boolValue
+            cell.userId = userData["id"].intValue
             
             let avatarPath: String = userData["avatar"].stringValue
             Helper.setRemoteImageForImageView(cell.avatarImageView, avatarURLString: "\(FConfiguration.sharedInstance.host)\(avatarPath)")

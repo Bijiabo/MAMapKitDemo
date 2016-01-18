@@ -66,6 +66,9 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wni-oN-A9H">
                         <rect key="frame" x="552" y="17" width="30" height="30"/>
                         <state key="normal" title="关注"/>
+                        <connections>
+                            <action selector="tapFollowButton:" destination="Hbk-s0-iiQ" eventType="touchUpInside" id="5Oz-vv-U1g"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbd-NI-KS3">
                         <rect key="frame" x="432" y="329" width="93" height="30"/>
