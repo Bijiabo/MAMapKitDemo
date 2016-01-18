@@ -34,6 +34,9 @@ class FluxesListTableViewController: UITableViewController {
         clearsSelectionOnViewWillAppear = true
         tableView.estimatedRowHeight = 280.0
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        let nib: UINib = UINib(nibName: "FluxItem", bundle: nil)
+        tableView.registerNib(nib, forCellReuseIdentifier: "fluxItemCell")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -72,19 +75,22 @@ class FluxesListTableViewController: UITableViewController {
     */
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("fluxesListCell", forIndexPath: indexPath) as! FluxesListTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("fluxItemCell", forIndexPath: indexPath) as! FluxesListTableViewCell
 
         let currentData = _fluxes[indexPath.row]
-        cell.content = currentData["flux"]["content"].stringValue
-        cell.userName = currentData["user"]["name"].stringValue
-        cell.id = currentData["flux"]["id"].intValue
+        let fluxData = currentData["flux"]
+        let userData = currentData["user"]
+        
+        cell.content = fluxData["content"].stringValue
+        cell.userName = userData["name"].stringValue
+        cell.id = fluxData["id"].intValue
         
         // set user's avatar
-        let avatarPath: String = currentData["user"]["avatar"].stringValue
+        let avatarPath: String = userData["avatar"].stringValue
         Helper.setRemoteImageForImageView(cell.avatarImageView, avatarURLString: "\(FConfiguration.sharedInstance.host)\(avatarPath)")
         
         // set content picture
-        let pictures = currentData["flux"]["picture"]
+        let pictures = fluxData["picture"]
         if pictures.count > 0 {
             let currentPicture = pictures[0]
             if currentPicture["height"].floatValue != 0 {
@@ -98,6 +104,10 @@ class FluxesListTableViewController: UITableViewController {
             cell.contentImageViewHeight.constant = 0
             cell.contentImageView.image = nil
         }
+        
+        cell.commentCount = fluxData["comment_count"].intValue
+        cell.likeCount = fluxData["like_count"].intValue
+        cell.distance = 0
         
         return cell
     }

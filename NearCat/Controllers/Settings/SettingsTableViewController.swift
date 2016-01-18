@@ -18,7 +18,7 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
             headerBackgroundImageViewOriginalHeight = headerBackgroundImageView.frame.height
         }
     }
-    private var headerCell: Settings_Header_TableViewCell? = nil
+    private var headerCell: PersonalSettingHeaderTableViewCell? = nil
     private var _userInformation: JSON = JSON([])
     
     override func viewDidLoad() {
@@ -44,6 +44,9 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
         tableView.backgroundColor = UIColor(red:0.97, green:0.97, blue:0.97, alpha:1)
         
         // tableView.contentInset.top = 44.0
+        
+        let nib: UINib = UINib(nibName: "PersonalPage", bundle: nil)
+        tableView.registerNib(nib, forCellReuseIdentifier: "personalPageHeaderCell")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -143,7 +146,7 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("settingHeaderCell", forIndexPath: indexPath) as! Settings_Header_TableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("personalPageHeaderCell", forIndexPath: indexPath) as! PersonalSettingHeaderTableViewCell
             headerBackgroundImageView = cell.backgroundImageView
             headerCell = cell
             

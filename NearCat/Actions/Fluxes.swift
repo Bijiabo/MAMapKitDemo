@@ -75,8 +75,18 @@ extension Action {
         
         // create a flux comment
         
-        public class func createComment(commentData commentData: [String: AnyObject], completeHandler: (success: Bool, data: JSON, description: String)->Void) {
-            FNetManager.sharedInstance.POST(path: "flux_comments.json", parameters: commentData) { (request, response, json, error) -> Void in
+        public class func createComment(content content: String, fluxId: Int, parentCommentId: Int? = nil, completeHandler: (success: Bool, data: JSON, description: String)->Void) {
+            
+            let params: [String: AnyObject] = [
+                "flux_comment": [
+                    "content": content,
+                    "flux_id": fluxId,
+                    "parentComment_id": parentCommentId == nil ? 0 : parentCommentId!
+                ],
+                "token": FHelper.token
+            ]
+            
+            FNetManager.sharedInstance.POST(path: "flux_comments.json", parameters: params) { (request, response, json, error) -> Void in
                 
                 Action.requestCompleteHandler(json: json, error: error, completeHandler: completeHandler)
             }

@@ -122,5 +122,14 @@ class MyFollowTableViewController: SettingSecondaryTableViewController {
         guard let loadingCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)) as? LoadingTableViewCell else {return}
         loadingCell.loading = loading
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "followToPersonalPage" {
+            guard let targetVC = segue.destinationViewController as? PersonalPageTableViewController else {return}
+            guard let cell = sender as? FollowingTableViewCell else {return}
+            targetVC.user_id = cell.id
+            
+        }
+    }
 
 }

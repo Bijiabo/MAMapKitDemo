@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class FluxDetailViewController: InputContainerViewController {
 
@@ -69,12 +70,30 @@ class FluxDetailViewController: InputContainerViewController {
     
     // MARK: - user actions
     
+    var parementCommentId: Int? = nil {
+        didSet {
+            guard let parementCommentId = parementCommentId else {return}
+            commentTextField.becomeFirstResponder()
+        }
+    }
+    
     @IBAction func tapSubmitCommentButton(sender: AnyObject) {
         _hideKeyboard()
         
-        let commentContent = commentTextField.text
+        guard let commentContent = commentTextField.text else {return}
         
-        // TODO: submit comment data
+        Action.fluxes.createComment(content: commentContent, fluxId: id, parentCommentId: parementCommentId) { (success, data, description) -> Void in
+            if success {
+                guard let fluxDetailVC = self.inputInterfaceTableVC as? FluxDetailTableViewController else {return}
+                self.commentTextField.text = nil
+                var arrayCache = fluxDetailVC.comments.arrayValue
+                arrayCache.append(data)
+                fluxDetailVC.comments = JSON(arrayCache)
+                let indexPath = NSIndexPath(forRow: fluxDetailVC.comments.count-1, inSection: 1)
+                fluxDetailVC.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+                fluxDetailVC.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+            }
+        }
     }
     
     private func _hideKeyboard() {

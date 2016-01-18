@@ -16,9 +16,14 @@ class FluxCommentTableViewCell: UITableViewCell {
     @IBOutlet weak var replyButton: UIButton!
     @IBOutlet weak var thumbsCountButton: UIButton!
     
+    var id: Int = 0
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        selectedBackgroundView = UIView(frame: bounds)
+        selectedBackgroundView!.backgroundColor = Constant.Color.CellSelected
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

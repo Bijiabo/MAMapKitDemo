@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class Settings_Header_TableViewCell: UITableViewCell {
+class PersonalSettingHeaderTableViewCell: UITableViewCell {
 
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var avatarImageView: AvatarImageView!
