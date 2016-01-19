@@ -20,6 +20,7 @@ class ShootViewController: UIViewController {
     @IBOutlet weak var captureButton: UIButton!
     @IBOutlet weak var switchCameraButton: UIButton!
     @IBOutlet weak var takePhotoButton: UIButton!
+    @IBOutlet weak var previewViewHeight: NSLayoutConstraint!
     
     var session: AVCaptureSession!
     
@@ -61,7 +62,7 @@ class ShootViewController: UIViewController {
         session.beginConfiguration()
         
         if session.canSetSessionPreset(AVCaptureSessionPresetHigh) {
-            session.sessionPreset = AVCaptureSessionPresetHigh
+            session.sessionPreset = AVCaptureSessionPresetMedium
         } else {
             // Handle the failure.
             print("Device does not support set AVCaptureSession preset to be AVCaptureSessionPresetLow")
@@ -112,9 +113,16 @@ class ShootViewController: UIViewController {
     }
     
     private func setupPreview() {
+        previewViewHeight.constant = previewView.frame.size.width
+        
         let capturePreviewLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
         capturePreviewLayer.frame = view.bounds
+//        capturePreviewLayer.backgroundColor = UIColor.greenColor().CGColor
+        capturePreviewLayer.frame.origin.y =  -(capturePreviewLayer.frame.height - previewViewHeight.constant)/2.0
         previewView.layer.addSublayer(capturePreviewLayer)
+//        previewView.layer.borderColor = UIColor.whiteColor().CGColor
+//        previewView.layer.borderWidth = 2.0
+        previewView.clipsToBounds = true
     }
     
     // MARK: - session observers
@@ -426,7 +434,23 @@ class ShootViewController: UIViewController {
                 print(resultExifAttachments)
                 
                 let image = UIImage(data: AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageSampleBuffer))!
-                UIImageWriteToSavedPhotosAlbum(image, self, Selector("savePhotoToAlbumComplete:didFinishSavingWithError:contextInfo:"), nil)
+                
+//                UIImageWriteToSavedPhotosAlbum(image, self, Selector("savePhotoToAlbumComplete:didFinishSavingWithError:contextInfo:"), nil)
+                
+                //crop photo to square
+                let size = image.size //CGSizeApplyAffineTransform(image.size, CGAffineTransformMakeScale(0.5, 0.5))
+                let hasAlpha = false
+                let scale: CGFloat = 0.0 // Automatically use scale factor of main screen
+                let targetWidthSize: CGFloat = size.width < size.height ? size.width : size.height
+                let targetSize = CGSize(width: targetWidthSize, height: targetWidthSize)
+                UIGraphicsBeginImageContextWithOptions(targetSize, !hasAlpha, scale)
+                let drawOrigin = CGPoint(x: 0, y: -abs(size.height - size.width)/2.0)
+                image.drawInRect(CGRect(origin: drawOrigin, size: size))
+                
+                let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+                UIGraphicsEndImageContext()
+                
+                UIImageWriteToSavedPhotosAlbum(scaledImage, self, Selector("savePhotoToAlbumComplete:didFinishSavingWithError:contextInfo:"), nil)
                 
             } else {
                 //TODO: tip user error

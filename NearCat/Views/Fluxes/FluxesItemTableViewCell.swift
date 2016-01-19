@@ -116,7 +116,8 @@ class FluxesListTableViewCell: UITableViewCell {
     }
     
     func tapAvatar(sender: UITapGestureRecognizer) {
-        let personalPageVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("personalPage")
+        let personalPageVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("personalPage") as! PersonalPageTableViewController
+        personalPageVC.user_id = userId
         navigationController?.pushViewController(personalPageVC, animated: true)
     }
     
