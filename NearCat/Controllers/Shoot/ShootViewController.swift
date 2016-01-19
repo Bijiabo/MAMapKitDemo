@@ -28,6 +28,9 @@ class ShootViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Fade)
+        
+        previewViewHeight.constant = view.frame.width
         
         savePath = NSHomeDirectory().stringByAppendingString("/Documents")
         
@@ -50,9 +53,15 @@ class ShootViewController: UIViewController {
         //checkDevices(devices)
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: UIStatusBarAnimation.Fade)
+    }
+    
     private func setupViews() {
-        let captrueButtonLayer = captureButton.layer
-        captrueButtonLayer.cornerRadius = captrueButtonLayer.frame.size.width/2.0
+//        let captrueButtonLayer = captureButton.layer
+//        captrueButtonLayer.cornerRadius = captrueButtonLayer.frame.size.width/2.0
     }
     
     private func setupCaptureSession() {
@@ -112,17 +121,26 @@ class ShootViewController: UIViewController {
         session.startRunning()
     }
     
+    var capturePreviewLayer: AVCaptureVideoPreviewLayer!
     private func setupPreview() {
         previewViewHeight.constant = previewView.frame.size.width
         
-        let capturePreviewLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
+        capturePreviewLayer = AVCaptureVideoPreviewLayer(session: session)
         capturePreviewLayer.frame = view.bounds
-//        capturePreviewLayer.backgroundColor = UIColor.greenColor().CGColor
         capturePreviewLayer.frame.origin.y =  -(capturePreviewLayer.frame.height - previewViewHeight.constant)/2.0
         previewView.layer.addSublayer(capturePreviewLayer)
-//        previewView.layer.borderColor = UIColor.whiteColor().CGColor
-//        previewView.layer.borderWidth = 2.0
         previewView.clipsToBounds = true
+    }
+    
+    private func _fadeInPreviewView() {
+        let opacityAnim: CABasicAnimation = CABasicAnimation(keyPath: "alpha")
+        opacityAnim.fromValue = 0
+        opacityAnim.toValue = 1
+        opacityAnim.removedOnCompletion = true
+        let animGroup: CAAnimationGroup = CAAnimationGroup()
+        animGroup.animations = [opacityAnim]
+        animGroup.duration = 1
+        capturePreviewLayer.addAnimation(animGroup, forKey: nil)
     }
     
     // MARK: - session observers
@@ -392,6 +410,7 @@ class ShootViewController: UIViewController {
     }
     
     private var recording: Bool = false
+    /*
     @IBAction func tapCaptureButton(sender: AnyObject) {
         let saveFileURL: NSURL = NSURL(fileURLWithPath: savePath).URLByAppendingPathComponent("\(currentShortDate()).mp4")
         
@@ -412,7 +431,7 @@ class ShootViewController: UIViewController {
         
         recording = !recording
     }
-    
+    */
     @IBAction func tapTakePhotoButton(sender: AnyObject) {
         guard let stillImageOutput = currentStillImageOutput else {return} //TODO: tip user error
         var videoConnection: AVCaptureConnection? = nil
@@ -431,7 +450,6 @@ class ShootViewController: UIViewController {
             let exifAttachments = CMGetAttachment(imageSampleBuffer, kCGImagePropertyExifDictionary , nil)
             if let exifAttachments = exifAttachments {
                 let resultExifAttachments = exifAttachments as! CFDictionaryRef
-                print(resultExifAttachments)
                 
                 let image = UIImage(data: AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageSampleBuffer))!
                 
