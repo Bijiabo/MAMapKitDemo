@@ -110,8 +110,9 @@ class FluxesListTableViewController: UITableViewController {
         cell.likeCount = fluxData["like_count"].intValue
         cell.distance = 0
         
-        cell.following = userData["following"].boolValue
         cell.userId = userData["id"].intValue
+        cell.following = userData["following"].boolValue
+        cell.followActionController = self
         
         return cell
     }
@@ -147,5 +148,27 @@ class FluxesListTableViewController: UITableViewController {
                 NSNotificationCenter.defaultCenter().postNotificationName(Constant.Notification.Alert.showError, object: errorMessage)
             }
         }
+    }
+}
+
+extension FluxesListTableViewController: FollowActionControllerProtocol {
+    func follow(userId userId: Int) {
+        Action.follow.follow(userId: userId) { (success, description) -> Void in
+            if success {
+                for (index, value) in self._fluxes.arrayValue.enumerate() {
+                    if value["user"]["id"].intValue == userId {
+                        self._fluxes[index]["user"]["following"] = true
+                    }
+                }
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadData()
+                })
+            }
+        }
+    }
+    
+    func unfollow(userId userId: Int) {
+        Action.follow.unfollow(userId: userId)
     }
 }

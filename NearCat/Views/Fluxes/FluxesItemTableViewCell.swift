@@ -25,6 +25,7 @@ class FluxesListTableViewCell: UITableViewCell {
     var id: Int = 0
     var userId: Int = 0
     weak var navigationController: UINavigationController?
+    weak var followActionController: FollowActionControllerProtocol?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -104,7 +105,7 @@ class FluxesListTableViewCell: UITableViewCell {
     
     var following: Bool = true {
         didSet {
-            followButton.hidden = following
+            followButton.hidden = following || userId == FHelper.current_user.id
         }
     }
 
@@ -120,13 +121,7 @@ class FluxesListTableViewCell: UITableViewCell {
     }
     
     @IBAction func tapFollowButton(sender: AnyObject) {
-        Action.follow.follow(userId: userId) { (success, description) -> Void in
-            if success {
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.followButton.hidden = true
-                })
-            }
-        }
+        followActionController?.follow?(userId: userId)
     }
 
 }

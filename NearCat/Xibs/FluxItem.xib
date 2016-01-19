@@ -51,9 +51,9 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="ssE-MG-Tjw"/>
-                                <exclude reference="iO2-gj-eGG"/>
                                 <exclude reference="5nb-SU-WMp"/>
+                                <exclude reference="iO2-gj-eGG"/>
+                                <exclude reference="ssE-MG-Tjw"/>
                             </mask>
                         </variation>
                     </imageView>

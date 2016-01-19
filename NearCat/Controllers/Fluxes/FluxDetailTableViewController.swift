@@ -91,8 +91,9 @@ class FluxDetailTableViewController: InputInterfaceTableViewController {
             cell.likeCount = fluxData["like_count"].intValue
             cell.distance = 0
             
-            cell.following = userData["following"].boolValue
             cell.userId = userData["id"].intValue
+            cell.following = userData["following"].boolValue
+            cell.followActionController = self
             
             let avatarPath: String = userData["avatar"].stringValue
             Helper.setRemoteImageForImageView(cell.avatarImageView, avatarURLString: "\(FConfiguration.sharedInstance.host)\(avatarPath)")
@@ -201,4 +202,17 @@ class FluxDetailTableViewController: InputInterfaceTableViewController {
         containerDelegate?.didBeginScroll()
     }
 
+}
+
+extension FluxDetailTableViewController: FollowActionControllerProtocol {
+    
+    func follow(userId userId: Int) {
+        Action.follow.follow(userId: userId) { (success, description) -> Void in
+            // TODO: reload cell
+        }
+    }
+    
+    func unfollow(userId userId: Int) {
+        Action.follow.unfollow(userId: userId)
+    }
 }

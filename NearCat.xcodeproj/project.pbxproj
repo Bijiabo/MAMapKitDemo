@@ -17,6 +17,7 @@
 		65152F3C1C4C96D100DDB874 /* PersonalPageLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65152F3B1C4C96D100DDB874 /* PersonalPageLocationTableViewCell.swift */; };
 		65152F3F1C4CCB5700DDB874 /* PersonalPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65152F3E1C4CCB5700DDB874 /* PersonalPageTableViewController.swift */; };
 		65152F411C4D27AD00DDB874 /* FluxItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65152F401C4D27AD00DDB874 /* FluxItem.xib */; };
+		65152F431C4D6EC600DDB874 /* FollowActionControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65152F421C4D6EC600DDB874 /* FollowActionControllerProtocol.swift */; };
 		654FA8251C49566D00337FA7 /* InputContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654FA8241C49566D00337FA7 /* InputContainerViewController.swift */; };
 		654FA8291C495B4E00337FA7 /* InputInterfaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654FA8281C495B4E00337FA7 /* InputInterfaceTableViewController.swift */; };
 		6557F7AC1C2C655D00E6780D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6557F7AA1C2C655D00E6780D /* Alamofire.framework */; };
@@ -159,6 +160,7 @@
 		65152F3B1C4C96D100DDB874 /* PersonalPageLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPageLocationTableViewCell.swift; sourceTree = "<group>"; };
 		65152F3E1C4CCB5700DDB874 /* PersonalPageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPageTableViewController.swift; sourceTree = "<group>"; };
 		65152F401C4D27AD00DDB874 /* FluxItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FluxItem.xib; sourceTree = "<group>"; };
+		65152F421C4D6EC600DDB874 /* FollowActionControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowActionControllerProtocol.swift; sourceTree = "<group>"; };
 		654FA8241C49566D00337FA7 /* InputContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputContainerViewController.swift; sourceTree = "<group>"; };
 		654FA8281C495B4E00337FA7 /* InputInterfaceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputInterfaceTableViewController.swift; sourceTree = "<group>"; };
 		6557F7AA1C2C655D00E6780D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
@@ -707,6 +709,7 @@
 			children = (
 				65DAC83F1C2EB97F00335EFC /* NotificationAlertObserverProtocol.swift */,
 				65DAC8411C2EBDA700335EFC /* LoginRequesterProtocol.swift */,
+				65152F421C4D6EC600DDB874 /* FollowActionControllerProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -875,6 +878,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65152F431C4D6EC600DDB874 /* FollowActionControllerProtocol.swift in Sources */,
 				6570C37C1C3693F300391EB8 /* FConfiguration.swift in Sources */,
 				6570C37A1C3693A000391EB8 /* FStatusProtocols.swift in Sources */,
 				6570C3781C36939200391EB8 /* User.swift in Sources */,
