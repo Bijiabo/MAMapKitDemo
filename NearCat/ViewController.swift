@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-let APIKey = "3b17386d0a14ac347b70d4bc205ee6ff"
+public let APIKey = "3b17386d0a14ac347b70d4bc205ee6ff"
 
 class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
     

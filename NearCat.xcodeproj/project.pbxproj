@@ -19,6 +19,11 @@
 		65152F411C4D27AD00DDB874 /* FluxItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65152F401C4D27AD00DDB874 /* FluxItem.xib */; };
 		65152F431C4D6EC600DDB874 /* FollowActionControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65152F421C4D6EC600DDB874 /* FollowActionControllerProtocol.swift */; };
 		654162B31C4F629200BD035E /* PostEditorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654162B21C4F629200BD035E /* PostEditorTableViewController.swift */; };
+		654162B51C4F7C0200BD035E /* UITableViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654162B41C4F7C0200BD035E /* UITableViewControllerExtension.swift */; };
+		654162B71C4F7F2500BD035E /* UITableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654162B61C4F7F2500BD035E /* UITableViewCellExtension.swift */; };
+		654162BA1C4F80D500BD035E /* PostEditorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654162B91C4F80D500BD035E /* PostEditorTableViewCell.swift */; };
+		654162BC1C4F86E200BD035E /* PostSetLocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654162BB1C4F86E200BD035E /* PostSetLocationTableViewController.swift */; };
+		654162BE1C4F874600BD035E /* SearchLocationResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654162BD1C4F874600BD035E /* SearchLocationResultTableViewCell.swift */; };
 		654FA8251C49566D00337FA7 /* InputContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654FA8241C49566D00337FA7 /* InputContainerViewController.swift */; };
 		654FA8291C495B4E00337FA7 /* InputInterfaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654FA8281C495B4E00337FA7 /* InputInterfaceTableViewController.swift */; };
 		6557F7AC1C2C655D00E6780D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6557F7AA1C2C655D00E6780D /* Alamofire.framework */; };
@@ -163,6 +168,11 @@
 		65152F401C4D27AD00DDB874 /* FluxItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FluxItem.xib; sourceTree = "<group>"; };
 		65152F421C4D6EC600DDB874 /* FollowActionControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowActionControllerProtocol.swift; sourceTree = "<group>"; };
 		654162B21C4F629200BD035E /* PostEditorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostEditorTableViewController.swift; sourceTree = "<group>"; };
+		654162B41C4F7C0200BD035E /* UITableViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewControllerExtension.swift; sourceTree = "<group>"; };
+		654162B61C4F7F2500BD035E /* UITableViewCellExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtension.swift; sourceTree = "<group>"; };
+		654162B91C4F80D500BD035E /* PostEditorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostEditorTableViewCell.swift; sourceTree = "<group>"; };
+		654162BB1C4F86E200BD035E /* PostSetLocationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostSetLocationTableViewController.swift; sourceTree = "<group>"; };
+		654162BD1C4F874600BD035E /* SearchLocationResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchLocationResultTableViewCell.swift; sourceTree = "<group>"; };
 		654FA8241C49566D00337FA7 /* InputContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputContainerViewController.swift; sourceTree = "<group>"; };
 		654FA8281C495B4E00337FA7 /* InputInterfaceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputInterfaceTableViewController.swift; sourceTree = "<group>"; };
 		6557F7AA1C2C655D00E6780D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
@@ -319,6 +329,8 @@
 			isa = PBXGroup;
 			children = (
 				65152F2D1C4BD94200DDB874 /* UITableViewExtension.swift */,
+				654162B41C4F7C0200BD035E /* UITableViewControllerExtension.swift */,
+				654162B61C4F7F2500BD035E /* UITableViewCellExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -349,6 +361,15 @@
 				65152F3E1C4CCB5700DDB874 /* PersonalPageTableViewController.swift */,
 			);
 			path = PersonalPages;
+			sourceTree = "<group>";
+		};
+		654162B81C4F80A800BD035E /* Shoot */ = {
+			isa = PBXGroup;
+			children = (
+				654162B91C4F80D500BD035E /* PostEditorTableViewCell.swift */,
+				654162BD1C4F874600BD035E /* SearchLocationResultTableViewCell.swift */,
+			);
+			path = Shoot;
 			sourceTree = "<group>";
 		};
 		654FA8231C49563600337FA7 /* Public */ = {
@@ -473,6 +494,7 @@
 				65BB67641C41029000355BBE /* TabbarShootViewController.swift */,
 				65BB67661C4103C200355BBE /* ShootViewController.swift */,
 				654162B21C4F629200BD035E /* PostEditorTableViewController.swift */,
+				654162BB1C4F86E200BD035E /* PostSetLocationTableViewController.swift */,
 			);
 			path = Shoot;
 			sourceTree = "<group>";
@@ -594,6 +616,7 @@
 		65CE59E61C2AF9CD008809B0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				654162B81C4F80A800BD035E /* Shoot */,
 				65152F361C4C968600DDB874 /* PersonalPages */,
 				65152F291C4BABBF00DDB874 /* Public */,
 				657C51861C46A5C80047A568 /* Follow */,
@@ -894,6 +917,7 @@
 				65BB67801C4140D100355BBE /* PrivateMessageListTableViewController.swift in Sources */,
 				6570C36F1C36936D00391EB8 /* FAction.swift in Sources */,
 				6559A0641C454CDA0027CECE /* SettingsListTableViewController.swift in Sources */,
+				654162B51C4F7C0200BD035E /* UITableViewControllerExtension.swift in Sources */,
 				654162B31C4F629200BD035E /* PostEditorTableViewController.swift in Sources */,
 				6570C3701C36936D00391EB8 /* FConstant.swift in Sources */,
 				65BB677A1C413D1B00355BBE /* InboxContainerViewController.swift in Sources */,
@@ -907,6 +931,7 @@
 				659606F11C3BC79100EE5A80 /* SegmentedControl.swift in Sources */,
 				6570C3731C36936D00391EB8 /* FNetManager.swift in Sources */,
 				6570C3741C36936D00391EB8 /* FStatus.swift in Sources */,
+				654162BC1C4F86E200BD035E /* PostSetLocationTableViewController.swift in Sources */,
 				6570C3751C36936D00391EB8 /* FTool.swift in Sources */,
 				6557F7B31C2CF13800E6780D /* SettingsTableViewController.swift in Sources */,
 				65DAC8401C2EB97F00335EFC /* NotificationAlertObserverProtocol.swift in Sources */,
@@ -914,6 +939,7 @@
 				65DAC83A1C2E5C7C00335EFC /* Constant.swift in Sources */,
 				6557F7BB1C2CFFD100E6780D /* CatArchiveEditTableViewController.swift in Sources */,
 				65DAC8421C2EBDA700335EFC /* LoginRequesterProtocol.swift in Sources */,
+				654162BE1C4F874600BD035E /* SearchLocationResultTableViewCell.swift in Sources */,
 				65BB67651C41029000355BBE /* TabbarShootViewController.swift in Sources */,
 				65DAC82C1C2E569600335EFC /* MainTabBarController.swift in Sources */,
 				65152F381C4C96AF00DDB874 /* PersonalPageTagTableViewCell.swift in Sources */,
@@ -927,12 +953,14 @@
 				65BB676E1C41313500355BBE /* FluxesListTableViewController.swift in Sources */,
 				65BB67771C4139CB00355BBE /* FluxDetailTableViewController.swift in Sources */,
 				65CE59981C2A7405008809B0 /* AppDelegate.swift in Sources */,
+				654162B71C4F7F2500BD035E /* UITableViewCellExtension.swift in Sources */,
 				65D54D281C31ACB000F7B450 /* Location.swift in Sources */,
 				65BB677E1C4140C200355BBE /* TrendsListTableViewController.swift in Sources */,
 				65CE59E81C2AF9E4008809B0 /* SearchResultTableViewCell.swift in Sources */,
 				65152F3C1C4C96D100DDB874 /* PersonalPageLocationTableViewCell.swift in Sources */,
 				6558EC571C359C67000783A2 /* CatArchiveDetailMapTableViewCell.swift in Sources */,
 				65BB67901C422D0100355BBE /* FluxCommentTableViewCell.swift in Sources */,
+				654162BA1C4F80D500BD035E /* PostEditorTableViewCell.swift in Sources */,
 				65152F3F1C4CCB5700DDB874 /* PersonalPageTableViewController.swift in Sources */,
 				65D54D231C312F0A00F7B450 /* Action.swift in Sources */,
 				65BB67961C42D29D00355BBE /* remoteNotificationTokens.swift in Sources */,
