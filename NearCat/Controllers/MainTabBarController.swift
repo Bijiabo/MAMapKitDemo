@@ -54,8 +54,8 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
         
         if let _ = viewController as? TabbarShootViewController {
-            let shootVC = storyboard?.instantiateViewControllerWithIdentifier("shootViewController") as! ShootViewController
-            presentViewController(shootVC, animated: true, completion: nil)
+            let shootVC = storyboard?.instantiateViewControllerWithIdentifier("shootViewControllerContainer")
+            presentViewController(shootVC!, animated: true, completion: nil)
             
             return false
         }

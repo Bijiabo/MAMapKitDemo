@@ -18,6 +18,7 @@
 		65152F3F1C4CCB5700DDB874 /* PersonalPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65152F3E1C4CCB5700DDB874 /* PersonalPageTableViewController.swift */; };
 		65152F411C4D27AD00DDB874 /* FluxItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65152F401C4D27AD00DDB874 /* FluxItem.xib */; };
 		65152F431C4D6EC600DDB874 /* FollowActionControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65152F421C4D6EC600DDB874 /* FollowActionControllerProtocol.swift */; };
+		654162B31C4F629200BD035E /* PostEditorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654162B21C4F629200BD035E /* PostEditorTableViewController.swift */; };
 		654FA8251C49566D00337FA7 /* InputContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654FA8241C49566D00337FA7 /* InputContainerViewController.swift */; };
 		654FA8291C495B4E00337FA7 /* InputInterfaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654FA8281C495B4E00337FA7 /* InputInterfaceTableViewController.swift */; };
 		6557F7AC1C2C655D00E6780D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6557F7AA1C2C655D00E6780D /* Alamofire.framework */; };
@@ -161,6 +162,7 @@
 		65152F3E1C4CCB5700DDB874 /* PersonalPageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPageTableViewController.swift; sourceTree = "<group>"; };
 		65152F401C4D27AD00DDB874 /* FluxItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FluxItem.xib; sourceTree = "<group>"; };
 		65152F421C4D6EC600DDB874 /* FollowActionControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowActionControllerProtocol.swift; sourceTree = "<group>"; };
+		654162B21C4F629200BD035E /* PostEditorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostEditorTableViewController.swift; sourceTree = "<group>"; };
 		654FA8241C49566D00337FA7 /* InputContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputContainerViewController.swift; sourceTree = "<group>"; };
 		654FA8281C495B4E00337FA7 /* InputInterfaceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputInterfaceTableViewController.swift; sourceTree = "<group>"; };
 		6557F7AA1C2C655D00E6780D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
@@ -470,6 +472,7 @@
 			children = (
 				65BB67641C41029000355BBE /* TabbarShootViewController.swift */,
 				65BB67661C4103C200355BBE /* ShootViewController.swift */,
+				654162B21C4F629200BD035E /* PostEditorTableViewController.swift */,
 			);
 			path = Shoot;
 			sourceTree = "<group>";
@@ -891,6 +894,7 @@
 				65BB67801C4140D100355BBE /* PrivateMessageListTableViewController.swift in Sources */,
 				6570C36F1C36936D00391EB8 /* FAction.swift in Sources */,
 				6559A0641C454CDA0027CECE /* SettingsListTableViewController.swift in Sources */,
+				654162B31C4F629200BD035E /* PostEditorTableViewController.swift in Sources */,
 				6570C3701C36936D00391EB8 /* FConstant.swift in Sources */,
 				65BB677A1C413D1B00355BBE /* InboxContainerViewController.swift in Sources */,
 				65DC08F71C49442900A956E5 /* PrivateMessageChatTableViewController.swift in Sources */,
