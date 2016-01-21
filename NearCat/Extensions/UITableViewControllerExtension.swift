@@ -17,4 +17,12 @@ extension UITableViewController {
         tableFooterView.backgroundColor = UIColor.clearColor()
         tableView.tableFooterView = tableFooterView
     }
+    
+    func extension_setupRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: "松开刷新喵")
+        refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.addSubview(refreshControl!)
+        tableView.sendSubviewToBack(refreshControl!)
+    }
 }

@@ -21,6 +21,7 @@ class ShootViewController: UIViewController {
     @IBOutlet weak var switchCameraButton: UIButton!
     @IBOutlet weak var takePhotoButton: UIButton!
     @IBOutlet weak var previewViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var galleryButton: UIButton!
     
     var session: AVCaptureSession!
     
@@ -53,6 +54,7 @@ class ShootViewController: UIViewController {
         
         setupCaptureSession()
         setupPreview()
+        updateGalleryPreviewPhoto()
         
         // check devices
         //checkDevices(devices)
@@ -483,6 +485,7 @@ class ShootViewController: UIViewController {
     
     func savePhotoToAlbumComplete(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: AnyObject) {
         print("savePhotoToAlbumComplete")
+        galleryButton.setBackgroundImage(image, forState: UIControlState.Normal)
     }
     
     @IBAction func tapCloseButton(sender: AnyObject) {
@@ -547,3 +550,89 @@ extension ShootViewController: AVCaptureFileOutputRecordingDelegate {
     }
 }
 
+// MARK: - load gallery photo
+extension ShootViewController {
+    
+    func updateGalleryPreviewPhoto() {
+        
+        let workingQueue = dispatch_queue_create("nc_queue", nil)
+        
+        dispatch_async(workingQueue) { () -> Void in
+            let userAlbumsOptions: PHFetchOptions = PHFetchOptions()
+            userAlbumsOptions.predicate = NSPredicate(format: "estimatedAssetCount > 0", argumentArray: nil)
+            
+            var endDate: NSDate?
+            var latestAsset: PHAsset?
+            
+            let userAlbums: PHFetchResult = PHAssetCollection.fetchAssetCollectionsWithType(PHAssetCollectionType.Moment, subtype: PHAssetCollectionSubtype.AlbumMyPhotoStream, options: userAlbumsOptions)
+            userAlbums.enumerateObjectsUsingBlock { (collection, index, stop) -> Void in
+                
+                let assetsFetchResult: PHFetchResult = PHAsset.fetchAssetsInAssetCollection(collection as! PHAssetCollection, options: nil)
+                
+                let asset: PHAsset = assetsFetchResult.lastObject as! PHAsset
+                
+                if endDate == nil {
+                    endDate = asset.creationDate
+                    latestAsset = asset
+                } else {
+                    if asset.creationDate > endDate {
+                        endDate = asset.creationDate
+                        latestAsset = asset
+                    }
+                }
+            }
+            
+            if latestAsset != nil {
+                let targetSize = CGSize(width: 120.0, height: 120.0)
+                PHImageManager.defaultManager().requestImageForAsset(latestAsset!, targetSize: targetSize, contentMode: PHImageContentMode.AspectFill, options: nil, resultHandler: { (image, info: [NSObject : AnyObject]?) -> Void in
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.galleryButton.setBackgroundImage(image, forState: UIControlState.Normal)
+                    })
+                    
+                })
+            }
+        }
+        
+        /*
+        let fetchOptions = PHFetchOptions()
+        fetchOptions.sortDescriptors = [
+            NSSortDescriptor(key: "creationDate", ascending: true)
+        ]
+        if #available(iOS 9.0, *) {
+            fetchOptions.fetchLimit = 1
+        }
+        
+        
+        let currentPhotoFetch = PHAsset.fetchAssetsWithMediaType(PHAssetMediaType.Image, options: fetchOptions)//PHAsset.fetchAssetsWithOptions(fetchOptions)
+        if currentPhotoFetch.count == 0 {return}
+        if let lastestPhotoAsset = currentPhotoFetch.lastObject as? PHAsset {
+            let targetSize = CGSize(width: 120.0, height: 120.0)
+            PHImageManager.defaultManager().requestImageForAsset(lastestPhotoAsset, targetSize: targetSize, contentMode: PHImageContentMode.AspectFill, options: nil, resultHandler: { (image, info: [NSObject : AnyObject]?) -> Void in
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.galleryButton.setBackgroundImage(image, forState: UIControlState.Normal)
+                })
+                
+            })
+            
+        }
+        */
+    }
+    
+}
+
+// MARK: - navigator
+extension ShootViewController {
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        guard let segueIdentifier = segue.identifier else {return}
+        switch segueIdentifier {
+        case "linkToPostEditor":
+            guard let targetVC = segue.destinationViewController as? PostEditorTableViewController else {return}
+            guard let previewImage = galleryButton.backgroundImageForState(UIControlState.Normal) else {return}
+            targetVC.previewImage = previewImage
+        default:
+            break
+        }
+    }
+    
+}

@@ -13,6 +13,12 @@ class PostEditorTableViewController: UITableViewController {
 
     let locationManager = CLLocationManager()
     var location: CLLocation = CLLocation()
+    var previewImage: UIImage = UIImage() {
+        didSet {
+            guard let editCell = tableView.cellForRowAtIndexPath( NSIndexPath(forRow: 0, inSection: 0) ) as? PostEditorTableViewCell else {return}
+            editCell.previewImageView.image = previewImage
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +86,7 @@ class PostEditorTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCellWithIdentifier("editCell", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCellWithIdentifier("editCell", forIndexPath: indexPath) as! PostEditorTableViewCell
             
             return cell
         default: //indexPath.section == 1

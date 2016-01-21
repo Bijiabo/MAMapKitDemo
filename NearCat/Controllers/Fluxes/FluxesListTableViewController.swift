@@ -14,20 +14,27 @@ class FluxesListTableViewController: UITableViewController {
     
     var listType: String = "follow"
     var hideNavigationBar: Bool = true
-    private var _fluxes: JSON = JSON([])
+    private var _fluxes: [JSON] = [JSON]()
     let downloader = ImageDownloader(
         configuration: ImageDownloader.defaultURLSessionConfiguration(),
         downloadPrioritization: .FIFO,
         maximumActiveDownloads: 4,
         imageCache: AutoPurgingImageCache()
     )
-//    let imageCache = AutoPurgingImageCache()
+    var page: Int = 1
+    var currentPage: Int = 1
+    var maxPage: Int = Int.max
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let nib: UINib = UINib(nibName: "LoadMoreCell", bundle: nil)
+        tableView.registerNib(nib, forCellReuseIdentifier: "loadMoreCell")
 
+        extension_setupFooterView()
+        extension_setupRefreshControl()
         _initViews()
-        _loadData()
+        _loadData(refresh: true)
     }
     
     private func _initViews() {
@@ -37,6 +44,10 @@ class FluxesListTableViewController: UITableViewController {
         
         let nib: UINib = UINib(nibName: "FluxItem", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "fluxItemCell")
+    }
+    
+    func refresh(sender: AnyObject) {
+        _loadData(refresh: true)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -54,67 +65,78 @@ class FluxesListTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return _fluxes.count
-    }
-    /*
-    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let currentData = _fluxes[indexPath.row]
-        let pictures = currentData["flux"]["picture"]
-        if pictures.count > 0 {
-            print("estimatedHeightForRowAtIndexPath")
-            return 400.0
+        switch section {
+        case 0:
+            return _fluxes.count
+        default: // 1
+            return 1
         }
-        print("estimatedHeightForRowAtIndexPath 200")
-        return 280.0
     }
-    */
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("fluxItemCell", forIndexPath: indexPath) as! FluxesListTableViewCell
-        cell.navigationController = navigationController
-
-        let currentData = _fluxes[indexPath.row]
-        let fluxData = currentData["flux"]
-        let userData = currentData["user"]
-        
-        cell.content = fluxData["content"].stringValue
-        cell.userName = userData["name"].stringValue
-        cell.id = fluxData["id"].intValue
-        
-        // set user's avatar
-        let avatarPath: String = userData["avatar"].stringValue
-        Helper.setRemoteImageForImageView(cell.avatarImageView, avatarURLString: "\(FConfiguration.sharedInstance.host)\(avatarPath)")
-        
-        // set content picture
-        let pictures = fluxData["picture"]
-        if pictures.count > 0 {
-            let currentPicture = pictures[0]
-            if currentPicture["height"].floatValue != 0 {
-                let imageHeight = Int( Float(view.frame.width - 16.0) / currentPicture["width"].floatValue * currentPicture["height"].floatValue )
-                cell.contentImageViewHeight.constant = CGFloat(imageHeight)
-            }
-            let picturePath: String = currentPicture["path"].stringValue
-            Helper.setRemoteImageForImageView(cell.contentImageView, avatarURLString: "\(FConfiguration.sharedInstance.host)\(picturePath)")
+        switch indexPath.section {
+        case 0:
+            let cell = tableView.dequeueReusableCellWithIdentifier("fluxItemCell", forIndexPath: indexPath) as! FluxesListTableViewCell
+            cell.navigationController = navigationController
             
-        } else {
-            cell.contentImageViewHeight.constant = 0
-            cell.contentImageView.image = nil
+            let currentData = _fluxes[indexPath.row]
+            let fluxData = currentData["flux"]
+            let userData = currentData["user"]
+            
+            cell.content = fluxData["content"].stringValue
+            cell.userName = userData["name"].stringValue
+            cell.id = fluxData["id"].intValue
+            
+            // set user's avatar
+            let avatarPath: String = userData["avatar"].stringValue
+            Helper.setRemoteImageForImageView(cell.avatarImageView, avatarURLString: "\(FConfiguration.sharedInstance.host)\(avatarPath)")
+            
+            // set content picture
+            let pictures = fluxData["picture"]
+            if pictures.count > 0 {
+                let currentPicture = pictures[0]
+                if currentPicture["height"].floatValue != 0 {
+                    let imageHeight = Int( Float(view.frame.width - 16.0) / currentPicture["width"].floatValue * currentPicture["height"].floatValue )
+                    cell.contentImageViewHeight.constant = CGFloat(imageHeight)
+                }
+                let picturePath: String = currentPicture["path"].stringValue
+                Helper.setRemoteImageForImageView(cell.contentImageView, avatarURLString: "\(FConfiguration.sharedInstance.host)\(picturePath)")
+                
+            } else {
+                cell.contentImageViewHeight.constant = 0
+                cell.contentImageView.image = nil
+            }
+            
+            cell.commentCount = fluxData["comment_count"].intValue
+            cell.likeCount = fluxData["like_count"].intValue
+            cell.distance = 0
+            
+            cell.userId = userData["id"].intValue
+            cell.following = userData["following"].boolValue
+            cell.followActionController = self
+            
+            return cell
+
+        default:
+            let cell = tableView.dequeueReusableCellWithIdentifier("loadMoreCell", forIndexPath: indexPath) as! LoadingTableViewCell
+            
+            if page < maxPage {
+                cell.loading = true
+                if currentPage == page {
+                    page += 1
+                }
+                _loadData()
+            } else {
+                cell.loading = false
+            }
+            
+            return cell
         }
-        
-        cell.commentCount = fluxData["comment_count"].intValue
-        cell.likeCount = fluxData["like_count"].intValue
-        cell.distance = 0
-        
-        cell.userId = userData["id"].intValue
-        cell.following = userData["following"].boolValue
-        cell.followActionController = self
-        
-        return cell
     }
 
     // MARK: - Table view delegate
@@ -132,10 +154,19 @@ class FluxesListTableViewController: UITableViewController {
     
     // MARK: - data functions
     
-    private func _loadData() {
-        Action.fluxes.list(page: 0) { (success, data, description) -> Void in
+    private func _loadData(refresh refresh: Bool = false) {
+        if page >= maxPage {return}
+        Action.fluxes.list(page: refresh ? 1 : page) { (success, data, description) -> Void in
+            self.refreshControl?.endRefreshing()
             if success {
-                self._fluxes = data
+                self.currentPage = self.page
+                
+                if data.count == 0 {
+                    self.maxPage = self.page
+                    self._setLoadingCellStatus(loading: false)
+                    return
+                }
+                self._fluxes += data.arrayValue
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.tableView.reloadData()
                 })
@@ -149,13 +180,18 @@ class FluxesListTableViewController: UITableViewController {
             }
         }
     }
+    
+    private func _setLoadingCellStatus(loading loading: Bool) {
+        guard let loadingCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)) as? LoadingTableViewCell else {return}
+        loadingCell.loading = loading
+    }
 }
 
 extension FluxesListTableViewController: FollowActionControllerProtocol {
     func follow(userId userId: Int) {
         Action.follow.follow(userId: userId) { (success, description) -> Void in
             if success {
-                for (index, value) in self._fluxes.arrayValue.enumerate() {
+                for (index, value) in self._fluxes.enumerate() {
                     if value["user"]["id"].intValue == userId {
                         self._fluxes[index]["user"]["following"] = true
                     }

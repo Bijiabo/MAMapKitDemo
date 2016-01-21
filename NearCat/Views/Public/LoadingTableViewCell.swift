@@ -22,6 +22,7 @@ class LoadingTableViewCell: UITableViewCell {
         selectionStyle = .None
         
         indicatorView = NVActivityIndicatorView(frame: loadingContainerView.bounds, type: NVActivityIndicatorType.BallScaleMultiple, color: Constant.Color.Theme )
+        loadingContainerView.addSubview(indicatorView)
         indicatorView.startAnimation()
     }
 
@@ -31,7 +32,7 @@ class LoadingTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    var loading: Bool = false {
+    var loading: Bool = true {
         didSet {
             if loading {
                 indicatorView.startAnimation()

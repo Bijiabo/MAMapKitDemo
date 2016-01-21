@@ -18,6 +18,8 @@
 		65152F3F1C4CCB5700DDB874 /* PersonalPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65152F3E1C4CCB5700DDB874 /* PersonalPageTableViewController.swift */; };
 		65152F411C4D27AD00DDB874 /* FluxItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65152F401C4D27AD00DDB874 /* FluxItem.xib */; };
 		65152F431C4D6EC600DDB874 /* FollowActionControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65152F421C4D6EC600DDB874 /* FollowActionControllerProtocol.swift */; };
+		652B384F1C50C302007F89E1 /* LoadMoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 652B384E1C50C302007F89E1 /* LoadMoreCell.xib */; };
+		652B38511C50E7FC007F89E1 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652B38501C50E7FC007F89E1 /* NSDateExtension.swift */; };
 		654162B31C4F629200BD035E /* PostEditorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654162B21C4F629200BD035E /* PostEditorTableViewController.swift */; };
 		654162B51C4F7C0200BD035E /* UITableViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654162B41C4F7C0200BD035E /* UITableViewControllerExtension.swift */; };
 		654162B71C4F7F2500BD035E /* UITableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654162B61C4F7F2500BD035E /* UITableViewCellExtension.swift */; };
@@ -167,6 +169,8 @@
 		65152F3E1C4CCB5700DDB874 /* PersonalPageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPageTableViewController.swift; sourceTree = "<group>"; };
 		65152F401C4D27AD00DDB874 /* FluxItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FluxItem.xib; sourceTree = "<group>"; };
 		65152F421C4D6EC600DDB874 /* FollowActionControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowActionControllerProtocol.swift; sourceTree = "<group>"; };
+		652B384E1C50C302007F89E1 /* LoadMoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadMoreCell.xib; sourceTree = "<group>"; };
+		652B38501C50E7FC007F89E1 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 		654162B21C4F629200BD035E /* PostEditorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostEditorTableViewController.swift; sourceTree = "<group>"; };
 		654162B41C4F7C0200BD035E /* UITableViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewControllerExtension.swift; sourceTree = "<group>"; };
 		654162B61C4F7F2500BD035E /* UITableViewCellExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtension.swift; sourceTree = "<group>"; };
@@ -331,6 +335,7 @@
 				65152F2D1C4BD94200DDB874 /* UITableViewExtension.swift */,
 				654162B41C4F7C0200BD035E /* UITableViewControllerExtension.swift */,
 				654162B61C4F7F2500BD035E /* UITableViewCellExtension.swift */,
+				652B38501C50E7FC007F89E1 /* NSDateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -340,6 +345,7 @@
 			children = (
 				65152F311C4C0F9700DDB874 /* PersonalPage.xib */,
 				65152F401C4D27AD00DDB874 /* FluxItem.xib */,
+				652B384E1C50C302007F89E1 /* LoadMoreCell.xib */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -835,6 +841,7 @@
 				65152F411C4D27AD00DDB874 /* FluxItem.xib in Resources */,
 				65CE59A21C2A7405008809B0 /* LaunchScreen.storyboard in Resources */,
 				65CE599F1C2A7405008809B0 /* Assets.xcassets in Resources */,
+				652B384F1C50C302007F89E1 /* LoadMoreCell.xib in Resources */,
 				65152F321C4C0F9700DDB874 /* PersonalPage.xib in Resources */,
 				65CE599D1C2A7405008809B0 /* Main.storyboard in Resources */,
 			);
@@ -943,6 +950,7 @@
 				65BB67651C41029000355BBE /* TabbarShootViewController.swift in Sources */,
 				65DAC82C1C2E569600335EFC /* MainTabBarController.swift in Sources */,
 				65152F381C4C96AF00DDB874 /* PersonalPageTagTableViewCell.swift in Sources */,
+				652B38511C50E7FC007F89E1 /* NSDateExtension.swift in Sources */,
 				654FA8251C49566D00337FA7 /* InputContainerViewController.swift in Sources */,
 				65CE599A1C2A7405008809B0 /* ViewController.swift in Sources */,
 				6577B2C01C34255C0096F72A /* CatArchiveEditLocationViewController.swift in Sources */,

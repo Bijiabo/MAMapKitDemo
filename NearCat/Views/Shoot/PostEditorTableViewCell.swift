@@ -9,6 +9,10 @@
 import UIKit
 
 class PostEditorTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var previewImageView: UIImageView!
+    @IBOutlet weak var contentTextView: UITextView!
+    @IBOutlet weak var contentCountLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
