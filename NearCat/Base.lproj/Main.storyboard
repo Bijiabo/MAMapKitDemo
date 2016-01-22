@@ -1543,9 +1543,6 @@
                                                     <constraint firstAttribute="width" constant="50" id="42f-jP-gHV"/>
                                                     <constraint firstAttribute="height" constant="50" id="UNo-6V-Jwt"/>
                                                 </constraints>
-                                                <connections>
-                                                    <segue destination="EG5-gB-Zem" kind="show" id="OjA-tZ-FmL"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -1703,40 +1700,6 @@
             </objects>
             <point key="canvasLocation" x="352" y="-368"/>
         </scene>
-        <!--Collection View Controller-->
-        <scene sceneID="WPh-nR-0ML">
-            <objects>
-                <collectionViewController id="EG5-gB-Zem" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="lKg-hk-Iow">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="f3L-ct-JuJ">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7ds-5j-8LE">
-                                <rect key="frame" x="0.0" y="64" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="EG5-gB-Zem" id="G9x-yi-2Au"/>
-                            <outlet property="delegate" destination="EG5-gB-Zem" id="O9t-En-4qd"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KGU-xS-cc3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1049" y="415"/>
-        </scene>
         <!--Title-->
         <scene sceneID="TH1-Pg-ktC">
             <objects>
@@ -1866,7 +1829,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="LPJ-Ie-y6l">
-                        <barButtonItem key="rightBarButtonItem" title="发布" id="mGO-8K-TF5"/>
+                        <barButtonItem key="rightBarButtonItem" title="发布" id="mGO-8K-TF5">
+                            <connections>
+                                <action selector="tapPostButton:" destination="FnC-FH-gsN" id="s0X-rt-d9C"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xYG-uG-gUE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2089,6 +2056,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FIo-8g-zJG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.29411764709999999" green="0.42352941179999998" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

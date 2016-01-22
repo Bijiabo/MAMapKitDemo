@@ -24,8 +24,8 @@ class ShootViewController: UIViewController {
     @IBOutlet weak var galleryButton: UIButton!
     
     var session: AVCaptureSession!
-    
     var savePath: String = String()
+    var selectedImages: [UIImage] = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -454,32 +454,27 @@ class ShootViewController: UIViewController {
         
         stillImageOutput.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: {
             (imageSampleBuffer: CMSampleBuffer!, error: NSError!) -> Void in
-            let exifAttachments = CMGetAttachment(imageSampleBuffer, kCGImagePropertyExifDictionary , nil)
-            if let exifAttachments = exifAttachments {
-                let resultExifAttachments = exifAttachments as! CFDictionaryRef
-                
-                let image = UIImage(data: AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageSampleBuffer))!
-                
-//                UIImageWriteToSavedPhotosAlbum(image, self, Selector("savePhotoToAlbumComplete:didFinishSavingWithError:contextInfo:"), nil)
-                
-                //crop photo to square
-                let size = image.size //CGSizeApplyAffineTransform(image.size, CGAffineTransformMakeScale(0.5, 0.5))
-                let hasAlpha = false
-                let scale: CGFloat = 0.0 // Automatically use scale factor of main screen
-                let targetWidthSize: CGFloat = size.width < size.height ? size.width : size.height
-                let targetSize = CGSize(width: targetWidthSize, height: targetWidthSize)
-                UIGraphicsBeginImageContextWithOptions(targetSize, !hasAlpha, scale)
-                let drawOrigin = CGPoint(x: 0, y: -abs(size.height - size.width)/2.0)
-                image.drawInRect(CGRect(origin: drawOrigin, size: size))
-                
-                let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
-                UIGraphicsEndImageContext()
-                
-                UIImageWriteToSavedPhotosAlbum(scaledImage, self, Selector("savePhotoToAlbumComplete:didFinishSavingWithError:contextInfo:"), nil)
-                
-            } else {
-                //TODO: tip user error
-            }
+            
+            var image = UIImage(data: AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageSampleBuffer))!
+            
+            //crop photo to square
+            let size = image.size
+            let hasAlpha = false
+            let scale: CGFloat = 0.0 // Automatically use scale factor of main screen
+            let targetWidthSize: CGFloat = size.width < size.height ? size.width : size.height
+            let targetSize = CGSize(width: targetWidthSize, height: targetWidthSize)
+            UIGraphicsBeginImageContextWithOptions(targetSize, !hasAlpha, scale)
+            let drawOrigin = CGPoint(x: 0, y: -abs(size.height - size.width)/2.0)
+            image.drawInRect(CGRect(origin: drawOrigin, size: size))
+            
+            image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            // save image to user's photo album
+            UIImageWriteToSavedPhotosAlbum(image, self, Selector("savePhotoToAlbumComplete:didFinishSavingWithError:contextInfo:"), nil)
+            
+            // add photo to selected image array
+            self.selectedImages.append(image)
         })
     }
     
@@ -592,30 +587,6 @@ extension ShootViewController {
                 })
             }
         }
-        
-        /*
-        let fetchOptions = PHFetchOptions()
-        fetchOptions.sortDescriptors = [
-            NSSortDescriptor(key: "creationDate", ascending: true)
-        ]
-        if #available(iOS 9.0, *) {
-            fetchOptions.fetchLimit = 1
-        }
-        
-        
-        let currentPhotoFetch = PHAsset.fetchAssetsWithMediaType(PHAssetMediaType.Image, options: fetchOptions)//PHAsset.fetchAssetsWithOptions(fetchOptions)
-        if currentPhotoFetch.count == 0 {return}
-        if let lastestPhotoAsset = currentPhotoFetch.lastObject as? PHAsset {
-            let targetSize = CGSize(width: 120.0, height: 120.0)
-            PHImageManager.defaultManager().requestImageForAsset(lastestPhotoAsset, targetSize: targetSize, contentMode: PHImageContentMode.AspectFill, options: nil, resultHandler: { (image, info: [NSObject : AnyObject]?) -> Void in
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.galleryButton.setBackgroundImage(image, forState: UIControlState.Normal)
-                })
-                
-            })
-            
-        }
-        */
     }
     
 }
@@ -628,8 +599,11 @@ extension ShootViewController {
         switch segueIdentifier {
         case "linkToPostEditor":
             guard let targetVC = segue.destinationViewController as? PostEditorTableViewController else {return}
-            guard let previewImage = galleryButton.backgroundImageForState(UIControlState.Normal) else {return}
-            targetVC.previewImage = previewImage
+            if !selectedImages.isEmpty {
+                targetVC.previewImage = selectedImages.last!
+                targetVC.selectedImages = selectedImages
+            }
+            
         default:
             break
         }

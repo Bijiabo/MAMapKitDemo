@@ -25,5 +25,17 @@ class PostEditorTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    var content: String {
+        get {
+            return contentTextView.text
+        }
+    }
+    
+    var contentCount: Int {
+        get {
+            return contentTextView.text.characters.count
+        }
+    }
 
 }

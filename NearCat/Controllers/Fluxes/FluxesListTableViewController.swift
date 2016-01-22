@@ -166,6 +166,11 @@ class FluxesListTableViewController: UITableViewController {
                     self._setLoadingCellStatus(loading: false)
                     return
                 }
+                
+                if refresh {
+                    self._fluxes.removeAll(keepCapacity: false)
+                }
+                
                 self._fluxes += data.arrayValue
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.tableView.reloadData()
