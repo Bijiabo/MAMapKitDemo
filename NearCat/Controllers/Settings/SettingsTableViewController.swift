@@ -20,6 +20,7 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
     }
     private var headerCell: PersonalSettingHeaderTableViewCell? = nil
     private var _userInformation: JSON = JSON([])
+    private var _alertSheetActive: Bool = false // for background long press action
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,6 +150,7 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
             let cell = tableView.dequeueReusableCellWithIdentifier("personalPageHeaderCell", forIndexPath: indexPath) as! PersonalSettingHeaderTableViewCell
             headerBackgroundImageView = cell.backgroundImageView
             headerCell = cell
+            cell.delegate = self
             
             _clearUserInformation()
             _updateHeaderCellContent()
@@ -323,5 +325,42 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
         headerCell.followingCount = 0
         headerCell.cats = [JSON(["name":"请登录喵喵喵"])]
         headerCell.avatarImageView.image = nil
+    }
+}
+
+extension SettingsTableViewController: PersonalSettingHeaderDelegate {
+    func tapAvatar() {
+        let actionSheet = KKActionSheet(title: "更换头像", cancelTitle:"取消", cancelAction: { () -> Void in
+        })
+        
+        actionSheet.addButton("拍照", isDestructive: false) { () -> Void in
+            
+        }
+        actionSheet.addButton("从相册中选取", isDestructive: false) { () -> Void in
+            
+        }
+        
+        actionSheet.show()
+    }
+    
+    func longPressBackgroundImage() {
+        let actionSheet = KKActionSheet(title: "更换背景图片", cancelTitle:"取消", cancelAction: { () -> Void in
+            self._alertSheetActive = false
+        })
+        
+        actionSheet.dismissBlock = {() in self._alertSheetActive = false}
+        
+        actionSheet.addButton("拍照", isDestructive: false) { () -> Void in
+            
+        }
+        actionSheet.addButton("从相册中选取", isDestructive: false) { () -> Void in
+            
+        }
+        
+        if !_alertSheetActive {
+            actionSheet.show()
+            _alertSheetActive = true
+        }
+        
     }
 }

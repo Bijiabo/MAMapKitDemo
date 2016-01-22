@@ -23,6 +23,7 @@
 		652B38951C5289BC007F89E1 /* MainRootViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652B38941C5289BC007F89E1 /* MainRootViewControllerExtension.swift */; };
 		652B38971C529B8C007F89E1 /* KKAlertSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652B38961C529B8C007F89E1 /* KKAlertSheet.swift */; };
 		652B38991C529BA1007F89E1 /* KKAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652B38981C529BA1007F89E1 /* KKAlertView.swift */; };
+		652B389B1C52B30D007F89E1 /* PersonalSettingHeaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652B389A1C52B30D007F89E1 /* PersonalSettingHeaderDelegate.swift */; };
 		654162B31C4F629200BD035E /* PostEditorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654162B21C4F629200BD035E /* PostEditorTableViewController.swift */; };
 		654162B51C4F7C0200BD035E /* UITableViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654162B41C4F7C0200BD035E /* UITableViewControllerExtension.swift */; };
 		654162B71C4F7F2500BD035E /* UITableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654162B61C4F7F2500BD035E /* UITableViewCellExtension.swift */; };
@@ -178,6 +179,7 @@
 		652B38941C5289BC007F89E1 /* MainRootViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainRootViewControllerExtension.swift; sourceTree = "<group>"; };
 		652B38961C529B8C007F89E1 /* KKAlertSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKAlertSheet.swift; sourceTree = "<group>"; };
 		652B38981C529BA1007F89E1 /* KKAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKAlertView.swift; sourceTree = "<group>"; };
+		652B389A1C52B30D007F89E1 /* PersonalSettingHeaderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalSettingHeaderDelegate.swift; sourceTree = "<group>"; };
 		654162B21C4F629200BD035E /* PostEditorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostEditorTableViewController.swift; sourceTree = "<group>"; };
 		654162B41C4F7C0200BD035E /* UITableViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewControllerExtension.swift; sourceTree = "<group>"; };
 		654162B61C4F7F2500BD035E /* UITableViewCellExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtension.swift; sourceTree = "<group>"; };
@@ -753,6 +755,7 @@
 				65DAC83F1C2EB97F00335EFC /* NotificationAlertObserverProtocol.swift */,
 				65DAC8411C2EBDA700335EFC /* LoginRequesterProtocol.swift */,
 				65152F421C4D6EC600DDB874 /* FollowActionControllerProtocol.swift */,
+				652B389A1C52B30D007F89E1 /* PersonalSettingHeaderDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -987,6 +990,7 @@
 				654162BA1C4F80D500BD035E /* PostEditorTableViewCell.swift in Sources */,
 				65152F3F1C4CCB5700DDB874 /* PersonalPageTableViewController.swift in Sources */,
 				65D54D231C312F0A00F7B450 /* Action.swift in Sources */,
+				652B389B1C52B30D007F89E1 /* PersonalSettingHeaderDelegate.swift in Sources */,
 				65BB67961C42D29D00355BBE /* remoteNotificationTokens.swift in Sources */,
 				65BB676A1C412F5C00355BBE /* FluxesContainerViewController.swift in Sources */,
 				6557F7B91C2CFFB300E6780D /* CatArchiveItemTableViewCell.swift in Sources */,

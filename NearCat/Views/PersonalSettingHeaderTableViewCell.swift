@@ -17,11 +17,17 @@ class PersonalSettingHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var catsLabel: UILabel!
     @IBOutlet weak var followAndThumbCountLabel: UILabel!
     
+    var delegate: PersonalSettingHeaderDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
         clipsToBounds = false
+        
+        // add tap gestures
+        avatarImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("tapAvatar:")))
+        backgroundImageView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: Selector("longPressBackgroundImage:")))
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -59,5 +65,15 @@ class PersonalSettingHeaderTableViewCell: UITableViewCell {
 
     private func _updateFollowAndThumbCountLabel() {
         followAndThumbCountLabel.text = "\(followingCount)人关注 \(thumbCount)个赞"
+    }
+    
+    // MARK: - user actions
+    
+    func tapAvatar(sender: UITapGestureRecognizer) {
+        delegate?.tapAvatar?()
+    }
+    
+    func longPressBackgroundImage(sender: UILongPressGestureRecognizer) {
+        delegate?.longPressBackgroundImage?()
     }
 }

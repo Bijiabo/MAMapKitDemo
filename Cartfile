@@ -1,5 +1,3 @@
 github "Bijiabo/FServiceManager"
 github "Alamofire/AlamofireImage" ~> 2.0
 github "ninjaprox/NVActivityIndicatorView"
-github "MengTo/Spring"
-github "Bijiabo/KKAlertView"

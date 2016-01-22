@@ -165,6 +165,7 @@ class KKActionSheet: UIView {
             }, completion: nil)
     }
     
+    var dismissBlock: ()->Void = {() in}
     func dismiss() {
         tempWindow.alpha = 1
         UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
@@ -176,6 +177,7 @@ class KKActionSheet: UIView {
                 self.removeFromSuperview()
                 self.tempWindow.hidden = true
                 self.tempWindow.alpha = 1
+                self.dismissBlock()
         }
     }
     
