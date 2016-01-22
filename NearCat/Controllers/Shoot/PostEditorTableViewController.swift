@@ -120,7 +120,13 @@ class PostEditorTableViewController: UITableViewController {
     @IBAction func tapPostButton(sender: AnyObject) {
         guard let editorCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as? PostEditorTableViewCell else {return}
         let content: String = editorCell.content
-        Action.fluxes.create(motion: "publish", content: content, image: nil) { (success, description) -> Void in
+        var imageData: NSData? = nil
+        if !selectedImages.isEmpty {
+            let firstImage: UIImage = selectedImages.first!
+            imageData = UIImageJPEGRepresentation(firstImage, 1)
+        }
+        
+        Action.fluxes.create(motion: "publish", content: content, image: imageData) { (success, description) -> Void in
             if success {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.dismissViewControllerAnimated(true, completion: nil)

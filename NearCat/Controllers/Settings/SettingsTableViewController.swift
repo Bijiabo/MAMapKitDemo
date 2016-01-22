@@ -213,7 +213,7 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         if !FHelper.logged_in {
-            _showLoginAlert()
+            _displayNeedLoginAccess()
             return
         }
         
@@ -223,7 +223,7 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
             guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? SettingListTableViewCell else {return}
             switch cell.identifier {
             case "quit":
-                FAction.logout()
+                _displayLogoutConfirm()
             case "myShare":
                 let vc = storyboard?.instantiateViewControllerWithIdentifier("fluxesList") as! FluxesListTableViewController
                 vc.title = "我的分享"
@@ -239,8 +239,32 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
         
     }
     
-    private func _showLoginAlert() {
-        NSNotificationCenter.defaultCenter().postNotificationName(Constant.Notification.Alert.showLoginTextField, object: self)
+    private func _displayNeedLoginAccess() {
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        let actionSheet = KKActionSheet(title: "操作需要登录后进行", cancelTitle:"取消", cancelAction: { () -> Void in
+            print("取消")
+        })
+        
+        actionSheet.addButton("已有账号", isDestructive: false) { () -> Void in
+            notificationCenter.postNotificationName(Constant.Notification.Alert.showLoginTextField, object: self)
+        }
+        actionSheet.addButton("注册新账号", isDestructive: false) { () -> Void in
+            notificationCenter.postNotificationName(Constant.Notification.Alert.showRegisterTextField, object: self)
+        }
+        
+        actionSheet.show()
+    }
+    
+    private func _displayLogoutConfirm() {
+        let actionSheet = KKActionSheet(title: "退出后将无法收取该账号的私信和动态通知", cancelTitle:"取消", cancelAction: { () -> Void in
+            print("取消")
+        })
+        
+        actionSheet.addButton("确认退出", isDestructive: true) { () -> Void in
+            FAction.logout()
+        }
+        
+        actionSheet.show()
     }
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {

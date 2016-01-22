@@ -14,10 +14,13 @@ class MainRootViewController: UIViewController {
     private var loadingAlertController: UIAlertController?
     private var hideLoadingAlertCompleteHandlerCache: ()->Void = {}
     
+    var alertController: UIAlertController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         addNotiicationObservers()
+        
     }
     
     func addNotiicationObservers() {
@@ -26,6 +29,10 @@ class MainRootViewController: UIViewController {
         for (key, notificationName): (String, String) in Constant.Notification.Alert.Dictionary {
             notificationCenter.addObserver(self, selector: Selector("\(key):"), name: notificationName, object: nil)
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
     }
 
 }
@@ -47,6 +54,21 @@ extension MainRootViewController: NotificationAlertObserverProtocol {
             showLoginAlert(successHandler: nil, cancelHandler: nil)
         }
         
+    }
+    
+    func showRegisterTextField(notification: NSNotification) {
+        if let requester = notification.object as? LoginRequesterProtocol {
+            showRegisterAlert(
+                successHandler: { () -> Void in
+                    requester.didLoginSuccess()
+                },
+                cancelHandler: { () -> Void in
+                    requester.didLoginCancel()
+                }
+            )
+        } else {
+            showRegisterAlert(successHandler: nil, cancelHandler: nil)
+        }
     }
     
     func showLoading(notification: NSNotification) {
