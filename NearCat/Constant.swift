@@ -96,249 +96,123 @@ public struct Constant {
     }
     
     struct TextStyle {
+        
+        struct instance {
+            
+            init(font: UIFont, color: UIColor) {
+                self.font = font
+                self.color = color
+            }
+            
+            var font = Constant.Font.Regular.Size_22
+            var color = Constant.Color.TextBlack
+        }
+        
+        typealias type = instance
+        
         // user
         struct User {
 
             struct Name {
-                struct Black {
-                    static let font = Constant.Font.Regular.Size_22
-                    static let color = Constant.Color.TextBlack
-                }
+                static let Black = TextStyle.instance(font: Constant.Font.Regular.Size_22, color: Constant.Color.TextBlack)
                 
-                struct Blue {
-                    static let font = Constant.Font.Regular.Size_22
-                    static let color = Constant.Color.Theme
-                }
+                static let Blue = TextStyle.instance(font: Constant.Font.Regular.Size_22, color: Constant.Color.Theme)
             }
         }
         
         // number
         struct Number {
-            struct Gray {
-                static let font = Constant.Font.Regular.Size_22
-                static let color = Constant.Color.TextGray
-            }
-            
-            struct Blue {
-                static let font = Constant.Font.Regular.Size_22
-                static let color = Constant.Color.Theme
-            }
+            static let Gray = TextStyle.instance(font: Constant.Font.Regular.Size_22, color: Constant.Color.TextGray)
+            static let Blue = TextStyle.instance(font: Constant.Font.Regular.Size_22, color: Constant.Color.Theme)
             
             struct Small {
-                struct Black {
-                    static let font = Constant.Font.Regular.Size_16
-                    static let color = Constant.Color.TextDeepGray
-                }
+                static let Black = TextStyle.instance(font: Constant.Font.Regular.Size_16, color: Constant.Color.TextDeepGray)
             }
         }
         
         // ABC
-        struct ABC {
-            static let font = Constant.Font.Medium.Size_22
-            static let color = Constant.Color.Theme
-        }
+        static let ABC = TextStyle.instance(font: Constant.Font.Medium.Size_22, color: Constant.Color.Theme)
         
         // button
         struct Button {
-            struct White {
-                static let font = Constant.Font.Regular.Size_22
-                static let color = UIColor.whiteColor()
-            }
-            
-            struct Blue {
-                static let font = Constant.Font.Medium.Size_18
-                static let color = Constant.Color.Theme
-            }
-            
-            struct Black {
-                static let font = Constant.Font.Regular.Size_18
-                static let color = UIColor.blackColor()
-            }
-            
-            struct Red {
-                static let font = Constant.Font.Regular.Size_18
-                static let color = Constant.Color.Pink
-            }
+            static let White = TextStyle.instance(font: Constant.Font.Regular.Size_22, color: UIColor.whiteColor())
+            static let Blue = TextStyle.instance(font: Constant.Font.Medium.Size_18, color: Constant.Color.Theme)
+            static let Black = TextStyle.instance(font: Constant.Font.Regular.Size_18, color: UIColor.blackColor())
+            static let Red = TextStyle.instance(font: Constant.Font.Regular.Size_18, color: Constant.Color.Pink)
         }
         
         // navigation
         struct Navigation {
-            struct Title {
-                static let font = Constant.Font.Semibold.Size_18
-                static let color = Constant.Color.Theme
-            }
+            static let Title = TextStyle.instance(font: Constant.Font.Semibold.Size_18, color: Constant.Color.Theme)
             
             struct PrimaryButtonRight {
-                struct Blue {
-                    static let font = Constant.Font.Semibold.Size_17
-                    static let color = Constant.Color.Theme
-                }
-                
-                struct White {
-                    static let font = Constant.Font.Semibold.Size_17
-                    static let color = UIColor.whiteColor()
-                }
-                
-                struct Gray {
-                    static let font = Constant.Font.Semibold.Size_17
-                    static let color = Constant.Color.TextGray
-                }
+                static let Blue = TextStyle.instance(font: Constant.Font.Semibold.Size_17, color: Constant.Color.Theme)
+                static let White = TextStyle.instance(font: Constant.Font.Semibold.Size_17, color: UIColor.whiteColor())
+                static let Gray = TextStyle.instance(font: Constant.Font.Semibold.Size_17, color: Constant.Color.TextGray)
             }
         }
         
         // alert
         struct Alert {
-            struct Primary {
-                static let font = Constant.Font.Medium.Size_17
-                static let color = Constant.Color.Theme
-            }
-            
-            struct Button {
-                static let font = Constant.Font.Medium.Size_17
-                static let color = Constant.Color.Theme
-            }
-            
-            struct Title {
-                static let font = Constant.Font.Medium.Size_17
-                static let color = Constant.Color.TextBlack
-            }
-            
-            struct Description {
-                static let font = Constant.Font.Regular.Size_12
-                static let color = Constant.Color.Theme
-            }
+            static let Primary = TextStyle.instance(font: Constant.Font.Medium.Size_17, color: Constant.Color.Theme)
+            static let Button = TextStyle.instance(font: Constant.Font.Medium.Size_17, color: Constant.Color.Theme)
+            static let Title = TextStyle.instance(font: Constant.Font.Medium.Size_17, color: Constant.Color.TextBlack)
+            static let Description = TextStyle.instance(font: Constant.Font.Regular.Size_12, color: Constant.Color.Theme)
         }
         
         // segmented control
         struct SegmentedControl {
             struct Tab {
-                struct Active {
-                    static let font = Constant.Font.Regular.Size_16
-                    static let color = Constant.Color.TextDeepGray
-                }
-                
-                struct Normal {
-                    static let font = Constant.Font.Regular.Size_16
-                    static let color = Constant.Color.TextGray
-                }
-                
-                struct Blue {
-                    static let font = Constant.Font.Regular.Size_13
-                    static let color = Constant.Color.Theme
-                }
-                
-                struct White {
-                    static let font = Constant.Font.Regular.Size_13
-                    static let color = UIColor.whiteColor()
-                }
-                
-                struct Gray {
-                    static let font = Constant.Font.Regular.Size_13
-                    static let color = Constant.Color.TextMediumGray
-                }
+                static let Active = TextStyle.instance(font: Constant.Font.Regular.Size_16, color: Constant.Color.TextDeepGray)
+                static let Normal = TextStyle.instance(font: Constant.Font.Regular.Size_16, color: Constant.Color.TextGray)
+                static let Blue = TextStyle.instance(font: Constant.Font.Regular.Size_13, color: Constant.Color.Theme)
+                static let White = TextStyle.instance(font: Constant.Font.Regular.Size_13, color: UIColor.whiteColor())
+                static let Gray = TextStyle.instance(font: Constant.Font.Regular.Size_13, color: Constant.Color.TextMediumGray)
             }
             
             struct Selected {
-                struct Blue {
-                    static let font = Constant.Font.Regular.Size_16
-                    static let color = Constant.Color.Theme
-                }
-                
-                struct Gray {
-                    static let font = Constant.Font.Regular.Size_16
-                    static let color = Constant.Color.TextGray
-                }
+                static let Blue = TextStyle.instance(font: Constant.Font.Regular.Size_16, color: Constant.Color.Theme)
+                static let Gray = TextStyle.instance(font: Constant.Font.Regular.Size_16, color: Constant.Color.TextGray)
             }
         }
         
         // cell
         struct Cell {
             struct Title {
-                struct White {
-                    static let font = Constant.Font.Regular.Size_16
-                    static let color = UIColor.whiteColor()
-                }
-                
-                struct Blue {
-                    static let font = Constant.Font.Regular.Size_16
-                    static let color = Constant.Color.Theme
-                }
-                
-                struct Black {
-                    static let font = Constant.Font.Regular.Size_16
-                    static let color = Constant.Color.TextDeepGray
-                }
-                
-                struct Gray {
-                    static let font = Constant.Font.Regular.Size_13
-                    static let color = Constant.Color.TextMediumGray
-                }
+                static let White = TextStyle.instance(font: Constant.Font.Regular.Size_16, color: UIColor.whiteColor())
+                static let Blue = TextStyle.instance(font: Constant.Font.Regular.Size_16, color: Constant.Color.TextGray)
+                static let Black = TextStyle.instance(font: Constant.Font.Regular.Size_16, color: Constant.Color.TextDeepGray)
+                static let Gray = TextStyle.instance(font: Constant.Font.Regular.Size_13, color: Constant.Color.TextMediumGray)
             }
             
             struct Small {
                 
                 private static let font: UIFont = Constant.Font.Regular.Size_12
                 
-                struct Gray {
-                    static let font = Cell.Small.font
-                    static let color = Constant.Color.TextMediumGray
-                }
-                
-                struct Blue {
-                    static let font = Cell.Small.font
-                    static let color = Constant.Color.Theme
-                }
-                
-                struct White {
-                    static let font = Cell.Small.font
-                    static let color = Constant.Color.Theme
-                }
+                static let White = TextStyle.instance(font: Cell.Small.font, color: UIColor.whiteColor())
+                static let Blue = TextStyle.instance(font: Cell.Small.font, color: Constant.Color.Theme)
+                static let Gray = TextStyle.instance(font: Cell.Small.font, color: Constant.Color.TextMediumGray)
             }
         }
         
         // body
         struct Body {
-            struct Blue {
-                static let font = Constant.Font.Regular.Size_14
-                static let color = Constant.Color.Theme
-            }
             
-            struct Gray {
-                static let font = Constant.Font.Regular.Size_14
-                static let color = Constant.Color.TextMediumGray
-            }
-            
-            struct White {
-                static let font = Constant.Font.Regular.Size_14
-                static let color = UIColor.whiteColor()
-            }
-            
-            struct Black {
-                static let font = Constant.Font.Regular.Size_14
-                static let color = Constant.Color.TextDeepGray
-            }
+            static let Blue = TextStyle.instance(font: Constant.Font.Regular.Size_14, color: Constant.Color.Theme)
+            static let Gray = TextStyle.instance(font: Constant.Font.Regular.Size_14, color: Constant.Color.TextMediumGray)
+            static let White = TextStyle.instance(font: Constant.Font.Regular.Size_14, color: UIColor.whiteColor())
+            static let Black = TextStyle.instance(font: Constant.Font.Regular.Size_14, color: Constant.Color.TextDeepGray)
         }
         
         // placeholder
-        struct Placeholder {
-            static let font = Constant.Font.Regular.Size_13
-            static let color = Constant.Color.TextGray
-        }
+        static let Placeholder = TextStyle.instance(font: Constant.Font.Regular.Size_13, color: Constant.Color.TextGray)
         
         // tab bar
         struct TabBar {
-            
             private static let font: UIFont = Constant.Font.Regular.Size_10
             
-            struct Normal {
-                static let font = TextStyle.TabBar.font
-                static let color = UIColor(red:0.56, green:0.56, blue:0.58, alpha:1)
-            }
-            
-            struct Active {
-                static let font = TextStyle.TabBar.font
-                static let color = UIColor(red:0.56, green:0.56, blue:0.58, alpha:1)
-            }
+            static let Normal = TextStyle.instance(font: TextStyle.TabBar.font, color: UIColor(red:0.56, green:0.56, blue:0.58, alpha:1))
+            static let Active = TextStyle.instance(font: TextStyle.TabBar.font, color: UIColor(red:0.56, green:0.56, blue:0.58, alpha:1))
         }
     }
     

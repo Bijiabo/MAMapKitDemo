@@ -12,8 +12,11 @@ import UIKit
 extension Helper {
     
     public class UI {
-        
-        
+        class func setLabel(label: UILabel, forStyle style: Constant.TextStyle.type) {
+            label.font = style.font
+            label.tintColor = style.color
+        }
+
     }
     
 }
