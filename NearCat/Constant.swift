@@ -43,7 +43,9 @@ public struct Constant {
         static let TextGray: UIColor = UIColor(red:0.61, green:0.61, blue:0.61, alpha:1)
         static let TextDeepGray: UIColor = UIColor(red:0.29, green:0.29, blue:0.29, alpha:1)
         static let TextMediumGray: UIColor = UIColor(red:0.51, green:0.51, blue:0.51, alpha:1)
+        
         static let TableViewSeparator: UIColor = UIColor(red:0.87, green:0.87, blue:0.87, alpha:0.5)
+        static let TableViewBackground: UIColor = UIColor(red:0.96, green:0.96, blue:0.96, alpha:1)
     }
     
     struct Font {

@@ -11,6 +11,8 @@
 		650AD0641C53F333000BFA59 /* Helper.Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6559A0561C4539C20027CECE /* Helper.Controller.swift */; };
 		650AD0661C53F44F000BFA59 /* MediaPickerNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650AD0651C53F44F000BFA59 /* MediaPickerNavigationViewController.swift */; };
 		650AD0681C53F4EB000BFA59 /* ShootNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650AD0671C53F4EB000BFA59 /* ShootNavigationViewController.swift */; };
+		650AD06A1C53FC01000BFA59 /* MyArchiveSettingAvatarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650AD0691C53FC01000BFA59 /* MyArchiveSettingAvatarTableViewCell.swift */; };
+		650AD06C1C53FDCD000BFA59 /* MyArchiveSettingItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650AD06B1C53FDCD000BFA59 /* MyArchiveSettingItemTableViewCell.swift */; };
 		65152F271C4BAA1700DDB874 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65152F261C4BAA1700DDB874 /* NVActivityIndicatorView.framework */; };
 		65152F281C4BAA1700DDB874 /* NVActivityIndicatorView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65152F261C4BAA1700DDB874 /* NVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65152F2B1C4BAC5900DDB874 /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65152F2A1C4BAC5900DDB874 /* LoadingTableViewCell.swift */; };
@@ -193,6 +195,8 @@
 /* Begin PBXFileReference section */
 		650AD0651C53F44F000BFA59 /* MediaPickerNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPickerNavigationViewController.swift; sourceTree = "<group>"; };
 		650AD0671C53F4EB000BFA59 /* ShootNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShootNavigationViewController.swift; sourceTree = "<group>"; };
+		650AD0691C53FC01000BFA59 /* MyArchiveSettingAvatarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyArchiveSettingAvatarTableViewCell.swift; path = Settings/MyArchiveSettingAvatarTableViewCell.swift; sourceTree = "<group>"; };
+		650AD06B1C53FDCD000BFA59 /* MyArchiveSettingItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyArchiveSettingItemTableViewCell.swift; path = Settings/MyArchiveSettingItemTableViewCell.swift; sourceTree = "<group>"; };
 		65152F261C4BAA1700DDB874 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = Carthage/Build/iOS/NVActivityIndicatorView.framework; sourceTree = "<group>"; };
 		65152F2A1C4BAC5900DDB874 /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
 		65152F2D1C4BD94200DDB874 /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
@@ -853,6 +857,8 @@
 			isa = PBXGroup;
 			children = (
 				65625BEF1C43F5D60068176F /* SettingListTableViewCell.swift */,
+				650AD0691C53FC01000BFA59 /* MyArchiveSettingAvatarTableViewCell.swift */,
+				650AD06B1C53FDCD000BFA59 /* MyArchiveSettingItemTableViewCell.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -1137,6 +1143,7 @@
 				6570C3731C36936D00391EB8 /* FNetManager.swift in Sources */,
 				6570C3741C36936D00391EB8 /* FStatus.swift in Sources */,
 				654162BC1C4F86E200BD035E /* PostSetLocationTableViewController.swift in Sources */,
+				650AD06C1C53FDCD000BFA59 /* MyArchiveSettingItemTableViewCell.swift in Sources */,
 				6570C3751C36936D00391EB8 /* FTool.swift in Sources */,
 				6557F7B31C2CF13800E6780D /* SettingsTableViewController.swift in Sources */,
 				652B38AD1C53B27E007F89E1 /* ALPermissionsView.swift in Sources */,
@@ -1186,6 +1193,7 @@
 				6559A05E1C4546610027CECE /* SettingsNavigationViewController.swift in Sources */,
 				65DC08F91C49503800A956E5 /* PrivateMessageChatContainerViewController.swift in Sources */,
 				65DAC81B1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift in Sources */,
+				650AD06A1C53FC01000BFA59 /* MyArchiveSettingAvatarTableViewCell.swift in Sources */,
 				652B38CD1C53B6FD007F89E1 /* BrowseCollectionViewController.swift in Sources */,
 				65B6A8E31C480D32004F3603 /* Users.swift in Sources */,
 				652B38951C5289BC007F89E1 /* MainRootViewControllerExtension.swift in Sources */,

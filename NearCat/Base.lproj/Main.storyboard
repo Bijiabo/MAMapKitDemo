@@ -1021,35 +1021,112 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="157" id="OEo-kX-a2c">
-                                <rect key="frame" x="0.0" y="28" width="600" height="157"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myArchiveSettingAvatarCell" rowHeight="148" id="OEo-kX-a2c" customClass="MyArchiveSettingAvatarTableViewCell" customModule="NearCat" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="148"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OEo-kX-a2c" id="vtJ-tR-y3W">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="156.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="147.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="X6t-cC-dxw" customClass="AvatarImageView" customModule="NearCat" customModuleProvider="target">
-                                            <rect key="frame" x="250" y="29" width="100" height="100"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1it-eV-Akk" userLabel="AvatarContainer">
+                                            <rect key="frame" x="250" y="24" width="100" height="100"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="X6t-cC-dxw" customClass="AvatarImageView" customModule="NearCat" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="foc-uW-3lf"/>
+                                                        <constraint firstAttribute="height" constant="100" id="tvO-Mr-ate"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="修改头像" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ouz-p0-OrZ">
+                                                    <rect key="frame" x="0.0" y="70" width="100" height="30"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.50412788120567376" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="eot-en-obl"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="100" id="foc-uW-3lf"/>
-                                                <constraint firstAttribute="height" constant="100" id="tvO-Mr-ate"/>
+                                                <constraint firstItem="X6t-cC-dxw" firstAttribute="centerX" secondItem="1it-eV-Akk" secondAttribute="centerX" id="1vm-v9-R7H"/>
+                                                <constraint firstItem="X6t-cC-dxw" firstAttribute="centerY" secondItem="1it-eV-Akk" secondAttribute="centerY" id="5Ts-lS-okj"/>
+                                                <constraint firstItem="Ouz-p0-OrZ" firstAttribute="leading" secondItem="1it-eV-Akk" secondAttribute="leading" id="Khp-3U-d24"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ouz-p0-OrZ" secondAttribute="trailing" id="V6s-oz-9lT"/>
+                                                <constraint firstAttribute="height" constant="100" id="VK6-2d-n9e"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ouz-p0-OrZ" secondAttribute="bottom" id="egZ-ro-zLO"/>
+                                                <constraint firstAttribute="width" constant="100" id="iiM-xa-cDY"/>
+                                                <constraint firstItem="Ouz-p0-OrZ" firstAttribute="centerX" secondItem="1it-eV-Akk" secondAttribute="centerX" id="r6n-LO-RZ8"/>
                                             </constraints>
-                                        </imageView>
+                                        </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="X6t-cC-dxw" firstAttribute="centerY" secondItem="vtJ-tR-y3W" secondAttribute="centerY" id="Zo4-w4-3Pf"/>
-                                        <constraint firstItem="X6t-cC-dxw" firstAttribute="centerX" secondItem="vtJ-tR-y3W" secondAttribute="centerX" id="oBm-LW-S8J"/>
+                                        <constraint firstItem="1it-eV-Akk" firstAttribute="centerX" secondItem="vtJ-tR-y3W" secondAttribute="centerX" id="LfF-aF-3ya"/>
+                                        <constraint firstItem="1it-eV-Akk" firstAttribute="centerY" secondItem="vtJ-tR-y3W" secondAttribute="centerY" id="lFr-TY-dzE"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="avatarContainerView" destination="1it-eV-Akk" id="uGX-8E-KqC"/>
+                                    <outlet property="avatarImageView" destination="X6t-cC-dxw" id="m2w-V7-KYz"/>
+                                    <outlet property="avatarLabel" destination="Ouz-p0-OrZ" id="mhi-iJ-cqn"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userArchiveCell" rowHeight="66" id="rOd-ar-U4x">
-                                <rect key="frame" x="0.0" y="185" width="600" height="66"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userArchiveCell" rowHeight="66" id="rOd-ar-U4x" customClass="MyArchiveSettingItemTableViewCell" customModule="NearCat" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="176" width="600" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rOd-ar-U4x" id="Hni-Aj-yHp">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="65.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Vj-st-w2M">
+                                            <rect key="frame" x="24" y="24" width="120" height="17"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="120" id="2Az-4L-bmO"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.29411764709999999" green="0.42352941179999998" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_next" translatesAutoresizingMaskIntoConstraints="NO" id="f5M-LI-xJy">
+                                            <rect key="frame" x="552" y="9" width="48" height="48"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="48" id="E5D-xk-mUr"/>
+                                                <constraint firstAttribute="width" constant="48" id="YC0-KZ-f0p"/>
+                                            </constraints>
+                                        </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L8f-4G-arh" userLabel="SeparatorView">
+                                            <rect key="frame" x="24" y="64.5" width="576" height="1"/>
+                                            <color key="backgroundColor" red="0.86302219680000003" green="0.86302219680000003" blue="0.86302219680000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="jne-os-LmC"/>
+                                            </constraints>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSU-15-Dbh">
+                                            <rect key="frame" x="164" y="24" width="400" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="L8f-4G-arh" secondAttribute="trailing" id="41A-5s-iWx"/>
+                                        <constraint firstItem="WSU-15-Dbh" firstAttribute="centerY" secondItem="Hni-Aj-yHp" secondAttribute="centerY" id="7BL-hE-X7x"/>
+                                        <constraint firstAttribute="bottom" secondItem="L8f-4G-arh" secondAttribute="bottom" id="7jL-5B-9Vp"/>
+                                        <constraint firstAttribute="trailing" secondItem="WSU-15-Dbh" secondAttribute="trailing" constant="36" id="EEA-jC-IFZ"/>
+                                        <constraint firstAttribute="trailing" secondItem="f5M-LI-xJy" secondAttribute="trailing" id="FM4-Le-MJa"/>
+                                        <constraint firstItem="WSU-15-Dbh" firstAttribute="leading" secondItem="9Vj-st-w2M" secondAttribute="trailing" constant="20" id="PYB-sE-4DH"/>
+                                        <constraint firstItem="9Vj-st-w2M" firstAttribute="centerY" secondItem="Hni-Aj-yHp" secondAttribute="centerY" id="lVZ-wv-jqk"/>
+                                        <constraint firstItem="L8f-4G-arh" firstAttribute="leading" secondItem="Hni-Aj-yHp" secondAttribute="leading" constant="24" id="m1C-fk-QdZ"/>
+                                        <constraint firstItem="f5M-LI-xJy" firstAttribute="centerY" secondItem="Hni-Aj-yHp" secondAttribute="centerY" id="q4D-LA-ExO"/>
+                                        <constraint firstItem="9Vj-st-w2M" firstAttribute="leading" secondItem="Hni-Aj-yHp" secondAttribute="leading" constant="24" id="sIY-bd-daa"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="separatorLineView" destination="L8f-4G-arh" id="xo2-6C-tNA"/>
+                                    <outlet property="titleLabel" destination="9Vj-st-w2M" id="AvM-L2-5G7"/>
+                                    <outlet property="valueLabel" destination="WSU-15-Dbh" id="XXT-Tp-k0l"/>
                                     <segue destination="cPx-Ml-nT1" kind="show" id="6qI-eJ-q93"/>
                                 </connections>
                             </tableViewCell>
@@ -2113,6 +2190,6 @@
         <image name="tab bar_icon_set_sel" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oNX-dc-zo5"/>
+        <segue reference="j3f-S4-QfP"/>
     </inferredMetricsTieBreakers>
 </document>
