@@ -72,7 +72,7 @@ class FluxDetailViewController: InputContainerViewController {
     
     var parementCommentId: Int? = nil {
         didSet {
-            guard let parementCommentId = parementCommentId else {return}
+            guard let _ = parementCommentId else {return}
             commentTextField.becomeFirstResponder()
         }
     }

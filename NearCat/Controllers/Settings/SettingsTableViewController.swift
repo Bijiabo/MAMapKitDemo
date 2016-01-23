@@ -48,6 +48,8 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
         
         let nib: UINib = UINib(nibName: "PersonalPage", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "personalPageHeaderCell")
+        
+        tableView.separatorStyle = .None
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -171,6 +173,13 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
                 cell.identifier = id
             }
             
+            let rowsCount = self.tableView(tableView, numberOfRowsInSection: indexPath.section)
+            if indexPath.row + 1 == rowsCount {
+                cell.displaySeparator = false
+            } else {
+                cell.displaySeparator = true
+            }
+            
             return cell
         }
         
@@ -232,7 +241,7 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
                 vc.hideNavigationBar = false
                 navigationController?.pushViewController(vc, animated: true)
             default:
-                let vc = Helper.Controller.getByStoryboardIdentifier(cell.identifier)
+                let vc = Helper.Controller.instanceForStoryboardByName("Main", ForIdentifier: cell.identifier)
                 vc.title = cell.title
                 navigationController?.pushViewController(vc, animated: true)
                 break
@@ -334,10 +343,12 @@ extension SettingsTableViewController: PersonalSettingHeaderDelegate {
         })
         
         actionSheet.addButton("拍照", isDestructive: false) { () -> Void in
-            
+            let shootVC = Helper.Controller.Shoot
+            self.presentViewController(shootVC, animated: true, completion: nil)
         }
         actionSheet.addButton("从相册中选取", isDestructive: false) { () -> Void in
-            
+            let mediaPickerNavigationVC = Helper.Controller.MediaPicker
+            self.presentViewController(mediaPickerNavigationVC, animated: true, completion: nil)
         }
         
         actionSheet.show()
@@ -351,10 +362,12 @@ extension SettingsTableViewController: PersonalSettingHeaderDelegate {
         actionSheet.dismissBlock = {() in self._alertSheetActive = false}
         
         actionSheet.addButton("拍照", isDestructive: false) { () -> Void in
-            
+            let shootVC = Helper.Controller.Shoot
+            self.presentViewController(shootVC, animated: true, completion: nil)
         }
         actionSheet.addButton("从相册中选取", isDestructive: false) { () -> Void in
-            
+            let mediaPickerNavigationVC = Helper.Controller.MediaPicker
+            self.presentViewController(mediaPickerNavigationVC, animated: true, completion: nil)
         }
         
         if !_alertSheetActive {

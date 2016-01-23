@@ -43,6 +43,7 @@ public struct Constant {
         static let TextGray: UIColor = UIColor(red:0.61, green:0.61, blue:0.61, alpha:1)
         static let TextDeepGray: UIColor = UIColor(red:0.29, green:0.29, blue:0.29, alpha:1)
         static let TextMediumGray: UIColor = UIColor(red:0.51, green:0.51, blue:0.51, alpha:1)
+        static let TableViewSeparator: UIColor = UIColor(red:0.87, green:0.87, blue:0.87, alpha:0.5)
     }
     
     struct Font {
@@ -180,7 +181,7 @@ public struct Constant {
         struct Cell {
             struct Title {
                 static let White = TextStyle.instance(font: Constant.Font.Regular.Size_16, color: UIColor.whiteColor())
-                static let Blue = TextStyle.instance(font: Constant.Font.Regular.Size_16, color: Constant.Color.TextGray)
+                static let Blue = TextStyle.instance(font: Constant.Font.Regular.Size_16, color: Constant.Color.Theme)
                 static let Black = TextStyle.instance(font: Constant.Font.Regular.Size_16, color: Constant.Color.TextDeepGray)
                 static let Gray = TextStyle.instance(font: Constant.Font.Regular.Size_13, color: Constant.Color.TextMediumGray)
             }

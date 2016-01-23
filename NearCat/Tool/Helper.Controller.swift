@@ -13,8 +13,20 @@ extension Helper {
     
     public class Controller {
         
-        public class func getByStoryboardIdentifier(identifier: String) -> UIViewController {
-            return UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(identifier)
+        public class func instanceForStoryboardByName(storyboardName: String, ForIdentifier identifier: String) -> UIViewController {
+            return UIStoryboard(name: storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(identifier)
+        }
+        
+        class var Shoot: ShootNavigationViewController {
+            get {
+                return Helper.Controller.instanceForStoryboardByName("Main", ForIdentifier: "shootViewControllerContainer") as! ShootNavigationViewController
+            }
+        }
+        
+        class var MediaPicker: MediaPickerNavigationViewController {
+            get {
+                return Helper.Controller.instanceForStoryboardByName("MediaPicker", ForIdentifier: "mediaPickerNavigationVC") as! MediaPickerNavigationViewController
+            }
         }
         
     }
