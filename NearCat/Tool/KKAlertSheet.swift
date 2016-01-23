@@ -25,7 +25,8 @@ private let TitleColor = UIColor.grayColor()
 
 private let ButtonNormalBackgroundColor = UIColor.whiteColor()
 private let ButtonHighlightedBackgroundColor = UIColor(red: 244/255.0, green: 244/255.0, blue: 244/255.0, alpha:1)
-private let ButtonTitleColor = Constant.Color.Theme
+private let ButtonTitleColor = UIColor.blackColor()
+private let ButtonCancelTitleColor = Constant.Color.Theme
 private let ButtonDestructiveTitleColor = Constant.Color.Pink
 private let ButtonTitleFont = UIFont.systemFontOfSize(16)
 
@@ -91,7 +92,7 @@ class KKActionSheet: UIView {
         let cancelButton = UIButton(frame: CGRectMake(0.0, CancelLineHeight, ScreenWidth, ButtonHeight))
         cancelButton.setBackgroundImage(UIImage.getImageWithColor(ButtonNormalBackgroundColor), forState: UIControlState.Normal)
         cancelButton.setBackgroundImage(UIImage.getImageWithColor(ButtonHighlightedBackgroundColor), forState: UIControlState.Highlighted)
-        cancelButton.setTitleColor(ButtonTitleColor, forState: UIControlState.Normal)
+        cancelButton.setTitleColor(ButtonCancelTitleColor, forState: UIControlState.Normal)
         cancelButton.setTitle(cancelTitle, forState: UIControlState.Normal)
         cancelButton.titleLabel?.font = ButtonTitleFont
         cancelButton.addTarget(self, action: Selector("cancelButtonClicked"), forControlEvents: UIControlEvents.TouchUpInside)
