@@ -106,40 +106,40 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
             [
                 "id": "myArchiveList",
                 "title": "我的资料",
-                "icon": "",
+                "icon": "set_icon_my_profile",
                 
             ],
             [
                 "id": "catArchiveList",
                 "title": "猫咪资料",
-                "icon": ""
+                "icon": "set_icon_cat_archive"
             ],
             [
                 "id": "myFollowList",
                 "title": "我关注的",
-                "icon": ""
+                "icon": "set_icon_following"
             ],
             [
                 "id": "myShare",
                 "title": "我的分享",
-                "icon": ""
+                "icon": "set_icon_my_share"
             ]
         ],
         [
             [
                 "id": "settingsList",
                 "title": "设置",
-                "icon": ""
+                "icon": "set_icon_setting"
             ],
             [
                 "id": "feedback",
                 "title": "反馈",
-                "icon": ""
+                "icon": "set_icon_feedback"
             ],
             [
                 "id": "quit",
                 "title": "退出",
-                "icon": ""
+                "icon": "set_icon_my_share"
             ]
         ]
     ]
