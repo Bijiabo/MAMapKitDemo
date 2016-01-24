@@ -1,5 +1,5 @@
 //
-//  MyArchiveSettingItemTableViewCell.swift
+//  SelectionCatalogueTableViewCell.swift
 //  NearCat
 //
 //  Created by huchunbo on 16/1/24.
@@ -8,24 +8,20 @@
 
 import UIKit
 
-class MyArchiveSettingItemTableViewCell: UITableViewCell {
+class SelectionCatalogueTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var separatorLineView: UIView!
     
-    var identifier: String = String()
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-        Helper.UI.setLabel(titleLabel, forStyle: Constant.TextStyle.Body.Blue)
-        Helper.UI.setLabel(valueLabel, forStyle: Constant.TextStyle.Placeholder)
-        
         separatorLineView.backgroundColor = Constant.Color.TableViewSeparator
         
-        extension_setDefaultSelectedColor()
+        Helper.UI.setLabel(titleLabel, forStyle: Constant.TextStyle.Body.Blue)
+        Helper.UI.setLabel(valueLabel, forStyle: Constant.TextStyle.Placeholder)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -43,12 +39,6 @@ class MyArchiveSettingItemTableViewCell: UITableViewCell {
     var value: String = String() {
         didSet {
             valueLabel.text = value
-        }
-    }
-    
-    var displaySeparatorLine: Bool = true {
-        didSet {
-            separatorLineView.hidden = !displaySeparatorLine
         }
     }
 

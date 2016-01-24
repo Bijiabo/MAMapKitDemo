@@ -7,8 +7,49 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class MyArchiveTableViewController: SettingSecondaryTableViewController {
+    
+    var userData: JSON = JSON([])
+    var listViewData = [
+        [
+            [
+                "title": "头像",
+                "value": "",
+                "identifier": "avatar"
+            ]
+        ],
+        [
+            [
+                "title": "登录邮箱",
+                "value": "",
+                "identifier": "email"
+            ],
+            [
+                "title": "昵称",
+                "value": "",
+                "identifier": "name"
+            ],
+            [
+                "title": "性别",
+                "value": "",
+                "identifier": "gender"
+            ]
+        ],
+        [
+            [
+                "title": "地区",
+                "value": "",
+                "identifier": "region"
+            ],
+            [
+                "title": "说明",
+                "value": "",
+                "identifier": "introduction"
+            ]
+        ]
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +61,8 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
         clearsSelectionOnViewWillAppear = true
         
         extension_setupFooterView()
+        
+        _loadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,20 +73,15 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return listViewData.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 1
-        case 1:
-            return 3
-        case 2:
-            return 2
-        default:
-            return 0
+        if listViewData.count > section {
+            return listViewData[section].count
         }
+        
+        return 0
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -79,6 +117,8 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
             return cell
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier("userArchiveCell", forIndexPath: indexPath) as! MyArchiveSettingItemTableViewCell
+            let currentData = listViewData[indexPath.section][indexPath.row]
+            let identifier = currentData["identifier"]!
             
             if indexPath.row + 1 == self.tableView(tableView, numberOfRowsInSection: indexPath.section) {
                 cell.displaySeparatorLine = false
@@ -86,19 +126,84 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
                 cell.displaySeparatorLine = true
             }
             
+            cell.title = currentData["title"]!
+            cell.value = userData[identifier].stringValue
+            cell.identifier = identifier
+            
             return cell
         }
         
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        guard let segueIdentifier = segue.identifier else {return}
+        
+        switch segueIdentifier {
+        case "linkToSelectionVC":
+            guard let selectionVC = segue.destinationViewController as? SelectionTableViewController else {return}
+            guard let cell = sender as? MyArchiveSettingItemTableViewCell else {return}
+            
+            switch cell.identifier {
+            case "email":
+                selectionVC.type = .input
+                selectionVC.data = JSON(["placeholder": "您的电子邮件地址"])
+            case "name":
+                selectionVC.type = .input
+                selectionVC.data = JSON(["placeholder": "昵称"])
+            case "gender":
+                selectionVC.type = .singleItem
+                selectionVC.data = JSON([
+                    [
+                        "title": "女",
+                        "value": "0",
+                        "default": true
+                    ],
+                    [
+                        "title": "男",
+                        "value": "1",
+                    ]
+                    ])
+            case "region":
+                selectionVC.type = .catalogue
+                selectionVC.data = JSON([
+                    [
+                        "title": "女",
+                        "value": "0",
+                        "default": true
+                    ],
+                    [
+                        "title": "男",
+                        "value": "1",
+                    ]
+                    ])
+            case "introduction":
+                selectionVC.type = .input
+                selectionVC.data = JSON(["placeholder": "一句话简介"])
+            default:
+                break
+            }
+            
+        default:
+            break
+        }
     }
-    */
+    
 
+    // MARK: - data functions
+    
+    private func _loadData() {
+        Action.users.selfInformation { (success, data, description) -> Void in
+            if success {
+                self.userData = data
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadData()
+                })
+            }
+        }
+    }
 }

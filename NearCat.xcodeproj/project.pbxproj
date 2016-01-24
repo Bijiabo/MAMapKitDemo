@@ -162,6 +162,10 @@
 		65DC08F71C49442900A956E5 /* PrivateMessageChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DC08F61C49442900A956E5 /* PrivateMessageChatTableViewController.swift */; };
 		65DC08F91C49503800A956E5 /* PrivateMessageChatContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DC08F81C49503800A956E5 /* PrivateMessageChatContainerViewController.swift */; };
 		65DC58FC1C4916D8009D3FE6 /* PrivateMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DC58FB1C4916D8009D3FE6 /* PrivateMessages.swift */; };
+		65F4FFE81C54C11600816BEB /* SelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4FFE71C54C11600816BEB /* SelectionTableViewController.swift */; };
+		65F4FFEB1C54C1D500816BEB /* SelectionSingleItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4FFEA1C54C1D500816BEB /* SelectionSingleItemTableViewCell.swift */; };
+		65F4FFED1C54C20F00816BEB /* SelectionInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4FFEC1C54C20F00816BEB /* SelectionInputTableViewCell.swift */; };
+		65F4FFEF1C54C25B00816BEB /* SelectionCatalogueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4FFEE1C54C25B00816BEB /* SelectionCatalogueTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -351,6 +355,10 @@
 		65DC08F61C49442900A956E5 /* PrivateMessageChatTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessageChatTableViewController.swift; sourceTree = "<group>"; };
 		65DC08F81C49503800A956E5 /* PrivateMessageChatContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessageChatContainerViewController.swift; sourceTree = "<group>"; };
 		65DC58FB1C4916D8009D3FE6 /* PrivateMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessages.swift; sourceTree = "<group>"; };
+		65F4FFE71C54C11600816BEB /* SelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionTableViewController.swift; sourceTree = "<group>"; };
+		65F4FFEA1C54C1D500816BEB /* SelectionSingleItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionSingleItemTableViewCell.swift; sourceTree = "<group>"; };
+		65F4FFEC1C54C20F00816BEB /* SelectionInputTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionInputTableViewCell.swift; sourceTree = "<group>"; };
+		65F4FFEE1C54C25B00816BEB /* SelectionCatalogueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionCatalogueTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -856,6 +864,7 @@
 		65DAC8191C2D747800335EFC /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				65F4FFE91C54C1A000816BEB /* Selection */,
 				65625BEF1C43F5D60068176F /* SettingListTableViewCell.swift */,
 				650AD0691C53FC01000BFA59 /* MyArchiveSettingAvatarTableViewCell.swift */,
 				650AD06B1C53FDCD000BFA59 /* MyArchiveSettingItemTableViewCell.swift */,
@@ -883,6 +892,7 @@
 				6559A05B1C4544E10027CECE /* SettingSecondaryTableViewController.swift */,
 				65DAC81C1C2D902A00335EFC /* FeedbackViewController.swift */,
 				6559A05A1C453F230027CECE /* MyArchive */,
+				65F4FFE71C54C11600816BEB /* SelectionTableViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -928,6 +938,17 @@
 				652B389A1C52B30D007F89E1 /* PersonalSettingHeaderDelegate.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		65F4FFE91C54C1A000816BEB /* Selection */ = {
+			isa = PBXGroup;
+			children = (
+				65F4FFEA1C54C1D500816BEB /* SelectionSingleItemTableViewCell.swift */,
+				65F4FFEC1C54C20F00816BEB /* SelectionInputTableViewCell.swift */,
+				65F4FFEE1C54C25B00816BEB /* SelectionCatalogueTableViewCell.swift */,
+			);
+			name = Selection;
+			path = Settings/Selection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1118,6 +1139,7 @@
 				65BB67801C4140D100355BBE /* PrivateMessageListTableViewController.swift in Sources */,
 				6570C36F1C36936D00391EB8 /* FAction.swift in Sources */,
 				6559A0641C454CDA0027CECE /* SettingsListTableViewController.swift in Sources */,
+				65F4FFED1C54C20F00816BEB /* SelectionInputTableViewCell.swift in Sources */,
 				654162B51C4F7C0200BD035E /* UITableViewControllerExtension.swift in Sources */,
 				650AD0661C53F44F000BFA59 /* MediaPickerNavigationViewController.swift in Sources */,
 				654162B31C4F629200BD035E /* PostEditorTableViewController.swift in Sources */,
@@ -1130,6 +1152,7 @@
 				650AD0631C53F324000BFA59 /* ShootViewController.swift in Sources */,
 				652B38B61C53B2AD007F89E1 /* ALImagePickerViewController.swift in Sources */,
 				652B38D91C53DADF007F89E1 /* BrowseCollectionViewCell.swift in Sources */,
+				65F4FFEF1C54C25B00816BEB /* SelectionCatalogueTableViewCell.swift in Sources */,
 				65625BF01C43F5D60068176F /* SettingListTableViewCell.swift in Sources */,
 				65BB676C1C412FA700355BBE /* SegmentedControlDelegate.swift in Sources */,
 				65BB678A1C4145A500355BBE /* Cats.swift in Sources */,
@@ -1142,6 +1165,7 @@
 				659606F11C3BC79100EE5A80 /* SegmentedControl.swift in Sources */,
 				6570C3731C36936D00391EB8 /* FNetManager.swift in Sources */,
 				6570C3741C36936D00391EB8 /* FStatus.swift in Sources */,
+				65F4FFEB1C54C1D500816BEB /* SelectionSingleItemTableViewCell.swift in Sources */,
 				654162BC1C4F86E200BD035E /* PostSetLocationTableViewController.swift in Sources */,
 				650AD06C1C53FDCD000BFA59 /* MyArchiveSettingItemTableViewCell.swift in Sources */,
 				6570C3751C36936D00391EB8 /* FTool.swift in Sources */,
@@ -1198,6 +1222,7 @@
 				65B6A8E31C480D32004F3603 /* Users.swift in Sources */,
 				652B38951C5289BC007F89E1 /* MainRootViewControllerExtension.swift in Sources */,
 				65DAC81D1C2D902A00335EFC /* FeedbackViewController.swift in Sources */,
+				65F4FFE81C54C11600816BEB /* SelectionTableViewController.swift in Sources */,
 				65BB67751C4137E500355BBE /* AvatarImageView.swift in Sources */,
 				6570C3801C36D4D200391EB8 /* CatAnnotationView.swift in Sources */,
 				6557F7C61C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift in Sources */,
