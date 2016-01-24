@@ -8,12 +8,14 @@
 
 import UIKit
 
-class SelectionSingleItemTableViewCell: UITableViewCell {
+class SelectionSingleItemTableViewCell: UITableViewCell, CustomSeparatorCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var checkStatusImageView: UIImageView!
     @IBOutlet weak var separatorLineView: UIView!
 
+    var rawValue: String = String()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -51,6 +53,14 @@ class SelectionSingleItemTableViewCell: UITableViewCell {
             } else {
                 checkStatusImageView.hidden = false
             }
+        }
+    }
+    
+    var displaySeparatorLine: Bool = true {
+        didSet {
+            separatorLineView.hidden = !displaySeparatorLine
+            print(separatorLineView.hidden)
+            separatorLineView.hidden = !displaySeparatorLine
         }
     }
 

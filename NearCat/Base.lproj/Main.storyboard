@@ -1034,6 +1034,7 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="X6t-cC-dxw" customClass="AvatarImageView" customModule="NearCat" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                    <color key="backgroundColor" red="0.29411764709999999" green="0.42352941179999998" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="foc-uW-3lf"/>
                                                         <constraint firstAttribute="height" constant="100" id="tvO-Mr-ate"/>
@@ -1300,8 +1301,11 @@
                                                 <constraint firstAttribute="height" constant="1" id="cgD-FA-FWK"/>
                                             </constraints>
                                         </view>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="place holder" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="dS0-bd-6oX">
-                                            <rect key="frame" x="24" y="18" width="520" height="30"/>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="place holder" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="dS0-bd-6oX">
+                                            <rect key="frame" x="24" y="10" width="520" height="44"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="44" id="Xc3-Ec-G0u"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
@@ -1325,6 +1329,8 @@
                                         </view>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="dS0-bd-6oX" firstAttribute="top" secondItem="SFn-Ot-snR" secondAttribute="top" constant="8" id="0n1-2x-BBT"/>
+                                        <constraint firstItem="cew-7c-mzv" firstAttribute="top" secondItem="dS0-bd-6oX" secondAttribute="bottom" constant="8" id="1ct-kx-LZ3"/>
                                         <constraint firstAttribute="trailing" secondItem="cew-7c-mzv" secondAttribute="trailing" id="7Oq-a0-3z1"/>
                                         <constraint firstAttribute="bottom" secondItem="cew-7c-mzv" secondAttribute="bottom" id="KIz-Wq-tyI"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="X4c-FT-Rgs" secondAttribute="trailing" id="TT5-r0-uGE"/>
@@ -1337,7 +1343,9 @@
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
+                                            <exclude reference="0n1-2x-BBT"/>
                                             <exclude reference="dFd-2c-Jpz"/>
+                                            <exclude reference="1ct-kx-LZ3"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>

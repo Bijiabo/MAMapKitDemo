@@ -17,14 +17,29 @@ enum SelectionVCType {
 
 class SelectionTableViewController: UITableViewController {
     
+    var identifier: String = String()
     var type: SelectionVCType = .singleItem
     var data: JSON = JSON([])
+    var delegate: SelectionControllerDelegate?
+    var selectedData: [String: AnyObject] = [String: AnyObject]()
+    var originViewController: UIViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-         self.clearsSelectionOnViewWillAppear = true
-
+        self.clearsSelectionOnViewWillAppear = true
+        tableView.separatorStyle = .None
+        tableView.backgroundColor = Constant.Color.TableViewBackground
+        
+        extension_setupFooterView()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if type == .input {
+            _saveData()
+        }
     }
 
     // MARK: - Table view data source
@@ -62,24 +77,73 @@ class SelectionTableViewController: UITableViewController {
         switch type {
         case .input:
             let cell = tableView.dequeueReusableCellWithIdentifier("selectionInputCell", forIndexPath: indexPath) as! SelectionInputTableViewCell
+            cell.placeholder = data["placeholder"].stringValue
+            cell.value = data["value"].stringValue
             
-            
+            _autoHideSeparatorForCell(cell, indexPath: indexPath)
             return cell
         case .singleItem:
             let cell = tableView.dequeueReusableCellWithIdentifier("selectionSingleItemCell", forIndexPath: indexPath) as! SelectionSingleItemTableViewCell
+            let currentData = data[indexPath.row]
             
-            // Configure the cell...
+            cell.title = currentData["title"].stringValue
+            cell.rawValue = currentData["value"].stringValue
             
+            _autoHideSeparatorForCell(cell, indexPath: indexPath)
             return cell
         case .catalogue:
             let cell = tableView.dequeueReusableCellWithIdentifier("selectionCatalogueCell", forIndexPath: indexPath) as! SelectionCatalogueTableViewCell
+            let currentData = data[indexPath.row]
             
-            // Configure the cell...
+            cell.title = currentData["title"].stringValue
+            cell.rawValue = currentData["value"].stringValue
+            
+            _autoHideSeparatorForCell(cell, indexPath: indexPath)
             
             return cell
         }
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch type {
+        case .input:
+            return
+        case .singleItem:
+            guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? SelectionSingleItemTableViewCell else {return}
+            selectedData["singleItem"] = cell.rawValue
+        case .catalogue:
+            guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? SelectionCatalogueTableViewCell else {return}
+            selectedData["catalogue"] = cell.rawValue
+        }
+        
+        _saveData()
+        
+        if let originViewController = originViewController {
+            navigationController?.popToViewController(originViewController, animated: true)
+        }
+        
+    }
 
+    private func _autoHideSeparatorForCell(var cell: CustomSeparatorCell, indexPath: NSIndexPath) {
+        if indexPath.row + 1 == self.tableView(tableView, numberOfRowsInSection: indexPath.section) {
+            cell.displaySeparatorLine = false
+        } else {
+            cell.displaySeparatorLine = true
+        }
+    }
 
+    private func _saveData() {
+        var updateData: [String: AnyObject] = [String: AnyObject]()
+        
+        switch type {
+        case .input:
+            guard let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as? SelectionInputTableViewCell else {return}
+            updateData = [identifier: cell.textInput.text == nil ? "" : cell.textInput.text!]
+        default:
+            updateData = selectedData
+        }
+        
+        delegate?.updateSelectionDataForIdentifier(identifier, data: updateData)
+    }
 
 }

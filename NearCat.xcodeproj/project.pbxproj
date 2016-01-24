@@ -166,6 +166,8 @@
 		65F4FFEB1C54C1D500816BEB /* SelectionSingleItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4FFEA1C54C1D500816BEB /* SelectionSingleItemTableViewCell.swift */; };
 		65F4FFED1C54C20F00816BEB /* SelectionInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4FFEC1C54C20F00816BEB /* SelectionInputTableViewCell.swift */; };
 		65F4FFEF1C54C25B00816BEB /* SelectionCatalogueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4FFEE1C54C25B00816BEB /* SelectionCatalogueTableViewCell.swift */; };
+		65F4FFF11C54D36800816BEB /* CustomSeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4FFF01C54D36800816BEB /* CustomSeparatorCell.swift */; };
+		65F4FFF31C55079E00816BEB /* SelectionControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4FFF21C55079E00816BEB /* SelectionControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -359,6 +361,8 @@
 		65F4FFEA1C54C1D500816BEB /* SelectionSingleItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionSingleItemTableViewCell.swift; sourceTree = "<group>"; };
 		65F4FFEC1C54C20F00816BEB /* SelectionInputTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionInputTableViewCell.swift; sourceTree = "<group>"; };
 		65F4FFEE1C54C25B00816BEB /* SelectionCatalogueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionCatalogueTableViewCell.swift; sourceTree = "<group>"; };
+		65F4FFF01C54D36800816BEB /* CustomSeparatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSeparatorCell.swift; sourceTree = "<group>"; };
+		65F4FFF21C55079E00816BEB /* SelectionControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -936,6 +940,8 @@
 				65DAC8411C2EBDA700335EFC /* LoginRequesterProtocol.swift */,
 				65152F421C4D6EC600DDB874 /* FollowActionControllerProtocol.swift */,
 				652B389A1C52B30D007F89E1 /* PersonalSettingHeaderDelegate.swift */,
+				65F4FFF01C54D36800816BEB /* CustomSeparatorCell.swift */,
+				65F4FFF21C55079E00816BEB /* SelectionControllerDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1173,6 +1179,7 @@
 				652B38AD1C53B27E007F89E1 /* ALPermissionsView.swift in Sources */,
 				65DAC8401C2EB97F00335EFC /* NotificationAlertObserverProtocol.swift in Sources */,
 				65152F2E1C4BD94200DDB874 /* UITableViewExtension.swift in Sources */,
+				65F4FFF11C54D36800816BEB /* CustomSeparatorCell.swift in Sources */,
 				65DAC83A1C2E5C7C00335EFC /* Constant.swift in Sources */,
 				6557F7BB1C2CFFD100E6780D /* CatArchiveEditTableViewController.swift in Sources */,
 				652B38971C529B8C007F89E1 /* KKAlertSheet.swift in Sources */,
@@ -1192,6 +1199,7 @@
 				6559A0591C453D170027CECE /* MyArchiveTableViewController.swift in Sources */,
 				652B38CF1C53B6FD007F89E1 /* PreviewCollectionViewController.swift in Sources */,
 				6557F7BD1C2D02D300E6780D /* CatArchiveAvatarTableViewCell.swift in Sources */,
+				65F4FFF31C55079E00816BEB /* SelectionControllerDelegate.swift in Sources */,
 				65DAC82A1C2E55EF00335EFC /* MainNavigationController.swift in Sources */,
 				65152F2B1C4BAC5900DDB874 /* LoadingTableViewCell.swift in Sources */,
 				652B38AB1C53B27E007F89E1 /* ALCropOverlay.swift in Sources */,

@@ -147,13 +147,23 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
             guard let selectionVC = segue.destinationViewController as? SelectionTableViewController else {return}
             guard let cell = sender as? MyArchiveSettingItemTableViewCell else {return}
             
+            selectionVC.delegate = self
+            selectionVC.originViewController = self
+            selectionVC.identifier = cell.identifier
+            
             switch cell.identifier {
             case "email":
                 selectionVC.type = .input
-                selectionVC.data = JSON(["placeholder": "您的电子邮件地址"])
+                selectionVC.data = JSON([
+                    "placeholder": "您的电子邮件地址",
+                    "value": cell.value
+                    ])
             case "name":
                 selectionVC.type = .input
-                selectionVC.data = JSON(["placeholder": "昵称"])
+                selectionVC.data = JSON([
+                    "placeholder": "昵称",
+                    "value": cell.value
+                    ])
             case "gender":
                 selectionVC.type = .singleItem
                 selectionVC.data = JSON([
@@ -173,11 +183,13 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
                     [
                         "title": "女",
                         "value": "0",
+                        "data": [],
                         "default": true
                     ],
                     [
                         "title": "男",
                         "value": "1",
+                        "data": []
                     ]
                     ])
             case "introduction":
@@ -192,6 +204,12 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
         }
     }
     
+    private func _reloadTableView() {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.tableView.reloadData()
+        })
+    }
+    
 
     // MARK: - data functions
     
@@ -200,10 +218,29 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
             if success {
                 self.userData = data
                 
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.tableView.reloadData()
-                })
+                self._reloadTableView()
             }
         }
     }
+}
+
+extension MyArchiveTableViewController: SelectionControllerDelegate {
+    
+    func updateSelectionDataForIdentifier(identifier: String, data: [String : AnyObject]) {
+        switch identifier {
+        case "region":
+            print(data)
+        default:
+            break
+        }
+        
+        Action.users.updateSelfInformation(data: data, completeHandler: { (success, data, description) -> Void in
+            if success {
+                self.userData = data
+                
+                self._reloadTableView()
+            }
+        })
+    }
+    
 }

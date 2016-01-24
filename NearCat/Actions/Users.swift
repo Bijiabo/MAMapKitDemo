@@ -30,5 +30,17 @@ extension Action {
                 })
             }
         }
+        
+        public class func updateSelfInformation(data data: [String: AnyObject], completeHandler: (success: Bool, data: JSON, description: String)->Void) {
+            let path = "users/update_information.json"
+            let parameters: [String: AnyObject] = [
+                "user": data,
+                "token": FHelper.token
+            ]
+            
+            FNetManager.sharedInstance.POST(path: path, parameters: parameters) { (request, response, json, error) -> Void in
+                Action.requestCompleteHandler(json: json, error: error, completeHandler: completeHandler)
+            }
+        }
     }
 }
