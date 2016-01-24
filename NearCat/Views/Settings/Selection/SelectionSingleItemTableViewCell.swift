@@ -59,8 +59,6 @@ class SelectionSingleItemTableViewCell: UITableViewCell, CustomSeparatorCell {
     var displaySeparatorLine: Bool = true {
         didSet {
             separatorLineView.hidden = !displaySeparatorLine
-            print(separatorLineView.hidden)
-            separatorLineView.hidden = !displaySeparatorLine
         }
     }
 

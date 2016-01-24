@@ -88,6 +88,8 @@ class SelectionTableViewController: UITableViewController {
             
             cell.title = currentData["title"].stringValue
             cell.rawValue = currentData["value"].stringValue
+            cell.check = currentData["default"].boolValue
+            cell.displayUnselectMark = false
             
             _autoHideSeparatorForCell(cell, indexPath: indexPath)
             return cell
@@ -111,17 +113,26 @@ class SelectionTableViewController: UITableViewController {
         case .singleItem:
             guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? SelectionSingleItemTableViewCell else {return}
             selectedData["singleItem"] = cell.rawValue
+            _saveData()
+            if let originViewController = originViewController {
+                navigationController?.popToViewController(originViewController, animated: true)
+            }
         case .catalogue:
             guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? SelectionCatalogueTableViewCell else {return}
             selectedData["catalogue"] = cell.rawValue
+            
+            let subSelectionTableVC = Helper.Controller.Selection
+            subSelectionTableVC.delegate = self.delegate
+            subSelectionTableVC.type = .singleItem
+            subSelectionTableVC.originViewController = self.originViewController
+            subSelectionTableVC.selectedData = self.selectedData
+            subSelectionTableVC.identifier = self.identifier
+            subSelectionTableVC.data = data[indexPath.row]["data"]
+            
+            navigationController?.pushViewController(subSelectionTableVC, animated: true)
+            
         }
-        
-        _saveData()
-        
-        if let originViewController = originViewController {
-            navigationController?.popToViewController(originViewController, animated: true)
-        }
-        
+
     }
 
     private func _autoHideSeparatorForCell(var cell: CustomSeparatorCell, indexPath: NSIndexPath) {

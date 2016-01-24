@@ -29,6 +29,12 @@ extension Helper {
             }
         }
         
+        class var Selection: SelectionTableViewController {
+            get {
+                return Helper.Controller.instanceForStoryboardByName("Main", ForIdentifier: "selectionTableVC") as! SelectionTableViewController
+            }
+        }
+        
     }
     
 }

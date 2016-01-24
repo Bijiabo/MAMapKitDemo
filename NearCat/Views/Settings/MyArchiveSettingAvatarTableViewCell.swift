@@ -14,6 +14,8 @@ class MyArchiveSettingAvatarTableViewCell: UITableViewCell {
     @IBOutlet weak var avatarImageView: AvatarImageView!
     @IBOutlet weak var avatarLabel: UILabel!
     
+    var delegate: MyArchiveTableViewController?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,8 +25,11 @@ class MyArchiveSettingAvatarTableViewCell: UITableViewCell {
         
         avatarContainerView.layer.cornerRadius = 50.0
         avatarContainerView.clipsToBounds = true
+        avatarImageView.backgroundColor = Constant.Color.Theme
         
         Helper.UI.setLabel(avatarLabel, forStyle: Constant.TextStyle.Cell.Small.White)
+        
+        avatarContainerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("tapAvatar:")))
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -37,6 +42,12 @@ class MyArchiveSettingAvatarTableViewCell: UITableViewCell {
         didSet {
             avatarLabel.text = title
         }
+    }
+    
+    // MARK: - user actions
+    
+    func tapAvatar(sender: UITapGestureRecognizer) {
+        delegate?.tapAvatar()
     }
 
 }

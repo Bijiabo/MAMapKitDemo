@@ -12,6 +12,7 @@ import SwiftyJSON
 class MyArchiveTableViewController: SettingSecondaryTableViewController {
     
     var userData: JSON = JSON([])
+    private var _provinceAndCityData: JSON = JSON([])
     var listViewData = [
         [
             [
@@ -64,6 +65,12 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
         
         _loadData()
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        _loadProvinceAndCityData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -113,6 +120,7 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCellWithIdentifier("myArchiveSettingAvatarCell", forIndexPath: indexPath) as! MyArchiveSettingAvatarTableViewCell
+            cell.delegate = self
             
             return cell
         default:
@@ -127,7 +135,8 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
             }
             
             cell.title = currentData["title"]!
-            cell.value = userData[identifier].stringValue
+            let value = userData[identifier].stringValue
+            cell.value = identifier == "gender" ? (Int(value) == 1 ? "男" : "女") : value
             cell.identifier = identifier
             
             return cell
@@ -170,31 +179,23 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
                     [
                         "title": "女",
                         "value": "0",
-                        "default": true
+                        "default": cell.value == "女"
                     ],
                     [
                         "title": "男",
                         "value": "1",
+                        "default": cell.value == "男"
                     ]
                     ])
             case "region":
                 selectionVC.type = .catalogue
-                selectionVC.data = JSON([
-                    [
-                        "title": "女",
-                        "value": "0",
-                        "data": [],
-                        "default": true
-                    ],
-                    [
-                        "title": "男",
-                        "value": "1",
-                        "data": []
-                    ]
-                    ])
+                selectionVC.data = _provinceAndCityData
             case "introduction":
                 selectionVC.type = .input
-                selectionVC.data = JSON(["placeholder": "一句话简介"])
+                selectionVC.data = JSON([
+                    "placeholder": "一句话简介",
+                    "value": cell.value
+                    ])
             default:
                 break
             }
@@ -210,6 +211,22 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
         })
     }
     
+    func tapAvatar() {
+        let actionSheet = KKActionSheet(title: "修改头像", cancelTitle:"取消", cancelAction: { () -> Void in
+        })
+        
+        actionSheet.addButton("拍照", isDestructive: false) { () -> Void in
+            let shootVC = Helper.Controller.Shoot
+            self.presentViewController(shootVC, animated: true, completion: nil)
+        }
+        actionSheet.addButton("从相册中选取", isDestructive: false) { () -> Void in
+            let mediaPickerNavigationVC = Helper.Controller.MediaPicker
+            self.presentViewController(mediaPickerNavigationVC, animated: true, completion: nil)
+        }
+        
+        actionSheet.show()
+    }
+    
 
     // MARK: - data functions
     
@@ -222,17 +239,30 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
             }
         }
     }
+    
+    private func _loadProvinceAndCityData() {
+        let fileURL = NSBundle.mainBundle().resourceURL!.URLByAppendingPathComponent("Data/ProvinceAndCity.json")
+        if let fileData = NSData(contentsOfURL: fileURL) {
+            _provinceAndCityData = JSON(data: fileData)
+        }
+    }
 }
 
 extension MyArchiveTableViewController: SelectionControllerDelegate {
     
-    func updateSelectionDataForIdentifier(identifier: String, data: [String : AnyObject]) {
+    func updateSelectionDataForIdentifier(identifier: String, var data: [String : AnyObject]) {
         switch identifier {
         case "region":
             print(data)
         default:
-            break
+            if data.count == 1 {
+                let dataFirstItem: (key: String, value: AnyObject) = data.first!
+                if dataFirstItem.key == "singleItem" {
+                    data = [identifier: dataFirstItem.value]
+                }
+            }
         }
+        
         
         Action.users.updateSelfInformation(data: data, completeHandler: { (success, data, description) -> Void in
             if success {

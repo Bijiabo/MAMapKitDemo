@@ -168,6 +168,7 @@
 		65F4FFEF1C54C25B00816BEB /* SelectionCatalogueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4FFEE1C54C25B00816BEB /* SelectionCatalogueTableViewCell.swift */; };
 		65F4FFF11C54D36800816BEB /* CustomSeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4FFF01C54D36800816BEB /* CustomSeparatorCell.swift */; };
 		65F4FFF31C55079E00816BEB /* SelectionControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4FFF21C55079E00816BEB /* SelectionControllerDelegate.swift */; };
+		65F4FFF51C5542D500816BEB /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 65F4FFF41C5542D500816BEB /* Data */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -363,6 +364,7 @@
 		65F4FFEE1C54C25B00816BEB /* SelectionCatalogueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionCatalogueTableViewCell.swift; sourceTree = "<group>"; };
 		65F4FFF01C54D36800816BEB /* CustomSeparatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSeparatorCell.swift; sourceTree = "<group>"; };
 		65F4FFF21C55079E00816BEB /* SelectionControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionControllerDelegate.swift; sourceTree = "<group>"; };
+		65F4FFF41C5542D500816BEB /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = NearCat/Data; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -753,6 +755,7 @@
 		65CE598B1C2A7405008809B0 = {
 			isa = PBXGroup;
 			children = (
+				65F4FFF41C5542D500816BEB /* Data */,
 				6570C3761C36937700391EB8 /* FServiceManager */,
 				65CE59D31C2A758C008809B0 /* Framworks */,
 				65CE59961C2A7405008809B0 /* NearCat */,
@@ -1051,6 +1054,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65F4FFF51C5542D500816BEB /* Data in Resources */,
 				65CE59E11C2AC68C008809B0 /* AMap.bundle in Resources */,
 				65152F411C4D27AD00DDB874 /* FluxItem.xib in Resources */,
 				65CE59A21C2A7405008809B0 /* LaunchScreen.storyboard in Resources */,
