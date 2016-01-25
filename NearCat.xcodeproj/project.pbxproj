@@ -170,6 +170,8 @@
 		65F4FFF31C55079E00816BEB /* SelectionControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4FFF21C55079E00816BEB /* SelectionControllerDelegate.swift */; };
 		65F4FFF51C5542D500816BEB /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 65F4FFF41C5542D500816BEB /* Data */; };
 		65F4FFF71C560CC600816BEB /* UINavigationBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4FFF61C560CC600816BEB /* UINavigationBarExtension.swift */; };
+		65F4FFF91C5620A600816BEB /* UIToolBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4FFF81C5620A600816BEB /* UIToolBarExtension.swift */; };
+		65F4FFFB1C56223F00816BEB /* MediaPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4FFFA1C56223F00816BEB /* MediaPickerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -367,6 +369,8 @@
 		65F4FFF21C55079E00816BEB /* SelectionControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionControllerDelegate.swift; sourceTree = "<group>"; };
 		65F4FFF41C5542D500816BEB /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = NearCat/Data; sourceTree = "<group>"; };
 		65F4FFF61C560CC600816BEB /* UINavigationBarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBarExtension.swift; sourceTree = "<group>"; };
+		65F4FFF81C5620A600816BEB /* UIToolBarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIToolBarExtension.swift; sourceTree = "<group>"; };
+		65F4FFFA1C56223F00816BEB /* MediaPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPickerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -423,6 +427,7 @@
 				652B38501C50E7FC007F89E1 /* NSDateExtension.swift */,
 				652B38941C5289BC007F89E1 /* MainRootViewControllerExtension.swift */,
 				65F4FFF61C560CC600816BEB /* UINavigationBarExtension.swift */,
+				65F4FFF81C5620A600816BEB /* UIToolBarExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -948,6 +953,7 @@
 				652B389A1C52B30D007F89E1 /* PersonalSettingHeaderDelegate.swift */,
 				65F4FFF01C54D36800816BEB /* CustomSeparatorCell.swift */,
 				65F4FFF21C55079E00816BEB /* SelectionControllerDelegate.swift */,
+				65F4FFFA1C56223F00816BEB /* MediaPickerDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1136,6 +1142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65152F431C4D6EC600DDB874 /* FollowActionControllerProtocol.swift in Sources */,
+				65F4FFF91C5620A600816BEB /* UIToolBarExtension.swift in Sources */,
 				6570C37C1C3693F300391EB8 /* FConfiguration.swift in Sources */,
 				6570C37A1C3693A000391EB8 /* FStatusProtocols.swift in Sources */,
 				6570C3781C36939200391EB8 /* User.swift in Sources */,
@@ -1155,6 +1162,7 @@
 				65F4FFED1C54C20F00816BEB /* SelectionInputTableViewCell.swift in Sources */,
 				654162B51C4F7C0200BD035E /* UITableViewControllerExtension.swift in Sources */,
 				650AD0661C53F44F000BFA59 /* MediaPickerNavigationViewController.swift in Sources */,
+				65F4FFFB1C56223F00816BEB /* MediaPickerDelegate.swift in Sources */,
 				654162B31C4F629200BD035E /* PostEditorTableViewController.swift in Sources */,
 				6570C3701C36936D00391EB8 /* FConstant.swift in Sources */,
 				65BB677A1C413D1B00355BBE /* InboxContainerViewController.swift in Sources */,

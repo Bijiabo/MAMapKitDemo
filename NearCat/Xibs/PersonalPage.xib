@@ -14,16 +14,42 @@
                 <rect key="frame" x="0.0" y="0.0" width="600" height="343.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test_bg" translatesAutoresizingMaskIntoConstraints="NO" id="qyb-gJ-yKL">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDU-Qf-yQd" userLabel="background image container">
+                        <rect key="frame" x="0.0" y="-700" width="600" height="900"/>
+                        <subviews>
+                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test_bg" translatesAutoresizingMaskIntoConstraints="NO" id="qyb-gJ-yKL">
+                                <rect key="frame" x="0.0" y="700" width="600" height="200"/>
+                                <color key="backgroundColor" red="0.29411764709999999" green="0.42352941179999998" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Tfs-fQ-7eg"/>
+                                    <constraint firstAttribute="height" constant="200" id="lQ1-Lg-E30"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="lQ1-Lg-E30"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="0.29411764709999999" green="0.42352941179999998" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="200" id="lQ1-Lg-E30"/>
+                            <constraint firstAttribute="trailing" secondItem="qyb-gJ-yKL" secondAttribute="trailing" id="7Ls-BZ-LPv"/>
+                            <constraint firstItem="qyb-gJ-yKL" firstAttribute="leading" secondItem="rDU-Qf-yQd" secondAttribute="leading" id="Jxf-ng-w7V"/>
+                            <constraint firstAttribute="height" constant="200" id="XYi-RH-hvn"/>
+                            <constraint firstAttribute="bottom" secondItem="qyb-gJ-yKL" secondAttribute="bottom" id="joi-eM-4lp"/>
                         </constraints>
-                    </imageView>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="XYi-RH-hvn"/>
+                            </mask>
+                        </variation>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YxY-Gp-qlC" userLabel="white view">
                         <rect key="frame" x="0.0" y="200" width="600" height="143.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="143.5" id="iY1-PR-3zD"/>
+                        </constraints>
                     </view>
                     <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0AP-xs-Ug6" customClass="AvatarImageView" customModule="NearCat" customModuleProvider="target">
                         <rect key="frame" x="250" y="150" width="100" height="100"/>
@@ -53,27 +79,34 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="258-uN-rjG" firstAttribute="centerX" secondItem="zlG-Um-I2G" secondAttribute="centerX" id="0G2-Sk-2Sf"/>
-                    <constraint firstItem="qyb-gJ-yKL" firstAttribute="top" secondItem="zlG-Um-I2G" secondAttribute="top" id="3fg-MX-7ev"/>
+                    <constraint firstItem="rDU-Qf-yQd" firstAttribute="top" secondItem="zlG-Um-I2G" secondAttribute="top" constant="-700" id="4Dr-Nv-zPM"/>
                     <constraint firstItem="Zdo-r8-j6R" firstAttribute="centerX" secondItem="zlG-Um-I2G" secondAttribute="centerX" id="BA2-sq-7dJ"/>
+                    <constraint firstItem="rDU-Qf-yQd" firstAttribute="leading" secondItem="zlG-Um-I2G" secondAttribute="leading" id="Fpg-bZ-Ag9"/>
                     <constraint firstAttribute="trailing" secondItem="YxY-Gp-qlC" secondAttribute="trailing" id="LQC-KS-TWZ"/>
                     <constraint firstItem="YxY-Gp-qlC" firstAttribute="leading" secondItem="zlG-Um-I2G" secondAttribute="leading" id="QPh-5G-MbU"/>
+                    <constraint firstItem="YxY-Gp-qlC" firstAttribute="top" secondItem="rDU-Qf-yQd" secondAttribute="bottom" id="TNB-v1-gtR"/>
                     <constraint firstAttribute="bottom" secondItem="YxY-Gp-qlC" secondAttribute="bottom" id="USH-2o-7VU"/>
                     <constraint firstItem="JNL-JD-nca" firstAttribute="top" secondItem="0AP-xs-Ug6" secondAttribute="bottom" constant="8" id="Vxd-PT-C6S"/>
                     <constraint firstAttribute="trailing" secondItem="Zdo-r8-j6R" secondAttribute="trailing" constant="8" id="W6B-U2-wjY"/>
                     <constraint firstItem="Zdo-r8-j6R" firstAttribute="top" secondItem="JNL-JD-nca" secondAttribute="bottom" constant="4" id="auj-m2-u8f"/>
-                    <constraint firstAttribute="trailing" secondItem="qyb-gJ-yKL" secondAttribute="trailing" id="g1v-Gd-Olt"/>
+                    <constraint firstItem="YxY-Gp-qlC" firstAttribute="top" secondItem="0AP-xs-Ug6" secondAttribute="bottom" constant="-50" id="ceu-LA-1Uy"/>
                     <constraint firstItem="0AP-xs-Ug6" firstAttribute="centerX" secondItem="zlG-Um-I2G" secondAttribute="centerX" id="iZc-fn-1PE"/>
+                    <constraint firstItem="YxY-Gp-qlC" firstAttribute="top" secondItem="rDU-Qf-yQd" secondAttribute="bottom" id="iac-Sk-m03"/>
                     <constraint firstItem="258-uN-rjG" firstAttribute="top" secondItem="Zdo-r8-j6R" secondAttribute="bottom" constant="4" id="rSF-QZ-z0w"/>
-                    <constraint firstItem="0AP-xs-Ug6" firstAttribute="top" secondItem="qyb-gJ-yKL" secondAttribute="bottom" constant="-50" id="ser-u4-ein"/>
+                    <constraint firstAttribute="trailing" secondItem="rDU-Qf-yQd" secondAttribute="trailing" id="vwt-kb-usF"/>
                     <constraint firstItem="Zdo-r8-j6R" firstAttribute="leading" secondItem="zlG-Um-I2G" secondAttribute="leading" constant="8" id="xQt-Ff-Pl0"/>
-                    <constraint firstItem="qyb-gJ-yKL" firstAttribute="leading" secondItem="zlG-Um-I2G" secondAttribute="leading" id="xVT-Oz-KBE"/>
-                    <constraint firstItem="YxY-Gp-qlC" firstAttribute="top" secondItem="qyb-gJ-yKL" secondAttribute="bottom" id="ySl-hb-hQE"/>
                     <constraint firstItem="JNL-JD-nca" firstAttribute="centerX" secondItem="zlG-Um-I2G" secondAttribute="centerX" id="zWq-Vp-ACb"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="iac-Sk-m03"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.29411764709999999" green="0.42352941179999998" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="avatarImageView" destination="0AP-xs-Ug6" id="nRj-Z5-Mow"/>
+                <outlet property="backgroundImageContainerView" destination="rDU-Qf-yQd" id="ucl-Am-xgy"/>
                 <outlet property="backgroundImageView" destination="qyb-gJ-yKL" id="Qjb-nz-6Jk"/>
                 <outlet property="catsLabel" destination="Zdo-r8-j6R" id="XLE-V3-803"/>
                 <outlet property="followAndThumbCountLabel" destination="258-uN-rjG" id="OTx-Ob-0IR"/>
@@ -83,6 +116,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="test_bg" width="1600" height="1067"/>
+        <image name="test_bg" width="1958" height="1469"/>
     </resources>
 </document>

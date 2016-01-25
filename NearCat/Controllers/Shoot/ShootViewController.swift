@@ -26,6 +26,7 @@ class ShootViewController: UIViewController {
     var session: AVCaptureSession!
     var savePath: String = String()
     var selectedImages: [UIImage] = [UIImage]()
+    var delegate: MediaPickerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -475,6 +476,8 @@ class ShootViewController: UIViewController {
             
             // add photo to selected image array
             self.selectedImages.append(image)
+            
+            self.delegate?.newImage(image, fromMediaPicker: self)
         })
     }
     

@@ -79,7 +79,7 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 280.0
+            return 331.0
         }
         
         return 44.0
@@ -280,13 +280,15 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
     }
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
+        let headerBackgroundImageOriginY: CGFloat = 700.0
+        
         if scrollView.contentOffset.y < 0 {
             headerBackgroundImageView?.alpha = 1.0
             guard let headerBackgroundImageView = headerBackgroundImageView else {return}
             headerBackgroundImageView.layer.frame.size.height = headerBackgroundImageViewOriginalHeight - scrollView.contentOffset.y
-            headerBackgroundImageView.layer.frame.origin.y = scrollView.contentOffset.y
+            headerBackgroundImageView.layer.frame.origin.y = scrollView.contentOffset.y + headerBackgroundImageOriginY
         } else {
-            headerBackgroundImageView?.layer.frame.origin.y = scrollView.contentOffset.y/2
+            headerBackgroundImageView?.layer.frame.origin.y = scrollView.contentOffset.y/2 + headerBackgroundImageOriginY
             headerBackgroundImageView?.alpha = 1.0 - scrollView.contentOffset.y/headerBackgroundImageViewOriginalHeight
         }
 
@@ -305,7 +307,7 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
     private func _updateHeaderCellContent() {
         guard let headerCell = headerCell else {return}
         if FHelper.logged_in {
-            let avatarURLString = "\(FConfiguration.sharedInstance.host)\(FHelper.current_user.avatar)"
+            let avatarURLString = "\(FConfiguration.sharedInstance.host)\(_userInformation["avatar"].stringValue)"
             Helper.setRemoteImageForImageView(headerCell.avatarImageView, avatarURLString: avatarURLString)
             headerCell.userName = FHelper.current_user.name
             headerCell.thumbCount = _userInformation["thumb_count"].intValue

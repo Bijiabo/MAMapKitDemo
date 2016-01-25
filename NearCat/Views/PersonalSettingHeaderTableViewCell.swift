@@ -11,6 +11,7 @@ import SwiftyJSON
 
 class PersonalSettingHeaderTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var backgroundImageContainerView: UIView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var avatarImageView: AvatarImageView!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -23,7 +24,8 @@ class PersonalSettingHeaderTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        clipsToBounds = true
+        backgroundImageContainerView.clipsToBounds = true
+        clipsToBounds = false
         selectionStyle = .None
         
         // add tap gestures

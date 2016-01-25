@@ -48,6 +48,11 @@ class PersonalPageTableViewController: UITableViewController {
         
         self.automaticallyAdjustsScrollViewInsets = false
         
+        navigationController?.navigationBar.topItem?.title = ""
+        navigationController?.navigationBar.backItem?.title = ""
+        navigationItem.backBarButtonItem?.title = ""
+        navigationItem.leftBarButtonItem?.title = ""
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -126,13 +131,15 @@ class PersonalPageTableViewController: UITableViewController {
     }
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
+        let headerBackgroundImageOriginY: CGFloat = 700.0
+        
         if scrollView.contentOffset.y < 0 {
             headerBackgroundImageView?.alpha = 1.0
             guard let headerBackgroundImageView = headerBackgroundImageView else {return}
             headerBackgroundImageView.layer.frame.size.height = headerBackgroundImageViewOriginalHeight - scrollView.contentOffset.y
-            headerBackgroundImageView.layer.frame.origin.y = scrollView.contentOffset.y
+            headerBackgroundImageView.layer.frame.origin.y = scrollView.contentOffset.y + headerBackgroundImageOriginY
         } else {
-            headerBackgroundImageView?.layer.frame.origin.y = scrollView.contentOffset.y/2
+            headerBackgroundImageView?.layer.frame.origin.y = scrollView.contentOffset.y/2 + headerBackgroundImageOriginY
             headerBackgroundImageView?.alpha = 1.0 - scrollView.contentOffset.y/headerBackgroundImageViewOriginalHeight
         }
         
@@ -158,12 +165,14 @@ class PersonalPageTableViewController: UITableViewController {
             navigationBar.setBackgroundImage(UIImage(named: "transparent"), forBarMetrics: UIBarMetrics.Default)
             navigationBar.hideBottomHairline()
             navigationBar.tintColor = UIColor.whiteColor()
+            title = ""
         } else {
             guard let navigationBar = navigationController?.navigationBar else {return}
             navigationBar.barTintColor = nil
             navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
             navigationBar.showBottomHairline()
             navigationBar.tintColor = Constant.Color.Theme
+            title = _userInformation["name"].stringValue
         }
     }
     

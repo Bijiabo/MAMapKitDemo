@@ -227,6 +227,7 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
         
         actionSheet.addButton("拍照", isDestructive: false) { () -> Void in
             let shootVC = Helper.Controller.Shoot
+            shootVC.mediaPickerDelegate = self
             self.presentViewController(shootVC, animated: true, completion: nil)
         }
         actionSheet.addButton("从相册中选取", isDestructive: false) { () -> Void in
@@ -289,6 +290,8 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
     }
 }
 
+// MARK: - extension: SelectionControllerDelegate
+
 extension MyArchiveTableViewController: SelectionControllerDelegate {
     
     func updateSelectionDataForIdentifier(identifier: String, var data: [String : AnyObject]) {
@@ -317,6 +320,21 @@ extension MyArchiveTableViewController: SelectionControllerDelegate {
                 self._updateDefaultProvinceAndCityData()
             }
         })
+    }
+}
+
+// MARK: - extension: MediaPickerDelegate
+
+extension MyArchiveTableViewController: MediaPickerDelegate {
+    
+    func newImage(image: UIImage, fromMediaPicker: UIViewController) {
+        
+        fromMediaPicker.dismissViewControllerAnimated(true) { () -> Void in
+            Action.users.updateAvatar(image: image) { (success, description) -> Void in
+                print(success)
+            }
+        }
+        
     }
     
 }

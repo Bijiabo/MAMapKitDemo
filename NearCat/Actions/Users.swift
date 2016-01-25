@@ -42,5 +42,26 @@ extension Action {
                 Action.requestCompleteHandler(json: json, error: error, completeHandler: completeHandler)
             }
         }
+        
+        public class func updateAvatar(image image: UIImage, completeHandler: (success: Bool, description: String)->Void) {
+            let path = "users/update_information.json?token=UI1SkkGomiDeXq-jYoikOA" //\(FHelper.token)"
+            
+            guard let imageData = UIImageJPEGRepresentation(image, 1.0) else {
+                completeHandler(success: false, description: "image data error.")
+                return
+            }
+            
+            FNetManager.sharedInstance.UPLOAD(path: path,
+                multipartFormData: { (multipartFormData) -> Void in
+                    multipartFormData.appendBodyPart(data: imageData, name: "user[avatar]", fileName: "xxx.jpg", mimeType: "image/jpeg")
+                },
+                completionHandler: { (request, response, json, error) -> Void in
+                    completeHandler(success: json["success"].boolValue, description: json["description"].stringValue)
+                },
+                failedHandler: {(success: Bool, description: String) in
+                    completeHandler(success: success, description: description)
+                }
+            )
+        }
     }
 }
