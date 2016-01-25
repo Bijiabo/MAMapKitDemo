@@ -14,5 +14,6 @@ class SettingsNavigationViewController: UINavigationController {
         super.viewDidLoad()
 
         navigationBar.tintColor = Constant.Color.Theme
+        navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName: Constant.Color.Theme ]
     }
 }

@@ -19,6 +19,7 @@ class MainNavigationController: UINavigationController {
     private func _setupViews() {
         
         navigationBar.tintColor = Constant.Color.Theme
+        navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName: Constant.Color.Theme ]
         
         setNavigationBarHidden(true, animated: false)
     }

@@ -15,6 +15,7 @@ class MyArchiveSettingItemTableViewCell: UITableViewCell {
     @IBOutlet weak var separatorLineView: UIView!
     
     var identifier: String = String()
+    var headerTitle: String = String()
     
     override func awakeFromNib() {
         super.awakeFromNib()

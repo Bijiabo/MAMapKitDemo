@@ -68,8 +68,6 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        _loadProvinceAndCityData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -128,6 +126,8 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
             let currentData = listViewData[indexPath.section][indexPath.row]
             let identifier = currentData["identifier"]!
             
+            cell.headerTitle = currentData["title"]!
+            
             if indexPath.row + 1 == self.tableView(tableView, numberOfRowsInSection: indexPath.section) {
                 cell.displaySeparatorLine = false
             } else {
@@ -141,7 +141,7 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
             case "gender":
                 cell.value = Int(value) == 1 ? "男" : "女"
             case "region":
-                cell.value = "\(userData["province"]) \(userData["city"])"
+                cell.value = "\(userData["province"].stringValue) \(userData["city"].stringValue)"
             default:
                 cell.value = value
             }
@@ -168,6 +168,7 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
             selectionVC.delegate = self
             selectionVC.originViewController = self
             selectionVC.identifier = cell.identifier
+            selectionVC.title = cell.headerTitle
             
             switch cell.identifier {
             case "email":
@@ -245,6 +246,13 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
                 self.userData = data
                 
                 self._reloadTableView()
+                
+                // load province and city data for the first time
+                if self._provinceAndCityData.count == 0 {
+                    self._loadProvinceAndCityData()
+                }
+                
+                self._updateDefaultProvinceAndCityData()
             }
         }
     }
@@ -253,6 +261,30 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
         let fileURL = NSBundle.mainBundle().resourceURL!.URLByAppendingPathComponent("Data/ProvinceAndCity.json")
         if let fileData = NSData(contentsOfURL: fileURL) {
             _provinceAndCityData = JSON(data: fileData)
+        }
+    }
+    
+    private func _updateDefaultProvinceAndCityData() {
+        let defaultProvince = userData["province"].stringValue
+        let defaultCity = userData["city"].stringValue
+        
+        for (key, provinceData): (String, JSON) in _provinceAndCityData {
+            if provinceData["value"].stringValue == defaultProvince {
+                _provinceAndCityData[Int(key)!]["default"].bool = true
+                
+                for (key1, cityData): (String,JSON) in provinceData["data"] {
+                    if cityData["value"].stringValue == defaultCity {
+                        _provinceAndCityData[Int(key)!]["data"][Int(key1)!]["default"].bool = true
+                    } else {
+                        _provinceAndCityData[Int(key)!]["data"][Int(key1)!]["default"].bool = false
+                    }
+                }
+            } else {
+                _provinceAndCityData[Int(key)!]["default"].bool = false
+                for (key1, _): (String,JSON) in provinceData["data"] {
+                    _provinceAndCityData[Int(key)!]["data"][Int(key1)!]["default"].bool = false
+                }
+            }
         }
     }
 }
@@ -281,6 +313,8 @@ extension MyArchiveTableViewController: SelectionControllerDelegate {
                 self.userData = data
                 
                 self._reloadTableView()
+                
+                self._updateDefaultProvinceAndCityData()
             }
         })
     }

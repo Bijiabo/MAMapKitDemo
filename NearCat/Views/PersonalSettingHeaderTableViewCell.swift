@@ -23,7 +23,8 @@ class PersonalSettingHeaderTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        clipsToBounds = false
+        clipsToBounds = true
+        selectionStyle = .None
         
         // add tap gestures
         avatarImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("tapAvatar:")))

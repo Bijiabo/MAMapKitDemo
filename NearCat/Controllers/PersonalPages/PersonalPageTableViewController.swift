@@ -22,6 +22,7 @@ class PersonalPageTableViewController: UITableViewController {
     }
     private var headerCell: PersonalSettingHeaderTableViewCell? = nil
     private var _userInformation: JSON = JSON([])
+    private var _navigationBarShadowImageViewCache: UIImageView? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,12 +45,23 @@ class PersonalPageTableViewController: UITableViewController {
         // tableView.contentInset.top = 44.0
         let nib: UINib = UINib(nibName: "PersonalPage", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "personalPageHeaderCell")
+        
+        self.automaticallyAdjustsScrollViewInsets = false
+        
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(false, animated: true)
+        
+        _updateNavigationBarDisplay(backgroundTransparent: true)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        _updateNavigationBarDisplay(backgroundTransparent: false)
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,7 +86,7 @@ class PersonalPageTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
-                return 280.0
+                return 331.0
             }
             
             return 44.0
@@ -124,7 +136,35 @@ class PersonalPageTableViewController: UITableViewController {
             headerBackgroundImageView?.alpha = 1.0 - scrollView.contentOffset.y/headerBackgroundImageViewOriginalHeight
         }
         
+        // update navigation bar display
         
+        if scrollView.contentOffset.y <= 136.0 {
+            _updateNavigationBarDisplay(backgroundTransparent: true)
+        } else {
+            _updateNavigationBarDisplay(backgroundTransparent: false)
+        }
+    }
+    
+    private var _navigationBarBackgroundTransparent: Bool = false
+    private func _updateNavigationBarDisplay(backgroundTransparent backgroundTransparent: Bool) {
+        if backgroundTransparent == _navigationBarBackgroundTransparent {return}
+        guard let navigationBar = navigationController?.navigationBar else {return}
+        
+        _navigationBarBackgroundTransparent = backgroundTransparent
+        
+        if backgroundTransparent {
+            navigationBar.barTintColor = UIColor.clearColor()
+            navigationBar.backgroundColor = UIColor.clearColor()
+            navigationBar.setBackgroundImage(UIImage(named: "transparent"), forBarMetrics: UIBarMetrics.Default)
+            navigationBar.hideBottomHairline()
+            navigationBar.tintColor = UIColor.whiteColor()
+        } else {
+            guard let navigationBar = navigationController?.navigationBar else {return}
+            navigationBar.barTintColor = nil
+            navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
+            navigationBar.showBottomHairline()
+            navigationBar.tintColor = Constant.Color.Theme
+        }
     }
     
     // MARK: - data functions

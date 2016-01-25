@@ -1513,7 +1513,6 @@
                             <outlet property="delegate" destination="gSU-AA-zjr" id="Ybt-6F-sww"/>
                         </connections>
                     </tableView>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NnS-0b-iVz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

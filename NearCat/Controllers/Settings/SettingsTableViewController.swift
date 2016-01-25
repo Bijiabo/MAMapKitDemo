@@ -50,6 +50,7 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
         tableView.registerNib(nib, forCellReuseIdentifier: "personalPageHeaderCell")
         
         tableView.separatorStyle = .None
+        automaticallyAdjustsScrollViewInsets = false
     }
     
     override func viewWillAppear(animated: Bool) {

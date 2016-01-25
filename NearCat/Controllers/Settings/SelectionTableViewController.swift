@@ -100,6 +100,16 @@ class SelectionTableViewController: UITableViewController {
             cell.title = currentData["title"].stringValue
             cell.rawValue = currentData["value"].stringValue
             
+            if currentData["default"].boolValue {
+                for (_, cityData): (String, JSON) in currentData["data"] {
+                    if cityData["default"].boolValue {
+                        cell.value = cityData["value"].stringValue
+                        
+                        break
+                    }
+                }
+            }
+            
             _autoHideSeparatorForCell(cell, indexPath: indexPath)
             
             return cell
@@ -149,7 +159,11 @@ class SelectionTableViewController: UITableViewController {
         switch type {
         case .input:
             guard let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as? SelectionInputTableViewCell else {return}
-            updateData = [identifier: cell.textInput.text == nil ? "" : cell.textInput.text!]
+            let userInputValue = cell.textInput.text == nil ? "" : cell.textInput.text!
+            
+            if data["value"].stringValue == userInputValue {return}
+            
+            updateData = [identifier: userInputValue]
         default:
             updateData = selectedData
         }
