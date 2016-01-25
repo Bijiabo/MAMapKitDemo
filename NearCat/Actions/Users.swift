@@ -26,6 +26,13 @@ extension Action {
             
             FNetManager.sharedInstance.GET(path: path) { (request, response, json, error) -> Void in
                 Action.requestCompleteHandler(json: json, error: error, completeHandler: { (success, data, description) -> Void in
+                    
+                    if success {
+                        FHelper.current_user.name = data["name"].stringValue
+                        FHelper.current_user.email = data["email"].stringValue
+                        FHelper.current_user.avatar = data["avatar"].stringValue
+                    }
+                    
                     completeHandler(success: success, data: data, description: description)
                 })
             }
@@ -39,12 +46,19 @@ extension Action {
             ]
             
             FNetManager.sharedInstance.POST(path: path, parameters: parameters) { (request, response, json, error) -> Void in
+                
+                if json["success"].boolValue {
+                    FHelper.current_user.name = json["name"].stringValue
+                    FHelper.current_user.email = json["email"].stringValue
+                    FHelper.current_user.avatar = json["avatar"].stringValue
+                }
+                
                 Action.requestCompleteHandler(json: json, error: error, completeHandler: completeHandler)
             }
         }
         
         public class func updateAvatar(image image: UIImage, completeHandler: (success: Bool, description: String)->Void) {
-            let path = "users/update_information.json?token=UI1SkkGomiDeXq-jYoikOA" //\(FHelper.token)"
+            let path = "users/update_information.json?token=\(FHelper.token)"
             
             guard let imageData = UIImageJPEGRepresentation(image, 1.0) else {
                 completeHandler(success: false, description: "image data error.")
@@ -53,9 +67,14 @@ extension Action {
             
             FNetManager.sharedInstance.UPLOAD(path: path,
                 multipartFormData: { (multipartFormData) -> Void in
-                    multipartFormData.appendBodyPart(data: imageData, name: "user[avatar]", fileName: "xxx.jpg", mimeType: "image/jpeg")
+                    multipartFormData.appendBodyPart(data: imageData, name: "user[avatar]", fileName: "\(NSDate().timeIntervalSince1970).jpg", mimeType: "image/jpeg")
                 },
                 completionHandler: { (request, response, json, error) -> Void in
+                    
+                    if json["success"].boolValue {
+                        FHelper.current_user.avatar = json["avatar"].stringValue
+                    }
+                    
                     completeHandler(success: json["success"].boolValue, description: json["description"].stringValue)
                 },
                 failedHandler: {(success: Bool, description: String) in

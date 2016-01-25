@@ -43,7 +43,7 @@ extension Action {
                 multipartFormData: { (multipartFormData) -> Void in
                     let containerName: String = "private_message"
                     if let imageData = image {
-                        multipartFormData.appendBodyPart(data: imageData, name: "\(containerName)[picture]", fileName: "xxx.jpg", mimeType: "image/jpeg")
+                        multipartFormData.appendBodyPart(data: imageData, name: "\(containerName)[picture]", fileName: "\(NSDate().timeIntervalSince1970).jpg", mimeType: "image/jpeg")
                     }else{
                         multipartFormData.appendBodyPart(data: "".dataUsingEncoding(NSUTF8StringEncoding)!, name: "\(containerName)[picture]")
                     }

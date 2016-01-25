@@ -13,10 +13,11 @@ extension Action {
     public class fluxes {
         // create
         public class func create(motion motion: String, content: String, image: NSData?, completeHandler: (success: Bool, description: String)->Void) {
+            Helper.Notification.show(text: "努力提交中...")
             FNetManager.sharedInstance.UPLOAD(path: "fluxes.json?token=\(FHelper.token)",
                 multipartFormData: { (multipartFormData) -> Void in
                     if let imageData = image {
-                        multipartFormData.appendBodyPart(data: imageData, name: "flux[picture]", fileName: "xxx.jpg", mimeType: "image/jpeg")
+                        multipartFormData.appendBodyPart(data: imageData, name: "flux[picture]", fileName: "\(NSDate().timeIntervalSince1970).jpg", mimeType: "image/jpeg")
                     }else{
                         multipartFormData.appendBodyPart(data: "".dataUsingEncoding(NSUTF8StringEncoding)!, name: "flux[picture]")
                     }
@@ -25,9 +26,11 @@ extension Action {
                     multipartFormData.appendBodyPart(data: content.dataUsingEncoding(NSUTF8StringEncoding)!, name: "flux[content]")
                 },
                 completionHandler: { (request, response, json, error) -> Void in
+                    Helper.Notification.hide(text: "发布成功！")
                     completeHandler(success: json["success"].boolValue, description: json["description"].stringValue)
                 },
                 failedHandler: {(success: Bool, description: String) in
+                    Helper.Notification.hide(text: "发布失败... \(description)")
                     completeHandler(success: success, description: description)
                 }
             )
@@ -35,8 +38,14 @@ extension Action {
         
         // get list
         public class func list(var page page: Int = 0, completeHandler: (success: Bool, data: JSON, description: String)->Void) {
+            
+            Helper.Notification.show()
+            
             if page < 0 { page=0 }
             FNetManager.sharedInstance.GET(path: "fluxes.json?page=\(page)&token=\(FHelper.token)") { (request, response, json, error) -> Void in
+                
+                Helper.Notification.hide(text: "加载完成")
+                
                 Action.requestCompleteHandler(json: json, error: error, completeHandler: completeHandler)
             }
         }
@@ -60,7 +69,12 @@ extension Action {
         
         // get comments
         public class func comments(id id: String, completeHandler: (success: Bool, data: JSON, description: String)->Void) {
+            Helper.Notification.show()
+            
             FNetManager.sharedInstance.GET(path: "fluxes/\(id)/comments.json") { (request, response, json, error) -> Void in
+                
+                Helper.Notification.hide(text: "加载完成")
+                
                 Action.requestCompleteHandler(json: json, error: error, completeHandler: completeHandler)
             }
         }
@@ -68,7 +82,10 @@ extension Action {
         // get flux detail
         
         public class func detail(id id: String, completeHandler: (success: Bool, data: JSON, description: String)->Void) {
+            Helper.Notification.show()
+            
             FNetManager.sharedInstance.GET(path: "fluxes/\(id).json?token=\(FHelper.token)") { (request, response, json, error) -> Void in
+                Helper.Notification.hide()
                 Action.requestCompleteHandler(json: json, error: error, completeHandler: completeHandler)
             }
         }
@@ -76,6 +93,7 @@ extension Action {
         // create a flux comment
         
         public class func createComment(content content: String, fluxId: Int, parentCommentId: Int? = nil, completeHandler: (success: Bool, data: JSON, description: String)->Void) {
+            Helper.Notification.show(text: "努力提交中...")
             
             let params: [String: AnyObject] = [
                 "flux_comment": [
@@ -88,7 +106,16 @@ extension Action {
             
             FNetManager.sharedInstance.POST(path: "flux_comments.json", parameters: params) { (request, response, json, error) -> Void in
                 
-                Action.requestCompleteHandler(json: json, error: error, completeHandler: completeHandler)
+                Action.requestCompleteHandler(json: json, error: error, completeHandler: { (success, data, description) -> Void in
+                    
+                    if success {
+                        Helper.Notification.hide(text: "评论成功！")
+                    } else {
+                        Helper.Notification.hide(text: "评论失败...")
+                    }
+                    
+                    completeHandler(success: success, data: data, description: description)
+                })
             }
         }
 

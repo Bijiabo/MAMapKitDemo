@@ -120,6 +120,8 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
             let cell = tableView.dequeueReusableCellWithIdentifier("myArchiveSettingAvatarCell", forIndexPath: indexPath) as! MyArchiveSettingAvatarTableViewCell
             cell.delegate = self
             
+            Helper.setRemoteImageForImageView(cell.avatarImageView, avatarURLString: "\(FConfiguration.sharedInstance.host)\(userData["avatar"].stringValue)")
+            
             return cell
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier("userArchiveCell", forIndexPath: indexPath) as! MyArchiveSettingItemTableViewCell
@@ -215,12 +217,6 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
         }
     }
     
-    private func _reloadTableView() {
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.tableView.reloadData()
-        })
-    }
-    
     func tapAvatar() {
         let actionSheet = KKActionSheet(title: "修改头像", cancelTitle:"取消", cancelAction: { () -> Void in
         })
@@ -246,7 +242,7 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
             if success {
                 self.userData = data
                 
-                self._reloadTableView()
+                self.extension_reloadTableView()
                 
                 // load province and city data for the first time
                 if self._provinceAndCityData.count == 0 {
@@ -315,7 +311,7 @@ extension MyArchiveTableViewController: SelectionControllerDelegate {
             if success {
                 self.userData = data
                 
-                self._reloadTableView()
+                self.extension_reloadTableView()
                 
                 self._updateDefaultProvinceAndCityData()
             }
@@ -331,7 +327,7 @@ extension MyArchiveTableViewController: MediaPickerDelegate {
         
         fromMediaPicker.dismissViewControllerAnimated(true) { () -> Void in
             Action.users.updateAvatar(image: image) { (success, description) -> Void in
-                print(success)
+                self.extension_reloadTableView()
             }
         }
         

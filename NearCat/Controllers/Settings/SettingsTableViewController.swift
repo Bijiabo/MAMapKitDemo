@@ -9,6 +9,11 @@
 import UIKit
 import SwiftyJSON
 
+private enum ModifyImageTarget {
+    case avatar
+    case background
+}
+
 class SettingsTableViewController: UITableViewController, LoginRequesterProtocol {
 
     private var headerBackgroundImageViewOriginalHeight: CGFloat = 0
@@ -21,6 +26,8 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
     private var headerCell: PersonalSettingHeaderTableViewCell? = nil
     private var _userInformation: JSON = JSON([])
     private var _alertSheetActive: Bool = false // for background long press action
+    
+    private var _modifyImageTarget: ModifyImageTarget = .avatar
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -307,7 +314,7 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
     private func _updateHeaderCellContent() {
         guard let headerCell = headerCell else {return}
         if FHelper.logged_in {
-            let avatarURLString = "\(FConfiguration.sharedInstance.host)\(_userInformation["avatar"].stringValue)"
+            let avatarURLString = "\(FConfiguration.sharedInstance.host)\(FHelper.current_user.avatar)"
             Helper.setRemoteImageForImageView(headerCell.avatarImageView, avatarURLString: avatarURLString)
             headerCell.userName = FHelper.current_user.name
             headerCell.thumbCount = _userInformation["thumb_count"].intValue
@@ -320,7 +327,7 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
     
     private func _loadUserInformation() {
         guard FHelper.logged_in else {return}
-        Action.users.informationFor(userId: FHelper.current_user.id) { (success, data, description) -> Void in
+        Action.users.selfInformation { (success, data, description) -> Void in
             if success {
                 self._userInformation = data
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -346,10 +353,15 @@ extension SettingsTableViewController: PersonalSettingHeaderDelegate {
         })
         
         actionSheet.addButton("拍照", isDestructive: false) { () -> Void in
+            self._modifyImageTarget = .avatar
+            
             let shootVC = Helper.Controller.Shoot
+            shootVC.mediaPickerDelegate = self
             self.presentViewController(shootVC, animated: true, completion: nil)
         }
         actionSheet.addButton("从相册中选取", isDestructive: false) { () -> Void in
+            self._modifyImageTarget = .avatar
+            
             let mediaPickerNavigationVC = Helper.Controller.MediaPicker
             self.presentViewController(mediaPickerNavigationVC, animated: true, completion: nil)
         }
@@ -365,10 +377,14 @@ extension SettingsTableViewController: PersonalSettingHeaderDelegate {
         actionSheet.dismissBlock = {() in self._alertSheetActive = false}
         
         actionSheet.addButton("拍照", isDestructive: false) { () -> Void in
+            self._modifyImageTarget = .background
+            
             let shootVC = Helper.Controller.Shoot
             self.presentViewController(shootVC, animated: true, completion: nil)
         }
         actionSheet.addButton("从相册中选取", isDestructive: false) { () -> Void in
+            self._modifyImageTarget = .background
+            
             let mediaPickerNavigationVC = Helper.Controller.MediaPicker
             self.presentViewController(mediaPickerNavigationVC, animated: true, completion: nil)
         }
@@ -379,4 +395,29 @@ extension SettingsTableViewController: PersonalSettingHeaderDelegate {
         }
         
     }
+}
+
+// MARK: - extension: MediaPickerDelegate
+
+extension SettingsTableViewController: MediaPickerDelegate {
+    
+    func newImage(image: UIImage, fromMediaPicker: UIViewController) {
+        switch _modifyImageTarget {
+        case .avatar:
+            fromMediaPicker.dismissViewControllerAnimated(true) { () -> Void in
+                Action.users.updateAvatar(image: image) { (success, description) -> Void in
+                    self.extension_reloadTableView()
+                }
+            }
+        case .background:
+            fromMediaPicker.dismissViewControllerAnimated(true) { () -> Void in
+                Action.users.updateAvatar(image: image) { (success, description) -> Void in
+                    self.extension_reloadTableView()
+                }
+            }
+        }
+        
+        
+    }
+    
 }

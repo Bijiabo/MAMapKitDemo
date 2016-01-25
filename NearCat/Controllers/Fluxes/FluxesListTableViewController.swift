@@ -35,6 +35,7 @@ class FluxesListTableViewController: UITableViewController {
         extension_setupRefreshControl()
         _initViews()
         _loadData(refresh: true)
+        
     }
     
     private func _initViews() {

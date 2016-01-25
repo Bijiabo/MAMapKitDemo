@@ -25,4 +25,10 @@ extension UITableViewController {
         tableView.addSubview(refreshControl!)
         tableView.sendSubviewToBack(refreshControl!)
     }
+    
+    func extension_reloadTableView() {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.tableView.reloadData()
+        })
+    }
 }

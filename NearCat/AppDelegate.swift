@@ -30,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.sharedApplication().registerUserNotificationSettings(userNotificationSettings)
         UIApplication.sharedApplication().registerForRemoteNotifications()
         
+        Helper.Notification.setupCustomStyle()
+        
         return true
     }
 

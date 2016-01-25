@@ -14,3 +14,4 @@
 
 #import <MAMapKit/MAMapKit.h>
 #import <AMapSearchKit/AMapSearchKit.h>
+#include "JDStatusBarNotification.h"

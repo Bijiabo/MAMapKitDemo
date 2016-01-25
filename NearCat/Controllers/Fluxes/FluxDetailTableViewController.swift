@@ -19,6 +19,8 @@ class FluxDetailTableViewController: InputInterfaceTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        extension_setupFooterView()
+        
         _setupViews()
         _loadData()
     }
