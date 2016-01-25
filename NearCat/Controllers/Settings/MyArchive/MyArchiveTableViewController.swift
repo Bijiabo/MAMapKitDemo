@@ -135,8 +135,17 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
             }
             
             cell.title = currentData["title"]!
+            
             let value = userData[identifier].stringValue
-            cell.value = identifier == "gender" ? (Int(value) == 1 ? "男" : "女") : value
+            switch identifier {
+            case "gender":
+                cell.value = Int(value) == 1 ? "男" : "女"
+            case "region":
+                cell.value = "\(userData["province"]) \(userData["city"])"
+            default:
+                cell.value = value
+            }
+            
             cell.identifier = identifier
             
             return cell
@@ -253,7 +262,10 @@ extension MyArchiveTableViewController: SelectionControllerDelegate {
     func updateSelectionDataForIdentifier(identifier: String, var data: [String : AnyObject]) {
         switch identifier {
         case "region":
-            print(data)
+            data = [
+                "province": data["catalogue"]!,
+                "city": data["singleItem"]!
+            ]
         default:
             if data.count == 1 {
                 let dataFirstItem: (key: String, value: AnyObject) = data.first!

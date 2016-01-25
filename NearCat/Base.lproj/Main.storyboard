@@ -1226,13 +1226,18 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="男" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uoe-Bf-FPd">
-                                            <rect key="frame" x="24" y="23" width="120" height="19.5"/>
+                                            <rect key="frame" x="24" y="23" width="504" height="19.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="120" id="4pE-wd-CUo"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.29411764709999999" green="0.42352941179999998" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="4pE-wd-CUo"/>
+                                                </mask>
+                                            </variation>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list_icon_check_nor" translatesAutoresizingMaskIntoConstraints="NO" id="QWt-f8-0nP">
                                             <rect key="frame" x="548" y="11" width="44" height="44"/>
@@ -1253,6 +1258,7 @@
                                         <constraint firstItem="QWt-f8-0nP" firstAttribute="centerY" secondItem="aF9-Rq-qDS" secondAttribute="centerY" id="FZw-5F-R8v"/>
                                         <constraint firstItem="Uoe-Bf-FPd" firstAttribute="leading" secondItem="aF9-Rq-qDS" secondAttribute="leading" constant="24" id="aQi-qh-VNZ"/>
                                         <constraint firstItem="Uoe-Bf-FPd" firstAttribute="centerY" secondItem="aF9-Rq-qDS" secondAttribute="centerY" id="jbn-9S-kM2"/>
+                                        <constraint firstItem="QWt-f8-0nP" firstAttribute="leading" secondItem="Uoe-Bf-FPd" secondAttribute="trailing" constant="20" id="oo9-4T-dyO"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="QWt-f8-0nP" secondAttribute="trailing" id="zNs-Xl-soT"/>
                                     </constraints>
                                 </tableViewCellContentView>
