@@ -21,6 +21,7 @@ class FluxesListTableViewCell: UITableViewCell {
     @IBOutlet weak var distanceCountButton: UIButton!
     @IBOutlet weak var likeCountButton: UIButton!
     @IBOutlet weak var followButton: UIButton!
+    @IBOutlet weak var separatorLineView: UIView!
     
     var id: Int = 0
     var userId: Int = 0
@@ -36,6 +37,12 @@ class FluxesListTableViewCell: UITableViewCell {
         
         selectedBackgroundView = UIView(frame: bounds)
         selectedBackgroundView!.backgroundColor = Constant.Color.CellSelected
+        
+        followButton.layer.cornerRadius = 12.0
+        followButton.layer.borderColor = Constant.Color.Theme.CGColor
+        followButton.layer.borderWidth = 1.0
+        
+        separatorLineView.backgroundColor = Constant.Color.TableViewSeparator
         
         // add tap avatar action
         avatarImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("tapAvatar:")))
@@ -69,7 +76,7 @@ class FluxesListTableViewCell: UITableViewCell {
     
     var likeCount: Int = 0 {
         didSet {
-            let likeCountButtonTitle: String = "like \(likeCount)"
+            let likeCountButtonTitle: String = "\(likeCount)"
             likeCountButton.setTitle(likeCountButtonTitle, forState: UIControlState.Normal)
             likeCountButton.setTitle(likeCountButtonTitle, forState: UIControlState.Highlighted)
             likeCountButton.setTitle(likeCountButtonTitle, forState: UIControlState.Selected)
@@ -81,7 +88,7 @@ class FluxesListTableViewCell: UITableViewCell {
     
     var commentCount: Int = 0 {
         didSet {
-            let commentCountButtonTitle: String = "comment \(commentCount)"
+            let commentCountButtonTitle: String = "\(commentCount)"
             commentCountButton.setTitle(commentCountButtonTitle, forState: UIControlState.Normal)
             commentCountButton.setTitle(commentCountButtonTitle, forState: UIControlState.Highlighted)
             commentCountButton.setTitle(commentCountButtonTitle, forState: UIControlState.Selected)
@@ -93,7 +100,7 @@ class FluxesListTableViewCell: UITableViewCell {
     
     var distance: Double = 0 {
         didSet {
-            let distanceCountButtonTitle: String = "Distance \(distance) Km"
+            let distanceCountButtonTitle: String = "\(distance) Km"
             distanceCountButton.setTitle(distanceCountButtonTitle, forState: UIControlState.Normal)
             distanceCountButton.setTitle(distanceCountButtonTitle, forState: UIControlState.Highlighted)
             distanceCountButton.setTitle(distanceCountButtonTitle, forState: UIControlState.Selected)

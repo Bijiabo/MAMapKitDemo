@@ -46,6 +46,10 @@ public struct Constant {
         
         static let TableViewSeparator: UIColor = UIColor(red:0.87, green:0.87, blue:0.87, alpha:0.5)
         static let TableViewBackground: UIColor = UIColor(red:0.96, green:0.96, blue:0.96, alpha:1)
+        
+        static let G2: UIColor = UIColor(red:0.29, green:0.29, blue:0.29, alpha:1)
+        static let G3: UIColor = UIColor(red:0.51, green:0.51, blue:0.51, alpha:1)
+        static let G4: UIColor = UIColor(red:0.61, green:0.61, blue:0.61, alpha:1)
     }
     
     struct Font {
@@ -67,6 +71,7 @@ public struct Constant {
             static let Size_12: UIFont = Font.Regular.fontForSize(12.0)
             static let Size_16: UIFont = Font.Regular.fontForSize(16.0)
             static let Size_18: UIFont = Font.Regular.fontForSize(18.0)
+            static let Size_20: UIFont = Font.Regular.fontForSize(20.0)
             static let Size_22: UIFont = Font.Regular.fontForSize(22.0)
         }
         
@@ -117,7 +122,7 @@ public struct Constant {
         struct User {
 
             struct Name {
-                static let Black = TextStyle.instance(font: Constant.Font.Regular.Size_22, color: Constant.Color.TextBlack)
+                static let Black = TextStyle.instance(font: Constant.Font.Regular.Size_22, color: UIColor.blackColor())
                 
                 static let Blue = TextStyle.instance(font: Constant.Font.Regular.Size_22, color: Constant.Color.Theme)
             }
@@ -130,15 +135,20 @@ public struct Constant {
             
             struct Small {
                 static let Black = TextStyle.instance(font: Constant.Font.Regular.Size_16, color: Constant.Color.TextDeepGray)
+                static let G2 = TextStyle.instance(font: Constant.Font.Regular.Size_16, color: Constant.Color.G2)
             }
+            
+            static let G4 = TextStyle.instance(font: Constant.Font.Regular.Size_22, color: Constant.Color.G4)
         }
         
         // ABC
-        static let ABC = TextStyle.instance(font: Constant.Font.Medium.Size_22, color: Constant.Color.Theme)
+        struct ABC {
+            static let Blue = TextStyle.instance(font: Constant.Font.Medium.Size_22, color: Constant.Color.Theme)
+        }
         
         // button
         struct Button {
-            static let White = TextStyle.instance(font: Constant.Font.Regular.Size_22, color: UIColor.whiteColor())
+            static let White = TextStyle.instance(font: Constant.Font.Regular.Size_20, color: UIColor.whiteColor())
             static let Blue = TextStyle.instance(font: Constant.Font.Medium.Size_18, color: Constant.Color.Theme)
             static let Black = TextStyle.instance(font: Constant.Font.Regular.Size_18, color: UIColor.blackColor())
             static let Red = TextStyle.instance(font: Constant.Font.Regular.Size_18, color: Constant.Color.Pink)
@@ -146,12 +156,15 @@ public struct Constant {
         
         // navigation
         struct Navigation {
-            static let Title = TextStyle.instance(font: Constant.Font.Semibold.Size_18, color: Constant.Color.Theme)
+            struct Title {
+                static let Blue = TextStyle.instance(font: Constant.Font.Semibold.Size_18, color: Constant.Color.Theme)
+            }
+            
             
             struct PrimaryButtonRight {
                 static let Blue = TextStyle.instance(font: Constant.Font.Semibold.Size_17, color: Constant.Color.Theme)
                 static let White = TextStyle.instance(font: Constant.Font.Semibold.Size_17, color: UIColor.whiteColor())
-                static let Gray = TextStyle.instance(font: Constant.Font.Semibold.Size_17, color: Constant.Color.TextGray)
+                static let G4 = TextStyle.instance(font: Constant.Font.Semibold.Size_17, color: Constant.Color.TextGray)
             }
         }
         
@@ -166,11 +179,12 @@ public struct Constant {
         // segmented control
         struct SegmentedControl {
             struct Tab {
-                static let Active = TextStyle.instance(font: Constant.Font.Regular.Size_16, color: Constant.Color.TextDeepGray)
+                static let Active = TextStyle.instance(font: Constant.Font.Regular.Size_16, color: Constant.Color.G2)
                 static let Normal = TextStyle.instance(font: Constant.Font.Regular.Size_16, color: Constant.Color.TextGray)
                 static let Blue = TextStyle.instance(font: Constant.Font.Regular.Size_13, color: Constant.Color.Theme)
                 static let White = TextStyle.instance(font: Constant.Font.Regular.Size_13, color: UIColor.whiteColor())
-                static let Gray = TextStyle.instance(font: Constant.Font.Regular.Size_13, color: Constant.Color.TextMediumGray)
+                static let G3 = TextStyle.instance(font: Constant.Font.Regular.Size_13, color: Constant.Color.G3)
+                static let G4 = TextStyle.instance(font: Constant.Font.Regular.Size_13, color: Constant.Color.G4)
             }
             
             struct Selected {
@@ -185,7 +199,7 @@ public struct Constant {
                 static let White = TextStyle.instance(font: Constant.Font.Regular.Size_16, color: UIColor.whiteColor())
                 static let Blue = TextStyle.instance(font: Constant.Font.Regular.Size_16, color: Constant.Color.Theme)
                 static let Black = TextStyle.instance(font: Constant.Font.Regular.Size_16, color: Constant.Color.TextDeepGray)
-                static let Gray = TextStyle.instance(font: Constant.Font.Regular.Size_13, color: Constant.Color.TextMediumGray)
+                static let G2 = TextStyle.instance(font: Constant.Font.Regular.Size_13, color: Constant.Color.G2)
             }
             
             struct Small {
@@ -194,7 +208,8 @@ public struct Constant {
                 
                 static let White = TextStyle.instance(font: Cell.Small.font, color: UIColor.whiteColor())
                 static let Blue = TextStyle.instance(font: Cell.Small.font, color: Constant.Color.Theme)
-                static let Gray = TextStyle.instance(font: Cell.Small.font, color: Constant.Color.TextMediumGray)
+                static let G2 = TextStyle.instance(font: Constant.Font.Regular.Size_13, color: Constant.Color.G2)
+                static let G4 = TextStyle.instance(font: Constant.Font.Regular.Size_13, color: Constant.Color.G4)
             }
         }
         
@@ -202,20 +217,28 @@ public struct Constant {
         struct Body {
             
             static let Blue = TextStyle.instance(font: Constant.Font.Regular.Size_14, color: Constant.Color.Theme)
-            static let Gray = TextStyle.instance(font: Constant.Font.Regular.Size_14, color: Constant.Color.TextMediumGray)
+            static let G3 = TextStyle.instance(font: Constant.Font.Regular.Size_14, color: Constant.Color.G3)
+            static let G2 = TextStyle.instance(font: Constant.Font.Regular.Size_13, color: Constant.Color.G2)
             static let White = TextStyle.instance(font: Constant.Font.Regular.Size_14, color: UIColor.whiteColor())
             static let Black = TextStyle.instance(font: Constant.Font.Regular.Size_14, color: Constant.Color.TextDeepGray)
         }
         
         // placeholder
-        static let Placeholder = TextStyle.instance(font: Constant.Font.Regular.Size_13, color: Constant.Color.TextGray)
+        struct Placeholder {
+            static let G4 = TextStyle.instance(font: Constant.Font.Regular.Size_12, color: Constant.Color.G4)
+        }
         
         // tab bar
         struct TabBar {
             private static let font: UIFont = Constant.Font.Regular.Size_10
             
-            static let Normal = TextStyle.instance(font: TextStyle.TabBar.font, color: UIColor(red:0.56, green:0.56, blue:0.58, alpha:1))
-            static let Active = TextStyle.instance(font: TextStyle.TabBar.font, color: UIColor(red:0.56, green:0.56, blue:0.58, alpha:1))
+            struct Text {
+                static let G4 = TextStyle.instance(font: TextStyle.TabBar.font, color: Constant.Color.G4)
+            }
+            
+            struct Active {
+                static let G4 = TextStyle.instance(font: TextStyle.TabBar.font, color: Constant.Color.G4)
+            }
         }
     }
     

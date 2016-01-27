@@ -19,8 +19,8 @@ class FluxDetailTableViewController: InputInterfaceTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.separatorStyle = .None
         extension_setupFooterView()
-        
         _setupViews()
         _loadData()
     }
@@ -77,7 +77,7 @@ class FluxDetailTableViewController: InputInterfaceTableViewController {
             if pictures.count > 0 {
                 let currentPicture = pictures[0]
                 if currentPicture["height"].floatValue != 0 {
-                    let imageHeight = Int( Float(view.frame.width - 16.0) / currentPicture["width"].floatValue * currentPicture["height"].floatValue )
+                    let imageHeight = Int( Float(view.frame.width - 48.0) / currentPicture["width"].floatValue * currentPicture["height"].floatValue )
                     cell.contentImageViewHeight.constant = CGFloat(imageHeight)
                 }
                 let picturePath: String = currentPicture["path"].stringValue

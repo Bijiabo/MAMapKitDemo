@@ -28,6 +28,8 @@ class FluxesListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.separatorStyle = .None
+        
         let nib: UINib = UINib(nibName: "LoadMoreCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "loadMoreCell")
 
@@ -91,6 +93,7 @@ class FluxesListTableViewController: UITableViewController {
             
             cell.content = fluxData["content"].stringValue
             cell.userName = userData["name"].stringValue
+            cell.date = fluxData["created_at"].stringValue
             cell.id = fluxData["id"].intValue
             
             // set user's avatar
@@ -101,8 +104,8 @@ class FluxesListTableViewController: UITableViewController {
             let pictures = fluxData["picture"]
             if pictures.count > 0 {
                 let currentPicture = pictures[0]
-                if currentPicture["height"].floatValue != 0 {
-                    let imageHeight = Int( Float(view.frame.width - 16.0) / currentPicture["width"].floatValue * currentPicture["height"].floatValue )
+                if currentPicture["height"].floatValue != 0 && currentPicture["width"].floatValue != 0 {
+                    let imageHeight = Int( Float(view.frame.width - 48.0) / currentPicture["width"].floatValue * currentPicture["height"].floatValue )
                     cell.contentImageViewHeight.constant = CGFloat(imageHeight)
                 }
                 let picturePath: String = currentPicture["path"].stringValue

@@ -15,7 +15,7 @@ import UIKit
     var delegate: SegmentedControlDelegate?
     
     let highlightTextColor: UIColor = UIColor(red:0.36, green:0.5, blue:0.66, alpha:1)
-    let normalTextColor: UIColor = UIColor(red:0.58, green:0.58, blue:0.58, alpha:1)
+    let normalTextColor: UIColor = UIColor(red:0.51, green:0.51, blue:0.51, alpha:1)
     
     var items:[String] = ["Item 1","Item 2","Item 3"] {
         didSet{
@@ -45,7 +45,7 @@ import UIKit
     }
     
     func setupView(){
-        let bgColor: UIColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1)
+        let bgColor: UIColor = UIColor(red:0.94, green:0.94, blue:0.94, alpha:1)
         
         layer.cornerRadius = frame.height / 2
         layer.borderColor = bgColor.CGColor

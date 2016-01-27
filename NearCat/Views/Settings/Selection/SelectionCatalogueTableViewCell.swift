@@ -24,7 +24,7 @@ class SelectionCatalogueTableViewCell: UITableViewCell, CustomSeparatorCell {
         separatorLineView.backgroundColor = Constant.Color.TableViewSeparator
         
         Helper.UI.setLabel(titleLabel, forStyle: Constant.TextStyle.Body.Blue)
-        Helper.UI.setLabel(valueLabel, forStyle: Constant.TextStyle.Placeholder)
+        Helper.UI.setLabel(valueLabel, forStyle: Constant.TextStyle.Placeholder.G4)
         valueLabel.text = String()
         
         extension_setDefaultSelectedColor()

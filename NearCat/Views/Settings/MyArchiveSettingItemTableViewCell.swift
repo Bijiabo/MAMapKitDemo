@@ -22,7 +22,7 @@ class MyArchiveSettingItemTableViewCell: UITableViewCell {
         // Initialization code
         
         Helper.UI.setLabel(titleLabel, forStyle: Constant.TextStyle.Body.Blue)
-        Helper.UI.setLabel(valueLabel, forStyle: Constant.TextStyle.Placeholder)
+        Helper.UI.setLabel(valueLabel, forStyle: Constant.TextStyle.Placeholder.G4)
         
         separatorLineView.backgroundColor = Constant.Color.TableViewSeparator
         
