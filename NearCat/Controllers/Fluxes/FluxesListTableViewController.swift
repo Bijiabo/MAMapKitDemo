@@ -156,7 +156,10 @@ class FluxesListTableViewController: UITableViewController {
     // MARK: - data functions
     
     private func _loadData(refresh refresh: Bool = false) {
-        if page >= maxPage {return}
+        if page >= maxPage {
+            self.refreshControl?.endRefreshing()
+            return
+        }
         Action.fluxes.list(page: refresh ? 1 : page) { (success, data, description) -> Void in
             self.refreshControl?.endRefreshing()
             if success {

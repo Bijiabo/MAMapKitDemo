@@ -20,6 +20,7 @@ class SelectionSingleItemTableViewCell: UITableViewCell, CustomSeparatorCell {
         super.awakeFromNib()
         // Initialization code
         
+        extension_setDefaultSelectedColor()
         separatorLineView.backgroundColor = Constant.Color.TableViewSeparator
         Helper.UI.setLabel(titleLabel, forStyle: Constant.TextStyle.Cell.Title.Blue)
     }

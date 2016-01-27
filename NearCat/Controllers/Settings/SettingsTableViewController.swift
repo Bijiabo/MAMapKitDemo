@@ -320,6 +320,8 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
             headerCell.thumbCount = _userInformation["thumb_count"].intValue
             headerCell.followingCount = _userInformation["followers_count"].intValue
             headerCell.cats = _userInformation["cats"].arrayValue
+        } else {
+            _clearUserInformation()
         }
     }
     
@@ -349,6 +351,12 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
 
 extension SettingsTableViewController: PersonalSettingHeaderDelegate {
     func tapAvatar() {
+        
+        if !FHelper.logged_in {
+            _displayNeedLoginAccess()
+            return
+        }
+        
         let actionSheet = KKActionSheet(title: "更换头像", cancelTitle:"取消", cancelAction: { () -> Void in
         })
         
@@ -370,6 +378,9 @@ extension SettingsTableViewController: PersonalSettingHeaderDelegate {
     }
     
     func longPressBackgroundImage() {
+        
+        if !FHelper.logged_in { return }
+        
         let actionSheet = KKActionSheet(title: "更换背景图片", cancelTitle:"取消", cancelAction: { () -> Void in
             self._alertSheetActive = false
         })

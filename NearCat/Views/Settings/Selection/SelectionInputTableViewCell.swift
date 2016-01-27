@@ -17,6 +17,7 @@ class SelectionInputTableViewCell: UITableViewCell, CustomSeparatorCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        extension_setDefaultSelectedColor()
         separatorLineView.backgroundColor = Constant.Color.TableViewSeparator
     }
 
