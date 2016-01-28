@@ -15,6 +15,7 @@ class FluxCommentTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var replyButton: UIButton!
     @IBOutlet weak var thumbsCountButton: UIButton!
+    @IBOutlet weak var separatorLineView: UIView!
     
     var id: Int = 0
     
@@ -24,6 +25,7 @@ class FluxCommentTableViewCell: UITableViewCell {
         
         selectedBackgroundView = UIView(frame: bounds)
         selectedBackgroundView!.backgroundColor = Constant.Color.CellSelected
+        separatorLineView.backgroundColor = Constant.Color.TableViewSeparator
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -32,9 +34,20 @@ class FluxCommentTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    private var _userName: NSAttributedString = NSAttributedString()
+    var userName: String = String() {
+        didSet {
+            _userName = NSAttributedString(string: "\(userName): ", attributes: [ NSForegroundColorAttributeName: Constant.Color.Theme ])
+        }
+    }
+    
+    private var _content: NSAttributedString = NSAttributedString()
     var content: String = String() {
         didSet {
-            contentLabel.text = content
+            _content = NSAttributedString(string: content, attributes: [ NSForegroundColorAttributeName: Constant.Color.G4 ])
+            let contentAttributedString = NSMutableAttributedString(attributedString: _userName)
+            contentAttributedString.appendAttributedString(_content)
+            contentLabel.attributedText = contentAttributedString
         }
     }
     
@@ -52,7 +65,7 @@ class FluxCommentTableViewCell: UITableViewCell {
     
     var thumbsCount: Int = 0 {
         didSet {
-            let thumbsCountButtonTitle: String = "thumbs \(thumbsCount)"
+            let thumbsCountButtonTitle: String = "\(thumbsCount)"
             thumbsCountButton.setTitle(thumbsCountButtonTitle, forState: UIControlState.Normal)
             thumbsCountButton.setTitle(thumbsCountButtonTitle, forState: UIControlState.Highlighted)
             thumbsCountButton.setTitle(thumbsCountButtonTitle, forState: UIControlState.Selected)

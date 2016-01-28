@@ -35,6 +35,12 @@ extension Helper {
             }
         }
         
+        class var FluxDetail: FluxDetailViewController {
+            get {
+                return Helper.Controller.instanceForStoryboardByName("Main", ForIdentifier: "fluxDetail") as! FluxDetailViewController
+            }
+        }
+        
     }
     
 }

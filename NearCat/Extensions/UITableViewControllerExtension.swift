@@ -31,4 +31,9 @@ extension UITableViewController {
             self.tableView.reloadData()
         })
     }
+    
+    func extension_registerLoadingCellNib() {
+        let nib: UINib = UINib(nibName: "LoadMoreCell", bundle: nil)
+        tableView.registerNib(nib, forCellReuseIdentifier: "loadMoreCell")
+    }
 }

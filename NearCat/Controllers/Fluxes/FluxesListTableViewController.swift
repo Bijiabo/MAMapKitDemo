@@ -30,9 +30,7 @@ class FluxesListTableViewController: UITableViewController {
         
         tableView.separatorStyle = .None
         
-        let nib: UINib = UINib(nibName: "LoadMoreCell", bundle: nil)
-        tableView.registerNib(nib, forCellReuseIdentifier: "loadMoreCell")
-
+        extension_registerLoadingCellNib()
         extension_setupFooterView()
         extension_setupRefreshControl()
         _initViews()

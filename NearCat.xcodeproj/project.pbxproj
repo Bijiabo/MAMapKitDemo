@@ -162,6 +162,8 @@
 		65DC08F71C49442900A956E5 /* PrivateMessageChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DC08F61C49442900A956E5 /* PrivateMessageChatTableViewController.swift */; };
 		65DC08F91C49503800A956E5 /* PrivateMessageChatContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DC08F81C49503800A956E5 /* PrivateMessageChatContainerViewController.swift */; };
 		65DC58FC1C4916D8009D3FE6 /* PrivateMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DC58FB1C4916D8009D3FE6 /* PrivateMessages.swift */; };
+		65E79C311C5A5CCC00AABC7D /* Regex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E79C301C5A5CCC00AABC7D /* Regex.framework */; };
+		65E79C321C5A5CCC00AABC7D /* Regex.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65E79C301C5A5CCC00AABC7D /* Regex.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65F400051C568B2400816BEB /* JDStatusBarNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F400001C568B2400816BEB /* JDStatusBarNotification.m */; };
 		65F400061C568B2400816BEB /* JDStatusBarStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F400021C568B2400816BEB /* JDStatusBarStyle.m */; };
 		65F400071C568B2400816BEB /* JDStatusBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F400041C568B2400816BEB /* JDStatusBarView.m */; };
@@ -199,6 +201,7 @@
 				6557F7AF1C2C655D00E6780D /* KeychainAccess.framework in Embed Frameworks */,
 				6557F7AD1C2C655D00E6780D /* Alamofire.framework in Embed Frameworks */,
 				6559A0671C4564C50027CECE /* AlamofireImage.framework in Embed Frameworks */,
+				65E79C321C5A5CCC00AABC7D /* Regex.framework in Embed Frameworks */,
 				65152F281C4BAA1700DDB874 /* NVActivityIndicatorView.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -365,6 +368,7 @@
 		65DC08F61C49442900A956E5 /* PrivateMessageChatTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessageChatTableViewController.swift; sourceTree = "<group>"; };
 		65DC08F81C49503800A956E5 /* PrivateMessageChatContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessageChatContainerViewController.swift; sourceTree = "<group>"; };
 		65DC58FB1C4916D8009D3FE6 /* PrivateMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessages.swift; sourceTree = "<group>"; };
+		65E79C301C5A5CCC00AABC7D /* Regex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Regex.framework; path = Carthage/Build/iOS/Regex.framework; sourceTree = "<group>"; };
 		65F400001C568B2400816BEB /* JDStatusBarNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDStatusBarNotification.m; sourceTree = "<group>"; };
 		65F400011C568B2400816BEB /* JDStatusBarStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDStatusBarStyle.h; sourceTree = "<group>"; };
 		65F400021C568B2400816BEB /* JDStatusBarStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDStatusBarStyle.m; sourceTree = "<group>"; };
@@ -399,6 +403,7 @@
 				65CE59CE1C2A7568008809B0 /* libstdc++.6.0.9.tbd in Frameworks */,
 				65CE59CA1C2A7545008809B0 /* SystemConfiguration.framework in Frameworks */,
 				65CE59C81C2A753A008809B0 /* CoreTelephony.framework in Frameworks */,
+				65E79C311C5A5CCC00AABC7D /* Regex.framework in Frameworks */,
 				6559A0661C4564C50027CECE /* AlamofireImage.framework in Frameworks */,
 				65CE59C61C2A7532008809B0 /* CoreLocation.framework in Frameworks */,
 				6557F7AE1C2C655D00E6780D /* KeychainAccess.framework in Frameworks */,
@@ -598,6 +603,7 @@
 		6557F7BE1C2D211D00E6780D /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
+				65E79C301C5A5CCC00AABC7D /* Regex.framework */,
 				65152F261C4BAA1700DDB874 /* NVActivityIndicatorView.framework */,
 				6559A0651C4564C50027CECE /* AlamofireImage.framework */,
 				65D54D181C30340100F7B450 /* SwiftyJSON.framework */,
@@ -1152,6 +1158,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/NVActivityIndicatorView.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Regex.framework",
 			);
 			name = "Run Script For Carthage";
 			outputPaths = (

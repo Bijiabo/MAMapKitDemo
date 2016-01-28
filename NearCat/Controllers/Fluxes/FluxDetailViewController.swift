@@ -36,8 +36,8 @@ class FluxDetailViewController: InputContainerViewController {
     private func _setupNavigationBar() {
         title = ""
         navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: Selector("tapNavigationBarShareButton:")),
-            UIBarButtonItem(title: "like", style: UIBarButtonItemStyle.Done, target: self, action: Selector("tapNavigaionBarLikeButton:"))
+            UIBarButtonItem(image: UIImage(named: "nav_icon_share_nor"), style: UIBarButtonItemStyle.Done, target: self, action: Selector("tapNavigationBarShareButton:")),
+            UIBarButtonItem(image: UIImage(named: "nav_icon_like_nor"), style: UIBarButtonItemStyle.Done, target: self, action: Selector("tapNavigaionBarLikeButton:"))
         ]
         
         // custom back button text

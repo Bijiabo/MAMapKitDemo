@@ -118,10 +118,12 @@ class FluxDetailTableViewController: InputInterfaceTableViewController {
             
             cell.thumbsCount = 0 // TODO: complete this function
             if parentCommentData.isExists() && parentCommentUserData.isExists() {
-                cell.content = "\(userName) 回复 \(parentCommentUserData["name"].stringValue): \(commentContent)"
+                cell.userName = "\(userName) 回复 \(parentCommentUserData["name"].stringValue)"
             } else {
-                cell.content = "\(userName): \(commentContent)"
+                cell.userName = userName
             }
+            
+            cell.content = commentContent
             
             cell.date = commentData["created_at"].stringValue
             cell.id = commentData["id"].intValue
