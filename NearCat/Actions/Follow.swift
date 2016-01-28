@@ -25,6 +25,18 @@ extension Action {
             }
         }
         
+        // get self following data
+        
+        public class func selfFollowing(completeHandler: (success: Bool, data: JSON, description: String)->Void) {
+            let path = "users/self_following.json?token=\(FHelper.token)"
+            
+            FNetManager.sharedInstance.GET(path: path) { (request, response, json, error) -> Void in
+                Action.requestCompleteHandler(json: json, error: error, completeHandler: { (success, data, description) -> Void in
+                    completeHandler(success: success, data: data["users"], description: description)
+                })
+            }
+        }
+        
         // do following
         
         public class func follow(userId userId: Int, completeHandler: (success: Bool, description: String)->Void = {(success, description) in }) {

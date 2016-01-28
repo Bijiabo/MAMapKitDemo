@@ -771,43 +771,54 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="followingCell" rowHeight="102" id="6Sw-vK-KhK" customClass="FollowingTableViewCell" customModule="NearCat" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="102"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="followingCell" rowHeight="98" id="6Sw-vK-KhK" customClass="FollowingTableViewCell" customModule="NearCat" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="98"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Sw-vK-KhK" id="k1f-oX-HcN">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="101.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="97.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bWI-1J-wtw" customClass="AvatarImageView" customModule="NearCat" customModuleProvider="target">
-                                            <rect key="frame" x="12" y="10" width="80" height="80"/>
+                                            <rect key="frame" x="24" y="24" width="50" height="50"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="80" id="1oi-wh-gXu"/>
-                                                <constraint firstAttribute="height" constant="80" id="zjD-wv-srX"/>
+                                                <constraint firstAttribute="width" constant="50" id="1oi-wh-gXu"/>
+                                                <constraint firstAttribute="height" constant="50" id="zjD-wv-srX"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3lr-YV-3wZ">
-                                            <rect key="frame" x="112" y="40" width="468" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <rect key="frame" x="92" y="39" width="488" height="19.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.29411764709999999" green="0.42352941179999998" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qmY-1V-cRT" userLabel="separator line view">
+                                            <rect key="frame" x="24" y="96" width="576" height="1"/>
+                                            <color key="backgroundColor" red="0.86302219680000003" green="0.86302219680000003" blue="0.86302219680000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="fMP-nw-Ap9"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="3lr-YV-3wZ" secondAttribute="trailing" constant="20" id="AWF-71-RFS"/>
-                                        <constraint firstItem="bWI-1J-wtw" firstAttribute="leading" secondItem="k1f-oX-HcN" secondAttribute="leading" constant="12" id="Gsp-Cm-XgD"/>
+                                        <constraint firstAttribute="trailing" secondItem="qmY-1V-cRT" secondAttribute="trailing" id="CTB-A4-0do"/>
+                                        <constraint firstItem="bWI-1J-wtw" firstAttribute="leading" secondItem="k1f-oX-HcN" secondAttribute="leading" constant="24" id="Gsp-Cm-XgD"/>
+                                        <constraint firstItem="qmY-1V-cRT" firstAttribute="leading" secondItem="k1f-oX-HcN" secondAttribute="leading" constant="24" id="GvQ-XH-KaM"/>
                                         <constraint firstItem="bWI-1J-wtw" firstAttribute="centerY" secondItem="k1f-oX-HcN" secondAttribute="centerY" id="di1-LK-2FF"/>
                                         <constraint firstItem="3lr-YV-3wZ" firstAttribute="centerY" secondItem="k1f-oX-HcN" secondAttribute="centerY" id="eUL-lx-582"/>
-                                        <constraint firstItem="3lr-YV-3wZ" firstAttribute="leading" secondItem="bWI-1J-wtw" secondAttribute="trailing" constant="20" id="yLd-1y-FOu"/>
+                                        <constraint firstAttribute="bottom" secondItem="qmY-1V-cRT" secondAttribute="bottom" id="mnA-9b-8xn"/>
+                                        <constraint firstItem="3lr-YV-3wZ" firstAttribute="leading" secondItem="bWI-1J-wtw" secondAttribute="trailing" constant="18" id="yLd-1y-FOu"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="avatarImageView" destination="bWI-1J-wtw" id="NLT-42-XSj"/>
+                                    <outlet property="separatorLineView" destination="qmY-1V-cRT" id="FpM-IZ-tre"/>
                                     <outlet property="userNameLabel" destination="3lr-YV-3wZ" id="d9a-2Y-JHi"/>
                                     <segue destination="gSU-AA-zjr" kind="show" identifier="followToPersonalPage" id="WJb-bZ-7nO"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="loadmore" rowHeight="77" id="Pm4-A7-Xlx" customClass="LoadingTableViewCell" customModule="NearCat" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="130" width="600" height="77"/>
+                                <rect key="frame" x="0.0" y="126" width="600" height="77"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pm4-A7-Xlx" id="9FM-n0-THm">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="76.5"/>

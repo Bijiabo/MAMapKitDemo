@@ -12,6 +12,7 @@ class FollowingTableViewCell: UITableViewCell {
 
     @IBOutlet weak var avatarImageView: AvatarImageView!
     @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var separatorLineView: UIView!
     
     var id: Int = 0
     
@@ -19,8 +20,8 @@ class FollowingTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        selectedBackgroundView = UIView(frame: bounds)
-        selectedBackgroundView!.backgroundColor = Constant.Color.CellSelected
+        separatorLineView.backgroundColor = Constant.Color.TableViewSeparator
+        extension_setDefaultSelectedColor()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

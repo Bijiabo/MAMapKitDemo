@@ -12,60 +12,53 @@ import SwiftyJSON
 class MyFollowTableViewController: SettingSecondaryTableViewController {
     
     private var _following: [JSON] = [JSON]()
-    private var _followingPage: Int = 1
-    private var _followingMaxPageCount: Int = Int.max
+    private var _followingData: [JSON] = [JSON]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.separatorStyle = .None
+        tableView.sectionIndexColor = Constant.Color.G3
+        tableView.sectionIndexBackgroundColor = UIColor.whiteColor()
+        tableView.sectionIndexMinimumDisplayRowCount = 15
         
         _loadData()
     }
     
     // MARK: - Table view data source
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 98.0
+    }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return _followingData.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        switch section {
-        case 0:
-            return _following.count
-        default:
-            return 1
-        }
+        return _followingData[section]["data"].arrayValue.count
         
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
-            let cell = tableView.dequeueReusableCellWithIdentifier("followingCell", forIndexPath: indexPath) as! FollowingTableViewCell
-            let currentData = _following[indexPath.row]
-            
-            cell.userName = currentData["name"].stringValue
-            cell.id = currentData["id"].intValue
-            let avatarURLString: String = FConfiguration.sharedInstance.host+currentData["avatar"].stringValue
-            Helper.setRemoteImageForImageView(cell.avatarImageView, avatarURLString: avatarURLString)
-            
-            return cell
-        default:
-            let cell = tableView.dequeueReusableCellWithIdentifier("loadmore", forIndexPath: indexPath) as! LoadingTableViewCell
-            
-            if _followingPage < _followingMaxPageCount {
-                cell.loading = true
-                _followingPage += 1
-                _loadData()
-            } else {
-                cell.loading = false
-            }
-            
-            return cell
-        }
         
+        let cell = tableView.dequeueReusableCellWithIdentifier("followingCell", forIndexPath: indexPath) as! FollowingTableViewCell
+        let currentData = _followingData[indexPath.section]["data"].arrayValue[indexPath.row]
+        
+        cell.userName = currentData["name"].stringValue
+        cell.id = currentData["id"].intValue
+        let avatarURLString: String = FConfiguration.sharedInstance.host+currentData["avatar"].stringValue
+        Helper.setRemoteImageForImageView(cell.avatarImageView, avatarURLString: avatarURLString)
+        
+        return cell
+    }
+    
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return _followingData[section]["key"].stringValue
     }
     
     // MARK: - cancel following
@@ -94,24 +87,23 @@ class MyFollowTableViewController: SettingSecondaryTableViewController {
         return false
     }
     
+    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
+        var titles: [String] = [String]()
+        for item in _followingData {
+            titles.append(item["key"].stringValue)
+        }
+        
+        return titles
+    }
+    
     // MARK: - data function
     
     private func _loadData() {
-        if _followingPage >= _followingMaxPageCount {return}
-        Action.follow.following(userId: FHelper.current_user.id, page: _followingPage) { (success, data, description) -> Void in
+        Action.follow.selfFollowing { (success, data, description) -> Void in
             if success {
-                if data.count == 0 {
-                    self._followingMaxPageCount = self._followingPage
-                    self._setLoadingCellStatus(loading: false)
-                    return
-                }
-                
-                self._following += data.arrayValue
-                
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.tableView.reloadData()
-                })
-                
+                self._following = data.arrayValue
+                self._processData()
+//                self.extension_reloadTableView()
             } else {
                 print(description)
             }
@@ -123,12 +115,41 @@ class MyFollowTableViewController: SettingSecondaryTableViewController {
         loadingCell.loading = loading
     }
     
+    private func _processData() {
+        var previousFirstLetter: Character?
+        var followingDataCache: [JSON] = [JSON]()
+        
+        for value in _following {
+            let _firstLetter = value["name_spelling"].stringValue.characters.first
+            
+            if previousFirstLetter == _firstLetter && _firstLetter != nil {
+                var _cache = followingDataCache[followingDataCache.count-1]["data"].arrayValue
+                _cache.append(value)
+                followingDataCache[followingDataCache.count-1]["data"] = JSON(_cache)
+            } else if let firstLetter = _firstLetter{
+                let key = String(firstLetter).uppercaseString
+                previousFirstLetter = firstLetter
+                
+                let data: [String: JSON] = [
+                    "key": JSON(key),
+                    "data": JSON([value])
+                ]
+                followingDataCache.append(JSON(data))
+            }
+        }
+        
+        _followingData = followingDataCache
+        
+        extension_reloadTableView()
+    }
+    
+    // MARK: - navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "followToPersonalPage" {
             guard let targetVC = segue.destinationViewController as? PersonalPageTableViewController else {return}
             guard let cell = sender as? FollowingTableViewCell else {return}
             targetVC.user_id = cell.id
-            
         }
     }
 
