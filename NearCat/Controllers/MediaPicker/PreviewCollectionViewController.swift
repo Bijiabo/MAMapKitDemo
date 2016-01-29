@@ -20,6 +20,15 @@ class PreviewCollectionViewController: UICollectionViewController {
     var data: PHFetchResult!
     var subData: [PHFetchResult] = [PHFetchResult]()
     let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+    var mediaPickerDelegate: MediaPickerDelegate?
+    
+    var selectedImageIndexPaths:  [NSIndexPath] = [NSIndexPath]() {
+        didSet {
+            counterView?.text = "\(selectedImageIndexPaths.count)"
+        }
+    }
+    var selectedImages: [UIImage] = [UIImage]()
+    var counterView: UILabel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +59,35 @@ class PreviewCollectionViewController: UICollectionViewController {
         let latestRowIndex = momentMode ? (subData.isEmpty ? 0 : (subData.last!.count > 1 ? subData.last!.count - 1 : 0)) : (data.count > 1 ? data.count - 1 : 0)
         let latestIndexPath = NSIndexPath(forRow: latestRowIndex, inSection: latestSectionIndex)
         collectionView?.scrollToItemAtIndexPath(latestIndexPath, atScrollPosition: UICollectionViewScrollPosition.Bottom, animated: false)
+        
+        // setup navigation bar buttons
+        counterView = UILabel(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        counterView?.text = "0"
+        Helper.UI.setLabel(counterView!, forStyle: Constant.TextStyle.Cell.Small.White)
+        counterView?.textAlignment = .Center
+        counterView?.textColor = UIColor.whiteColor()
+        counterView?.backgroundColor = Constant.Color.Theme
+        counterView?.layer.cornerRadius = 10.0
+        counterView?.clipsToBounds = true
+        let counterButton = UIBarButtonItem(customView: counterView!)
+        let okButton = UIBarButtonItem(title: "确定", style: UIBarButtonItemStyle.Done, target: self, action: Selector("tapDoneButton:"))
+        
+        navigationItem.rightBarButtonItems = [okButton, counterButton]
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if _hasBeenDisapper {
+            collectionView?.reloadItemsAtIndexPaths(selectedImageIndexPaths)
+        }
+    }
+    
+    private var _hasBeenDisapper: Bool = false
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        _hasBeenDisapper = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,6 +95,12 @@ class PreviewCollectionViewController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK: user action
+    
+    func tapDoneButton(sender: AnyObject) {
+        
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -92,13 +136,24 @@ class PreviewCollectionViewController: UICollectionViewController {
         let currentAsset = momentMode ? subData[indexPath.section].objectAtIndex(indexPath.row) as! PHAsset : data.objectAtIndex(indexPath.row) as! PHAsset
         
         let targetSize = CGSize(width: 120.0, height: 120.0)
-        PHImageManager.defaultManager().requestImageForAsset(currentAsset, targetSize: targetSize, contentMode: PHImageContentMode.AspectFill, options: nil, resultHandler: { (image, info: [NSObject : AnyObject]?) -> Void in
-            guard let image = image else {return}
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                cell.image = image
+
+        dispatch_async(Helper.MultiThread.Queue.Serial) { () -> Void in
+            PHImageManager.defaultManager().requestImageForAsset(currentAsset, targetSize: targetSize, contentMode: PHImageContentMode.AspectFill, options: nil, resultHandler: { (image, info: [NSObject : AnyObject]?) -> Void in
+                guard let image = image else {return}
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    cell.image = image
+                })
             })
-            
-        })
+        }
+        
+        if selectedImageIndexPaths.contains(indexPath) {
+            cell.select = true
+        } else {
+            cell.select = false
+        }
+        
+        cell.indexPath = indexPath
+        cell.delegate = self
     
         return cell
     }
@@ -124,37 +179,6 @@ class PreviewCollectionViewController: UICollectionViewController {
         let reusableView: UICollectionReusableView! = nil
         return reusableView
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
-    
-    }
-    */
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         guard let segueIdentifier = segue.identifier else {return}
@@ -163,6 +187,12 @@ class PreviewCollectionViewController: UICollectionViewController {
             guard let targetVC = segue.destinationViewController as? BrowseCollectionViewController else {return}
             guard let cell = sender as? PreviewPhotoCollectionViewCell else {return}
             guard let indexPath = collectionView?.indexPathForCell(cell) else {return}
+            
+            targetVC.mediaPickerDelegate = self.mediaPickerDelegate
+            targetVC.selectedImages = selectedImages
+            targetVC.selectedImageIndexPaths = selectedImageIndexPaths
+            targetVC.previewCollectionVC = self
+            
             if momentMode {
                 targetVC.assetsCollection = data.objectAtIndex(indexPath.section) as? PHAssetCollection
                 targetVC.startIndexPath = NSIndexPath(forRow: indexPath.row, inSection: 0)
@@ -179,6 +209,35 @@ class PreviewCollectionViewController: UICollectionViewController {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd"
         return dateFormatter.stringFromDate(date)
+    }
+    
+    // MARK: delegate function
+    
+    func tapSelectButton(indexPath indexPath: NSIndexPath) {
+        
+        guard let cell = collectionView?.cellForItemAtIndexPath(indexPath) as? PreviewPhotoCollectionViewCell else {return}
+        
+        if selectedImageIndexPaths.contains(indexPath) {
+            selectedImageIndexPaths.removeAtIndex(selectedImageIndexPaths.indexOf(indexPath)!)
+            cell.select = false
+        } else {
+            selectedImageIndexPaths.append(indexPath)
+            cell.select = true
+            
+            // get image
+            let currentAsset = momentMode ? subData[indexPath.section].objectAtIndex(indexPath.row) as! PHAsset : data.objectAtIndex(indexPath.row) as! PHAsset
+            let targetSize = CGSize(width: 120.0, height: 120.0)
+            PHImageManager.defaultManager().requestImageForAsset(currentAsset, targetSize: targetSize, contentMode: PHImageContentMode.AspectFill, options: nil, resultHandler: { (image, info: [NSObject : AnyObject]?) -> Void in
+                guard let image = image else {return}
+                
+                self.selectedImages.append(image)
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    
+                })
+                
+            })
+        }
     }
 
 }
@@ -225,10 +284,4 @@ extension PreviewCollectionViewController: UICollectionViewDelegateFlowLayout {
         let x = (view.frame.size.width - CGFloat(numberOfCellsInLine + 2) * flowLayout.minimumLineSpacing  ) / CGFloat(numberOfCellsInLine)
         return CGSize(width: x, height: x)
     }
-    /*
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        let x: CGFloat = 4.0
-        return UIEdgeInsets(top: x, left: x, bottom: x, right: x)
-    }
-    */
 }

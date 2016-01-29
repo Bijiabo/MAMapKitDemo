@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10089" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dvY-fj-HvM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10089" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dvY-fj-HvM">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10072.1"/>
@@ -25,7 +25,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="raY-lb-c8Y">
                                             <rect key="frame" x="108" y="26" width="431" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="photo count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4s-tc-qX1">
@@ -160,11 +160,24 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NtL-aF-Fke">
                                             <rect key="frame" x="0.0" y="0.0" width="165" height="151"/>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L0h-Vr-d10">
+                                            <rect key="frame" x="135" y="0.0" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="WX4-Y6-lGQ"/>
+                                                <constraint firstAttribute="width" constant="30" id="qed-p1-tFQ"/>
+                                            </constraints>
+                                            <state key="normal" image="my attention_icon_oval_nor"/>
+                                            <connections>
+                                                <action selector="tapSelectButton:" destination="9dd-fA-p7W" eventType="touchUpInside" id="ncl-6e-upZ"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" red="0.29411764709999999" green="0.42352941179999998" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="L0h-Vr-d10" firstAttribute="top" secondItem="9dd-fA-p7W" secondAttribute="top" id="6xK-44-PtJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="L0h-Vr-d10" secondAttribute="trailing" id="8sA-tK-04v"/>
                                     <constraint firstAttribute="trailing" secondItem="NtL-aF-Fke" secondAttribute="trailing" id="RFf-Nn-IsV"/>
                                     <constraint firstItem="NtL-aF-Fke" firstAttribute="leading" secondItem="9dd-fA-p7W" secondAttribute="leading" id="Sg9-Q4-GZ0"/>
                                     <constraint firstItem="NtL-aF-Fke" firstAttribute="top" secondItem="9dd-fA-p7W" secondAttribute="top" id="sTw-ia-KT3"/>
@@ -172,9 +185,8 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="imageView" destination="NtL-aF-Fke" id="JLK-iq-65B"/>
-                                    <segue destination="Rm6-ep-XES" kind="show" identifier="linkToClipper" id="OCT-hV-yck">
-                                        <nil key="action"/>
-                                    </segue>
+                                    <outlet property="selectButton" destination="L0h-Vr-d10" id="V3A-BQ-S3M"/>
+                                    <segue destination="jd9-At-slW" kind="show" identifier="linkToBrowse" id="G0v-tE-Xhj"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -193,7 +205,7 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgC-nS-MI6">
                                     <rect key="frame" x="8" y="14" width="584" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -237,7 +249,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="browseCell" id="Xdt-Nq-qjS" customClass="BrowseCollectionViewCell" customModule="NearCat" customModuleProvider="target">
-                                <rect key="frame" x="58" y="0.0" width="484" height="517"/>
+                                <rect key="frame" x="58" y="64" width="484" height="517"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="484" height="517"/>
@@ -246,40 +258,28 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YgK-7N-p8C">
                                             <rect key="frame" x="0.0" y="0.0" width="484" height="517"/>
                                         </imageView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j4d-Tq-4eK">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j4d-Tq-4eK" userLabel="Footer Container View">
                                             <rect key="frame" x="0.0" y="437" width="484" height="80"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gradient" translatesAutoresizingMaskIntoConstraints="NO" id="5al-OV-Jxk">
                                                     <rect key="frame" x="0.0" y="-30" width="484" height="110"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jam-80-cLx">
-                                                    <rect key="frame" x="0.0" y="12" width="484" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.64999997615814209" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="width ✕ height" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="He4-iY-1jr">
-                                                    <rect key="frame" x="0.0" y="41" width="484" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQM-mh-Hn3">
+                                                    <rect key="frame" x="434" y="30" width="30" height="30"/>
+                                                    <state key="normal" image="icon_check photo_nor"/>
+                                                    <connections>
+                                                        <action selector="tapSelectButton:" destination="Xdt-Nq-qjS" eventType="touchUpInside" id="biI-Vc-9m0"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="80" id="5qL-mP-OwF"/>
-                                                <constraint firstItem="jam-80-cLx" firstAttribute="top" secondItem="j4d-Tq-4eK" secondAttribute="top" constant="12" id="8R6-Zw-dg9"/>
-                                                <constraint firstItem="jam-80-cLx" firstAttribute="centerX" secondItem="j4d-Tq-4eK" secondAttribute="centerX" id="Dl3-14-xxe"/>
-                                                <constraint firstAttribute="trailing" secondItem="He4-iY-1jr" secondAttribute="trailing" id="LBb-pS-YgY"/>
                                                 <constraint firstItem="5al-OV-Jxk" firstAttribute="top" secondItem="j4d-Tq-4eK" secondAttribute="top" constant="-30" id="Lnb-Dx-yvd"/>
-                                                <constraint firstAttribute="trailing" secondItem="jam-80-cLx" secondAttribute="trailing" id="RBR-bG-CzD"/>
+                                                <constraint firstAttribute="bottom" secondItem="bQM-mh-Hn3" secondAttribute="bottom" constant="20" id="Mna-gl-EtJ"/>
                                                 <constraint firstAttribute="trailing" secondItem="5al-OV-Jxk" secondAttribute="trailing" id="TcP-Oe-afH"/>
-                                                <constraint firstAttribute="bottom" secondItem="He4-iY-1jr" secondAttribute="bottom" constant="18" id="VwR-wa-Tih"/>
                                                 <constraint firstAttribute="bottom" secondItem="5al-OV-Jxk" secondAttribute="bottom" id="X7j-vT-SLe"/>
-                                                <constraint firstItem="He4-iY-1jr" firstAttribute="top" secondItem="jam-80-cLx" secondAttribute="bottom" constant="8" id="aaH-Px-zli"/>
-                                                <constraint firstItem="He4-iY-1jr" firstAttribute="centerX" secondItem="j4d-Tq-4eK" secondAttribute="centerX" id="bob-br-Wto"/>
                                                 <constraint firstItem="5al-OV-Jxk" firstAttribute="leading" secondItem="j4d-Tq-4eK" secondAttribute="leading" id="cHd-xK-UIR"/>
-                                                <constraint firstItem="jam-80-cLx" firstAttribute="leading" secondItem="j4d-Tq-4eK" secondAttribute="leading" id="cm9-ie-LdT"/>
-                                                <constraint firstItem="He4-iY-1jr" firstAttribute="leading" secondItem="j4d-Tq-4eK" secondAttribute="leading" id="zhL-Ip-K2A"/>
+                                                <constraint firstAttribute="trailing" secondItem="bQM-mh-Hn3" secondAttribute="trailing" constant="20" id="kd9-iF-JHL"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -296,9 +296,10 @@
                                     <constraint firstItem="YgK-7N-p8C" firstAttribute="top" secondItem="Xdt-Nq-qjS" secondAttribute="top" id="yYd-Cr-qRj"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="dateLabel" destination="jam-80-cLx" id="UcH-v0-CnU"/>
+                                    <outlet property="footerContainerView" destination="j4d-Tq-4eK" id="jCI-cQ-0P3"/>
+                                    <outlet property="footerContainerViewHeight" destination="5qL-mP-OwF" id="0oP-5y-wUV"/>
                                     <outlet property="imageView" destination="YgK-7N-p8C" id="pjy-U4-LQl"/>
-                                    <outlet property="sizeLabel" destination="He4-iY-1jr" id="91Q-gt-dsU"/>
+                                    <outlet property="selectButton" destination="bQM-mh-Hn3" id="Clb-r0-EUz"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -351,6 +352,8 @@
     </scenes>
     <resources>
         <image name="Gradient" width="10" height="100"/>
+        <image name="icon_check photo_nor" width="30" height="30"/>
+        <image name="my attention_icon_oval_nor" width="44" height="44"/>
         <image name="photo_nav_icon_downward_small_sel" width="68" height="88"/>
     </resources>
 </document>

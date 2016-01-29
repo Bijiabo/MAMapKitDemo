@@ -477,7 +477,18 @@ class ShootViewController: UIViewController {
             // add photo to selected image array
             self.selectedImages.append(image)
             
-            self.delegate?.newImage(image, fromMediaPicker: self)
+            let cropVC = ALConfirmViewController(image: image, allowsCropping: true)
+            cropVC.onComplete = { (image) in
+                guard let image = image else {
+                    self.navigationController?.popToViewController(self, animated: true)
+                    return
+                }
+                
+                self.delegate?.newImage(image, fromMediaPicker: self)
+            }
+            
+            self.navigationController?.pushViewController(cropVC, animated: true)
+            
         })
     }
     

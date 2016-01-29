@@ -13,6 +13,7 @@ class AlbumListTableViewController: UITableViewController {
     
     var moments: PHFetchResult!
     var albums: PHFetchResult!
+    var mediaPickerDelegate: MediaPickerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,7 +98,6 @@ class AlbumListTableViewController: UITableViewController {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     cell.previewImage0 = image!
                 })
-                
             })
             
             cell.assetCollection = currentData
@@ -115,6 +115,7 @@ class AlbumListTableViewController: UITableViewController {
             guard let indexPath = tableView.indexPathForCell(cell) else {return}
             
             targetVC.assetsCollection = cell.assetCollection
+            targetVC.mediaPickerDelegate = self.mediaPickerDelegate
             if indexPath.section == 0 {targetVC.momentMode = true}
         default:
             break

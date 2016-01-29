@@ -18,6 +18,16 @@ class BrowseCollectionViewController: UICollectionViewController {
     var data: PHFetchResult!
     let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     var startIndexPath: NSIndexPath?
+    var mediaPickerDelegate: MediaPickerDelegate?
+    var previewCollectionVC: PreviewCollectionViewController?
+    
+    var selectedImageIndexPaths:  [NSIndexPath] = [NSIndexPath]() {
+        didSet {
+            counterView?.text = "\(selectedImageIndexPaths.count)"
+        }
+    }
+    var selectedImages: [UIImage] = [UIImage]()
+    var counterView: UILabel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,21 +52,33 @@ class BrowseCollectionViewController: UICollectionViewController {
         if let startIndexPath = startIndexPath {
             collectionView?.scrollToItemAtIndexPath(startIndexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredHorizontally, animated: false)
         }
-
-        // Register cell classes
-        // self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        
+        // setup navigation bar buttons
+        counterView = UILabel(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        counterView?.text = "\(selectedImageIndexPaths.count)"
+        Helper.UI.setLabel(counterView!, forStyle: Constant.TextStyle.Cell.Small.White)
+        counterView?.textAlignment = .Center
+        counterView?.textColor = UIColor.whiteColor()
+        counterView?.backgroundColor = Constant.Color.Theme
+        counterView?.layer.cornerRadius = 10.0
+        counterView?.clipsToBounds = true
+        let counterButton = UIBarButtonItem(customView: counterView!)
+        let okButton = UIBarButtonItem(title: "确定", style: UIBarButtonItemStyle.Done, target: self, action: Selector("tapDoneButton:"))
+        
+        navigationItem.rightBarButtonItems = [okButton, counterButton]
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        updateNavigationBarDisplay(display: false)
+        updateNavigationBarDisplay(display: true)
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         updateNavigationBarDisplay(display: true)
+        
+        previewCollectionVC?.selectedImageIndexPaths = selectedImageIndexPaths
+        previewCollectionVC?.selectedImages = selectedImages
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,6 +86,12 @@ class BrowseCollectionViewController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK: user action
+    
+    func tapDoneButton(sender: AnyObject) {
+        
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -101,58 +129,59 @@ class BrowseCollectionViewController: UICollectionViewController {
         if let creationDate = currentData.creationDate {
             cell.date = creationDate
         }
+        
+        if selectedImageIndexPaths.contains(indexPath) {
+            cell.select = true
+        } else {
+            cell.select = false
+        }
+        
         cell.width = currentData.pixelWidth
         cell.height = currentData.pixelHeight
-        
+        cell.indexPath = indexPath
         cell.browseDelegate = self
     
         return cell
     }
 
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        
+        if kind == UICollectionElementKindSectionFooter {
+            let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionFooter, withReuseIdentifier: "browseFooter", forIndexPath: indexPath) //as! PreviewHeaderCollectionReusableView
+            
+            return headerView
+        }
+        
+        let reusableView: UICollectionReusableView! = nil
+        return reusableView
     }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
-    
-    }
-    */
 
     func toggleNavigationBarDisplay() {
         if navigationController?.navigationBar.alpha == 0 {
             updateNavigationBarDisplay(display: true)
+            toggleCellFooter(display: true)
         } else {
             updateNavigationBarDisplay(display: false)
+            toggleCellFooter(display: false)
+        }
+    }
+    
+    func toggleCellFooter(display display: Bool) {
+        for cell in collectionView?.visibleCells() as! [BrowseCollectionViewCell] {
+            cell.displayFooter = display
         }
     }
     
     func updateNavigationBarDisplay(display display: Bool) {
+        UIApplication.sharedApplication().setStatusBarHidden(!display, withAnimation: UIStatusBarAnimation.Fade)
+        
         UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.AllowUserInteraction, animations: { () -> Void in
             self.navigationController?.navigationBar.alpha = display ? 1.0 : 0.0
             }, completion: nil)
+        
+        navigationController?.extension_backgroundTransparent(!display)
     }
+    
 }
 
 // MARK: - data functions
@@ -178,12 +207,6 @@ extension BrowseCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: view.frame.height)
     }
-    /*
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-    let x: CGFloat = 4.0
-    return UIEdgeInsets(top: x, left: x, bottom: x, right: x)
-    }
-    */
 }
 
 extension BrowseCollectionViewController: BrowsePhotoDelegate {
@@ -192,6 +215,32 @@ extension BrowseCollectionViewController: BrowsePhotoDelegate {
         toggleNavigationBarDisplay()
     }
     
+    func tapSelectButton(indexPath indexPath: NSIndexPath) {
+        
+        guard let cell = collectionView?.cellForItemAtIndexPath(indexPath) as? BrowseCollectionViewCell else {return}
+        
+        if selectedImageIndexPaths.contains(indexPath) {
+            selectedImageIndexPaths.removeAtIndex(selectedImageIndexPaths.indexOf(indexPath)!)
+            cell.select = false
+        } else {
+            selectedImageIndexPaths.append(indexPath)
+            cell.select = true
+            
+            // get image
+            let currentAsset = data.objectAtIndex(indexPath.row) as! PHAsset
+            let targetSize = CGSize(width: 120.0, height: 120.0)
+            PHImageManager.defaultManager().requestImageForAsset(currentAsset, targetSize: targetSize, contentMode: PHImageContentMode.AspectFill, options: nil, resultHandler: { (image, info: [NSObject : AnyObject]?) -> Void in
+                guard let image = image else {return}
+                
+                self.selectedImages.append(image)
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    
+                })
+                
+            })
+        }
+    }
 }
 
 

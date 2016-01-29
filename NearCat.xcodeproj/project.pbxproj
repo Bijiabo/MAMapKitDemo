@@ -151,6 +151,7 @@
 		65D54D231C312F0A00F7B450 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D54D221C312F0A00F7B450 /* Action.swift */; };
 		65D54D261C3141F800F7B450 /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D54D251C3141F800F7B450 /* Delay.swift */; };
 		65D54D281C31ACB000F7B450 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D54D271C31ACB000F7B450 /* Location.swift */; };
+		65DAB83F1C5BCBBD009C39D7 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAB83E1C5BCBBD009C39D7 /* UINavigationControllerExtension.swift */; };
 		65DAC81B1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC81A1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift */; };
 		65DAC81D1C2D902A00335EFC /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC81C1C2D902A00335EFC /* FeedbackViewController.swift */; };
 		65DAC82A1C2E55EF00335EFC /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC8291C2E55EF00335EFC /* MainNavigationController.swift */; };
@@ -178,6 +179,7 @@
 		65F4FFF71C560CC600816BEB /* UINavigationBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4FFF61C560CC600816BEB /* UINavigationBarExtension.swift */; };
 		65F4FFF91C5620A600816BEB /* UIToolBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4FFF81C5620A600816BEB /* UIToolBarExtension.swift */; };
 		65F4FFFB1C56223F00816BEB /* MediaPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4FFFA1C56223F00816BEB /* MediaPickerDelegate.swift */; };
+		65FFF2881C5BB26F00C29903 /* Helper.MultiThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FFF2871C5BB26F00C29903 /* Helper.MultiThread.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -357,6 +359,7 @@
 		65D54D221C312F0A00F7B450 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		65D54D251C3141F800F7B450 /* Delay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
 		65D54D271C31ACB000F7B450 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		65DAB83E1C5BCBBD009C39D7 /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
 		65DAC81A1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveDetailItemTableViewCell.swift; sourceTree = "<group>"; };
 		65DAC81C1C2D902A00335EFC /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		65DAC8291C2E55EF00335EFC /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
@@ -386,6 +389,7 @@
 		65F4FFF81C5620A600816BEB /* UIToolBarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIToolBarExtension.swift; sourceTree = "<group>"; };
 		65F4FFFA1C56223F00816BEB /* MediaPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPickerDelegate.swift; sourceTree = "<group>"; };
 		65F4FFFF1C568B2400816BEB /* JDStatusBarNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDStatusBarNotification.h; sourceTree = "<group>"; };
+		65FFF2871C5BB26F00C29903 /* Helper.MultiThread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.MultiThread.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -444,6 +448,7 @@
 				652B38941C5289BC007F89E1 /* MainRootViewControllerExtension.swift */,
 				65F4FFF61C560CC600816BEB /* UINavigationBarExtension.swift */,
 				65F4FFF81C5620A600816BEB /* UIToolBarExtension.swift */,
+				65DAB83E1C5BCBBD009C39D7 /* UINavigationControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -567,6 +572,7 @@
 				6559A0561C4539C20027CECE /* Helper.Controller.swift */,
 				652B389C1C537578007F89E1 /* Helper.UI.swift */,
 				65F400081C56903800816BEB /* Helper.Notification.swift */,
+				65FFF2871C5BB26F00C29903 /* Helper.MultiThread.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1198,6 +1204,7 @@
 				654162B51C4F7C0200BD035E /* UITableViewControllerExtension.swift in Sources */,
 				650AD0661C53F44F000BFA59 /* MediaPickerNavigationViewController.swift in Sources */,
 				65F4FFFB1C56223F00816BEB /* MediaPickerDelegate.swift in Sources */,
+				65FFF2881C5BB26F00C29903 /* Helper.MultiThread.swift in Sources */,
 				654162B31C4F629200BD035E /* PostEditorTableViewController.swift in Sources */,
 				6570C3701C36936D00391EB8 /* FConstant.swift in Sources */,
 				65BB677A1C413D1B00355BBE /* InboxContainerViewController.swift in Sources */,
@@ -1283,6 +1290,7 @@
 				65B6A8E31C480D32004F3603 /* Users.swift in Sources */,
 				652B38951C5289BC007F89E1 /* MainRootViewControllerExtension.swift in Sources */,
 				65DAC81D1C2D902A00335EFC /* FeedbackViewController.swift in Sources */,
+				65DAB83F1C5BCBBD009C39D7 /* UINavigationControllerExtension.swift in Sources */,
 				65F4FFE81C54C11600816BEB /* SelectionTableViewController.swift in Sources */,
 				65BB67751C4137E500355BBE /* AvatarImageView.swift in Sources */,
 				6570C3801C36D4D200391EB8 /* CatAnnotationView.swift in Sources */,

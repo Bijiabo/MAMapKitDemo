@@ -18,7 +18,9 @@ class SettingListTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        extension_setDefaultSelectedColor()
+        
         Helper.UI.setLabel(titleLabel, forStyle: Constant.TextStyle.Cell.Title.Blue)
         
         separatorLineView.backgroundColor = Constant.Color.TableViewSeparator

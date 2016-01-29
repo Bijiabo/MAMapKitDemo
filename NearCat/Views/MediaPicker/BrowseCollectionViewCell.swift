@@ -11,9 +11,11 @@ import UIKit
 class BrowseCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var sizeLabel: UILabel!
+    @IBOutlet weak var footerContainerView: UIView!
+    @IBOutlet weak var footerContainerViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var selectButton: UIButton!
     
+    var indexPath: NSIndexPath?
     var browseDelegate: BrowsePhotoDelegate?
     
     override func awakeFromNib() {
@@ -39,15 +41,15 @@ class BrowseCollectionViewCell: UICollectionViewCell {
     }
     
     private func _updateSizeInformation() {
-        let sizeString: String = "\(width) ✕ \(height)"
-        sizeLabel.text = sizeString
+        // let sizeString: String = "\(width) ✕ \(height)"
+        // sizeLabel.text = sizeString
     }
     
     var date: NSDate = NSDate() {
         didSet {
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "yyyy-dd-MM"
-            dateLabel.text = dateFormatter.stringFromDate(date)
+            // let dateFormatter = NSDateFormatter()
+            // dateFormatter.dateFormat = "yyyy-dd-MM"
+            // dateLabel.text = dateFormatter.stringFromDate(date)
         }
     }
     
@@ -56,4 +58,38 @@ class BrowseCollectionViewCell: UICollectionViewCell {
             imageView.image = image
         }
     }
+    
+    var displayFooter: Bool = false {
+        didSet {
+            UIView.animateWithDuration(0.2, animations: { () -> Void in
+                
+                if self.displayFooter {
+                    self.footerContainerView.frame.origin.y = UIScreen.mainScreen().bounds.height - self.footerContainerViewHeight.constant
+                    self.footerContainerView.alpha = 1
+                } else {
+                    self.footerContainerView.frame.origin.y = UIScreen.mainScreen().bounds.height
+                    self.footerContainerView.alpha = 0
+                }
+                
+                }) { (finished) -> Void in
+                    
+            }
+        }
+    }
+    
+    @IBAction func tapSelectButton(sender: AnyObject) {
+        guard let indexPath = indexPath else {return}
+        browseDelegate?.tapSelectButton(indexPath: indexPath)
+    }
+    
+    var select: Bool = false {
+        didSet {
+            if select {
+                selectButton.setImage(UIImage(named: "icon_check photo_sel"), forState: UIControlState.Normal)
+            } else {
+                selectButton.setImage(UIImage(named: "icon_check photo_nor"), forState: UIControlState.Normal)
+            }
+        }
+    }
+    
 }

@@ -25,6 +25,8 @@ class AlbumListTableViewCell: UITableViewCell {
         previewImageView0.clipsToBounds = true
         previewImageView1.clipsToBounds = true
         previewImageView2.clipsToBounds = true
+        
+        extension_setDefaultSelectedColor()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

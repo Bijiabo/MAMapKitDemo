@@ -10,4 +10,5 @@ import Foundation
 
 protocol BrowsePhotoDelegate {
     func tapPreviewView()
+    func tapSelectButton(indexPath indexPath: NSIndexPath)
 }
