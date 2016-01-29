@@ -28,7 +28,7 @@ class MyFollowTableViewController: SettingSecondaryTableViewController {
     // MARK: - Table view data source
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 98.0
+        return 72.0
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -42,6 +42,13 @@ class MyFollowTableViewController: SettingSecondaryTableViewController {
         
     }
 
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 36.0
+    }
+    
+    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 12.0
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -53,12 +60,9 @@ class MyFollowTableViewController: SettingSecondaryTableViewController {
         let avatarURLString: String = FConfiguration.sharedInstance.host+currentData["avatar"].stringValue
         Helper.setRemoteImageForImageView(cell.avatarImageView, avatarURLString: avatarURLString)
         
+        _autoHideSeparatorForCell(cell, indexPath: indexPath)
+        
         return cell
-    }
-    
-    
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return _followingData[section]["key"].stringValue
     }
     
     // MARK: - cancel following
@@ -73,27 +77,53 @@ class MyFollowTableViewController: SettingSecondaryTableViewController {
                 print(description)
             })
             
-            self._following.removeAtIndex(indexPath.row)
+            var _cache = self._followingData[indexPath.section]["data"].arrayValue
+            _cache.removeAtIndex(indexPath.row)
+            self._followingData[indexPath.section]["data"] = JSON(_cache)
             self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left)
         }
         
-        deleteButton.backgroundColor = Constant.Color.Theme
+        deleteButton.backgroundColor = Constant.Color.Pink
         
         return [deleteButton]
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        if indexPath.section == 0 {return true}
-        return false
+        return true
+    }
+    
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 36))
+        let label = UILabel()
+        view.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-24-[label(100)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["label": label]))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[label]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["label": label]))
+        
+        view.backgroundColor = UIColor.whiteColor()
+        label.text = _followingData[section]["key"].stringValue
+        Helper.UI.setLabel(label, forStyle: Constant.TextStyle.ABC.Blue)
+        
+        return view
     }
     
     override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
-        var titles: [String] = [String]()
-        for item in _followingData {
-            titles.append(item["key"].stringValue)
+        let aScalars = "a".unicodeScalars
+        let aCode = aScalars[aScalars.startIndex].value
+        
+        let titles: [String] = (0..<26).map {
+            i in String(Character(UnicodeScalar(aCode + i))).uppercaseString
         }
         
         return titles
+    }
+    
+    private func _autoHideSeparatorForCell(var cell: CustomSeparatorCell, indexPath: NSIndexPath) {
+        if indexPath.row + 1 == self.tableView(tableView, numberOfRowsInSection: indexPath.section) {
+            cell.displaySeparatorLine = false
+        } else {
+            cell.displaySeparatorLine = true
+        }
     }
     
     // MARK: - data function

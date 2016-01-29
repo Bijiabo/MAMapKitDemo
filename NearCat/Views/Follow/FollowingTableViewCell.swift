@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FollowingTableViewCell: UITableViewCell {
+class FollowingTableViewCell: UITableViewCell, CustomSeparatorCell {
 
     @IBOutlet weak var avatarImageView: AvatarImageView!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -33,6 +33,12 @@ class FollowingTableViewCell: UITableViewCell {
     var userName: String = String() {
         didSet {
             userNameLabel.text = userName
+        }
+    }
+    
+    var displaySeparatorLine: Bool = true {
+        didSet {
+            separatorLineView.hidden = !displaySeparatorLine
         }
     }
 }
