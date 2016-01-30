@@ -85,9 +85,9 @@ class BrowseCollectionViewCell: UICollectionViewCell {
     var select: Bool = false {
         didSet {
             if select {
-                selectButton.setImage(UIImage(named: "icon_check photo_sel"), forState: UIControlState.Normal)
+                selectButton.setImage(UIImage(named: "icon_check photo_50_sel"), forState: UIControlState.Normal)
             } else {
-                selectButton.setImage(UIImage(named: "icon_check photo_nor"), forState: UIControlState.Normal)
+                selectButton.setImage(UIImage(named: "icon_check photo_50_nor"), forState: UIControlState.Normal)
             }
         }
     }

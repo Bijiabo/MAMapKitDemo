@@ -14,17 +14,48 @@ class AlbumListTableViewController: UITableViewController {
     var moments: PHFetchResult!
     var albums: PHFetchResult!
     var mediaPickerDelegate: MediaPickerDelegate?
+    var counterView: UILabel?
+    var selectedIndexPathData:[String: [[NSIndexPath]]] = [
+        "moment": [[NSIndexPath]](),
+        "album": [[NSIndexPath]]()
+    ]
+    var selectMaximum: Int = 9
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         _setupViews()
         _setupAlbumData()
+        
+        tableView.separatorStyle = .None
+        
+        // setup navigation bar buttons
+        counterView = UILabel(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        counterView?.text = "0"
+        Helper.UI.setLabel(counterView!, forStyle: Constant.TextStyle.Cell.Small.White)
+        counterView?.textAlignment = .Center
+        counterView?.textColor = UIColor.whiteColor()
+        counterView?.backgroundColor = Constant.Color.Theme
+        counterView?.layer.cornerRadius = 10.0
+        counterView?.clipsToBounds = true
+        let counterButton = UIBarButtonItem(customView: counterView!)
+        let okButton = UIBarButtonItem(title: "确定", style: UIBarButtonItemStyle.Done, target: self, action: Selector("tapDoneButton:"))
+        
+        navigationItem.rightBarButtonItems = [okButton, counterButton]
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if _hasBeenDisappeared {
+            tableView.reloadData()
+        }
+    }
+    
+    private var _hasBeenDisappeared: Bool = false
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        _hasBeenDisappeared = true
     }
     
     private func _setupViews() {
@@ -82,6 +113,8 @@ class AlbumListTableViewController: UITableViewController {
                 })
             }
             
+            cell.selectedCount = selectedIndexPathData["moment"]![0].count
+            
             return cell
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier("albumListCell", forIndexPath: indexPath) as! AlbumListTableViewCell
@@ -101,6 +134,7 @@ class AlbumListTableViewController: UITableViewController {
             })
             
             cell.assetCollection = currentData
+            cell.selectedCount = selectedIndexPathData["album"]![indexPath.row].count
             
             return cell
         }
@@ -116,9 +150,55 @@ class AlbumListTableViewController: UITableViewController {
             
             targetVC.assetsCollection = cell.assetCollection
             targetVC.mediaPickerDelegate = self.mediaPickerDelegate
-            if indexPath.section == 0 {targetVC.momentMode = true}
+            targetVC.albumListVC = self
+            
+            if indexPath.section == 0 {
+                targetVC.momentMode = true
+                
+                if selectedIndexPathData["moment"]!.count > 0 {
+                    targetVC.selectedImageIndexPaths = selectedIndexPathData["moment"]![0]
+                }
+            } else {
+                if selectedIndexPathData["album"]!.count > indexPath.row {
+                    targetVC.selectedImageIndexPaths = selectedIndexPathData["album"]![indexPath.row]
+                }
+            }
         default:
             break
+        }
+    }
+    
+    func updateSelectedIndexPathForAssetCollection(assetCollection assetCollection: PHAssetCollection?, selectedIndexPaths: [NSIndexPath], isMoment: Bool) {
+        if isMoment {
+            selectedIndexPathData["moment"]?[0] = selectedIndexPaths
+        } else {
+            if let assetCollection = assetCollection {
+                let indexForAlbums = albums.indexOfObject(assetCollection)
+                selectedIndexPathData["album"]?[indexForAlbums] = selectedIndexPaths
+            }
+        }
+        
+        updateSelectedCounter()
+    }
+    
+    func updateSelectedCounter() {
+        counterView?.text = "\(selectedCount)"
+    }
+    
+    var selectedCount: Int {
+        get {
+            var _count: Int = 0
+            if let momentSelected = selectedIndexPathData["moment"]?[0] {
+                _count += momentSelected.count
+            }
+            
+            if let albumSelectedData = selectedIndexPathData["album"] {
+                for item in albumSelectedData {
+                    _count += item.count
+                }
+            }
+            
+            return _count
         }
     }
     
@@ -149,12 +229,14 @@ extension AlbumListTableViewController {
         userAlbumsOptions.predicate = NSPredicate(format: "estimatedAssetCount > 0", argumentArray: nil)
         let userAlbums: PHFetchResult = PHAssetCollection.fetchAssetCollectionsWithType(PHAssetCollectionType.Album, subtype: PHAssetCollectionSubtype.Any, options: userAlbumsOptions)
         albums = userAlbums
+        selectedIndexPathData["album"] = [[NSIndexPath]](count: userAlbums.count, repeatedValue: [NSIndexPath]())
         
         // get moments
         let userMomentsOptions: PHFetchOptions = PHFetchOptions()
         userMomentsOptions.predicate = NSPredicate(format: "estimatedAssetCount > 0", argumentArray: nil)
         let userMoments: PHFetchResult = PHAssetCollection.fetchAssetCollectionsWithType(PHAssetCollectionType.Moment, subtype: PHAssetCollectionSubtype.AlbumRegular, options: userMomentsOptions)
         moments = userMoments
+        selectedIndexPathData["moment"] = [[NSIndexPath]](count: 1, repeatedValue: [NSIndexPath]())
     }
     
 }

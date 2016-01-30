@@ -21,13 +21,18 @@ class PreviewCollectionViewController: UICollectionViewController {
     var subData: [PHFetchResult] = [PHFetchResult]()
     let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     var mediaPickerDelegate: MediaPickerDelegate?
+    var albumListVC: AlbumListTableViewController?
     
     var selectedImageIndexPaths:  [NSIndexPath] = [NSIndexPath]() {
         didSet {
-            counterView?.text = "\(selectedImageIndexPaths.count)"
+            guard let albumListVC = albumListVC else {return}
+            
+            albumListVC.updateSelectedIndexPathForAssetCollection(assetCollection: assetsCollection, selectedIndexPaths: selectedImageIndexPaths, isMoment: momentMode)
+            
+            counterView?.text = "\(albumListVC.selectedCount)"
         }
     }
-    var selectedImages: [UIImage] = [UIImage]()
+    
     var counterView: UILabel?
 
     override func viewDidLoad() {
@@ -62,7 +67,7 @@ class PreviewCollectionViewController: UICollectionViewController {
         
         // setup navigation bar buttons
         counterView = UILabel(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-        counterView?.text = "0"
+        counterView?.text = "\(albumListVC == nil ? 0 : albumListVC!.selectedCount)"
         Helper.UI.setLabel(counterView!, forStyle: Constant.TextStyle.Cell.Small.White)
         counterView?.textAlignment = .Center
         counterView?.textColor = UIColor.whiteColor()
@@ -79,7 +84,7 @@ class PreviewCollectionViewController: UICollectionViewController {
         super.viewWillAppear(animated)
         
         if _hasBeenDisapper {
-            collectionView?.reloadItemsAtIndexPaths(selectedImageIndexPaths)
+            collectionView?.reloadData()
         }
     }
     
@@ -100,16 +105,6 @@ class PreviewCollectionViewController: UICollectionViewController {
     func tapDoneButton(sender: AnyObject) {
         
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -180,6 +175,8 @@ class PreviewCollectionViewController: UICollectionViewController {
         return reusableView
     }
     
+    // MARK: - Navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         guard let segueIdentifier = segue.identifier else {return}
         switch segueIdentifier {
@@ -189,13 +186,13 @@ class PreviewCollectionViewController: UICollectionViewController {
             guard let indexPath = collectionView?.indexPathForCell(cell) else {return}
             
             targetVC.mediaPickerDelegate = self.mediaPickerDelegate
-            targetVC.selectedImages = selectedImages
-            targetVC.selectedImageIndexPaths = selectedImageIndexPaths
             targetVC.previewCollectionVC = self
+            targetVC.albumListVC = albumListVC
             
             if momentMode {
                 targetVC.assetsCollection = data.objectAtIndex(indexPath.section) as? PHAssetCollection
                 targetVC.startIndexPath = NSIndexPath(forRow: indexPath.row, inSection: 0)
+                targetVC.sectionIndexForPreviewList = indexPath.section
             } else {
                 targetVC.assetsCollection = assetsCollection
                 targetVC.startIndexPath = indexPath
@@ -217,27 +214,25 @@ class PreviewCollectionViewController: UICollectionViewController {
         
         guard let cell = collectionView?.cellForItemAtIndexPath(indexPath) as? PreviewPhotoCollectionViewCell else {return}
         
-        if selectedImageIndexPaths.contains(indexPath) {
-            selectedImageIndexPaths.removeAtIndex(selectedImageIndexPaths.indexOf(indexPath)!)
-            cell.select = false
-        } else {
-            selectedImageIndexPaths.append(indexPath)
+        if toggleSelectedForIndexPath(indexPath) {
             cell.select = true
             
             // get image
             let currentAsset = momentMode ? subData[indexPath.section].objectAtIndex(indexPath.row) as! PHAsset : data.objectAtIndex(indexPath.row) as! PHAsset
             let targetSize = CGSize(width: 120.0, height: 120.0)
-            PHImageManager.defaultManager().requestImageForAsset(currentAsset, targetSize: targetSize, contentMode: PHImageContentMode.AspectFill, options: nil, resultHandler: { (image, info: [NSObject : AnyObject]?) -> Void in
-                guard let image = image else {return}
-                
-                self.selectedImages.append(image)
-                
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            dispatch_async(Helper.MultiThread.Queue.Concurent, { () -> Void in
+                PHImageManager.defaultManager().requestImageForAsset(currentAsset, targetSize: targetSize, contentMode: PHImageContentMode.AspectFill, options: nil, resultHandler: { (image, info: [NSObject : AnyObject]?) -> Void in
+                    guard let image = image else {return}
                     
+                    if let navigationVC = self.navigationController as? MediaPickerNavigationViewController {
+                        navigationVC.selectedImages.append(image)
+                    }
                 })
-                
             })
+        } else {
+            cell.select = false
         }
+        
     }
 
 }
@@ -272,6 +267,33 @@ extension PreviewCollectionViewController {
             ]
             data = PHAsset.fetchAssetsInAssetCollection(assetsCollection, options: fetchOptions)
         }
+    }
+    
+    func toggleSelectedForIndexPath(indexPath: NSIndexPath) -> Bool {
+        // return true if added
+        
+        if !selectedImageIndexPaths.contains(indexPath) {
+            return addSelectedIndexPath(indexPath)
+        } else {
+            removeSelectedIndexPath(indexPath)
+            return false
+        }
+    }
+    
+    func addSelectedIndexPath(indexPath: NSIndexPath) -> Bool{
+        if !selectedImageIndexPaths.contains(indexPath) {
+            selectedImageIndexPaths.append(indexPath)
+            return true
+        }
+        return false
+    }
+    
+    func removeSelectedIndexPath(indexPath: NSIndexPath) -> Bool {
+        if let index = selectedImageIndexPaths.indexOf(indexPath) {
+            selectedImageIndexPaths.removeAtIndex(index)
+            return true
+        }
+        return false
     }
 }
 

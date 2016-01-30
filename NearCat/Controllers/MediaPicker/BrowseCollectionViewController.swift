@@ -20,13 +20,9 @@ class BrowseCollectionViewController: UICollectionViewController {
     var startIndexPath: NSIndexPath?
     var mediaPickerDelegate: MediaPickerDelegate?
     var previewCollectionVC: PreviewCollectionViewController?
+    var albumListVC: AlbumListTableViewController?
+    var sectionIndexForPreviewList: Int = 0
     
-    var selectedImageIndexPaths:  [NSIndexPath] = [NSIndexPath]() {
-        didSet {
-            counterView?.text = "\(selectedImageIndexPaths.count)"
-        }
-    }
-    var selectedImages: [UIImage] = [UIImage]()
     var counterView: UILabel?
     
     override func viewDidLoad() {
@@ -55,7 +51,7 @@ class BrowseCollectionViewController: UICollectionViewController {
         
         // setup navigation bar buttons
         counterView = UILabel(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-        counterView?.text = "\(selectedImageIndexPaths.count)"
+        counterView?.text = "\(albumListVC == nil ? 0 : albumListVC!.selectedCount)"
         Helper.UI.setLabel(counterView!, forStyle: Constant.TextStyle.Cell.Small.White)
         counterView?.textAlignment = .Center
         counterView?.textColor = UIColor.whiteColor()
@@ -76,9 +72,6 @@ class BrowseCollectionViewController: UICollectionViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         updateNavigationBarDisplay(display: true)
-        
-        previewCollectionVC?.selectedImageIndexPaths = selectedImageIndexPaths
-        previewCollectionVC?.selectedImages = selectedImages
     }
 
     override func didReceiveMemoryWarning() {
@@ -130,11 +123,14 @@ class BrowseCollectionViewController: UICollectionViewController {
             cell.date = creationDate
         }
         
-        if selectedImageIndexPaths.contains(indexPath) {
-            cell.select = true
-        } else {
-            cell.select = false
+        if let previewCollectionVC = previewCollectionVC {
+            if previewCollectionVC.selectedImageIndexPaths.contains(NSIndexPath(forRow: indexPath.row, inSection: sectionIndexForPreviewList)) {
+                cell.select = true
+            } else {
+                cell.select = false
+            }
         }
+        
         
         cell.width = currentData.pixelWidth
         cell.height = currentData.pixelHeight
@@ -219,27 +215,34 @@ extension BrowseCollectionViewController: BrowsePhotoDelegate {
         
         guard let cell = collectionView?.cellForItemAtIndexPath(indexPath) as? BrowseCollectionViewCell else {return}
         
-        if selectedImageIndexPaths.contains(indexPath) {
-            selectedImageIndexPaths.removeAtIndex(selectedImageIndexPaths.indexOf(indexPath)!)
-            cell.select = false
-        } else {
-            selectedImageIndexPaths.append(indexPath)
+        guard let previewCollectionVC = previewCollectionVC  else { return }
+        
+        let indexPathForPreviewVC = NSIndexPath(forRow: indexPath.row, inSection: sectionIndexForPreviewList)
+        
+        if previewCollectionVC.toggleSelectedForIndexPath(indexPathForPreviewVC) {
             cell.select = true
             
             // get image
             let currentAsset = data.objectAtIndex(indexPath.row) as! PHAsset
             let targetSize = CGSize(width: 120.0, height: 120.0)
-            PHImageManager.defaultManager().requestImageForAsset(currentAsset, targetSize: targetSize, contentMode: PHImageContentMode.AspectFill, options: nil, resultHandler: { (image, info: [NSObject : AnyObject]?) -> Void in
-                guard let image = image else {return}
-                
-                self.selectedImages.append(image)
-                
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            
+            dispatch_async(Helper.MultiThread.Queue.Concurent, { () -> Void in
+                PHImageManager.defaultManager().requestImageForAsset(currentAsset, targetSize: targetSize, contentMode: PHImageContentMode.AspectFill, options: nil, resultHandler: { (image, info: [NSObject : AnyObject]?) -> Void in
+                    guard let image = image else {return}
                     
+                    if let navigationVC = self.navigationController as? MediaPickerNavigationViewController {
+                        navigationVC.selectedImages.append(image)
+                    }
                 })
-                
             })
+        } else {
+            cell.select = false
         }
+
+        
+        // update navigation bar selecte counter display
+        guard let albumListVC = albumListVC else {return}
+        counterView?.text = "\(albumListVC.selectedCount)"
     }
 }
 

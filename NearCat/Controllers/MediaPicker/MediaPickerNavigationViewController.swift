@@ -11,18 +11,32 @@ import UIKit
 class MediaPickerNavigationViewController: UINavigationController {
 
     var mediaPickerDelegate: MediaPickerDelegate?
+    var selectedImages: [UIImage] = [UIImage]()
+    var selectMaximum: Int = 9
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if let albumListTVC = topViewController as? AlbumListTableViewController {
             albumListTVC.mediaPickerDelegate = self.mediaPickerDelegate
+            albumListTVC.selectMaximum = selectMaximum
         }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func addSelectedImage(image: UIImage) -> Bool {
+        if !selectedImages.contains(image) {
+            selectedImages.append(image)
+            return true
+        }
+        return false
+    }
+    
+    func removeSelectedImage(image: UIImage) -> Bool {
+        if let index = selectedImages.indexOf(image) {
+            selectedImages.removeAtIndex(index)
+            return true
+        }
+        return false
     }
 
 }
