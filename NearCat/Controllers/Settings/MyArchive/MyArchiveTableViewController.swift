@@ -227,8 +227,20 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
             self.presentViewController(shootVC, animated: true, completion: nil)
         }
         actionSheet.addButton("从相册中选取", isDestructive: false) { () -> Void in
-            let mediaPickerNavigationVC = Helper.Controller.MediaPicker
-            self.presentViewController(mediaPickerNavigationVC, animated: true, completion: nil)
+            if Helper.Ability.Photo.hasAuthorization {
+                let mediaPickerNavigationVC = Helper.Controller.MediaPicker
+                mediaPickerNavigationVC.mediaPickerDelegate = self
+                self.presentViewController(mediaPickerNavigationVC, animated: true, completion: nil)
+            } else {
+                Helper.Ability.Photo.requestAuthorization(block: { (success) -> Void in
+                    if success {
+                        let mediaPickerNavigationVC = Helper.Controller.MediaPicker
+                        self.presentViewController(mediaPickerNavigationVC, animated: true, completion: nil)
+                    } else {
+                        Helper.Alert.show(title: "未开启照片访问权限", message: "请打开［设置］-> ［猫邻］-> ［照片］选择开启", animated: true)
+                    }
+                })
+            }
         }
         
         actionSheet.show()
@@ -327,7 +339,11 @@ extension MyArchiveTableViewController: MediaPickerDelegate {
         
         fromMediaPicker.dismissViewControllerAnimated(true) { () -> Void in
             Action.users.updateAvatar(image: image) { (success, description) -> Void in
-                self.extension_reloadTableView()
+                if success {
+                    self._loadData()
+                } else {
+                    Helper.Alert.show(title: "修改头像失败", message: "有可能是网络问题，请稍后重试。", animated: true)
+                }
             }
         }
         

@@ -23,6 +23,8 @@ class FluxCommentTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
+        Helper.UI.setLabel(dateLabel, forStyle: Constant.TextStyle.Cell.Small.G4)
+        
         selectedBackgroundView = UIView(frame: bounds)
         selectedBackgroundView!.backgroundColor = Constant.Color.CellSelected
         separatorLineView.backgroundColor = Constant.Color.TableViewSeparator
@@ -47,7 +49,7 @@ class FluxCommentTableViewCell: UITableViewCell {
             _content = NSAttributedString(string: content, attributes: [ NSForegroundColorAttributeName: Constant.Color.G4 ])
             let contentAttributedString = NSMutableAttributedString(attributedString: _userName)
             contentAttributedString.appendAttributedString(_content)
-            contentLabel.attributedText = contentAttributedString
+            contentLabel.attributedText = Helper.UI.setLineSpacingForAttributedString(contentAttributedString, lineSpacing: Constant.TextStyle.Body.Blue.font.pointSize*0.2)
         }
     }
     

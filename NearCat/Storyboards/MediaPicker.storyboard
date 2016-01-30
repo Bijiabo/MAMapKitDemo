@@ -82,8 +82,15 @@
                                                 <constraint firstAttribute="height" constant="88" id="upV-4m-svT"/>
                                             </constraints>
                                         </view>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_next" translatesAutoresizingMaskIntoConstraints="NO" id="Sid-W3-Lup">
+                                            <rect key="frame" x="552" y="36" width="48" height="48"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="48" id="BHs-GI-UrW"/>
+                                                <constraint firstAttribute="height" constant="48" id="Xo3-0V-rLL"/>
+                                            </constraints>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ybd-x8-grx" userLabel="selectedCount">
-                                            <rect key="frame" x="532" y="50" width="20" height="20"/>
+                                            <rect key="frame" x="540" y="50" width="20" height="20"/>
                                             <color key="backgroundColor" red="0.29411764709999999" green="0.42352941179999998" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="20" id="1uM-Z2-zWa"/>
@@ -93,13 +100,6 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_next" translatesAutoresizingMaskIntoConstraints="NO" id="Sid-W3-Lup">
-                                            <rect key="frame" x="552" y="36" width="48" height="48"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="48" id="BHs-GI-UrW"/>
-                                                <constraint firstAttribute="height" constant="48" id="Xo3-0V-rLL"/>
-                                            </constraints>
-                                        </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dUX-Bo-zCM" userLabel="separator line view">
                                             <rect key="frame" x="24" y="118.5" width="576" height="1"/>
                                             <color key="backgroundColor" red="0.86302219680000003" green="0.86302219680000003" blue="0.86302219680000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -127,6 +127,7 @@
                                         <constraint firstItem="Sid-W3-Lup" firstAttribute="centerY" secondItem="H8d-3a-Ech" secondAttribute="centerY" id="p2o-Bl-UaK"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="c4s-tc-qX1" secondAttribute="trailing" constant="93" id="qSG-p2-KXb"/>
                                         <constraint firstAttribute="trailing" secondItem="dUX-Bo-zCM" secondAttribute="trailing" id="rPs-9s-lcR"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Ybd-x8-grx" secondAttribute="trailing" constant="32" id="sd9-wG-Iqi"/>
                                         <constraint firstItem="4g2-Y2-a9T" firstAttribute="top" secondItem="raY-lb-c8Y" secondAttribute="bottom" constant="-31" id="vtv-2K-EZX"/>
                                     </constraints>
                                     <variation key="default">
@@ -135,6 +136,7 @@
                                             <exclude reference="l1x-4s-akk"/>
                                             <exclude reference="4q5-FN-m9f"/>
                                             <exclude reference="lCz-L7-UOR"/>
+                                            <exclude reference="XOm-y0-vXe"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
@@ -158,7 +160,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Albums" id="yYj-Z3-lo4">
-                        <barButtonItem key="leftBarButtonItem" image="photo_nav_icon_downward_small_sel" id="Eoq-ar-PzB">
+                        <barButtonItem key="leftBarButtonItem" image="icon_nav_downward_small_nor" id="Eoq-ar-PzB">
                             <connections>
                                 <action selector="tapDismissButton:" destination="2gh-lA-Xvv" id="rRl-QL-H5g"/>
                             </connections>
@@ -220,7 +222,6 @@
                                 <connections>
                                     <outlet property="imageView" destination="NtL-aF-Fke" id="JLK-iq-65B"/>
                                     <outlet property="selectButton" destination="L0h-Vr-d10" id="V3A-BQ-S3M"/>
-                                    <segue destination="jd9-At-slW" kind="show" identifier="linkToBrowse" id="G0v-tE-Xhj"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -283,7 +284,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="browseCell" id="Xdt-Nq-qjS" customClass="BrowseCollectionViewCell" customModule="NearCat" customModuleProvider="target">
-                                <rect key="frame" x="58" y="64" width="484" height="517"/>
+                                <rect key="frame" x="58" y="0.0" width="484" height="517"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="484" height="517"/>
@@ -391,8 +392,8 @@
     <resources>
         <image name="Gradient" width="10" height="100"/>
         <image name="icon_check photo_50_nor" width="50" height="50"/>
+        <image name="icon_nav_downward_small_nor" width="33" height="44"/>
         <image name="icon_next" width="48" height="48"/>
         <image name="my attention_icon_oval_nor" width="44" height="44"/>
-        <image name="photo_nav_icon_downward_small_sel" width="68" height="88"/>
     </resources>
 </document>

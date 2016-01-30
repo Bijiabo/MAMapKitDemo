@@ -44,6 +44,11 @@ class FluxesListTableViewCell: UITableViewCell {
         
         separatorLineView.backgroundColor = Constant.Color.TableViewSeparator
         
+        Helper.UI.setLabel(userNameLabel, forStyle: Constant.TextStyle.User.Name.Black)
+        Helper.UI.setLabel(catNameAndAgeLabel, forStyle: Constant.TextStyle.Body.Blue)
+        Helper.UI.setLabel(contentLabel, forStyle: Constant.TextStyle.Body.G2)
+        Helper.UI.setLabel(dateLabel, forStyle: Constant.TextStyle.Cell.Small.G4)
+        
         // add tap avatar action
         avatarImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("tapAvatar:")))
     }
@@ -63,6 +68,7 @@ class FluxesListTableViewCell: UITableViewCell {
     var content: String = String() {
         didSet {
             contentLabel.text = content
+            Helper.UI.setLabelLineSpacing(label: contentLabel, lineSpacing: Constant.TextStyle.Body.G2.font.pointSize*0.2)
         }
     }
     

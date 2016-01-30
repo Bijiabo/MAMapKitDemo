@@ -8,11 +8,17 @@
 
 import UIKit
 
+enum MediaPickerSelectMode {
+    case single
+    case multiple
+}
+
 class MediaPickerNavigationViewController: UINavigationController {
 
     var mediaPickerDelegate: MediaPickerDelegate?
     var selectedImages: [UIImage] = [UIImage]()
     var selectMaximum: Int = 9
+    var selectMode: MediaPickerSelectMode = .single
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +26,7 @@ class MediaPickerNavigationViewController: UINavigationController {
         if let albumListTVC = topViewController as? AlbumListTableViewController {
             albumListTVC.mediaPickerDelegate = self.mediaPickerDelegate
             albumListTVC.selectMaximum = selectMaximum
+            albumListTVC.selectMode = selectMode
         }
     }
 

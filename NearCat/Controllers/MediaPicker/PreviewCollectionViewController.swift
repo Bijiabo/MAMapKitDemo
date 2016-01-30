@@ -175,6 +175,56 @@ class PreviewCollectionViewController: UICollectionViewController {
         return reusableView
     }
     
+    // MARK: - Collection view delegate
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        guard let albumListVC = albumListVC else {return}
+        
+        if albumListVC.selectMode == .single {
+            
+            let currentAsset = momentMode ? subData[indexPath.section].objectAtIndex(indexPath.row) as! PHAsset : data.objectAtIndex(indexPath.row) as! PHAsset
+            dispatch_async(Helper.MultiThread.Queue.Concurent, { () -> Void in
+                PHImageManager.defaultManager().requestImageForAsset(currentAsset, targetSize: PHImageManagerMaximumSize, contentMode: PHImageContentMode.AspectFill, options: nil, resultHandler: { (image, info: [NSObject : AnyObject]?) -> Void in
+                    guard let image = image else {return}
+                    
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        let cropVC = ALConfirmViewController(image: image, allowsCropping: true)
+                        cropVC.onComplete = { (image) in
+                            guard let image = image else {
+                                self.navigationController?.popToViewController(self, animated: true)
+                                return
+                            }
+                            
+                            self.mediaPickerDelegate?.newImage(image, fromMediaPicker: self)
+                            self.dismissViewControllerAnimated(true, completion: nil)
+                        }
+                        self.navigationController?.pushViewController(cropVC, animated: true)
+                    })
+                    
+                })
+            })
+            
+            
+        } else {
+            let targetVC = storyboard?.instantiateViewControllerWithIdentifier("browserVC") as! BrowseCollectionViewController
+            
+            targetVC.mediaPickerDelegate = self.mediaPickerDelegate
+            targetVC.previewCollectionVC = self
+            targetVC.albumListVC = albumListVC
+            
+            if momentMode {
+                targetVC.assetsCollection = data.objectAtIndex(indexPath.section) as? PHAssetCollection
+                targetVC.startIndexPath = NSIndexPath(forRow: indexPath.row, inSection: 0)
+                targetVC.sectionIndexForPreviewList = indexPath.section
+            } else {
+                targetVC.assetsCollection = assetsCollection
+                targetVC.startIndexPath = indexPath
+            }
+            
+            navigationController?.pushViewController(targetVC, animated: true)
+        }
+    }
+    
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

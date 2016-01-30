@@ -36,7 +36,7 @@
                         <constraint firstAttribute="height" constant="64" id="J7n-mn-Ebe"/>
                         <constraint firstAttribute="width" constant="64" id="YWt-e6-Bvy"/>
                     </constraints>
-                    <state key="normal" image="confirmButton"/>
+                    <state key="normal" title="选取"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRi-ES-LfN">
                     <rect key="frame" x="436" y="506" width="64" height="64"/>
@@ -44,7 +44,7 @@
                         <constraint firstAttribute="height" constant="64" id="FdJ-mW-Tx6"/>
                         <constraint firstAttribute="width" constant="64" id="urS-JS-i1S"/>
                     </constraints>
-                    <state key="normal" image="retakeButton"/>
+                    <state key="normal" title="取消"/>
                 </button>
                 <view hidden="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KYd-D9-K5d">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -213,8 +213,4 @@
             </variation>
         </view>
     </objects>
-    <resources>
-        <image name="confirmButton" width="44" height="44"/>
-        <image name="retakeButton" width="44" height="44"/>
-    </resources>
 </document>

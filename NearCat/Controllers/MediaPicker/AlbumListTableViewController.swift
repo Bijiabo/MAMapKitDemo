@@ -20,6 +20,7 @@ class AlbumListTableViewController: UITableViewController {
         "album": [[NSIndexPath]]()
     ]
     var selectMaximum: Int = 9
+    var selectMode: MediaPickerSelectMode = .single
 
     override func viewDidLoad() {
         super.viewDidLoad()
