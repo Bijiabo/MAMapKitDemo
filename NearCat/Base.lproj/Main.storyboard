@@ -974,7 +974,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pep-Wc-v1p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1872" y="1874"/>
+            <point key="canvasLocation" x="1165" y="2270"/>
         </scene>
         <!--My Archive Table View Controller-->
         <scene sceneID="cfq-1l-QLB">
@@ -1306,7 +1306,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Oj-1N-gaW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="985" y="1106"/>
+            <point key="canvasLocation" x="2217" y="1106"/>
         </scene>
         <!--Set Location-->
         <scene sceneID="8Vg-Lt-aUh">
@@ -1363,7 +1363,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2641" y="1874"/>
+            <point key="canvasLocation" x="2217" y="1874"/>
         </scene>
         <!--Settings List Table View Controller-->
         <scene sceneID="1mn-rU-BtV">
@@ -1605,6 +1605,7 @@
                                 <connections>
                                     <outlet property="contentLabel" destination="6O8-zG-eiL" id="zyN-Di-scd"/>
                                     <outlet property="titleLabel" destination="3VR-Xo-FWN" id="0I1-7s-6d7"/>
+                                    <segue destination="cPx-Ml-nT1" kind="show" identifier="linkToSelectionVC" id="1YS-xa-hQM"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="map" rowHeight="46" id="Qqt-V0-SjD" customClass="CatArchiveDetailMapTableViewCell" customModule="NearCat" customModuleProvider="target">
@@ -1622,16 +1623,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Cat Archive" id="EYR-AX-uos">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="r9a-J8-yCC">
-                            <connections>
-                                <segue destination="99l-Q8-8zX" kind="show" identifier="editCat" id="oNX-dc-zo5"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="r9a-J8-yCC"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uwm-zt-7XB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1081" y="1874"/>
+            <point key="canvasLocation" x="1165" y="1570"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -2331,6 +2328,6 @@
         <image name="tab bar_icon_set_sel" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="j3f-S4-QfP"/>
+        <segue reference="1YS-xa-hQM"/>
     </inferredMetricsTieBreakers>
 </document>

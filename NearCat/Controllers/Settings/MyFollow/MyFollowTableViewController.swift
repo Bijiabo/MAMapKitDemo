@@ -22,6 +22,8 @@ class MyFollowTableViewController: SettingSecondaryTableViewController {
         tableView.sectionIndexBackgroundColor = UIColor.whiteColor()
         tableView.sectionIndexMinimumDisplayRowCount = 15
         
+        title = "我关注的"
+        
         _loadData()
     }
     

@@ -40,6 +40,9 @@ class CatArchiveDetailMapTableViewCell: UITableViewCell, MAMapViewDelegate {
     
     private func initMapView(){
         
+        MAMapServices.sharedServices().apiKey = APIKey
+        AMapSearchServices.sharedServices().apiKey = APIKey
+        
         mapView = MAMapView(frame: contentView.bounds)
         
         mapView!.delegate = self

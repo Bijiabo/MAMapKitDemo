@@ -36,4 +36,9 @@ extension UITableViewController {
         let nib: UINib = UINib(nibName: "LoadMoreCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "loadMoreCell")
     }
+    
+    func extension_registerCellForNibName(nibName: String, cellReuseIdentifier: String) {
+        let nib: UINib = UINib(nibName: nibName, bundle: nil)
+        tableView.registerNib(nib, forCellReuseIdentifier: cellReuseIdentifier)
+    }
 }

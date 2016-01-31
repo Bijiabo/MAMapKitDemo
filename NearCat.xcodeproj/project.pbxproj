@@ -154,6 +154,8 @@
 		65DAB83F1C5BCBBD009C39D7 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAB83E1C5BCBBD009C39D7 /* UINavigationControllerExtension.swift */; };
 		65DAB8721C5CFA17009C39D7 /* Helper.Ability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAB8711C5CFA17009C39D7 /* Helper.Ability.swift */; };
 		65DAB8741C5CFCC2009C39D7 /* Helper.Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAB8731C5CFCC2009C39D7 /* Helper.Alert.swift */; };
+		65DAB8761C5DF202009C39D7 /* ArchiveListEditableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65DAB8751C5DF202009C39D7 /* ArchiveListEditableCell.xib */; };
+		65DAB8781C5DF237009C39D7 /* ArchiveListEditableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAB8771C5DF237009C39D7 /* ArchiveListEditableTableViewCell.swift */; };
 		65DAC81B1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC81A1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift */; };
 		65DAC81D1C2D902A00335EFC /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC81C1C2D902A00335EFC /* FeedbackViewController.swift */; };
 		65DAC82A1C2E55EF00335EFC /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC8291C2E55EF00335EFC /* MainNavigationController.swift */; };
@@ -364,6 +366,8 @@
 		65DAB83E1C5BCBBD009C39D7 /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
 		65DAB8711C5CFA17009C39D7 /* Helper.Ability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.Ability.swift; sourceTree = "<group>"; };
 		65DAB8731C5CFCC2009C39D7 /* Helper.Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.Alert.swift; sourceTree = "<group>"; };
+		65DAB8751C5DF202009C39D7 /* ArchiveListEditableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArchiveListEditableCell.xib; sourceTree = "<group>"; };
+		65DAB8771C5DF237009C39D7 /* ArchiveListEditableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveListEditableTableViewCell.swift; sourceTree = "<group>"; };
 		65DAC81A1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveDetailItemTableViewCell.swift; sourceTree = "<group>"; };
 		65DAC81C1C2D902A00335EFC /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		65DAC8291C2E55EF00335EFC /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
@@ -438,6 +442,7 @@
 			isa = PBXGroup;
 			children = (
 				65152F2A1C4BAC5900DDB874 /* LoadingTableViewCell.swift */,
+				65DAB8771C5DF237009C39D7 /* ArchiveListEditableTableViewCell.swift */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -463,6 +468,7 @@
 				65152F311C4C0F9700DDB874 /* PersonalPage.xib */,
 				65152F401C4D27AD00DDB874 /* FluxItem.xib */,
 				652B384E1C50C302007F89E1 /* LoadMoreCell.xib */,
+				65DAB8751C5DF202009C39D7 /* ArchiveListEditableCell.xib */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -1111,6 +1117,7 @@
 				65CE59E11C2AC68C008809B0 /* AMap.bundle in Resources */,
 				65152F411C4D27AD00DDB874 /* FluxItem.xib in Resources */,
 				65CE59A21C2A7405008809B0 /* LaunchScreen.storyboard in Resources */,
+				65DAB8761C5DF202009C39D7 /* ArchiveListEditableCell.xib in Resources */,
 				65CE599F1C2A7405008809B0 /* Assets.xcassets in Resources */,
 				652B38C31C53B2D5007F89E1 /* ALCameraViewAssets.xcassets in Resources */,
 				652B384F1C50C302007F89E1 /* LoadMoreCell.xib in Resources */,
@@ -1216,6 +1223,7 @@
 				6570C3701C36936D00391EB8 /* FConstant.swift in Sources */,
 				65BB677A1C413D1B00355BBE /* InboxContainerViewController.swift in Sources */,
 				65DC08F71C49442900A956E5 /* PrivateMessageChatTableViewController.swift in Sources */,
+				65DAB8781C5DF237009C39D7 /* ArchiveListEditableTableViewCell.swift in Sources */,
 				652B38B71C53B2AD007F89E1 /* ALImagePickerViewDelegate.swift in Sources */,
 				652B38CC1C53B6FD007F89E1 /* AlbumListTableViewController.swift in Sources */,
 				650AD0641C53F333000BFA59 /* Helper.Controller.swift in Sources */,
