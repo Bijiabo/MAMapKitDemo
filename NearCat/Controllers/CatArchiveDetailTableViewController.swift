@@ -78,18 +78,13 @@ class CatArchiveDetailTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return listViewData.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 1
-        case 1:
-            return catInformation["archive"].count
-        case 2:
-            return 1
-        default:
+        if listViewData.count > section {
+            return listViewData[section].count
+        } else {
             return 0
         }
     }

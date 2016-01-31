@@ -84,6 +84,8 @@ import UIKit
         thumbView.frame = selectFrame
         thumbView.backgroundColor = UIColor.whiteColor()
         thumbView.layer.cornerRadius = thumbView.frame.height / 2
+        thumbView.layer.borderWidth = 2.0
+        thumbView.layer.borderColor = UIColor(red:0.94, green:0.94, blue:0.94, alpha:1).CGColor
         
         let labelHeight = self.bounds.height
         let labelWidth = self.bounds.width / CGFloat(labels.count)
