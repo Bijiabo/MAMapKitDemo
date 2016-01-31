@@ -23,22 +23,22 @@ class CatArchiveDetailTableViewController: UITableViewController {
         ],
         [
             [
-                "title": "名字",
+                "title": "猫咪名字",
                 "value": "",
                 "identifier": "name"
             ],
             [
-                "title": "年龄",
+                "title": "猫咪年龄",
                 "value": "",
                 "identifier": "age"
             ],
             [
-                "title": "性别",
+                "title": "猫咪性别",
                 "value": "",
                 "identifier": "gender"
             ],
             [
-                "title": "品种",
+                "title": "猫咪品种",
                 "value": "",
                 "identifier": "breed"
             ]
@@ -105,14 +105,29 @@ class CatArchiveDetailTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCellWithIdentifier("avatar", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCellWithIdentifier("catAvatarCell", forIndexPath: indexPath) as! CatArchiveAvatarTableViewCell
+            
+            if !catInformation["avatar"].stringValue.isEmpty {
+                Helper.setRemoteImageForImageView(cell.avatarImageView, imagePath: catInformation["avatar"].stringValue)
+            }
+            
             return cell
         case 1:
             let currentListData = listViewData[indexPath.section][indexPath.row]
+            let identifier = currentListData["identifier"]!
             let cell = tableView.dequeueReusableCellWithIdentifier("ArchiveListEditableCell", forIndexPath: indexPath) as! ArchiveListEditableTableViewCell
-            let currentData = catInformation["archive"][indexPath.row]
             cell.title = currentListData["title"]!
-            cell.value = currentData["key"].stringValue == "age" ? "\(currentData["value"].intValue)" : currentData["value"].stringValue
+            
+            let value = catInformation[identifier].stringValue
+            switch identifier {
+            case "gender":
+                cell.value = Int(value) == 1 ? "男" : "女"
+            case "region":
+                cell.value = "\(catInformation["province"].stringValue) \(catInformation["city"].stringValue)"
+            default:
+                cell.value = value
+            }
+            
             cell.headerTitle = currentListData["title"]!
             cell.identifier = currentListData["identifier"]!
             return cell
