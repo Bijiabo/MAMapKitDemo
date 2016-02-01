@@ -151,7 +151,9 @@ class CatArchiveEditTableViewController: UITableViewController {
         case .Create:
             Action.cats.create(catInformation["name"]!, age: age, breed: catInformation["breed"]!, completeHandler: editCompleteHandler)
         default: // -> .Update
-            Action.cats.update(id: catId, catData: catInformation, completeHandler: editCompleteHandler)
+            Action.cats.update(id: catId, catData: catInformation, completeHandler: { (success, data, description) -> Void in
+                
+            })
         }
     }
     

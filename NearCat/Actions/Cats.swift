@@ -37,7 +37,7 @@ extension Action {
         }
         
         // update
-        public class func update (id id: Int, catData: [String: AnyObject], completeHandler: (success: Bool, description: String)->Void) {
+        public class func update (id id: Int, catData: [String: AnyObject], completeHandler: (success: Bool, data: JSON, description: String)->Void) {
             let parameters: [String: AnyObject] = [
                 "cat": catData,
                 "token": FHelper.token
@@ -46,6 +46,30 @@ extension Action {
             FNetManager.sharedInstance.PATCH(path: "cats/\(id).json", parameters: parameters) { (request, response, json, error) -> Void in
                 Action.requestCompleteHandler(json: json, error: error, completeHandler: completeHandler)
             }
+        }
+        
+        // modify avatar
+        
+        public class func updateAvatar(id id: Int, image: UIImage, completeHandler: (success: Bool, data: JSON, description: String)->Void) {
+            let path = "cats/\(id).json?token=\(FHelper.token)"
+            
+            guard let imageData = UIImageJPEGRepresentation(image, 1.0) else {
+                completeHandler(success: false, data: JSON([]), description: "image data error.")
+                return
+            }
+            
+            FNetManager.sharedInstance.UPLOAD(path: path,
+                multipartFormData: { (multipartFormData) -> Void in
+                    multipartFormData.appendBodyPart(data: imageData, name: "cat[avatar]", fileName: "\(NSDate().timeIntervalSince1970).jpg", mimeType: "image/jpeg")
+                },
+                completionHandler: { (request, response, json, error) -> Void in
+                    
+                    Action.requestCompleteHandler(json: json, error: error, completeHandler: completeHandler)
+                },
+                failedHandler: {(success: Bool, description: String) in
+                    completeHandler(success: success, data: JSON([]), description: description)
+                }
+            )
         }
         
         // get by Id

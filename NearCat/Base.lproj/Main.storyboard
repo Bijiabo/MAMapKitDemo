@@ -719,28 +719,54 @@
         <scene sceneID="pc2-I8-7gt">
             <objects>
                 <tableViewController storyboardIdentifier="catArchiveList" id="gpt-tw-1ds" customClass="CatArchiveListTableViewController" customModule="NearCat" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="z3y-LZ-9pZ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="56" sectionHeaderHeight="28" sectionFooterHeight="28" id="z3y-LZ-9pZ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="catItem" textLabel="diF-jR-OJc" style="IBUITableViewCellStyleDefault" id="MWY-zQ-IT6">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="catItem" rowHeight="56" id="MWY-zQ-IT6" customClass="CatArchiveListTableViewCell" customModule="NearCat" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="56"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MWY-zQ-IT6" id="C3p-hG-miP">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="55.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="diF-jR-OJc">
-                                            <rect key="frame" x="15" y="0.0" width="550" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_next" translatesAutoresizingMaskIntoConstraints="NO" id="mI9-Z7-tkG">
+                                            <rect key="frame" x="544" y="4" width="48" height="48"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="48" id="jMg-QF-Utj"/>
+                                                <constraint firstAttribute="width" constant="48" id="ruw-fU-e05"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5Y-KV-KnU">
+                                            <rect key="frame" x="24" y="8" width="496" height="39.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.29411764709999999" green="0.42352941179999998" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HcR-hb-1vX" userLabel="separator line view">
+                                            <rect key="frame" x="24" y="81.5" width="576" height="1"/>
+                                            <color key="backgroundColor" red="0.86302219680000003" green="0.86302219680000003" blue="0.86302219680000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="f89-UO-gIB"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="HcR-hb-1vX" secondAttribute="bottom" id="Dyi-27-Aae"/>
+                                        <constraint firstAttribute="trailing" secondItem="HcR-hb-1vX" secondAttribute="trailing" id="bNP-p2-jTU"/>
+                                        <constraint firstAttribute="bottom" secondItem="h5Y-KV-KnU" secondAttribute="bottom" constant="8" id="ejk-mQ-PeW"/>
+                                        <constraint firstItem="HcR-hb-1vX" firstAttribute="leading" secondItem="C3p-hG-miP" secondAttribute="leading" constant="24" id="gs1-nX-QEo"/>
+                                        <constraint firstAttribute="trailing" secondItem="mI9-Z7-tkG" secondAttribute="trailing" constant="8" id="itX-Bu-VJY"/>
+                                        <constraint firstItem="mI9-Z7-tkG" firstAttribute="leading" secondItem="h5Y-KV-KnU" secondAttribute="trailing" constant="24" id="jTz-K6-DLo"/>
+                                        <constraint firstItem="h5Y-KV-KnU" firstAttribute="leading" secondItem="C3p-hG-miP" secondAttribute="leading" constant="24" id="kT6-zy-olp"/>
+                                        <constraint firstItem="h5Y-KV-KnU" firstAttribute="top" secondItem="C3p-hG-miP" secondAttribute="top" constant="8" id="qM1-o1-zoX"/>
+                                        <constraint firstItem="mI9-Z7-tkG" firstAttribute="centerY" secondItem="C3p-hG-miP" secondAttribute="centerY" id="vfT-Eh-Dg5"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="catNameLabel" destination="h5Y-KV-KnU" id="sKN-Ol-k2D"/>
+                                    <outlet property="separatorLineView" destination="HcR-hb-1vX" id="cM9-eb-2Qe"/>
                                     <segue destination="JDf-MI-01s" kind="show" identifier="showDetail" id="HL9-3g-xvl"/>
                                 </connections>
                             </tableViewCell>
@@ -1550,7 +1576,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pfI-35-3ci" customClass="AvatarImageView" customModule="NearCat" customModuleProvider="target">
+                                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pfI-35-3ci" customClass="AvatarImageView" customModule="NearCat" customModuleProvider="target">
                                             <rect key="frame" x="260" y="10" width="80" height="80"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="80" id="28a-qI-JLH"/>

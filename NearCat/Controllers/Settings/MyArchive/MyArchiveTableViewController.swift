@@ -318,7 +318,6 @@ extension MyArchiveTableViewController: SelectionControllerDelegate {
             }
         }
         
-        
         Action.users.updateSelfInformation(data: data, completeHandler: { (success, data, description) -> Void in
             if success {
                 self.userData = data

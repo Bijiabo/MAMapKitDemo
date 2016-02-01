@@ -15,6 +15,10 @@ class CatArchiveListTableViewController: SettingSecondaryTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         _initViews()
+        
+        tableView.separatorStyle = .None
+        extension_setupFooterView()
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -57,11 +61,15 @@ class CatArchiveListTableViewController: SettingSecondaryTableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cats.count
     }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 44.0
+    }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("catItem", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("catItem", forIndexPath: indexPath) as! CatArchiveListTableViewCell
         let currentData = cats[indexPath.row]
-        cell.textLabel?.text = currentData["name"].stringValue
+        cell.name = currentData["name"].stringValue
         cell.tag = currentData["id"].intValue // as cell's cat id
         
         return cell
@@ -99,11 +107,8 @@ class CatArchiveListTableViewController: SettingSecondaryTableViewController {
                 let errorObject: [String: String] = ["title": "读取数据失败", "message": description]
                 NSNotificationCenter.defaultCenter().postNotificationName(Constant.Notification.Alert.showError, object: errorObject)
             } else {
-                
                 self.cats = data.arrayValue
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.tableView.reloadData()
-                })
+                self.extension_reloadTableView()
             }
         }
     }

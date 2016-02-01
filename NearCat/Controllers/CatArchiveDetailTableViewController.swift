@@ -110,6 +110,7 @@ class CatArchiveDetailTableViewController: UITableViewController {
             if !catInformation["avatar"].stringValue.isEmpty {
                 Helper.setRemoteImageForImageView(cell.avatarImageView, imagePath: catInformation["avatar"].stringValue)
             }
+            cell.delegate = self
             
             return cell
         case 1:
@@ -240,6 +241,35 @@ class CatArchiveDetailTableViewController: UITableViewController {
         }
     }
     
+    func tapAvatar() {
+        let actionSheet = KKActionSheet(title: "修改猫猫头像", cancelTitle:"取消", cancelAction: { () -> Void in
+        })
+        
+        actionSheet.addButton("拍照", isDestructive: false) { () -> Void in
+            let shootVC = Helper.Controller.Shoot
+            shootVC.mediaPickerDelegate = self
+            self.presentViewController(shootVC, animated: true, completion: nil)
+        }
+        actionSheet.addButton("从相册中选取", isDestructive: false) { () -> Void in
+            if Helper.Ability.Photo.hasAuthorization {
+                let mediaPickerNavigationVC = Helper.Controller.MediaPicker
+                mediaPickerNavigationVC.mediaPickerDelegate = self
+                self.presentViewController(mediaPickerNavigationVC, animated: true, completion: nil)
+            } else {
+                Helper.Ability.Photo.requestAuthorization(block: { (success) -> Void in
+                    if success {
+                        let mediaPickerNavigationVC = Helper.Controller.MediaPicker
+                        self.presentViewController(mediaPickerNavigationVC, animated: true, completion: nil)
+                    } else {
+                        Helper.Alert.show(title: "未开启照片访问权限", message: "请打开［设置］-> ［猫邻］-> ［照片］选择开启", animated: true)
+                    }
+                })
+            }
+        }
+        
+        actionSheet.show()
+    }
+    
     // MARK: - data functions
     private func _loadData() {
         Action.cats.getById(catId) { (success, data, description) -> Void in
@@ -267,13 +297,15 @@ extension CatArchiveDetailTableViewController: MediaPickerDelegate {
     func newImage(image: UIImage, fromMediaPicker: UIViewController) {
         
         fromMediaPicker.dismissViewControllerAnimated(true) { () -> Void in
-            Action.users.updateAvatar(image: image) { (success, description) -> Void in
+            
+            Action.cats.updateAvatar(id: self.catId, image: image, completeHandler: { (success, data, description) -> Void in
                 if success {
-                    self._loadData()
+                    self.catInformation = data
+                    self.extension_reloadTableView()
                 } else {
-                    Helper.Alert.show(title: "修改头像失败", message: "有可能是网络问题，请稍后重试。", animated: true)
+                    Helper.Alert.show(title: "修改头像失败", message: "请稍后重试", animated: true)
                 }
-            }
+            })
         }
         
     }
@@ -281,7 +313,29 @@ extension CatArchiveDetailTableViewController: MediaPickerDelegate {
 }
 
 extension CatArchiveDetailTableViewController: SelectionControllerDelegate {
-    func updateSelectionDataForIdentifier(identifier: String, data: [String : AnyObject]) {
+    func updateSelectionDataForIdentifier(identifier: String, var data: [String : AnyObject]) {
+        switch identifier {
+        case "region":
+            data = [
+                "province": data["catalogue"]!,
+                "city": data["singleItem"]!
+            ]
+        default:
+            if data.count == 1 {
+                let dataFirstItem: (key: String, value: AnyObject) = data.first!
+                if dataFirstItem.key == "singleItem" {
+                    data = [identifier: dataFirstItem.value]
+                }
+            }
+        }
         
+        Action.cats.update(id: catId, catData: data) { (success, data, description) -> Void in
+            if success {
+                self.catInformation = data
+                self.extension_reloadTableView()
+            } else {
+                Helper.Alert.show(title: "修改失败", message: "请检查网络后重试", animated: true)
+            }
+        }
     }
 }
