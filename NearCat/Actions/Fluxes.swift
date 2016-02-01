@@ -38,14 +38,8 @@ extension Action {
         
         // get list
         public class func list(var page page: Int = 0, completeHandler: (success: Bool, data: JSON, description: String)->Void) {
-            
-            Helper.Notification.show()
-            
             if page < 0 { page=0 }
             FNetManager.sharedInstance.GET(path: "fluxes.json?page=\(page)&token=\(FHelper.token)") { (request, response, json, error) -> Void in
-                
-                Helper.Notification.hide(text: "加载完成")
-                
                 Action.requestCompleteHandler(json: json, error: error, completeHandler: completeHandler)
             }
         }
@@ -69,12 +63,7 @@ extension Action {
         
         // get comments
         public class func comments(id id: String, completeHandler: (success: Bool, data: JSON, description: String)->Void) {
-            Helper.Notification.show()
-            
             FNetManager.sharedInstance.GET(path: "fluxes/\(id)/comments.json") { (request, response, json, error) -> Void in
-                
-                Helper.Notification.hide(text: "加载完成")
-                
                 Action.requestCompleteHandler(json: json, error: error, completeHandler: completeHandler)
             }
         }
@@ -82,10 +71,7 @@ extension Action {
         // get flux detail
         
         public class func detail(id id: String, completeHandler: (success: Bool, data: JSON, description: String)->Void) {
-            Helper.Notification.show()
-            
             FNetManager.sharedInstance.GET(path: "fluxes/\(id).json?token=\(FHelper.token)") { (request, response, json, error) -> Void in
-                Helper.Notification.hide()
                 Action.requestCompleteHandler(json: json, error: error, completeHandler: completeHandler)
             }
         }

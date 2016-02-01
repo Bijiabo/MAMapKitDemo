@@ -31,9 +31,14 @@ public class FNetManager {
     
     public func GET (path path: String, parameters: [String : AnyObject]? = nil, host: String = FConfiguration.sharedInstance.host, encoding: ParameterEncoding = ParameterEncoding.JSON , completionHandler: (request: NSURLRequest, response: NSHTTPURLResponse?, json: JSON, error:ErrorType?) -> Void)
     {
+        Helper.Notification.startLoading()
+        
         Alamofire
             .request(.GET, "\(host)\(path)", parameters: parameters, encoding: ParameterEncoding.JSON)
             .responseSwiftyJSON({ (request, response, json, error) in
+                
+                Helper.Notification.endLoading()
+                
                 completionHandler(request: request, response: response, json: json, error: error)
             })
     }

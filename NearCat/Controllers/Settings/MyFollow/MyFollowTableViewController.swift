@@ -110,11 +110,10 @@ class MyFollowTableViewController: SettingSecondaryTableViewController {
     }
     
     override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
-        let aScalars = "a".unicodeScalars
-        let aCode = aScalars[aScalars.startIndex].value
+        var titles: [String] = [String]()
         
-        let titles: [String] = (0..<26).map {
-            i in String(Character(UnicodeScalar(aCode + i))).uppercaseString
+        for item in _followingData {
+            titles.append(item["key"].stringValue)
         }
         
         return titles

@@ -19,10 +19,8 @@ class CatArchiveListTableViewController: SettingSecondaryTableViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        navigationItem.prompt = "loading..."
-        _loadCatData {
-            self.navigationItem.prompt = nil
-        }
+        
+        _loadCatData()
     }
     
     private func _initViews() {

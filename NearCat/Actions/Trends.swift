@@ -15,6 +15,7 @@ extension Action {
         
         // get trends list
         public class func list (var page page: Int = 1, completeHandler: (success: Bool, data: JSON, description: String)->Void) {
+            
             if page < 1 { page = 1 }
             let path = "trends.json?page=\(page)&token=\(FHelper.token)"
             

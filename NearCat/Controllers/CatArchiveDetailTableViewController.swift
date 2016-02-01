@@ -242,9 +242,7 @@ class CatArchiveDetailTableViewController: UITableViewController {
     
     // MARK: - data functions
     private func _loadData() {
-        _showLoading()
         Action.cats.getById(catId) { (success, data, description) -> Void in
-            self._hideLoading()
             if success {
                 self.catInformation = data
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -259,14 +257,6 @@ class CatArchiveDetailTableViewController: UITableViewController {
                 NSNotificationCenter.defaultCenter().postNotificationName(Constant.Notification.Alert.showError, object: errorMessage)
             }
         }
-    }
-    
-    private func _showLoading() {
-        navigationItem.prompt = "loading..."
-    }
-    
-    private func _hideLoading() {
-        navigationItem.prompt = nil
     }
 }
 
