@@ -41,6 +41,12 @@ extension Helper {
             }
         }
         
+        class var NotificationSetting: NotificationSettingsTableViewController {
+            get {
+                return Helper.Controller.instanceForStoryboardByName("Main", ForIdentifier: "notificationSetting") as! NotificationSettingsTableViewController
+            }
+        }
+        
     }
     
 }

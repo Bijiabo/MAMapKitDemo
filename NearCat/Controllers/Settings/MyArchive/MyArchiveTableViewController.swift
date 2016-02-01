@@ -129,12 +129,7 @@ class MyArchiveTableViewController: SettingSecondaryTableViewController {
             let identifier = currentData["identifier"]!
             
             cell.headerTitle = currentData["title"]!
-            
-            if indexPath.row + 1 == self.tableView(tableView, numberOfRowsInSection: indexPath.section) {
-                cell.displaySeparatorLine = false
-            } else {
-                cell.displaySeparatorLine = true
-            }
+            cell.displaySeparatorLine = indexPath.row + 1 != self.tableView(tableView, numberOfRowsInSection: indexPath.section)
             
             cell.title = currentData["title"]!
             

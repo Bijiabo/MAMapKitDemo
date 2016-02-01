@@ -157,6 +157,16 @@
 		65DAB8761C5DF202009C39D7 /* ArchiveListEditableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65DAB8751C5DF202009C39D7 /* ArchiveListEditableCell.xib */; };
 		65DAB8781C5DF237009C39D7 /* ArchiveListEditableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAB8771C5DF237009C39D7 /* ArchiveListEditableTableViewCell.swift */; };
 		65DAB87A1C5F694C009C39D7 /* CatArchiveListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAB8791C5F694C009C39D7 /* CatArchiveListTableViewCell.swift */; };
+		65DAB87C1C5FD3C8009C39D7 /* SettingCatalogueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65DAB87B1C5FD3C8009C39D7 /* SettingCatalogueCell.xib */; };
+		65DAB87E1C5FD40B009C39D7 /* SettingSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65DAB87D1C5FD40B009C39D7 /* SettingSwitchCell.xib */; };
+		65DAB8801C5FD442009C39D7 /* SettingSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAB87F1C5FD442009C39D7 /* SettingSwitchCell.swift */; };
+		65DAB8821C5FD49F009C39D7 /* SettingCatalogueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAB8811C5FD49F009C39D7 /* SettingCatalogueTableViewCell.swift */; };
+		65DAB8841C5FDE9F009C39D7 /* SettingNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65DAB8831C5FDE9F009C39D7 /* SettingNormalCell.xib */; };
+		65DAB8861C5FDEDC009C39D7 /* SettingNormalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAB8851C5FDEDC009C39D7 /* SettingNormalTableViewCell.swift */; };
+		65DAB8881C5FDFFD009C39D7 /* ExplainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65DAB8871C5FDFFD009C39D7 /* ExplainTableViewCell.xib */; };
+		65DAB88A1C5FE0D6009C39D7 /* ExplainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAB8891C5FE0D6009C39D7 /* ExplainTableViewCell.swift */; };
+		65DAB88C1C5FE3A6009C39D7 /* SettingTitleWithValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAB88B1C5FE3A6009C39D7 /* SettingTitleWithValueTableViewCell.swift */; };
+		65DAB88E1C5FE4A8009C39D7 /* NotificationSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAB88D1C5FE4A8009C39D7 /* NotificationSettingsTableViewController.swift */; };
 		65DAC81B1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC81A1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift */; };
 		65DAC81D1C2D902A00335EFC /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC81C1C2D902A00335EFC /* FeedbackViewController.swift */; };
 		65DAC82A1C2E55EF00335EFC /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAC8291C2E55EF00335EFC /* MainNavigationController.swift */; };
@@ -370,6 +380,16 @@
 		65DAB8751C5DF202009C39D7 /* ArchiveListEditableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArchiveListEditableCell.xib; sourceTree = "<group>"; };
 		65DAB8771C5DF237009C39D7 /* ArchiveListEditableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveListEditableTableViewCell.swift; sourceTree = "<group>"; };
 		65DAB8791C5F694C009C39D7 /* CatArchiveListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CatArchiveListTableViewCell.swift; path = Cats/CatArchiveListTableViewCell.swift; sourceTree = "<group>"; };
+		65DAB87B1C5FD3C8009C39D7 /* SettingCatalogueCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingCatalogueCell.xib; sourceTree = "<group>"; };
+		65DAB87D1C5FD40B009C39D7 /* SettingSwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingSwitchCell.xib; sourceTree = "<group>"; };
+		65DAB87F1C5FD442009C39D7 /* SettingSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingSwitchCell.swift; path = Settings/SettingSwitchCell.swift; sourceTree = "<group>"; };
+		65DAB8811C5FD49F009C39D7 /* SettingCatalogueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingCatalogueTableViewCell.swift; path = Settings/SettingCatalogueTableViewCell.swift; sourceTree = "<group>"; };
+		65DAB8831C5FDE9F009C39D7 /* SettingNormalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingNormalCell.xib; sourceTree = "<group>"; };
+		65DAB8851C5FDEDC009C39D7 /* SettingNormalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingNormalTableViewCell.swift; sourceTree = "<group>"; };
+		65DAB8871C5FDFFD009C39D7 /* ExplainTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExplainTableViewCell.xib; sourceTree = "<group>"; };
+		65DAB8891C5FE0D6009C39D7 /* ExplainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplainTableViewCell.swift; sourceTree = "<group>"; };
+		65DAB88B1C5FE3A6009C39D7 /* SettingTitleWithValueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingTitleWithValueTableViewCell.swift; path = Settings/SettingTitleWithValueTableViewCell.swift; sourceTree = "<group>"; };
+		65DAB88D1C5FE4A8009C39D7 /* NotificationSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSettingsTableViewController.swift; sourceTree = "<group>"; };
 		65DAC81A1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveDetailItemTableViewCell.swift; sourceTree = "<group>"; };
 		65DAC81C1C2D902A00335EFC /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		65DAC8291C2E55EF00335EFC /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
@@ -443,6 +463,7 @@
 		65152F291C4BABBF00DDB874 /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				65DAB8891C5FE0D6009C39D7 /* ExplainTableViewCell.swift */,
 				65152F2A1C4BAC5900DDB874 /* LoadingTableViewCell.swift */,
 				65DAB8771C5DF237009C39D7 /* ArchiveListEditableTableViewCell.swift */,
 			);
@@ -471,6 +492,10 @@
 				65152F401C4D27AD00DDB874 /* FluxItem.xib */,
 				652B384E1C50C302007F89E1 /* LoadMoreCell.xib */,
 				65DAB8751C5DF202009C39D7 /* ArchiveListEditableCell.xib */,
+				65DAB87B1C5FD3C8009C39D7 /* SettingCatalogueCell.xib */,
+				65DAB87D1C5FD40B009C39D7 /* SettingSwitchCell.xib */,
+				65DAB8831C5FDE9F009C39D7 /* SettingNormalCell.xib */,
+				65DAB8871C5FDFFD009C39D7 /* ExplainTableViewCell.xib */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -923,6 +948,10 @@
 				65625BEF1C43F5D60068176F /* SettingListTableViewCell.swift */,
 				650AD0691C53FC01000BFA59 /* MyArchiveSettingAvatarTableViewCell.swift */,
 				650AD06B1C53FDCD000BFA59 /* MyArchiveSettingItemTableViewCell.swift */,
+				65DAB87F1C5FD442009C39D7 /* SettingSwitchCell.swift */,
+				65DAB8811C5FD49F009C39D7 /* SettingCatalogueTableViewCell.swift */,
+				65DAB8851C5FDEDC009C39D7 /* SettingNormalTableViewCell.swift */,
+				65DAB88B1C5FE3A6009C39D7 /* SettingTitleWithValueTableViewCell.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -948,6 +977,7 @@
 				6559A05F1C4547480027CECE /* MyFollow */,
 				6559A05A1C453F230027CECE /* MyArchive */,
 				65F4FFE71C54C11600816BEB /* SelectionTableViewController.swift */,
+				65DAB88D1C5FE4A8009C39D7 /* NotificationSettingsTableViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1116,18 +1146,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65DAB87E1C5FD40B009C39D7 /* SettingSwitchCell.xib in Resources */,
 				65F4FFF51C5542D500816BEB /* Data in Resources */,
 				65CE59E11C2AC68C008809B0 /* AMap.bundle in Resources */,
 				65152F411C4D27AD00DDB874 /* FluxItem.xib in Resources */,
 				65CE59A21C2A7405008809B0 /* LaunchScreen.storyboard in Resources */,
 				65DAB8761C5DF202009C39D7 /* ArchiveListEditableCell.xib in Resources */,
+				65DAB87C1C5FD3C8009C39D7 /* SettingCatalogueCell.xib in Resources */,
 				65CE599F1C2A7405008809B0 /* Assets.xcassets in Resources */,
 				652B38C31C53B2D5007F89E1 /* ALCameraViewAssets.xcassets in Resources */,
 				652B384F1C50C302007F89E1 /* LoadMoreCell.xib in Resources */,
 				65152F321C4C0F9700DDB874 /* PersonalPage.xib in Resources */,
 				652B38C61C53B600007F89E1 /* MediaPicker.storyboard in Resources */,
 				652B38B51C53B2AD007F89E1 /* ALConfirmViewController.xib in Resources */,
+				65DAB8881C5FDFFD009C39D7 /* ExplainTableViewCell.xib in Resources */,
 				65CE599D1C2A7405008809B0 /* Main.storyboard in Resources */,
+				65DAB8841C5FDE9F009C39D7 /* SettingNormalCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1212,6 +1246,7 @@
 				65BB67921C4254AD00355BBE /* FluxDetailViewController.swift in Sources */,
 				65F400051C568B2400816BEB /* JDStatusBarNotification.m in Sources */,
 				6570C36E1C36936C00391EB8 /* DeviceGuru.swift in Sources */,
+				65DAB88A1C5FE0D6009C39D7 /* ExplainTableViewCell.swift in Sources */,
 				652B38D81C53DADF007F89E1 /* AlbumListTableViewCell.swift in Sources */,
 				65DAB87A1C5F694C009C39D7 /* CatArchiveListTableViewCell.swift in Sources */,
 				6559A0611C4548E90027CECE /* MyFollowTableViewController.swift in Sources */,
@@ -1224,6 +1259,7 @@
 				65F4FFFB1C56223F00816BEB /* MediaPickerDelegate.swift in Sources */,
 				65FFF2881C5BB26F00C29903 /* Helper.MultiThread.swift in Sources */,
 				654162B31C4F629200BD035E /* PostEditorTableViewController.swift in Sources */,
+				65DAB8861C5FDEDC009C39D7 /* SettingNormalTableViewCell.swift in Sources */,
 				6570C3701C36936D00391EB8 /* FConstant.swift in Sources */,
 				65BB677A1C413D1B00355BBE /* InboxContainerViewController.swift in Sources */,
 				65DC08F71C49442900A956E5 /* PrivateMessageChatTableViewController.swift in Sources */,
@@ -1298,11 +1334,14 @@
 				65152F3F1C4CCB5700DDB874 /* PersonalPageTableViewController.swift in Sources */,
 				65D54D231C312F0A00F7B450 /* Action.swift in Sources */,
 				652B389B1C52B30D007F89E1 /* PersonalSettingHeaderDelegate.swift in Sources */,
+				65DAB8801C5FD442009C39D7 /* SettingSwitchCell.swift in Sources */,
 				65BB67961C42D29D00355BBE /* remoteNotificationTokens.swift in Sources */,
 				65BB676A1C412F5C00355BBE /* FluxesContainerViewController.swift in Sources */,
+				65DAB8821C5FD49F009C39D7 /* SettingCatalogueTableViewCell.swift in Sources */,
 				6557F7B91C2CFFB300E6780D /* CatArchiveItemTableViewCell.swift in Sources */,
 				6559A05E1C4546610027CECE /* SettingsNavigationViewController.swift in Sources */,
 				65DC08F91C49503800A956E5 /* PrivateMessageChatContainerViewController.swift in Sources */,
+				65DAB88C1C5FE3A6009C39D7 /* SettingTitleWithValueTableViewCell.swift in Sources */,
 				65DAC81B1C2D8A7000335EFC /* CatArchiveDetailItemTableViewCell.swift in Sources */,
 				650AD06A1C53FC01000BFA59 /* MyArchiveSettingAvatarTableViewCell.swift in Sources */,
 				652B38CD1C53B6FD007F89E1 /* BrowseCollectionViewController.swift in Sources */,
@@ -1334,6 +1373,7 @@
 				65152F3A1C4C96C300DDB874 /* PersonalPageIntroTableViewCell.swift in Sources */,
 				652B38DA1C53DADF007F89E1 /* PreviewHeaderCollectionReusableView.swift in Sources */,
 				652B389D1C537578007F89E1 /* Helper.UI.swift in Sources */,
+				65DAB88E1C5FE4A8009C39D7 /* NotificationSettingsTableViewController.swift in Sources */,
 				6570C37E1C36C83400391EB8 /* CatCalloutView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
