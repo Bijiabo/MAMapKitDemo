@@ -20,7 +20,8 @@ extension UITableViewController {
     
     func extension_setupRefreshControl() {
         refreshControl = UIRefreshControl()
-        refreshControl?.attributedTitle = NSAttributedString(string: "松开刷新喵")
+        refreshControl?.attributedTitle = NSAttributedString(string: String())
+        refreshControl?.tintColor = Constant.Color.ThemeLight
         refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
         tableView.addSubview(refreshControl!)
         tableView.sendSubviewToBack(refreshControl!)

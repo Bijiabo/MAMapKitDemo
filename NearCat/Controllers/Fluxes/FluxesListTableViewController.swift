@@ -43,8 +43,9 @@ class FluxesListTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 280.0
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        let nib: UINib = UINib(nibName: "FluxItem", bundle: nil)
-        tableView.registerNib(nib, forCellReuseIdentifier: "fluxItemCell")
+        extension_registerCellForNibName("FluxItem", cellReuseIdentifier: "fluxItemCell")
+        
+        tableView.tableHeaderView = UIView(frame: CGRectZero)
     }
     
     func refresh(sender: AnyObject) {
@@ -150,7 +151,11 @@ class FluxesListTableViewController: UITableViewController {
         let detailViewController = storyboard?.instantiateViewControllerWithIdentifier("fluxDetail") as! FluxDetailViewController
         detailViewController.id = cell.id
         
-        navigationController?.pushViewController(detailViewController, animated: true)
+        if let tabBarController = tabBarController {
+            tabBarController.navigationController?.pushViewController(detailViewController, animated: true)
+        } else {
+            navigationController?.pushViewController(detailViewController, animated: true)
+        }
         
     }
     

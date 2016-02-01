@@ -37,6 +37,7 @@ public struct Constant {
     
     struct Color {
         static let Theme: UIColor = UIColor(red:0.36, green:0.5, blue:0.66, alpha:1)
+        static let ThemeLight: UIColor = UIColor(red:0.36, green:0.5, blue:0.66, alpha:0.5)
         static let CellSelected: UIColor = UIColor(red:0.36, green:0.5, blue:0.66, alpha:0.1)
         static let Pink: UIColor = UIColor(red:1, green:0.35, blue:0.43, alpha:1)
         static let TextBlack: UIColor = UIColor(red:0.01, green:0.01, blue:0.01, alpha:1)

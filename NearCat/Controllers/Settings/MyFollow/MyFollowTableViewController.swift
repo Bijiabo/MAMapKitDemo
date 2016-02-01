@@ -21,6 +21,7 @@ class MyFollowTableViewController: SettingSecondaryTableViewController {
         tableView.sectionIndexColor = Constant.Color.G3
         tableView.sectionIndexBackgroundColor = UIColor.whiteColor()
         tableView.sectionIndexMinimumDisplayRowCount = 15
+        tableView.backgroundColor = Constant.Color.TableViewBackground
         
         title = "我关注的"
         
@@ -50,6 +51,14 @@ class MyFollowTableViewController: SettingSecondaryTableViewController {
     
     override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 12.0
+    }
+    
+    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView()
+        
+        view.backgroundColor = UIColor.clearColor()
+        
+        return view
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
