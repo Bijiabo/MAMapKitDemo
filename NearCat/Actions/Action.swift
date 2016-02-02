@@ -31,7 +31,12 @@ public class Action {
         var description: String = error.debugDescription
         
         if error == nil {
-            success = !json["error"].boolValue
+            if json["success"].bool != nil {
+                success = json["success"].boolValue
+            } else {
+                success = !json["error"].boolValue
+            }
+            
             if !success {
                 description = json["description"].stringValue
             }

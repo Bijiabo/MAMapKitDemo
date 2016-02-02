@@ -58,6 +58,8 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
         
         tableView.separatorStyle = .None
         automaticallyAdjustsScrollViewInsets = false
+        
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40.0, right: 0)
     }
     
     override func viewWillAppear(animated: Bool) {

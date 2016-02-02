@@ -104,6 +104,40 @@ extension Action {
                 })
             }
         }
+        
+        // like and cancel like
+        
+        public class func like(fluxId id: Int, completeHandler: ((success: Bool, description: String)->Void)?=nil) {
+            let path: String = "flux_likes.json"
+            let parameters: [String: AnyObject] = [
+                "flux_like": [
+                    "flux_id": id
+                ],
+                "token": FHelper.token
+            ]
+            
+            FNetManager.sharedInstance.POST(path: path, parameters: parameters) { (request, response, json, error) -> Void in
+                Action.requestCompleteHandler(json: json, error: error, completeHandler: { (success, description) -> Void in
+                    completeHandler?(success: success, description: description)
+                })
+            }
+        }
+        
+        public class func cancelLike(fluxId id: Int, completeHandler: ((success: Bool, description: String)->Void)?=nil) {
+            let path: String = "flux_likes/cancel_like.json"
+            let parameters: [String: AnyObject] = [
+                "flux_like": [
+                    "flux_id": id
+                ],
+                "token": FHelper.token
+            ]
+            
+            FNetManager.sharedInstance.DELETE(path: path, parameters: parameters) { (request, response, json, error) -> Void in
+                Action.requestCompleteHandler(json: json, error: error, completeHandler: { (success, description) -> Void in
+                    completeHandler?(success: success, description: description)
+                })
+            }
+        }
 
     }
 }

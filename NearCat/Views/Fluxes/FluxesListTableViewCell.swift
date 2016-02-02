@@ -19,11 +19,15 @@ class FluxesListTableViewCell: UITableViewCell {
     @IBOutlet weak var contentImageViewHeight: NSLayoutConstraint!
     @IBOutlet weak var commentCountButton: UIButton!
     @IBOutlet weak var distanceCountButton: UIButton!
-    @IBOutlet weak var likeCountButton: UIButton!
+    @IBOutlet weak var likeCountButton: LikeButton!
     @IBOutlet weak var followButton: UIButton!
     @IBOutlet weak var separatorLineView: UIView!
     
-    var id: Int = 0
+    var id: Int = 0 {
+        didSet {
+            likeCountButton.fluxId = id
+        }
+    }
     var userId: Int = 0
     weak var navigationController: UINavigationController?
     weak var followActionController: FollowActionControllerProtocol?
@@ -82,6 +86,7 @@ class FluxesListTableViewCell: UITableViewCell {
     
     var likeCount: Int = 0 {
         didSet {
+            /*
             let likeCountButtonTitle: String = "\(likeCount)"
             likeCountButton.setTitle(likeCountButtonTitle, forState: UIControlState.Normal)
             likeCountButton.setTitle(likeCountButtonTitle, forState: UIControlState.Highlighted)
@@ -89,6 +94,8 @@ class FluxesListTableViewCell: UITableViewCell {
             if #available(iOS 9.0, *) {
                 likeCountButton.setTitle(likeCountButtonTitle, forState: UIControlState.Focused)
             }
+            */
+            likeCountButton.count = likeCount
         }
     }
     
