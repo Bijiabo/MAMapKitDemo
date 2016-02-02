@@ -27,7 +27,7 @@ class SettingsListTableViewController: SettingSecondaryTableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return FHelper.logged_in ? 3 : 2
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -138,7 +138,8 @@ class SettingsListTableViewController: SettingSecondaryTableViewController {
         case 1:
             switch indexPath.row {
             case 0:
-                break
+                let vc = Helper.Controller.About
+                tabBarController?.navigationController?.pushViewController(vc, animated: true)
             default:
                 break
             }
@@ -146,7 +147,7 @@ class SettingsListTableViewController: SettingSecondaryTableViewController {
         case 2:
             switch indexPath.row {
             case 0:
-                break
+                _displayLogoutConfirm()
             default:
                 break
             }
@@ -154,6 +155,20 @@ class SettingsListTableViewController: SettingSecondaryTableViewController {
         default:
             break
         }
+    }
+    
+    private func _displayLogoutConfirm() {
+        let actionSheet = KKActionSheet(title: "退出后将无法收取该账号的私信和动态通知", cancelTitle:"取消", cancelAction: { () -> Void in
+            print("取消")
+        })
+        
+        actionSheet.addButton("确认退出", isDestructive: true) { () -> Void in
+            FAction.logout({ () -> Void in
+                self.extension_reloadTableView()
+            })
+        }
+        
+        actionSheet.show()
     }
 
 }

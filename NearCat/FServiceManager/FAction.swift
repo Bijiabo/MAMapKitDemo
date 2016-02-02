@@ -95,11 +95,12 @@ public class FAction: NSObject {
         }
     }
     
-    public class func logout () {
+    public class func logout (completeHandler: ()->Void = {}) {
         FNetManager.sharedInstance.DELETE(path: "tokens/\(FHelper.tokenID).json?token=\(FHelper.token)") { (request, response, json, error) -> Void in
             if error == nil {
                 NSNotificationCenter.defaultCenter().postNotificationName(FConstant.Notification.FStatus.didLogout, object: nil)
                 FHelper.clearToken()
+                completeHandler()
             }
         }
     }

@@ -104,7 +104,7 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
         case 1:
             return 4
         case 2:
-            return FHelper.logged_in ? 3 : 2
+            return 2
         default:
             return 0
         }
@@ -145,11 +145,6 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
                 "id": "feedback",
                 "title": "反馈",
                 "icon": "set_icon_feedback"
-            ],
-            [
-                "id": "quit",
-                "title": "退出",
-                "icon": "set_icon_my_share"
             ]
         ]
     ]
@@ -290,16 +285,14 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
         let headerBackgroundImageOriginY: CGFloat = 700.0
         
         if scrollView.contentOffset.y < 0 {
-            headerBackgroundImageView?.alpha = 1.0
+//            headerBackgroundImageView?.alpha = 1.0
             guard let headerBackgroundImageView = headerBackgroundImageView else {return}
             headerBackgroundImageView.layer.frame.size.height = headerBackgroundImageViewOriginalHeight - scrollView.contentOffset.y
             headerBackgroundImageView.layer.frame.origin.y = scrollView.contentOffset.y + headerBackgroundImageOriginY
         } else {
             headerBackgroundImageView?.layer.frame.origin.y = scrollView.contentOffset.y/2 + headerBackgroundImageOriginY
-            headerBackgroundImageView?.alpha = 1.0 - scrollView.contentOffset.y/headerBackgroundImageViewOriginalHeight
+//            headerBackgroundImageView?.alpha = 1.0 - scrollView.contentOffset.y/headerBackgroundImageViewOriginalHeight
         }
-
-    
     }
     
     // MARK: - LoginRequesterProtocol

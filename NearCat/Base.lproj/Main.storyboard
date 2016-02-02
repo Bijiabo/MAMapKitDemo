@@ -1478,6 +1478,60 @@
             </objects>
             <point key="canvasLocation" x="1165" y="3355"/>
         </scene>
+        <!--About Table View Controller-->
+        <scene sceneID="6tF-7K-f11">
+            <objects>
+                <tableViewController storyboardIdentifier="aboutPage" id="jDr-RX-1bA" customClass="AboutTableViewController" customModule="NearCat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="178" sectionHeaderHeight="28" sectionFooterHeight="28" id="FQe-7h-WRw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="aboutHeaderCell" rowHeight="172" id="jKT-NB-rQw" customClass="AboutHeaderTableViewCell" customModule="NearCat" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="172"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jKT-NB-rQw" id="Xj9-Jw-s3n">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="171.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="near cat_logo_big_blue" translatesAutoresizingMaskIntoConstraints="NO" id="Sfg-kd-web">
+                                            <rect key="frame" x="264" y="30" width="71" height="78"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="71" id="9KV-sC-ijB"/>
+                                                <constraint firstAttribute="height" constant="78" id="fJP-h3-U69"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vX-cS-8Lk">
+                                            <rect key="frame" x="20" y="128" width="560" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.29411764709999999" green="0.42352941179999998" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="9vX-cS-8Lk" firstAttribute="top" secondItem="Sfg-kd-web" secondAttribute="bottom" constant="20" id="COg-4V-snB"/>
+                                        <constraint firstItem="9vX-cS-8Lk" firstAttribute="centerX" secondItem="Xj9-Jw-s3n" secondAttribute="centerX" id="HXZ-Ug-DtH"/>
+                                        <constraint firstItem="Sfg-kd-web" firstAttribute="centerX" secondItem="Xj9-Jw-s3n" secondAttribute="centerX" id="R5q-8Q-vPa"/>
+                                        <constraint firstItem="Sfg-kd-web" firstAttribute="top" secondItem="Xj9-Jw-s3n" secondAttribute="top" constant="30" id="gUi-cH-uQ7"/>
+                                        <constraint firstAttribute="trailing" secondItem="9vX-cS-8Lk" secondAttribute="trailing" constant="20" id="ha3-SJ-Pn8"/>
+                                        <constraint firstItem="9vX-cS-8Lk" firstAttribute="leading" secondItem="Xj9-Jw-s3n" secondAttribute="leading" constant="20" id="wnb-ep-Oi0"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="versionLabel" destination="9vX-cS-8Lk" id="C4V-Av-mTR"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="jDr-RX-1bA" id="7tG-t4-vSC"/>
+                            <outlet property="delegate" destination="jDr-RX-1bA" id="VK7-KC-AKq"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S56-hL-EBB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2046" y="3355"/>
+        </scene>
         <!--Personal Page Table View Controller-->
         <scene sceneID="kQ6-fs-JAX">
             <objects>
@@ -2397,6 +2451,7 @@
         <image name="icon_next" width="48" height="48"/>
         <image name="list_icon_check_nor" width="44" height="44"/>
         <image name="myLoationAnnotation" width="29" height="40"/>
+        <image name="near cat_logo_big_blue" width="71" height="78"/>
         <image name="photo_icon_down arrow_nor" width="68" height="88"/>
         <image name="photo_icon_down arrow_sel" width="68" height="88"/>
         <image name="profile_icon_location" width="12" height="15"/>

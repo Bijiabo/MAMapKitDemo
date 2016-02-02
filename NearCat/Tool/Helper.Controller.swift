@@ -47,6 +47,12 @@ extension Helper {
             }
         }
         
+        class var About: AboutTableViewController {
+            get {
+                return Helper.Controller.instanceForStoryboardByName("Main", ForIdentifier: "aboutPage") as! AboutTableViewController
+            }
+        }
+        
     }
     
 }
