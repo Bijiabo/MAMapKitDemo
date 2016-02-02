@@ -28,6 +28,13 @@ extension Helper {
             }
         }
         
+        // UITextView
+        
+        class func setTextView(textView: UITextView, forStyle style: Constant.TextStyle.type) {
+            textView.font = style.font
+            textView.textColor = style.color
+        }
+        
         // AttributedString
         
         class func setLineSpacingForAttributedString(attributedString: NSAttributedString, lineSpacing: CGFloat) -> NSMutableAttributedString {
