@@ -95,7 +95,7 @@ extension FluxesContainerViewController: UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        headerSegmentedControl.selectedIndex = currentPage
+        headerSegmentedControl.percent = contentContainerView.contentOffset.x / contentContainerView.contentSize.width
     }
     
 }
