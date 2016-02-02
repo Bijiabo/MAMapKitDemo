@@ -88,12 +88,6 @@ class SettingsListTableViewController: SettingSecondaryTableViewController {
                 
                 return cell
                 
-            case 2:
-                let cell = tableView.dequeueReusableCellWithIdentifier("settingNormalCell", forIndexPath: indexPath) as! SettingNormalTableViewCell
-                cell.title = "退出"
-                
-                return cell
-                
             default:
                 let cell = tableView.dequeueReusableCellWithIdentifier("settingsCatalogueCell", forIndexPath: indexPath) as! SettingCatalogueTableViewCell
                 cell.displaySeparatorLineView = indexPath.row + 1 != self.tableView(tableView, numberOfRowsInSection: indexPath.section)
@@ -111,9 +105,8 @@ class SettingsListTableViewController: SettingSecondaryTableViewController {
             return cell
             
         case 2:
-            
             let cell = tableView.dequeueReusableCellWithIdentifier("settingNormalCell", forIndexPath: indexPath) as! SettingNormalTableViewCell
-            cell.title = "退出登陆"
+            cell.title = "退出"
             cell.displaySeparatorLineView = indexPath.row + 1 != self.tableView(tableView, numberOfRowsInSection: indexPath.section)
             
             return cell

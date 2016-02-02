@@ -21,15 +21,8 @@
                             <constraint firstAttribute="height" constant="1" id="DEA-TH-HoE"/>
                         </constraints>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_next" translatesAutoresizingMaskIntoConstraints="NO" id="t38-v9-7qe">
-                        <rect key="frame" x="552" y="0.0" width="48" height="48"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="48" id="iV8-Nd-qo8"/>
-                            <constraint firstAttribute="height" constant="48" id="tnx-Yg-Quc"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cr5-va-tKO">
-                        <rect key="frame" x="24" y="15" width="504" height="17"/>
+                        <rect key="frame" x="24" y="15" width="552" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.29411764709999999" green="0.42352941179999998" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -38,14 +31,12 @@
                 <constraints>
                     <constraint firstItem="k2r-Ta-aDi" firstAttribute="leading" secondItem="ikB-hq-Nx9" secondAttribute="leading" constant="24" id="5lR-XC-dnJ"/>
                     <constraint firstAttribute="bottom" secondItem="k2r-Ta-aDi" secondAttribute="bottom" id="AtZ-UN-rx9"/>
-                    <constraint firstAttribute="trailing" secondItem="t38-v9-7qe" secondAttribute="trailing" id="BEH-RK-3gx"/>
                     <constraint firstItem="Cr5-va-tKO" firstAttribute="centerY" secondItem="ikB-hq-Nx9" secondAttribute="centerY" id="Fo6-Z7-0JG"/>
-                    <constraint firstItem="t38-v9-7qe" firstAttribute="centerY" secondItem="ikB-hq-Nx9" secondAttribute="centerY" id="MGF-9e-VBO"/>
                     <constraint firstItem="Cr5-va-tKO" firstAttribute="top" secondItem="ikB-hq-Nx9" secondAttribute="top" constant="15" id="hAW-QK-3Bv"/>
                     <constraint firstItem="k2r-Ta-aDi" firstAttribute="top" secondItem="Cr5-va-tKO" secondAttribute="bottom" constant="14" id="iyM-yl-p8O"/>
                     <constraint firstItem="Cr5-va-tKO" firstAttribute="leading" secondItem="ikB-hq-Nx9" secondAttribute="leading" constant="24" id="lgP-HY-cJa"/>
                     <constraint firstAttribute="trailing" secondItem="k2r-Ta-aDi" secondAttribute="trailing" id="msS-RL-1pv"/>
-                    <constraint firstItem="t38-v9-7qe" firstAttribute="leading" secondItem="Cr5-va-tKO" secondAttribute="trailing" constant="24" id="uaY-C5-GXb"/>
+                    <constraint firstAttribute="trailing" secondItem="Cr5-va-tKO" secondAttribute="trailing" constant="24" id="uLR-kZ-9jQ"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
@@ -59,7 +50,4 @@
             </connections>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="icon_next" width="48" height="48"/>
-    </resources>
 </document>
