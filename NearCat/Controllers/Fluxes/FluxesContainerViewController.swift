@@ -68,7 +68,7 @@ class FluxesContainerViewController: UIViewController {
         for i in 0..<3 {
             let fluxListVC = Helper.Controller.FluxList
             fluxListVC.listType = fluxesTypes[i]
-            fluxListVC.tableView.contentInset = UIEdgeInsets(top: 64.0, left: 0, bottom: 50.0, right: 0)
+            fluxListVC.tableView.contentInset = UIEdgeInsets(top: 64.0, left: 0, bottom: 60.0, right: 0)
             fluxListVC.view.frame = UIScreen.mainScreen().bounds
             fluxListVC.view.frame.origin.x = UIScreen.mainScreen().bounds.size.width * CGFloat(i)
             addChildViewController(fluxListVC)
@@ -96,6 +96,10 @@ extension FluxesContainerViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         headerSegmentedControl.percent = contentContainerView.contentOffset.x / contentContainerView.contentSize.width
+    }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        headerSegmentedControl.selectedIndex = currentPage
     }
     
 }
