@@ -18,6 +18,7 @@ class SettingNormalTableViewCell: UITableViewCell {
         // Initialization code
         
         Helper.UI.setLabel(titleLabel, forStyle: Constant.TextStyle.Body.Blue)
+        extension_setDefaultSelectedColor()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

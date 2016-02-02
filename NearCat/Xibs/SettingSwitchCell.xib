@@ -15,13 +15,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6R-u9-mtm">
-                        <rect key="frame" x="24" y="15" width="495" height="17"/>
+                        <rect key="frame" x="24" y="15" width="491" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.29411764709999999" green="0.42352941179999998" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kM0-2F-YdK">
-                        <rect key="frame" x="543" y="8" width="51" height="31"/>
+                        <rect key="frame" x="539" y="8" width="51" height="31"/>
                         <color key="onTintColor" red="0.3803921569" green="0.62745098040000002" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
                             <action selector="tapSwitchButton:" destination="RSk-NE-Brf" eventType="valueChanged" id="lbv-gE-R1E"/>
@@ -43,7 +43,7 @@
                     <constraint firstItem="kM0-2F-YdK" firstAttribute="leading" secondItem="Q6R-u9-mtm" secondAttribute="trailing" constant="24" id="ILV-8J-XvL"/>
                     <constraint firstItem="Ty1-Ml-o8X" firstAttribute="leading" secondItem="T16-zC-g8j" secondAttribute="leading" constant="24" id="NpI-zt-tIz"/>
                     <constraint firstAttribute="bottom" secondItem="Ty1-Ml-o8X" secondAttribute="bottom" id="OpD-3u-SRT"/>
-                    <constraint firstAttribute="trailing" secondItem="kM0-2F-YdK" secondAttribute="trailing" constant="8" id="Uan-vQ-s2l"/>
+                    <constraint firstAttribute="trailing" secondItem="kM0-2F-YdK" secondAttribute="trailing" constant="12" id="Uan-vQ-s2l"/>
                     <constraint firstItem="Ty1-Ml-o8X" firstAttribute="top" secondItem="Q6R-u9-mtm" secondAttribute="bottom" constant="14.5" id="kFk-Kv-6tY"/>
                     <constraint firstItem="Q6R-u9-mtm" firstAttribute="top" secondItem="T16-zC-g8j" secondAttribute="top" constant="15" id="lVP-zQ-m3Y"/>
                     <constraint firstAttribute="trailing" secondItem="Ty1-Ml-o8X" secondAttribute="trailing" id="oOm-QI-UUG"/>

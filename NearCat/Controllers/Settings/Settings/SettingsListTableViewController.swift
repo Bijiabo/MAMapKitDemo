@@ -16,6 +16,7 @@ class SettingsListTableViewController: SettingSecondaryTableViewController {
         extension_setupFooterView()
         tableView.backgroundColor = Constant.Color.TableViewBackground
         tableView.separatorStyle = .None
+        clearsSelectionOnViewWillAppear = true
         
         extension_registerCellForNibName("SettingCatalogueCell", cellReuseIdentifier: "settingsCatalogueCell")
         extension_registerCellForNibName("SettingSwitchCell", cellReuseIdentifier: "settingSwitchCell")
@@ -105,6 +106,14 @@ class SettingsListTableViewController: SettingSecondaryTableViewController {
             
             let cell = tableView.dequeueReusableCellWithIdentifier("settingsCatalogueCell", forIndexPath: indexPath) as! SettingCatalogueTableViewCell
             cell.title = "关于猫邻"
+            cell.displaySeparatorLineView = indexPath.row + 1 != self.tableView(tableView, numberOfRowsInSection: indexPath.section)
+            
+            return cell
+            
+        case 2:
+            
+            let cell = tableView.dequeueReusableCellWithIdentifier("settingNormalCell", forIndexPath: indexPath) as! SettingNormalTableViewCell
+            cell.title = "退出登陆"
             cell.displaySeparatorLineView = indexPath.row + 1 != self.tableView(tableView, numberOfRowsInSection: indexPath.section)
             
             return cell
