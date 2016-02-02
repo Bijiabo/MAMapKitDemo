@@ -53,6 +53,12 @@ extension Helper {
             }
         }
         
+        class var FluxList: FluxesListTableViewController {
+            get {
+                return Helper.Controller.instanceForStoryboardByName("Main", ForIdentifier: "fluxesList") as! FluxesListTableViewController
+            }
+        }
+        
     }
     
 }

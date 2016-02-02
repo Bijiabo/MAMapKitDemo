@@ -72,6 +72,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PdQ-Mu-0Hx" userLabel="Container Scroll View">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tok-3t-JR0" userLabel="header bar">
                                 <rect key="frame" x="0.0" y="24" width="600" height="74"/>
                                 <subviews>
@@ -89,25 +92,21 @@
                                     <constraint firstAttribute="height" constant="74" id="jup-y6-Lzk"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="62N-do-kQd" userLabel="content Container">
-                                <rect key="frame" x="0.0" y="98" width="600" height="453"/>
-                                <color key="backgroundColor" red="0.65224008342588013" green="0.89286007596755979" blue="0.5407636654478134" alpha="0.39406028368794327" colorSpace="calibratedRGB"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="D1j-TQ-sXy" firstAttribute="top" secondItem="62N-do-kQd" secondAttribute="bottom" id="0W3-HU-mcB"/>
                             <constraint firstAttribute="trailing" secondItem="tok-3t-JR0" secondAttribute="trailing" id="6Ys-HH-pCU"/>
-                            <constraint firstAttribute="trailing" secondItem="62N-do-kQd" secondAttribute="trailing" id="dAe-wu-ozq"/>
-                            <constraint firstItem="62N-do-kQd" firstAttribute="leading" secondItem="TS0-2h-Nff" secondAttribute="leading" id="dHe-1l-EEo"/>
+                            <constraint firstItem="PdQ-Mu-0Hx" firstAttribute="leading" secondItem="TS0-2h-Nff" secondAttribute="leading" id="Q1T-B3-DeE"/>
+                            <constraint firstItem="PdQ-Mu-0Hx" firstAttribute="top" secondItem="TS0-2h-Nff" secondAttribute="top" id="Toe-nZ-MmG"/>
+                            <constraint firstAttribute="trailing" secondItem="PdQ-Mu-0Hx" secondAttribute="trailing" id="UQW-9Z-huz"/>
                             <constraint firstItem="tok-3t-JR0" firstAttribute="top" secondItem="9JH-W0-1rH" secondAttribute="bottom" constant="-20" id="pQG-DU-pwq"/>
+                            <constraint firstAttribute="bottom" secondItem="PdQ-Mu-0Hx" secondAttribute="bottom" id="ql6-Ul-4Ac"/>
                             <constraint firstItem="tok-3t-JR0" firstAttribute="leading" secondItem="TS0-2h-Nff" secondAttribute="leading" id="t4I-1m-5GG"/>
-                            <constraint firstItem="62N-do-kQd" firstAttribute="top" secondItem="tok-3t-JR0" secondAttribute="bottom" id="yJl-h2-kjR"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Fluxes" image="tab bar_icon_home_nor" selectedImage="tab bar_icon_home_sel" id="iGT-6R-Vnk"/>
                     <connections>
-                        <outlet property="contentContainerView" destination="62N-do-kQd" id="wxN-Nz-fyf"/>
+                        <outlet property="contentContainerView" destination="PdQ-Mu-0Hx" id="3pw-Lc-vCh"/>
                         <outlet property="headerSegmentedControl" destination="Y4w-jg-v8C" id="cN7-16-t0B"/>
                     </connections>
                 </viewController>

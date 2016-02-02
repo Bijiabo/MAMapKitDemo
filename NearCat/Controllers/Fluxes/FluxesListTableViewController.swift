@@ -34,8 +34,6 @@ class FluxesListTableViewController: UITableViewController {
         extension_setupFooterView()
         extension_setupRefreshControl()
         _initViews()
-        _loadData(refresh: true)
-        
     }
     
     private func _initViews() {
@@ -56,6 +54,18 @@ class FluxesListTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(hideNavigationBar, animated: true)
+    }
+    
+    
+    private var _hasBeenLoadData: Bool = false
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !_hasBeenLoadData {
+            _loadData(refresh: true)
+            _hasBeenLoadData = true
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
