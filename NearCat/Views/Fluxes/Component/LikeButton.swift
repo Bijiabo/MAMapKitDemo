@@ -14,7 +14,7 @@ class LikeButton: UIButton {
     var count: Int = 0 {
         didSet {
             if count < 0 {
-                count = 0
+                self.setTitle("0", forState: UIControlState.Normal)
                 return
             }
             

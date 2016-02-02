@@ -99,6 +99,12 @@ class FluxesListTableViewCell: UITableViewCell {
         }
     }
     
+    var liked: Bool = false {
+        didSet {
+            likeCountButton.liked = liked
+        }
+    }
+    
     var commentCount: Int = 0 {
         didSet {
             let commentCountButtonTitle: String = "\(commentCount)"

@@ -68,9 +68,11 @@ class FluxDetailTableViewController: InputInterfaceTableViewController {
             
             let fluxData = _flux["flux"]
             let userData = _flux["user"]
+            cell.id = id
             cell.userName = userData["name"].stringValue
             cell.content = fluxData["content"].stringValue
             cell.date = fluxData["created_at"].stringValue
+            cell.liked = fluxData["like"].boolValue
             
             // set content picture
             let pictures = fluxData["picture"]

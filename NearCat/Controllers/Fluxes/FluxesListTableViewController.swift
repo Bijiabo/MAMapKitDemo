@@ -94,6 +94,7 @@ class FluxesListTableViewController: UITableViewController {
             cell.userName = userData["name"].stringValue
             cell.date = fluxData["created_at"].stringValue
             cell.id = fluxData["id"].intValue
+            cell.liked = fluxData["like"].boolValue
             
             // set user's avatar
             let avatarPath: String = userData["avatar"].stringValue

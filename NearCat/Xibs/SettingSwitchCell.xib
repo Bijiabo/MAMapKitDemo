@@ -52,6 +52,7 @@
                 <variation key="default">
                     <mask key="constraints">
                         <exclude reference="wh3-lu-sbc"/>
+                        <exclude reference="DUi-Y8-aJ1"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
