@@ -23,7 +23,10 @@ class TrendsListTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         extension_setDefaultSelectedColor()
+        
         separatorLineView.backgroundColor = Constant.Color.TableViewSeparator
+        separatorLineView.hidden = true
+        
         previewImageView.clipsToBounds = true
         Helper.UI.setLabel(contentLabel, forStyle: Constant.TextStyle.Body.G2)
         Helper.UI.setLabel(dateLabel, forStyle: Constant.TextStyle.Cell.Small.G4)

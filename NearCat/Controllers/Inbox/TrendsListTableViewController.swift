@@ -40,8 +40,7 @@ class TrendsListTableViewController: UITableViewController {
         tableFooterView.backgroundColor = UIColor.clearColor()
         tableView.tableFooterView = tableFooterView
         
-        // setup tableview's background color
-        tableView.backgroundColor = UIColor(red:0.97, green:0.97, blue:0.97, alpha:1)
+        tableView.backgroundColor = Constant.Color.TableViewBackground
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,23 +51,27 @@ class TrendsListTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 2
+        return _trends.count + 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        if section == 0 {
-            return _trends.count
-        }
         return 1
     }
     
+    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = UIColor.clearColor()
+        return view
+    }
+    
+    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 24.0
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
+        if indexPath.section < _trends.count {
             let cell = tableView.dequeueReusableCellWithIdentifier("trendsListCell", forIndexPath: indexPath) as! TrendsListTableViewCell
-            let currentData = _trends[indexPath.row]
+            let currentData = _trends[indexPath.section]
             
             cell.userName = currentData["from_user"]["name"].stringValue
             cell.date = currentData["created_at"].stringValue
@@ -98,7 +101,8 @@ class TrendsListTableViewController: UITableViewController {
             
             return cell
             
-        default: // section == 1
+        } else {
+            
             let cell = tableView.dequeueReusableCellWithIdentifier("loadMoreCell", forIndexPath: indexPath) as! LoadingTableViewCell
             
             if page < maxPage {

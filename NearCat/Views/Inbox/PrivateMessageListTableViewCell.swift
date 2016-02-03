@@ -17,6 +17,8 @@ class PrivateMessageListTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        extension_setDefaultSelectedColor()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

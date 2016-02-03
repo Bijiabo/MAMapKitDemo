@@ -412,44 +412,49 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="privateMessageListCell" rowHeight="115" id="nLc-3A-RLa" customClass="PrivateMessageListTableViewCell" customModule="NearCat" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="115"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="privateMessageListCell" rowHeight="130" id="nLc-3A-RLa" customClass="PrivateMessageListTableViewCell" customModule="NearCat" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nLc-3A-RLa" id="dHv-S0-awe">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="114.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="129.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m2T-En-gBR" customClass="AvatarImageView" customModule="NearCat" customModuleProvider="target">
-                                            <rect key="frame" x="8" y="8" width="70" height="70"/>
+                                            <rect key="frame" x="24" y="20" width="60" height="60"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="70" id="BVR-62-DDs"/>
-                                                <constraint firstAttribute="width" constant="70" id="vCD-Gd-2Mo"/>
+                                                <constraint firstAttribute="height" constant="60" id="BVR-62-DDs"/>
+                                                <constraint firstAttribute="width" constant="60" id="vCD-Gd-2Mo"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="xxx 私信：闪电变肥了没有，什么时候有空一起遛个猫啊" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zzw-fA-oZv">
-                                            <rect key="frame" x="94" y="8" width="498" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="96" y="20" width="480" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016年1月9日 18:36" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7IW-ul-vae">
-                                            <rect key="frame" x="8" y="86" width="130" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <rect key="frame" x="24" y="101" width="121.5" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" red="0.83328561300000004" green="0.83328561300000004" blue="0.83328561300000004" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="zzw-fA-oZv" firstAttribute="top" secondItem="dHv-S0-awe" secondAttribute="top" constant="8" id="6zk-c3-grQ"/>
-                                        <constraint firstItem="m2T-En-gBR" firstAttribute="leading" secondItem="dHv-S0-awe" secondAttribute="leading" constant="8" id="7b1-DS-PXI"/>
-                                        <constraint firstAttribute="trailing" secondItem="zzw-fA-oZv" secondAttribute="trailing" constant="8" id="89U-aN-91D"/>
-                                        <constraint firstItem="m2T-En-gBR" firstAttribute="top" secondItem="dHv-S0-awe" secondAttribute="top" constant="8" id="AUk-fm-dmA"/>
-                                        <constraint firstItem="zzw-fA-oZv" firstAttribute="leading" secondItem="m2T-En-gBR" secondAttribute="trailing" constant="16" id="Bem-CN-oct"/>
-                                        <constraint firstItem="7IW-ul-vae" firstAttribute="top" secondItem="m2T-En-gBR" secondAttribute="bottom" constant="8" id="OOf-sE-Kfn"/>
-                                        <constraint firstItem="7IW-ul-vae" firstAttribute="leading" secondItem="dHv-S0-awe" secondAttribute="leading" constant="8" id="Ory-CI-x8R"/>
+                                        <constraint firstItem="zzw-fA-oZv" firstAttribute="top" secondItem="dHv-S0-awe" secondAttribute="top" constant="20" id="6zk-c3-grQ"/>
+                                        <constraint firstItem="m2T-En-gBR" firstAttribute="leading" secondItem="dHv-S0-awe" secondAttribute="leading" constant="24" id="7b1-DS-PXI"/>
+                                        <constraint firstAttribute="trailing" secondItem="zzw-fA-oZv" secondAttribute="trailing" constant="24" id="89U-aN-91D"/>
+                                        <constraint firstItem="m2T-En-gBR" firstAttribute="top" secondItem="dHv-S0-awe" secondAttribute="top" constant="20" id="AUk-fm-dmA"/>
+                                        <constraint firstItem="zzw-fA-oZv" firstAttribute="leading" secondItem="m2T-En-gBR" secondAttribute="trailing" constant="12" id="Bem-CN-oct"/>
+                                        <constraint firstItem="7IW-ul-vae" firstAttribute="top" secondItem="m2T-En-gBR" secondAttribute="bottom" constant="21" id="OOf-sE-Kfn"/>
+                                        <constraint firstItem="7IW-ul-vae" firstAttribute="leading" secondItem="dHv-S0-awe" secondAttribute="leading" constant="24" id="Ory-CI-x8R"/>
                                         <constraint firstItem="7IW-ul-vae" firstAttribute="top" relation="greaterThanOrEqual" secondItem="zzw-fA-oZv" secondAttribute="bottom" constant="20" id="jBI-Tn-YGM"/>
                                         <constraint firstAttribute="bottom" secondItem="7IW-ul-vae" secondAttribute="bottom" constant="7.5" id="tAj-DD-JgF"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="tAj-DD-JgF"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="avatarImageView" destination="m2T-En-gBR" id="d1m-eX-h0F"/>
