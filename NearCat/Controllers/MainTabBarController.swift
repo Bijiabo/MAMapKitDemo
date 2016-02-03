@@ -8,11 +8,39 @@
 
 import UIKit
 
-class MainTabBarController: UITabBarController {
+class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
+    
+    override func viewWillLayoutSubviews() {
+        // custom tabbar height
+        /*
+        var tabFrame = self.tabBar.frame
+        // - 40 is editable , I think the default value is around 50 px, below lowers the tabbar and above increases the tab bar size
+        tabFrame.size.height = 40
+        tabFrame.origin.y = self.view.frame.size.height - 40
+        self.tabBar.frame = tabFrame
+        */
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        delegate = self
+        
+        _setupTabbarStyle()
+    }
+    
+    private func _setupTabbarStyle() {
+        for item in tabBar.items! {
+            // hide tabbar titles
+            item.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 50.0)
+            
+            // setup tabbar image offset
+            let offset: CGFloat = 6.0
+            item.imageInsets = UIEdgeInsets(top: offset, left: 0, bottom: -offset, right: 0)
+        }
+        
+        // setup tint color
+        tabBar.tintColor = Constant.Color.Theme
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -20,4 +48,23 @@ class MainTabBarController: UITabBarController {
         
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    
+    // MARK: uitabbar delegate
+    
+    func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
+        
+        if let _ = viewController as? TabbarShootViewController {
+            let shootVC = storyboard?.instantiateViewControllerWithIdentifier("shootViewControllerContainer")
+            presentViewController(shootVC!, animated: true, completion: nil)
+            
+            return false
+        }
+        
+        return true
+    }
+    
+    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+        
+    }
+    
 }

@@ -12,8 +12,10 @@ import UIKit
     private var labels = [UILabel]()
     var thumbView = UIView()
     
+    var delegate: SegmentedControlDelegate?
+    
     let highlightTextColor: UIColor = UIColor(red:0.36, green:0.5, blue:0.66, alpha:1)
-    let normalTextColor: UIColor = UIColor(red:0.58, green:0.58, blue:0.58, alpha:1)
+    let normalTextColor: UIColor = UIColor(red:0.51, green:0.51, blue:0.51, alpha:1)
     
     var items:[String] = ["Item 1","Item 2","Item 3"] {
         didSet{
@@ -43,7 +45,7 @@ import UIKit
     }
     
     func setupView(){
-        let bgColor: UIColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1)
+        let bgColor: UIColor = UIColor(red:0.94, green:0.94, blue:0.94, alpha:1)
         
         layer.cornerRadius = frame.height / 2
         layer.borderColor = bgColor.CGColor
@@ -52,6 +54,8 @@ import UIKit
         backgroundColor = bgColor
         setupLabels()
         insertSubview(thumbView, atIndex: 0)
+
+        clipsToBounds = true
     }
     
     func setupLabels(){
@@ -65,7 +69,7 @@ import UIKit
             label.font = UIFont.systemFontOfSize(12.0)
             label.text = items[index - 1]
             label.textAlignment = .Center
-            label.textColor = normalTextColor
+            label.textColor = (index-1) == selectedIndex ? highlightTextColor : normalTextColor
             self.addSubview(label)
             labels.append(label)
         }
@@ -80,6 +84,8 @@ import UIKit
         thumbView.frame = selectFrame
         thumbView.backgroundColor = UIColor.whiteColor()
         thumbView.layer.cornerRadius = thumbView.frame.height / 2
+        thumbView.layer.borderWidth = 2.0
+        thumbView.layer.borderColor = UIColor(red:0.94, green:0.94, blue:0.94, alpha:1).CGColor
         
         let labelHeight = self.bounds.height
         let labelWidth = self.bounds.width / CGFloat(labels.count)
@@ -120,7 +126,12 @@ import UIKit
             label.textColor = self.highlightTextColor
         }
         
-        print(label.text)
+        delegate?.segementedControlSelectedIndexUpdated(index: selectedIndex)
     }
     
+    var percent: CGFloat = 0 {
+        didSet {
+            thumbView.frame.origin.x = frame.size.width * percent
+        }
+    }
 }

@@ -30,7 +30,7 @@ public class FAction: NSObject {
                 success = json["success"].boolValue
                 description = json["description"].stringValue
                 
-                FHelper.current_user = User(id: json["user"]["id"].intValue , name: json["user"]["name"].stringValue, email: json["user"]["email"].stringValue, valid: true)
+                FHelper.current_user = User(id: json["user"]["id"].intValue , name: json["user"]["name"].stringValue, email: json["user"]["email"].stringValue, valid: true, avatar: json["avatar"].stringValue)
             }
             
             completeHandler(success: success, description: description)
@@ -49,7 +49,7 @@ public class FAction: NSObject {
         FNetManager.sharedInstance.POST(path: "request_new_token.json", parameters: parameters) { (request, response, json, error) -> Void in
             var success: Bool = false
             var description: String = error.debugDescription
-
+            print(json)
             if error == nil {
                 success = !json["error"].boolValue
                 if !success {
@@ -60,7 +60,7 @@ public class FAction: NSObject {
                 
                 //save token
                 FHelper.setToken(id: json["token"]["id"].stringValue, token: json["token"]["token"].stringValue)
-                FHelper.current_user = User(id: json["token"]["user_id"].intValue , name: json["name"].stringValue, email: json["email"].stringValue, valid: true)
+                FHelper.current_user = User(id: json["token"]["user_id"].intValue , name: json["name"].stringValue, email: json["email"].stringValue, valid: true, avatar: json["avatar"].stringValue)
             }
             
             completeHandler(success: success, description: description)
@@ -95,11 +95,12 @@ public class FAction: NSObject {
         }
     }
     
-    public class func logout () {
+    public class func logout (completeHandler: ()->Void = {}) {
         FNetManager.sharedInstance.DELETE(path: "tokens/\(FHelper.tokenID).json?token=\(FHelper.token)") { (request, response, json, error) -> Void in
             if error == nil {
                 NSNotificationCenter.defaultCenter().postNotificationName(FConstant.Notification.FStatus.didLogout, object: nil)
                 FHelper.clearToken()
+                completeHandler()
             }
         }
     }

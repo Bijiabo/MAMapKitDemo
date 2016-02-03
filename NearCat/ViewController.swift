@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-let APIKey = "3b17386d0a14ac347b70d4bc205ee6ff"
+public let APIKey = "3b17386d0a14ac347b70d4bc205ee6ff"
 
 class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
     
@@ -327,13 +327,13 @@ extension ViewController: UISearchBarDelegate {
         
         //通过 AMapPOISearchResponse 对象处理搜索结果
         let strCount: String = "count: \(response.count)"
-        let strSuggestion: String = "Suggestion: \(response.suggestion)"
+        // let strSuggestion: String = "Suggestion: \(response.suggestion)"
         var strPoi: String = ""
         for p in response.pois as! [AMapPOI] {
             strPoi = "\(strPoi)\nPOI: \(p.name)"
             searchResults.append(p)
         }
-        let result: String = "\(strCount) \n \(strSuggestion) \n \(strPoi)"
+        // let result: String = "\(strCount) \n \(strSuggestion) \n \(strPoi)"
         // NSLog("Place: %@", result);
         
         searchDisplayController?.searchResultsTableView.reloadData()

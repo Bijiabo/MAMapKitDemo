@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10089" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10072.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="loadMoreCell" rowHeight="77" id="NhQ-QE-dLC" customClass="LoadingTableViewCell" customModule="NearCat" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="77"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NhQ-QE-dLC" id="48B-Td-bfS">
+                <rect key="frame" x="0.0" y="0.0" width="600" height="76.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yLm-FV-hB2">
+                        <rect key="frame" x="240" y="10" width="120" height="56.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="56.5" id="NFz-Of-BeX"/>
+                            <constraint firstAttribute="width" constant="120" id="jIL-r4-CQW"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="没有更多啦喵" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQy-K8-vKp">
+                        <rect key="frame" x="16" y="31.5" width="568" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.86302219680000003" green="0.86302219680000003" blue="0.86302219680000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="yQy-K8-vKp" firstAttribute="centerY" secondItem="48B-Td-bfS" secondAttribute="centerY" id="Cbp-yd-4dX"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="yQy-K8-vKp" secondAttribute="trailing" constant="8" id="SCZ-6R-rHj"/>
+                    <constraint firstItem="yQy-K8-vKp" firstAttribute="leading" secondItem="48B-Td-bfS" secondAttribute="leadingMargin" constant="8" id="WAO-Y4-snC"/>
+                    <constraint firstItem="yQy-K8-vKp" firstAttribute="centerX" secondItem="48B-Td-bfS" secondAttribute="centerX" id="Y20-7d-SEH"/>
+                    <constraint firstItem="yLm-FV-hB2" firstAttribute="centerY" secondItem="48B-Td-bfS" secondAttribute="centerY" id="lzv-LC-4kv"/>
+                    <constraint firstItem="yLm-FV-hB2" firstAttribute="centerX" secondItem="48B-Td-bfS" secondAttribute="centerX" id="oyr-71-IOk"/>
+                    <constraint firstItem="yLm-FV-hB2" firstAttribute="top" secondItem="48B-Td-bfS" secondAttribute="top" constant="10" id="rTT-Hs-udZ"/>
+                    <constraint firstAttribute="bottom" secondItem="yLm-FV-hB2" secondAttribute="bottom" constant="10" id="uPS-x0-fNN"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="loadingContainerView" destination="yLm-FV-hB2" id="8WM-2k-3wa"/>
+                <outlet property="noMoreDataTipLabel" destination="yQy-K8-vKp" id="N16-lD-kpg"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

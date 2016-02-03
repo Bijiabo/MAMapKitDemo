@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10089" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10072.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="settingNormalCell" rowHeight="48" id="Dbc-gb-yCw" customClass="SettingNormalTableViewCell" customModule="NearCat" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="48"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dbc-gb-yCw" id="ikB-hq-Nx9">
+                <rect key="frame" x="0.0" y="0.0" width="600" height="47.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k2r-Ta-aDi" userLabel="separator line view">
+                        <rect key="frame" x="24" y="46" width="576" height="1"/>
+                        <color key="backgroundColor" red="0.86302219680000003" green="0.86302219680000003" blue="0.86302219680000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="DEA-TH-HoE"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cr5-va-tKO">
+                        <rect key="frame" x="24" y="15" width="552" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.29411764709999999" green="0.42352941179999998" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="k2r-Ta-aDi" firstAttribute="leading" secondItem="ikB-hq-Nx9" secondAttribute="leading" constant="24" id="5lR-XC-dnJ"/>
+                    <constraint firstAttribute="bottom" secondItem="k2r-Ta-aDi" secondAttribute="bottom" id="AtZ-UN-rx9"/>
+                    <constraint firstItem="Cr5-va-tKO" firstAttribute="centerY" secondItem="ikB-hq-Nx9" secondAttribute="centerY" id="Fo6-Z7-0JG"/>
+                    <constraint firstItem="Cr5-va-tKO" firstAttribute="top" secondItem="ikB-hq-Nx9" secondAttribute="top" constant="15" id="hAW-QK-3Bv"/>
+                    <constraint firstItem="k2r-Ta-aDi" firstAttribute="top" secondItem="Cr5-va-tKO" secondAttribute="bottom" constant="14" id="iyM-yl-p8O"/>
+                    <constraint firstItem="Cr5-va-tKO" firstAttribute="leading" secondItem="ikB-hq-Nx9" secondAttribute="leading" constant="24" id="lgP-HY-cJa"/>
+                    <constraint firstAttribute="trailing" secondItem="k2r-Ta-aDi" secondAttribute="trailing" id="msS-RL-1pv"/>
+                    <constraint firstAttribute="trailing" secondItem="Cr5-va-tKO" secondAttribute="trailing" constant="24" id="uLR-kZ-9jQ"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="Fo6-Z7-0JG"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="separatorLineView" destination="k2r-Ta-aDi" id="oQt-bu-dsZ"/>
+                <outlet property="titleLabel" destination="Cr5-va-tKO" id="TXT-ep-ExC"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

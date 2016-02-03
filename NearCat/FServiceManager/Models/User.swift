@@ -9,16 +9,36 @@
 import Foundation
 
 public class User {
-    public let id: Int
-    public var name: String
-    public var email: String
-    public var valid: Bool
     
-    public init (id: Int, name: String, email: String, valid: Bool = true) {
+    let userDefaults = NSUserDefaults.standardUserDefaults()
+    
+    public let id: Int
+    public var name: String {
+        didSet {
+            userDefaults.setObject(name, forKey: "name")
+            userDefaults.synchronize()
+        }
+    }
+    public var email: String {
+        didSet {
+            userDefaults.setObject(email, forKey: "email")
+            userDefaults.synchronize()
+        }
+    }
+    public var valid: Bool
+    public var avatar: String {
+        didSet {
+            userDefaults.setObject(avatar, forKey: "avatar")
+            userDefaults.synchronize()
+        }
+    }
+    
+    public init (id: Int, name: String, email: String, valid: Bool = true, avatar: String = String()) {
         
         self.id = id
         self.name = name
         self.email = email
         self.valid = valid
+        self.avatar = avatar
     }
 }

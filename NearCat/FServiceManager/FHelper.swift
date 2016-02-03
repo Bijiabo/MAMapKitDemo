@@ -10,7 +10,6 @@ import Foundation
 
 public struct FHelper {
     
-    // MARK:
     // MARK: - token
     
     public static var token: String {
@@ -31,13 +30,27 @@ public struct FHelper {
         FTool.keychain.defaultKeychain()["tokenID"] = nil
     }
     
-    // MARK:
+    // MARK: - device token
+    public static var deviceToken: String {
+        set (newValue) {
+            FTool.keychain.defaultKeychain()["deviceToken"] = newValue
+        }
+        
+        get {
+            if let device_token = FTool.keychain.defaultKeychain()["deviceToken"] {
+                return device_token
+            }
+            return String()
+        }
+    }
+    
     // MARK: - user information
     public static var current_user: User {
         set (newValue) {
         let userDefaults = NSUserDefaults.standardUserDefaults()
         userDefaults.setObject(newValue.name, forKey: "name")
         userDefaults.setObject(newValue.email, forKey: "email")
+        userDefaults.setObject(newValue.avatar, forKey: "avatar")
         userDefaults.setInteger(newValue.id, forKey: "id")
         userDefaults.synchronize()
         }
@@ -50,7 +63,12 @@ public struct FHelper {
             guard let email = userDefaults.stringForKey("email") else {return invalidUser}
             let id = userDefaults.integerForKey("id")
             
-            return User(id: id, name: name, email: email, valid: valid)
+            var avatar: String = String()
+            if let savedAvatar = userDefaults.stringForKey("avatar") {
+                avatar = savedAvatar
+            }
+            
+            return User(id: id, name: name, email: email, valid: valid, avatar: avatar)
         }
     }
     

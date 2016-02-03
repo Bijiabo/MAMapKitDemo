@@ -69,10 +69,14 @@ public class FStatus: NSObject {
 
     func didLogin(notification: NSNotification) {
         _saveLoggedInStatus(loggedIn: true)
+        
+        Action.remoteNotificationTokens.create(token: FHelper.deviceToken)
     }
 
     func didLogout(notification: NSNotification) {
         _saveLoggedInStatus(loggedIn: false)
+        
+        Action.remoteNotificationTokens.removeRelationship(token: FHelper.deviceToken)
     }
     
     private func _convertNotificationObject(notificationObject notificationObject: AnyObject?) -> (name: String, observer: FStatusObserver)? {
@@ -80,8 +84,8 @@ public class FStatus: NSObject {
         guard let object = n_object as? [String: AnyObject] else {return nil}
         
         if
-            let name = object["name"] as? String,
-            let observer = object["observer"] as? FStatusObserver
+        let name = object["name"] as? String,
+        let observer = object["observer"] as? FStatusObserver
         {
             return (name: name, observer: observer)
         }
