@@ -11,7 +11,7 @@ import UIKit
 class FluxesContainerViewController: UIViewController {
     
     @IBOutlet weak var headerSegmentedControl: SegmentedControl!
-    @IBOutlet weak var contentContainerView: UIView!
+    @IBOutlet weak var contentContainerView: UIScrollView!
     
     var currentChildViewController: UIViewController?
     var fluxesTypes: [String] = ["follow", "recommend", "all"]
@@ -20,9 +20,17 @@ class FluxesContainerViewController: UIViewController {
         super.viewDidLoad()
         
         _setupSegmentedControl()
-        _setupContentContainerView()
+    }
+    
+    private var _hasBeenSetup: Bool = false
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         
-        _updateChildViewController()
+        if !_hasBeenSetup {
+            _setupContentContainerView()
+            _updateChildViewController()
+            _hasBeenSetup = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,6 +44,15 @@ class FluxesContainerViewController: UIViewController {
     
     private func _setupContentContainerView() {
         contentContainerView.layoutMargins = UIEdgeInsetsZero
+        
+        contentContainerView.contentSize = CGSize(width: UIScreen.mainScreen().bounds.width*3.0, height: 0)
+        contentContainerView.directionalLockEnabled = true
+        contentContainerView.alwaysBounceVertical = false
+        contentContainerView.alwaysBounceHorizontal = false
+        contentContainerView.pagingEnabled = true
+        contentContainerView.showsVerticalScrollIndicator = false
+        contentContainerView.showsHorizontalScrollIndicator = false
+        contentContainerView.delegate = self
     }
     
     private func _updateChildViewController() {
@@ -48,26 +65,44 @@ class FluxesContainerViewController: UIViewController {
         }
         
         // add child view controller
-        currentChildViewController = storyboard?.instantiateViewControllerWithIdentifier("fluxesList")
-        if let currentChildViewController = currentChildViewController as? FluxesListTableViewController {
-            currentChildViewController.listType = fluxesTypes[headerSegmentedControl.selectedIndex]
+        for i in 0..<3 {
+            let fluxListVC = Helper.Controller.FluxList
+            fluxListVC.listType = fluxesTypes[i]
+            fluxListVC.tableView.contentInset = UIEdgeInsets(top: 54.0, left: 0, bottom: 60.0, right: 0)
+            fluxListVC.view.frame = UIScreen.mainScreen().bounds
+            fluxListVC.view.frame.origin.x = UIScreen.mainScreen().bounds.size.width * CGFloat(i)
+            addChildViewController(fluxListVC)
+            contentContainerView.addSubview(fluxListVC.view)
         }
-        currentChildViewController?.view.translatesAutoresizingMaskIntoConstraints = false
-        addChildViewController(currentChildViewController!)
-        contentContainerView.addSubview(currentChildViewController!.view)
-        
-        let viewDict: [String: AnyObject] = ["currentChildViewController": currentChildViewController!.view]
-        let formatComponent: String = "|-[currentChildViewController]-|"
-        contentContainerView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:\(formatComponent)", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
-        contentContainerView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:\(formatComponent)", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
     }
     
 }
 
 
 extension FluxesContainerViewController: SegmentedControlDelegate {
+    
     func segementedControlSelectedIndexUpdated(index index: Int) {
-        _updateChildViewController()
+        UIView.animateWithDuration(0.2) { () -> Void in
+            self.contentContainerView.contentOffset.x = CGFloat(index) * self.contentContainerView.frame.width
+        }
+    }
+    
+}
+
+extension FluxesContainerViewController: UIScrollViewDelegate {
+    
+    var currentPage: Int {
+        get {
+            return Int(contentContainerView.contentOffset.x / contentContainerView.frame.size.width + 0.5)
+        }
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        headerSegmentedControl.percent = contentContainerView.contentOffset.x / contentContainerView.contentSize.width
+    }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        headerSegmentedControl.selectedIndex = currentPage
     }
     
 }

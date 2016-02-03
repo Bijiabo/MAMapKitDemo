@@ -129,4 +129,9 @@ import UIKit
         delegate?.segementedControlSelectedIndexUpdated(index: selectedIndex)
     }
     
+    var percent: CGFloat = 0 {
+        didSet {
+            thumbView.frame.origin.x = frame.size.width * percent
+        }
+    }
 }
