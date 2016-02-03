@@ -59,6 +59,24 @@ extension Helper {
             }
         }
         
+        class var NotificationList: NotificationListTableViewController {
+            get {
+                return Helper.Controller.instanceForStoryboardByName("Main", ForIdentifier: "NotificationViewController") as! NotificationListTableViewController
+            }
+        }
+        
+        class var TrendsList: TrendsListTableViewController {
+            get {
+                return Helper.Controller.instanceForStoryboardByName("Main", ForIdentifier: "TrendsViewController") as! TrendsListTableViewController
+            }
+        }
+        
+        class var PrivateMessageList: PrivateMessageListTableViewController {
+            get {
+                return Helper.Controller.instanceForStoryboardByName("Main", ForIdentifier: "privateMessageViewController") as! PrivateMessageListTableViewController
+            }
+        }
+        
     }
     
 }

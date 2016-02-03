@@ -68,7 +68,7 @@ class FluxesContainerViewController: UIViewController {
         for i in 0..<3 {
             let fluxListVC = Helper.Controller.FluxList
             fluxListVC.listType = fluxesTypes[i]
-            fluxListVC.tableView.contentInset = UIEdgeInsets(top: 64.0, left: 0, bottom: 60.0, right: 0)
+            fluxListVC.tableView.contentInset = UIEdgeInsets(top: 54.0, left: 0, bottom: 60.0, right: 0)
             fluxListVC.view.frame = UIScreen.mainScreen().bounds
             fluxListVC.view.frame.origin.x = UIScreen.mainScreen().bounds.size.width * CGFloat(i)
             addChildViewController(fluxListVC)
@@ -80,8 +80,11 @@ class FluxesContainerViewController: UIViewController {
 
 
 extension FluxesContainerViewController: SegmentedControlDelegate {
+    
     func segementedControlSelectedIndexUpdated(index index: Int) {
-//        _updateChildViewController()
+        UIView.animateWithDuration(0.2) { () -> Void in
+            self.contentContainerView.contentOffset.x = CGFloat(index) * self.contentContainerView.frame.width
+        }
     }
     
 }

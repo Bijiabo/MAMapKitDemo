@@ -2276,9 +2276,12 @@
                         <viewControllerLayoutGuide type="bottom" id="A6z-l4-zYp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3bg-8R-XMV">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TuA-Wp-Alw" userLabel="content Container Scroll View">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uCn-Ue-NMY" userLabel="header bar">
                                 <rect key="frame" x="0.0" y="24" width="600" height="74"/>
                                 <subviews>
@@ -2296,34 +2299,27 @@
                                     <constraint firstItem="IiW-rv-bhn" firstAttribute="leading" secondItem="uCn-Ue-NMY" secondAttribute="leading" constant="8" id="z9l-J3-ODB"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Tu-LB-az8" userLabel="content Container">
-                                <rect key="frame" x="0.0" y="98" width="600" height="453"/>
-                                <color key="backgroundColor" red="0.40603789550000002" green="0.66836963770000002" blue="1" alpha="0.28474069148936171" colorSpace="calibratedRGB"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2Tu-LB-az8" firstAttribute="leading" secondItem="3bg-8R-XMV" secondAttribute="leading" id="9kR-C5-4qQ"/>
+                            <constraint firstAttribute="bottom" secondItem="TuA-Wp-Alw" secondAttribute="bottom" id="Foq-gl-DXX"/>
                             <constraint firstItem="uCn-Ue-NMY" firstAttribute="leading" secondItem="3bg-8R-XMV" secondAttribute="leading" id="Knz-Xu-6iJ"/>
-                            <constraint firstItem="A6z-l4-zYp" firstAttribute="top" secondItem="2Tu-LB-az8" secondAttribute="bottom" id="P2Q-U4-E3e"/>
+                            <constraint firstAttribute="trailing" secondItem="TuA-Wp-Alw" secondAttribute="trailing" id="LXZ-D2-por"/>
+                            <constraint firstItem="TuA-Wp-Alw" firstAttribute="top" secondItem="3bg-8R-XMV" secondAttribute="top" id="Q0S-hj-jvU"/>
                             <constraint firstAttribute="trailing" secondItem="uCn-Ue-NMY" secondAttribute="trailing" id="U6k-NQ-eCA"/>
-                            <constraint firstItem="2Tu-LB-az8" firstAttribute="top" secondItem="uCn-Ue-NMY" secondAttribute="bottom" id="W0K-u1-ynr"/>
-                            <constraint firstAttribute="trailing" secondItem="2Tu-LB-az8" secondAttribute="trailing" id="b4D-Fo-j0m"/>
+                            <constraint firstAttribute="bottom" secondItem="TuA-Wp-Alw" secondAttribute="bottom" id="Yth-b4-R17"/>
                             <constraint firstItem="uCn-Ue-NMY" firstAttribute="top" secondItem="jCs-o7-TVZ" secondAttribute="bottom" constant="-20" id="kg9-jf-Fxf"/>
-                            <constraint firstItem="A6z-l4-zYp" firstAttribute="top" secondItem="2Tu-LB-az8" secondAttribute="bottom" id="omG-Hb-16T"/>
-                            <constraint firstItem="A6z-l4-zYp" firstAttribute="top" secondItem="2Tu-LB-az8" secondAttribute="bottom" id="zmw-B7-oU2"/>
+                            <constraint firstItem="TuA-Wp-Alw" firstAttribute="leading" secondItem="3bg-8R-XMV" secondAttribute="leading" id="ude-Cd-LCu"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="P2Q-U4-E3e"/>
-                                <exclude reference="zmw-B7-oU2"/>
+                                <exclude reference="Foq-gl-DXX"/>
                             </mask>
                         </variation>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <tabBarItem key="tabBarItem" title="Inbox" image="tab bar_icon_massage_nor" selectedImage="tab bar_icon_massage_sel" id="7We-fX-Qui"/>
                     <connections>
-                        <outlet property="contentContainerView" destination="2Tu-LB-az8" id="tit-Ts-cKb"/>
+                        <outlet property="contentContainerView" destination="TuA-Wp-Alw" id="pFS-Rx-AVn"/>
                         <outlet property="headerSegmentedControl" destination="IiW-rv-bhn" id="RWa-eE-QmU"/>
                     </connections>
                 </viewController>
