@@ -54,7 +54,7 @@ public struct Constant {
         static let G4: UIColor = UIColor(red:0.61, green:0.61, blue:0.61, alpha:1)
         static let G5: UIColor = UIColor(red:0.87, green:0.87, blue:0.87, alpha:1)
         static let G6: UIColor = UIColor(red:0.96, green:0.96, blue:0.96, alpha:1)
-        static let G7: UIColor = UIColor(red:0.97, green:0.96, blue:0.95, alpha:1)
+        static let G7: UIColor = UIColor(red:0.94, green:0.94, blue:0.94, alpha:1)
     }
     
     struct Font {

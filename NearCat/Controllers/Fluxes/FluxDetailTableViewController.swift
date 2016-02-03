@@ -118,7 +118,7 @@ class FluxDetailTableViewController: InputInterfaceTableViewController {
             let userName = userData["name"].stringValue
             let commentContent = commentData["content"].stringValue
             
-            cell.thumbsCount = 0 // TODO: complete this function
+            cell.thumbsCount = commentData["like_count"].intValue
             if parentCommentData.isExists() && parentCommentUserData.isExists() {
                 cell.userName = "\(userName) 回复 \(parentCommentUserData["name"].stringValue)"
             } else {
@@ -126,9 +126,10 @@ class FluxDetailTableViewController: InputInterfaceTableViewController {
             }
             
             cell.content = commentContent
-            
             cell.date = commentData["created_at"].stringValue
-            cell.id = commentData["id"].intValue
+            cell.commentId = commentData["id"].intValue
+            cell.fluxId = id
+            cell.liked = commentData["like"].boolValue
             Helper.setRemoteImageForImageView(cell.avatarImageView, avatarURLString: "\(FConfiguration.sharedInstance.host)\(userData["avatar"].stringValue)")
             
             return cell
@@ -142,7 +143,7 @@ class FluxDetailTableViewController: InputInterfaceTableViewController {
         if indexPath.section == 1 {
             guard let containerVC = containerDelegate as? FluxDetailViewController else {return}
             guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? FluxCommentTableViewCell else {return}
-            containerVC.parementCommentId = cell.id
+            containerVC.parementCommentId = cell.commentId
         }
     }
     

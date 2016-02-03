@@ -11,6 +11,7 @@ import UIKit
 class LikeButton: UIButton {
     
     var fluxId: Int?
+    var fluxCommentId: Int?
     var count: Int = 0 {
         didSet {
             if count < 0 {
@@ -48,7 +49,7 @@ class LikeButton: UIButton {
         guard let fluxId = fluxId else {return}
         
         if liked {
-            Action.fluxes.cancelLike(fluxId: fluxId, completeHandler: { (success, description) -> Void in
+            Action.fluxes.cancelLike(fluxId: fluxId, commentId: fluxCommentId, completeHandler: { (success, description) -> Void in
                 if success {
                     self.count -= 1
                 } else {
@@ -56,7 +57,7 @@ class LikeButton: UIButton {
                 }
             })
         } else {
-            Action.fluxes.like(fluxId: fluxId) { (success, description) -> Void in
+            Action.fluxes.like(fluxId: fluxId, commentId: fluxCommentId) { (success, description) -> Void in
                 if success {
                     self.count += 1
                 } else {

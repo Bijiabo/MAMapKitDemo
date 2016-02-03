@@ -171,27 +171,18 @@
                                             <color key="textColor" red="0.83328561300000004" green="0.83328561300000004" blue="0.83328561300000004" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Lh-PJ-Zu9">
-                                            <rect key="frame" x="550" y="72" width="30" height="28"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="28" id="gu1-qi-qAt"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <state key="normal" title="回复">
-                                                <color key="titleColor" red="0.83328561300000004" green="0.83328561300000004" blue="0.83328561300000004" alpha="1" colorSpace="calibratedRGB"/>
-                                            </state>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWm-7e-rDe">
-                                            <rect key="frame" x="507" y="72" width="31" height="28"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWm-7e-rDe" customClass="LikeButton" customModule="NearCat" customModuleProvider="target">
+                                            <rect key="frame" x="551" y="72" width="29" height="28"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="28" id="LCd-zB-CtY"/>
                                             </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <state key="normal" title="0" image="home_content_icon_like_nor">
                                                 <color key="titleColor" red="0.83328561300000004" green="0.83328561300000004" blue="0.83328561300000004" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                         </button>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LN8-3d-bAR" userLabel="separator line view">
-                                            <rect key="frame" x="24" y="111.5" width="576" height="1"/>
+                                            <rect key="frame" x="24" y="111" width="576" height="1"/>
                                             <color key="backgroundColor" red="0.86302219680000003" green="0.86302219680000003" blue="0.86302219680000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1" id="rko-8l-068"/>
@@ -203,20 +194,16 @@
                                         <constraint firstAttribute="bottom" secondItem="db8-5r-lmy" secondAttribute="bottom" constant="12" id="6eI-Eb-vfz"/>
                                         <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Z30-Mo-f7V" secondAttribute="bottom" priority="250" constant="30" id="DOV-Wz-SCK"/>
                                         <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Z30-Mo-f7V" secondAttribute="bottom" constant="40" id="EId-0W-7oE"/>
-                                        <constraint firstAttribute="bottom" secondItem="4Lh-PJ-Zu9" secondAttribute="bottom" constant="12" id="EsO-17-zx7"/>
                                         <constraint firstAttribute="trailing" secondItem="4sD-xv-Xpz" secondAttribute="trailing" constant="20" id="H0b-CO-5a2"/>
                                         <constraint firstItem="4sD-xv-Xpz" firstAttribute="leading" secondItem="Z30-Mo-f7V" secondAttribute="trailing" constant="12" id="KEb-iz-Mb5"/>
+                                        <constraint firstAttribute="trailing" secondItem="aWm-7e-rDe" secondAttribute="trailing" constant="20" id="KpR-NA-ENW"/>
                                         <constraint firstItem="Z30-Mo-f7V" firstAttribute="top" secondItem="QSs-Ev-dog" secondAttribute="top" constant="24" id="PBA-1u-9AR"/>
-                                        <constraint firstAttribute="trailing" secondItem="4Lh-PJ-Zu9" secondAttribute="trailing" constant="20" id="Q2o-eK-Kcj"/>
                                         <constraint firstAttribute="trailing" secondItem="LN8-3d-bAR" secondAttribute="trailing" id="TZn-ED-bvh"/>
                                         <constraint firstItem="db8-5r-lmy" firstAttribute="leading" secondItem="QSs-Ev-dog" secondAttribute="leading" constant="24" id="UQi-vo-kha"/>
-                                        <constraint firstItem="4Lh-PJ-Zu9" firstAttribute="leading" secondItem="aWm-7e-rDe" secondAttribute="trailing" constant="12" id="XcU-iY-AU5"/>
-                                        <constraint firstAttribute="trailing" secondItem="4Lh-PJ-Zu9" secondAttribute="trailing" constant="8" id="aZd-ef-nGL"/>
                                         <constraint firstItem="4sD-xv-Xpz" firstAttribute="top" secondItem="QSs-Ev-dog" secondAttribute="top" constant="24" id="byE-XN-2eh"/>
                                         <constraint firstAttribute="bottom" secondItem="LN8-3d-bAR" secondAttribute="bottom" id="eXl-d7-12X"/>
                                         <constraint firstItem="LN8-3d-bAR" firstAttribute="leading" secondItem="QSs-Ev-dog" secondAttribute="leading" constant="24" id="fek-yR-fHu"/>
                                         <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="4sD-xv-Xpz" secondAttribute="bottom" constant="40" id="fhF-fm-sOv"/>
-                                        <constraint firstAttribute="bottom" secondItem="4Lh-PJ-Zu9" secondAttribute="bottom" constant="6.5" id="iUD-OO-ebk"/>
                                         <constraint firstItem="Z30-Mo-f7V" firstAttribute="leading" secondItem="QSs-Ev-dog" secondAttribute="leading" constant="24" id="ocZ-2d-mDO"/>
                                         <constraint firstItem="db8-5r-lmy" firstAttribute="top" secondItem="Z30-Mo-f7V" secondAttribute="bottom" constant="14" id="qrS-HE-xyr"/>
                                         <constraint firstAttribute="bottom" secondItem="aWm-7e-rDe" secondAttribute="bottom" constant="12" id="tj5-5W-nrg"/>
@@ -226,8 +213,6 @@
                                             <exclude reference="DOV-Wz-SCK"/>
                                             <exclude reference="qrS-HE-xyr"/>
                                             <exclude reference="2Bs-jf-O6B"/>
-                                            <exclude reference="aZd-ef-nGL"/>
-                                            <exclude reference="iUD-OO-ebk"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
@@ -235,7 +220,6 @@
                                     <outlet property="avatarImageView" destination="Z30-Mo-f7V" id="IhL-VO-bfC"/>
                                     <outlet property="contentLabel" destination="4sD-xv-Xpz" id="W5y-Gz-gbA"/>
                                     <outlet property="dateLabel" destination="db8-5r-lmy" id="TVd-EU-uvj"/>
-                                    <outlet property="replyButton" destination="4Lh-PJ-Zu9" id="OCL-UI-0r7"/>
                                     <outlet property="separatorLineView" destination="LN8-3d-bAR" id="NgQ-6D-lCf"/>
                                     <outlet property="thumbsCountButton" destination="aWm-7e-rDe" id="E7l-oM-LGO"/>
                                 </connections>

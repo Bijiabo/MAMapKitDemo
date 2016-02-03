@@ -13,17 +13,29 @@ class FluxCommentTableViewCell: UITableViewCell {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var replyButton: UIButton!
-    @IBOutlet weak var thumbsCountButton: UIButton!
+    @IBOutlet weak var thumbsCountButton: LikeButton!
     @IBOutlet weak var separatorLineView: UIView!
     
-    var id: Int = 0
+    var fluxId: Int = 0 {
+        didSet {
+            thumbsCountButton.fluxId = fluxId
+        }
+    }
+    
+    var commentId: Int = 0 {
+        didSet {
+            thumbsCountButton.fluxCommentId = commentId
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
         Helper.UI.setLabel(dateLabel, forStyle: Constant.TextStyle.Cell.Small.G4)
+        if let thumbsCountButtonTitleLabel = thumbsCountButton.titleLabel {
+            Helper.UI.setLabel(thumbsCountButtonTitleLabel, forStyle: Constant.TextStyle.Cell.Small.G4)
+        }
         
         selectedBackgroundView = UIView(frame: bounds)
         selectedBackgroundView!.backgroundColor = Constant.Color.CellSelected
@@ -67,13 +79,13 @@ class FluxCommentTableViewCell: UITableViewCell {
     
     var thumbsCount: Int = 0 {
         didSet {
-            let thumbsCountButtonTitle: String = "\(thumbsCount)"
-            thumbsCountButton.setTitle(thumbsCountButtonTitle, forState: UIControlState.Normal)
-            thumbsCountButton.setTitle(thumbsCountButtonTitle, forState: UIControlState.Highlighted)
-            thumbsCountButton.setTitle(thumbsCountButtonTitle, forState: UIControlState.Selected)
-            if #available(iOS 9.0, *) {
-                thumbsCountButton.setTitle(thumbsCountButtonTitle, forState: UIControlState.Focused)
-            }
+            thumbsCountButton.count = thumbsCount
+        }
+    }
+    
+    var liked: Bool = false {
+        didSet {
+            thumbsCountButton.liked = liked
         }
     }
 
