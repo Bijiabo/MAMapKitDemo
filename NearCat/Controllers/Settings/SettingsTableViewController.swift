@@ -91,7 +91,7 @@ class SettingsTableViewController: UITableViewController, LoginRequesterProtocol
             return 331.0
         }
         
-        return 44.0
+        return 48.0
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

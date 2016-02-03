@@ -20,6 +20,7 @@ class PrivateMessageChatContainerViewController: InputContainerViewController {
     @IBOutlet weak var chatTextField: UITextField!
     @IBOutlet weak var chatSendButton: UIButton!
     @IBOutlet weak var chatInputContainerView: UIView!
+    @IBOutlet weak var bottomForCommentInputContainerView: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,12 @@ class PrivateMessageChatContainerViewController: InputContainerViewController {
     private func _setupViews() {
         inputTextField = chatTextField
         inputViewContainer = chatInputContainerView
+        _bottomForCommentInputContainerView = bottomForCommentInputContainerView
+        
+        chatInputContainerView.backgroundColor = Constant.Color.G5
+        
+        chatTextField.clipsToBounds = true
+        chatTextField.layer.cornerRadius = 18.0
     }
     
     override func viewWillAppear(animated: Bool) {

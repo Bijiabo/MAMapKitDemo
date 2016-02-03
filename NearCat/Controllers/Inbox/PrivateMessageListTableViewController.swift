@@ -23,14 +23,13 @@ class PrivateMessageListTableViewController: UITableViewController {
     
     private func _initViews() {
         clearsSelectionOnViewWillAppear = false
-        tableView.estimatedRowHeight = 44.0
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.separatorStyle = .None
         
         // setup tableview footer view
         let tableFooterView: UIView = UIView()
         tableFooterView.backgroundColor = UIColor.clearColor()
         tableView.tableFooterView = tableFooterView
-        tableView.backgroundColor = UIColor(red:0.97, green:0.97, blue:0.97, alpha:1)
+        tableView.backgroundColor = Constant.Color.TableViewBackground
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,23 +41,37 @@ class PrivateMessageListTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return _listData.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return _listData.count
+        return 1
     }
 
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 130.0
+    }
+    
+    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = UIColor.clearColor()
+        return view
+    }
+    
+    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 24.0
+    }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("privateMessageListCell", forIndexPath: indexPath) as! PrivateMessageListTableViewCell
         // TODO: load user's avatar
-        let currentData = _listData[indexPath.row]
+        let currentData = _listData[indexPath.section]
         let currentUser = currentData["user"]
         cell.userId = currentUser["id"].intValue
         cell.userName = currentUser["name"].stringValue
         cell.content = currentData["latestMessage"]["content"].stringValue
+        Helper.setRemoteImageForImageView(cell.avatarImageView, imagePath: currentUser["avatar"].stringValue)
 
         return cell
     }

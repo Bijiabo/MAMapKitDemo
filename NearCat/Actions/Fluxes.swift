@@ -63,7 +63,8 @@ extension Action {
         
         // get comments
         public class func comments(id id: String, completeHandler: (success: Bool, data: JSON, description: String)->Void) {
-            FNetManager.sharedInstance.GET(path: "fluxes/\(id)/comments.json") { (request, response, json, error) -> Void in
+            let path = FHelper.logged_in ? "fluxes/\(id)/comments.json?token=\(FHelper.token)" : "fluxes/\(id)/comments.json"
+            FNetManager.sharedInstance.GET(path: path) { (request, response, json, error) -> Void in
                 Action.requestCompleteHandler(json: json, error: error, completeHandler: completeHandler)
             }
         }
@@ -71,7 +72,9 @@ extension Action {
         // get flux detail
         
         public class func detail(id id: String, completeHandler: (success: Bool, data: JSON, description: String)->Void) {
-            FNetManager.sharedInstance.GET(path: "fluxes/\(id).json?token=\(FHelper.token)") { (request, response, json, error) -> Void in
+            let path = FHelper.logged_in ? "fluxes/\(id).json?token=\(FHelper.token)" : "fluxes/\(id).json"
+            
+            FNetManager.sharedInstance.GET(path: path) { (request, response, json, error) -> Void in
                 Action.requestCompleteHandler(json: json, error: error, completeHandler: completeHandler)
             }
         }
@@ -107,12 +110,11 @@ extension Action {
         
         // like and cancel like
         
-        public class func like(fluxId id: Int, completeHandler: ((success: Bool, description: String)->Void)?=nil) {
+        public class func like(fluxId id: Int, commentId: Int? = nil,  completeHandler: ((success: Bool, description: String)->Void)?=nil) {
             let path: String = "flux_likes.json"
+            let fluxLikeData = commentId == nil ? ["flux_id": id] : ["flux_id": id, "flux_comment_id": commentId!]
             let parameters: [String: AnyObject] = [
-                "flux_like": [
-                    "flux_id": id
-                ],
+                "flux_like": fluxLikeData,
                 "token": FHelper.token
             ]
             
@@ -123,12 +125,11 @@ extension Action {
             }
         }
         
-        public class func cancelLike(fluxId id: Int, completeHandler: ((success: Bool, description: String)->Void)?=nil) {
+        public class func cancelLike(fluxId id: Int, commentId: Int? = nil, completeHandler: ((success: Bool, description: String)->Void)?=nil) {
             let path: String = "flux_likes/cancel_like.json"
+            let fluxLikeData = commentId == nil ? ["flux_id": id] : ["flux_id": id, "flux_comment_id": commentId!]
             let parameters: [String: AnyObject] = [
-                "flux_like": [
-                    "flux_id": id
-                ],
+                "flux_like": fluxLikeData,
                 "token": FHelper.token
             ]
             

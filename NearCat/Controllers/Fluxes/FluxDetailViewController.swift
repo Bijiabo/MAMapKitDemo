@@ -17,6 +17,7 @@ class FluxDetailViewController: InputContainerViewController {
     
     @IBOutlet weak var commentInputViewContainer: UIView!
     @IBOutlet weak var commentTextField: UITextField!
+    @IBOutlet weak var bottomForCommentInputContainerView: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +25,33 @@ class FluxDetailViewController: InputContainerViewController {
         _setupViews()
     }
 
+    
     // MARK: - setup views
     
     private func _setupViews() {
         inputTextField = commentTextField
         inputViewContainer = commentInputViewContainer
+        _bottomForCommentInputContainerView = bottomForCommentInputContainerView
         
         _setupNavigationBar()
+        
+        commentInputViewContainer.backgroundColor = Constant.Color.G6
+        commentInputViewContainer.layer.shadowOffset = CGSize(width: 0, height: -0.5)
+        commentInputViewContainer.layer.shadowColor = Constant.Color.G5.CGColor
+        commentInputViewContainer.layer.shadowOpacity = 1.0
+        commentInputViewContainer.layer.shadowRadius = 0
+        
+        commentTextField.clipsToBounds = true
+        commentTextField.layer.cornerRadius = 18.0
+        commentTextField.borderStyle = .None
+        commentTextField.backgroundColor = UIColor.whiteColor()
+        commentTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 18, height: 6))
+        commentTextField.leftViewMode = .Always
+        commentTextField.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 18, height: 6))
+        commentTextField.rightViewMode = .Always
+        commentTextField.returnKeyType = .Send
+        commentTextField.delegate = self
+        commentTextField.addTarget(self, action: Selector("tapTextFieldSendButton:"), forControlEvents: UIControlEvents.EditingDidEndOnExit)
     }
     
     private func _setupNavigationBar() {
@@ -66,8 +87,6 @@ class FluxDetailViewController: InputContainerViewController {
         }
     }
     
-    
-    
     // MARK: - user actions
     
     var parementCommentId: Int? = nil {
@@ -77,9 +96,21 @@ class FluxDetailViewController: InputContainerViewController {
         }
     }
     
-    @IBAction func tapSubmitCommentButton(sender: AnyObject) {
-        _hideKeyboard()
-        
+    private func _hideKeyboard() {
+        commentTextField.resignFirstResponder()
+        UIView.animateWithDuration(0.1, delay: 0, options: UIViewAnimationOptions.AllowUserInteraction, animations: { () -> Void in
+            self.view.frame.origin.y = self._defaultViewOriginY
+            }, completion: nil)
+    }
+    
+
+}
+
+// MARK: - textField delegate
+
+extension FluxDetailViewController: UITextFieldDelegate {
+    
+    func tapTextFieldSendButton(sedner: UITextField) {
         guard let commentContent = commentTextField.text else {return}
         
         Action.fluxes.createComment(content: commentContent, fluxId: id, parentCommentId: parementCommentId) { (success, data, description) -> Void in
@@ -96,12 +127,4 @@ class FluxDetailViewController: InputContainerViewController {
         }
     }
     
-    private func _hideKeyboard() {
-        commentTextField.resignFirstResponder()
-        UIView.animateWithDuration(0.1, delay: 0, options: UIViewAnimationOptions.AllowUserInteraction, animations: { () -> Void in
-            self.view.frame.origin.y = self._defaultViewOriginY
-            }, completion: nil)
-    }
-    
-
 }
