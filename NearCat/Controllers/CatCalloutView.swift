@@ -86,10 +86,17 @@ class CatCalloutView: UIView {
         super.init(frame: frame)
         backgroundColor = UIColor.clearColor()
         initSubViews()
+        
+        userInteractionEnabled = true
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("tapCalloutView:")))
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func tapCalloutView(sender: UITapGestureRecognizer) {
+        Helper.Controller.pushViewController(Helper.Controller.CatDetail)
     }
     
     func initSubViews() {

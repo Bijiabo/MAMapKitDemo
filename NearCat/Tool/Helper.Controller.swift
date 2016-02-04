@@ -77,6 +77,18 @@ extension Helper {
             }
         }
         
+        class var CatDetail: CatArchiveDetailTableViewController {
+            get {
+                return Helper.Controller.instanceForStoryboardByName("Main", ForIdentifier: "catArchivePage") as! CatArchiveDetailTableViewController
+            }
+        }
+        
+        // display functions
+        
+        class func pushViewController(vc: UIViewController) {
+            NSNotificationCenter.defaultCenter().postNotificationName(Constant.Notification.Helper.Controller.pushViewController, object: vc)
+        }
+        
     }
     
 }

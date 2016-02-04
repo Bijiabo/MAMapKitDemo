@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class CatAnnotationView: MAAnnotationView {
     var calloutView: CatCalloutView?
@@ -28,7 +29,16 @@ class CatAnnotationView: MAAnnotationView {
                 calloutView?.image = calloutImage
             }
             calloutView?.title = annotation.title!()
-            calloutView?.subtitle = annotation.subtitle!()
+            
+            if let data = self.data {
+                calloutView?.subtitle = data["breed"].stringValue
+                if
+                    let avatarPath = data["avatar"].string,
+                    let calloutView = calloutView
+                {
+                    Helper.setRemoteImageForImageView(calloutView.portraitView, imagePath: avatarPath)
+                }
+            }
 
             addSubview(calloutView!)
             bringSubviewToFront(calloutView!)
@@ -38,5 +48,15 @@ class CatAnnotationView: MAAnnotationView {
         }
         
         super.setSelected(selected, animated: animated)
+    }
+    
+    var data: JSON? {
+        get {
+            if let dataFromString = annotation.subtitle!().dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
+                let data = JSON(data: dataFromString)
+                return data
+            }
+            return nil
+        }
     }
 }

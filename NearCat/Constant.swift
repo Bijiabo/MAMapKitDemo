@@ -33,6 +33,12 @@ public struct Constant {
         struct Location {
             static let didUpdate = "Location_didUpdate"
         }
+        
+        struct  Helper {
+            struct Controller {
+                static let pushViewController = "Helper_Controller_pushViewController"
+            }
+        }
     }
     
     struct Color {

@@ -159,9 +159,9 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
             Action.cats.nearby(currentLocation.latitude, longitude: currentLocation.longitude, completeHandler: { (success, data, description) -> Void in
                 
                 for (_, dataItem): (String, JSON) in data {
-                    let age = dataItem["age"].intValue
                     let itemLocation = CLLocationCoordinate2D(latitude: dataItem["latitude"].doubleValue, longitude: dataItem["longitude"].doubleValue)
-                    self.addAnnotation(location: itemLocation, title: dataItem["name"].stringValue, subTitle: "\(age)岁")
+
+                    self.addAnnotation(location: itemLocation, title: dataItem["name"].stringValue, data: dataItem.dictionaryObject! )
                 }
             })
         }
@@ -172,34 +172,17 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
     private var _regionChangeCount: Int = 40
     
     func mapView(mapView: MAMapView!, regionDidChangeAnimated animated: Bool) {
-        /*
-        if _regionChangeCount % 50 == 0 { // delay to cut down request nearby cat rate
-            _regionChangeCount = 0
-            
-            print("regionDidChangeAnimated")
-            _removeAllAnnotation()
-            
-            let currentLocation = mapView.centerCoordinate
-            Action.cats.nearby(currentLocation.latitude, longitude: currentLocation.longitude, completeHandler: { (success, data, description) -> Void in
-                
-                for (_, dataItem): (String, JSON) in data {
-                    let age = dataItem["age"].intValue
-                    let itemLocation = CLLocationCoordinate2D(latitude: dataItem["latitude"].doubleValue, longitude: dataItem["longitude"].doubleValue)
-                    self.addAnnotation(location: itemLocation, title: dataItem["name"].stringValue, subTitle: "\(age)岁")
-                }
-            })
-        }
         
-        _regionChangeCount += 1
-        */
     }
     
     // 点击Annoation回调
     func mapView(mapView: MAMapView!, didSelectAnnotationView view: MAAnnotationView!) {
         // 若点击的是定位标注，则执行逆地理编码
+        /*
         if view.annotation.isKindOfClass(MAUserLocation){
             reverseGeocoding()
         }
+        */
     }
     
     func mapView(mapView: MAMapView!, viewForAnnotation annotation: MAAnnotation!) -> MAAnnotationView! {
@@ -212,10 +195,12 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
                     // MAPinAnnotationView(annotation: annotation, reuseIdentifier: pointReuseIndentifier)
             }
             
-            annotationView?.image = UIImage(named: "pin") //custom pin image
+            annotationView?.image = UIImage(named: "near cat_logo_30_blue") //custom pin image
             annotationView?.canShowCallout = false
             annotationView?.draggable = false
             annotationView?.calloutImage = UIImage(named: "headshot_cat_40_non")
+            annotationView?.userInteractionEnabled = true
+            annotationView?.enabled = true
             
             return annotationView!
         } else if annotation.isKindOfClass(MAUserLocation) {
@@ -233,10 +218,6 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
         }
         
         return nil
-    }
-    
-    func mapView(mapView: MAMapView!, didAnnotationViewCalloutTapped view: MAAnnotationView!) {
-        print("didAnnotationViewCalloutTapped")
     }
     
     func mapView(mapView: MAMapView!, viewForOverlay overlay: MAOverlay!) -> MAOverlayView! {
@@ -292,18 +273,18 @@ extension ViewController {
         pointAnnotation.coordinate = location
         pointAnnotation.title = title
         pointAnnotation.subtitle = subTitle
+        
+        mapView?.addAnnotation(pointAnnotation)
+    }
+    
+    func addAnnotation(location location: CLLocationCoordinate2D, title: String, data: [String: AnyObject]) {
+        let pointAnnotation: MAPointAnnotation = MAPointAnnotation()
+        pointAnnotation.coordinate = location
+        pointAnnotation.title = title
 
-        let annotationData = [
-            "id": 1024,
-            "name": title,
-            "age": 2
-        ]
-        let annotationDataInJSON = JSON(annotationData)
+        let annotationDataInJSON = JSON(data)
         let annotationDataInJSONString = annotationDataInJSON.rawString()!
-        if let dataFromString = annotationDataInJSONString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
-            let json = JSON(data: dataFromString)
-            print(json)
-        }
+        pointAnnotation.subtitle = annotationDataInJSONString
         
         mapView?.addAnnotation(pointAnnotation)
     }
