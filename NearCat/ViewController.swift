@@ -149,11 +149,6 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
     
     // 定位回调
     func mapView(mapView: MAMapView!, didUpdateUserLocation userLocation: MAUserLocation!, updatingLocation: Bool) {
-    }
-    
-    private var _regionChangeCount: Int = 40
-    
-    func mapView(mapView: MAMapView!, regionDidChangeAnimated animated: Bool) {
         if _regionChangeCount % 50 == 0 { // delay to cut down request nearby cat rate
             _regionChangeCount = 0
             
@@ -172,6 +167,31 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
         }
         
         _regionChangeCount += 1
+    }
+    
+    private var _regionChangeCount: Int = 40
+    
+    func mapView(mapView: MAMapView!, regionDidChangeAnimated animated: Bool) {
+        /*
+        if _regionChangeCount % 50 == 0 { // delay to cut down request nearby cat rate
+            _regionChangeCount = 0
+            
+            print("regionDidChangeAnimated")
+            _removeAllAnnotation()
+            
+            let currentLocation = mapView.centerCoordinate
+            Action.cats.nearby(currentLocation.latitude, longitude: currentLocation.longitude, completeHandler: { (success, data, description) -> Void in
+                
+                for (_, dataItem): (String, JSON) in data {
+                    let age = dataItem["age"].intValue
+                    let itemLocation = CLLocationCoordinate2D(latitude: dataItem["latitude"].doubleValue, longitude: dataItem["longitude"].doubleValue)
+                    self.addAnnotation(location: itemLocation, title: dataItem["name"].stringValue, subTitle: "\(age)岁")
+                }
+            })
+        }
+        
+        _regionChangeCount += 1
+        */
     }
     
     // 点击Annoation回调
@@ -195,7 +215,7 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
             annotationView?.image = UIImage(named: "pin") //custom pin image
             annotationView?.canShowCallout = false
             annotationView?.draggable = false
-            annotationView?.calloutImage = UIImage(named: "Icon-76")
+            annotationView?.calloutImage = UIImage(named: "headshot_cat_40_non")
             
             return annotationView!
         } else if annotation.isKindOfClass(MAUserLocation) {
@@ -273,6 +293,18 @@ extension ViewController {
         pointAnnotation.title = title
         pointAnnotation.subtitle = subTitle
 
+        let annotationData = [
+            "id": 1024,
+            "name": title,
+            "age": 2
+        ]
+        let annotationDataInJSON = JSON(annotationData)
+        let annotationDataInJSONString = annotationDataInJSON.rawString()!
+        if let dataFromString = annotationDataInJSONString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
+            let json = JSON(data: dataFromString)
+            print(json)
+        }
+        
         mapView?.addAnnotation(pointAnnotation)
     }
     

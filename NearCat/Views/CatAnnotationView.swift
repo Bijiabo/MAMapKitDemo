@@ -12,7 +12,7 @@ class CatAnnotationView: MAAnnotationView {
     var calloutView: CatCalloutView?
     var calloutImage: UIImage?
     
-    let kCalloutWidth: CGFloat = 200.0
+    let kCalloutWidth: CGFloat = 240.0
     let kCalloutHeight: CGFloat = 70.0
         
     override func setSelected(selected: Bool, animated: Bool) {

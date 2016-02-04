@@ -136,14 +136,13 @@ class CatArchiveDetailTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCellWithIdentifier("catArchiveDetailMapCell", forIndexPath: indexPath) as! CatArchiveDetailMapTableViewCell
             cell.delegate = self
             
-            let currentData = catInformation["catData"]
-            cell.catName = currentData["name"].stringValue
-            cell.catAge = currentData["age"].intValue
+            cell.catName = catInformation["name"].stringValue
+            cell.catAge = catInformation["age"].intValue
             if
-            let _ = catInformation["catData"]["latitude"].string,
-            let _ = catInformation["catData"]["longitude"].string,
-            let latitude = Double(catInformation["catData"]["latitude"].stringValue),
-            let longitude = Double(catInformation["catData"]["longitude"].stringValue)
+            let _ = catInformation["latitude"].string,
+            let _ = catInformation["longitude"].string,
+            let latitude = Double(catInformation["latitude"].stringValue),
+            let longitude = Double(catInformation["longitude"].stringValue)
             {
                 cell.location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
                 cell.value = "点击修改"

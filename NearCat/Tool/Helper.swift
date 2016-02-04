@@ -41,4 +41,15 @@ public class Helper {
             }
         }
     }
+    
+    public class func getRemoteImageForImageViewByPath(imagePath: String, completion: (image: UIImage?)->Void) {
+        var _imagePathCharaters = imagePath.characters
+        _imagePathCharaters.removeFirst()
+        let avatarURLString = "\(FConfiguration.sharedInstance.host)\(String(_imagePathCharaters))"
+        let avatarURL = NSURL(string: avatarURLString)!
+        let avatarURLRequest = NSURLRequest(URL: avatarURL)
+        _imageDownloader.downloadImage(URLRequest: avatarURLRequest) { (response) -> Void in
+            completion(image: response.result.value)
+        }
+    }
 }
