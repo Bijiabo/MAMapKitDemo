@@ -183,6 +183,11 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
             reverseGeocoding()
         }
         */
+        NSLog("did select annotation view")
+    }
+    
+    func mapView(mapView: MAMapView!, annotationView view: MAAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
+        
     }
     
     func mapView(mapView: MAMapView!, viewForAnnotation annotation: MAAnnotation!) -> MAAnnotationView! {
@@ -198,9 +203,8 @@ class ViewController: UIViewController ,MAMapViewDelegate, AMapSearchDelegate{
             annotationView?.image = UIImage(named: "near cat_logo_30_blue") //custom pin image
             annotationView?.canShowCallout = false
             annotationView?.draggable = false
-            annotationView?.calloutImage = UIImage(named: "headshot_cat_40_non")
-            annotationView?.userInteractionEnabled = true
             annotationView?.enabled = true
+            annotationView?.calloutImage = UIImage(named: "headshot_cat_40_non")
             
             return annotationView!
         } else if annotation.isKindOfClass(MAUserLocation) {

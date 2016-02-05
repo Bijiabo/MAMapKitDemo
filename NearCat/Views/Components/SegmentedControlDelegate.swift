@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol SegmentedControlDelegate {
+protocol SegmentedControlDelegate: class {
     func segementedControlSelectedIndexUpdated(index index: Int)
 }

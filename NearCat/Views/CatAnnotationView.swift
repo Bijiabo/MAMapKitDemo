@@ -39,6 +39,9 @@ class CatAnnotationView: MAAnnotationView {
                     Helper.setRemoteImageForImageView(calloutView.portraitView, imagePath: avatarPath)
                 }
             }
+            
+            calloutView?.userInteractionEnabled = true
+            calloutView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("tapCallout:")))
 
             addSubview(calloutView!)
             bringSubviewToFront(calloutView!)
@@ -56,6 +59,28 @@ class CatAnnotationView: MAAnnotationView {
                 let data = JSON(data: dataFromString)
                 return data
             }
+            return nil
+        }
+    }
+    
+    func tapCallout(sender: UITapGestureRecognizer) {
+        NSLog("tapCallout")
+        if let data = data {
+            let vc = Helper.Controller.CatDetail
+            vc.catId = data["id"].intValue
+            Helper.Controller.pushViewController(vc)
+        }
+        
+    }
+    
+    override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
+        let calloutRect: CGRect = CGRect(x: bounds.origin.x - (kCalloutWidth - bounds.size.width)/2.0 , y: bounds.origin.y - kCalloutHeight, width: kCalloutWidth, height: kCalloutHeight)
+        
+        if CGRectContainsPoint(bounds, point) {
+            return self
+        } else if CGRectContainsPoint(calloutRect, point) && selected {
+            return calloutView
+        } else {
             return nil
         }
     }

@@ -18,10 +18,10 @@
                         <rect key="frame" x="0.0" y="-700" width="600" height="900"/>
                         <subviews>
                             <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test_bg" translatesAutoresizingMaskIntoConstraints="NO" id="qyb-gJ-yKL">
-                                <rect key="frame" x="0.0" y="700" width="600" height="200"/>
+                                <rect key="frame" x="0.0" y="636" width="600" height="264"/>
                                 <color key="backgroundColor" red="0.29411764709999999" green="0.42352941179999998" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="Tfs-fQ-7eg"/>
+                                    <constraint firstAttribute="height" constant="264" id="Tfs-fQ-7eg"/>
                                     <constraint firstAttribute="height" constant="200" id="lQ1-Lg-E30"/>
                                 </constraints>
                                 <variation key="default">

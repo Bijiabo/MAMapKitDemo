@@ -12,6 +12,7 @@ import SwiftyJSON
 class PersonalPageTableViewController: UITableViewController {
     
     var user_id: Int = 0
+    var segmentedControlVC: PersonalPageSegmentedControlViewController!
 
     private var headerBackgroundImageViewOriginalHeight: CGFloat = 0
     private var headerBackgroundImageView: UIImageView? = nil {
@@ -29,10 +30,12 @@ class PersonalPageTableViewController: UITableViewController {
         
         _initViews()
         _loadUserInformation()
+        
+        _setupSegmentedControlVC()
     }
     
     private func _initViews() {
-        
+        tableView.clipsToBounds = false
         clearsSelectionOnViewWillAppear = true
         tableView.showsHorizontalScrollIndicator = false
         tableView.showsVerticalScrollIndicator = false
@@ -42,7 +45,6 @@ class PersonalPageTableViewController: UITableViewController {
         tableView.tableFooterView = tableFooterView
         tableView.backgroundColor = UIColor(red:0.97, green:0.97, blue:0.97, alpha:1)
         
-        // tableView.contentInset.top = 44.0
         let nib: UINib = UINib(nibName: "PersonalPage", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "personalPageHeaderCell")
         
@@ -53,6 +55,11 @@ class PersonalPageTableViewController: UITableViewController {
         navigationItem.backBarButtonItem?.title = ""
         navigationItem.leftBarButtonItem?.title = ""
         
+    }
+    
+    private func _setupSegmentedControlVC() {
+        segmentedControlVC = Helper.Controller.PersonalPageSegemntedControl
+        segmentedControlVC.titles = ["主页", "动态", "猫咪"]
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -85,18 +92,24 @@ class PersonalPageTableViewController: UITableViewController {
         if section == 0 {
             return 4
         }
-        return 50
+        return 1
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.section == 0 {
+        switch indexPath.section {
+        case 0:
             if indexPath.row == 0 {
                 return 331.0
             }
             
             return 44.0
-        }
+            
+        case 1:
+        return UIScreen.mainScreen().bounds.size.height - self.tableView(tableView, heightForHeaderInSection: 1) - 64.0
+        
+        default:
         return 44.0
+        }
     }
 
     
@@ -123,32 +136,68 @@ class PersonalPageTableViewController: UITableViewController {
                 return cell
             }
         } else {
-            let cell = UITableViewCell()
+            let cell = tableView.dequeueReusableCellWithIdentifier("personalPageScrollContainerCell", forIndexPath: indexPath) as! PersonalPageScrollContainerTableViewCell
+            cell.personalPageTVCDelegate = self
+            
             return cell
         }
-        
-        
     }
+    
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch section {
+        case 1:
+            return segmentedControlVC.view
+            
+        default:
+            return nil
+        }
+    }
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 1:
+            return 44.0
+        default:
+            return 0
+        }
+    }
+
+    // MARK: - scrollView delegate
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         let headerBackgroundImageOriginY: CGFloat = 700.0
         
         if scrollView.contentOffset.y < 0 {
-            headerBackgroundImageView?.alpha = 1.0
+            //headerBackgroundImageView?.alpha = 1.0
             guard let headerBackgroundImageView = headerBackgroundImageView else {return}
             headerBackgroundImageView.layer.frame.size.height = headerBackgroundImageViewOriginalHeight - scrollView.contentOffset.y
-            headerBackgroundImageView.layer.frame.origin.y = scrollView.contentOffset.y + headerBackgroundImageOriginY
+            headerBackgroundImageView.layer.frame.origin.y = scrollView.contentOffset.y + headerBackgroundImageOriginY - 64.0
         } else {
-            headerBackgroundImageView?.layer.frame.origin.y = scrollView.contentOffset.y/2 + headerBackgroundImageOriginY
-            headerBackgroundImageView?.alpha = 1.0 - scrollView.contentOffset.y/headerBackgroundImageViewOriginalHeight
+            headerBackgroundImageView?.layer.frame.origin.y = scrollView.contentOffset.y/2 + headerBackgroundImageOriginY - 64.0
+            //headerBackgroundImageView?.alpha = 1.0 - scrollView.contentOffset.y/headerBackgroundImageViewOriginalHeight
         }
         
         // update navigation bar display
         
-        if scrollView.contentOffset.y <= 136.0 {
+        if scrollView.contentOffset.y <= 200.0 {
             _updateNavigationBarDisplay(backgroundTransparent: true)
         } else {
             _updateNavigationBarDisplay(backgroundTransparent: false)
+        }
+        
+        // segmentedControlView
+        
+        if
+        let segmentedControlView = tableView(tableView, viewForHeaderInSection: 1),
+        let containerCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)) as? PersonalPageScrollContainerTableViewCell
+        {
+            let segmentedControlViewPosition = segmentedControlView.convertRect(segmentedControlView.bounds, toView: navigationController?.navigationBar)
+            
+            if segmentedControlViewPosition.origin.y < 45.0 {
+                containerCell.verticalScrollEnabled = true
+            } else {
+                containerCell.verticalScrollEnabled = false
+            }
         }
     }
     

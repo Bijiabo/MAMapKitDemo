@@ -123,8 +123,24 @@ class CatCalloutView: UIView {
         let nextImageView = UIImageView(frame: CGRect(x: bounds.width - 54.0, y: 2.0, width: 48.0, height: 48.0))
         nextImageView.image = UIImage(named: "icon_next")
         addSubview(nextImageView)
+        
+        // add test button
+//        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+//        button.backgroundColor = Constant.Color.Pink
+//        button.setTitle("test", forState: UIControlState.Normal)
+//        button.addTarget(self, action: Selector("test:"), forControlEvents: UIControlEvents.TouchUpInside)
+//        addSubview(button)
     }
+    
+    override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
         
-        
+        if CGRectContainsPoint(bounds, point) {
+            return self
+        } else {
+            return nil
+        }
+    }
+    
+    
     
 }

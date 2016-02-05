@@ -83,6 +83,12 @@ extension Helper {
             }
         }
         
+        class var PersonalPageSegemntedControl: PersonalPageSegmentedControlViewController {
+            get {
+                return Helper.Controller.instanceForStoryboardByName("Main", ForIdentifier: "personalPageSegmentedControlVC") as! PersonalPageSegmentedControlViewController
+            }
+        }
+        
         // display functions
         
         class func pushViewController(vc: UIViewController) {

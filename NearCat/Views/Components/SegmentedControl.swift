@@ -12,7 +12,7 @@ import UIKit
     private var labels = [UILabel]()
     var thumbView = UIView()
     
-    var delegate: SegmentedControlDelegate?
+    weak var delegate: SegmentedControlDelegate?
     
     let highlightTextColor: UIColor = UIColor(red:0.36, green:0.5, blue:0.66, alpha:1)
     let normalTextColor: UIColor = UIColor(red:0.51, green:0.51, blue:0.51, alpha:1)

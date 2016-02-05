@@ -124,6 +124,14 @@
 		65BB67921C4254AD00355BBE /* FluxDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67911C4254AD00355BBE /* FluxDetailViewController.swift */; };
 		65BB67941C42A44100355BBE /* Trends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67931C42A44100355BBE /* Trends.swift */; };
 		65BB67961C42D29D00355BBE /* remoteNotificationTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67951C42D29D00355BBE /* remoteNotificationTokens.swift */; };
+		65CCA7E31C649A6A00EF87D6 /* PersonalPageSegmentedControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CCA7E21C649A6A00EF87D6 /* PersonalPageSegmentedControlViewController.swift */; };
+		65CCA7E51C64D0B500EF87D6 /* PersonalPageScrollContainerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CCA7E41C64D0B500EF87D6 /* PersonalPageScrollContainerTableViewCell.swift */; };
+		65CCA7E71C64D29000EF87D6 /* PersonalPageMianPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CCA7E61C64D29000EF87D6 /* PersonalPageMianPageTableViewController.swift */; };
+		65CCA7E91C64D34700EF87D6 /* PersonalPageFluxPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CCA7E81C64D34700EF87D6 /* PersonalPageFluxPageTableViewController.swift */; };
+		65CCA7EB1C64D3A300EF87D6 /* PersonalPageCatPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CCA7EA1C64D3A300EF87D6 /* PersonalPageCatPageTableViewController.swift */; };
+		65CCA7ED1C64F0FA00EF87D6 /* PersonalPageSubPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CCA7EC1C64F0FA00EF87D6 /* PersonalPageSubPageTableViewController.swift */; };
+		65CCA7EF1C650E6F00EF87D6 /* PersonalPageMainPageIntroTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CCA7EE1C650E6F00EF87D6 /* PersonalPageMainPageIntroTableViewCell.swift */; };
+		65CCA7F11C65102F00EF87D6 /* PersonalPageMainPageTitleWithValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CCA7F01C65102F00EF87D6 /* PersonalPageMainPageTitleWithValueTableViewCell.swift */; };
 		65CE59981C2A7405008809B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59971C2A7405008809B0 /* AppDelegate.swift */; };
 		65CE599A1C2A7405008809B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59991C2A7405008809B0 /* ViewController.swift */; };
 		65CE599D1C2A7405008809B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65CE599B1C2A7405008809B0 /* Main.storyboard */; };
@@ -344,6 +352,14 @@
 		65BB67911C4254AD00355BBE /* FluxDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FluxDetailViewController.swift; sourceTree = "<group>"; };
 		65BB67931C42A44100355BBE /* Trends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trends.swift; sourceTree = "<group>"; };
 		65BB67951C42D29D00355BBE /* remoteNotificationTokens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = remoteNotificationTokens.swift; sourceTree = "<group>"; };
+		65CCA7E21C649A6A00EF87D6 /* PersonalPageSegmentedControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonalPageSegmentedControlViewController.swift; path = ../../Views/PersonalPages/PersonalPageSegmentedControlViewController.swift; sourceTree = "<group>"; };
+		65CCA7E41C64D0B500EF87D6 /* PersonalPageScrollContainerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPageScrollContainerTableViewCell.swift; sourceTree = "<group>"; };
+		65CCA7E61C64D29000EF87D6 /* PersonalPageMianPageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPageMianPageTableViewController.swift; sourceTree = "<group>"; };
+		65CCA7E81C64D34700EF87D6 /* PersonalPageFluxPageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPageFluxPageTableViewController.swift; sourceTree = "<group>"; };
+		65CCA7EA1C64D3A300EF87D6 /* PersonalPageCatPageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPageCatPageTableViewController.swift; sourceTree = "<group>"; };
+		65CCA7EC1C64F0FA00EF87D6 /* PersonalPageSubPageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPageSubPageTableViewController.swift; sourceTree = "<group>"; };
+		65CCA7EE1C650E6F00EF87D6 /* PersonalPageMainPageIntroTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPageMainPageIntroTableViewCell.swift; sourceTree = "<group>"; };
+		65CCA7F01C65102F00EF87D6 /* PersonalPageMainPageTitleWithValueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPageMainPageTitleWithValueTableViewCell.swift; sourceTree = "<group>"; };
 		65CE59941C2A7405008809B0 /* NearCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CE59971C2A7405008809B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = NearCat/AppDelegate.swift; sourceTree = "<group>"; };
 		65CE59991C2A7405008809B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
@@ -513,6 +529,9 @@
 				65152F391C4C96C300DDB874 /* PersonalPageIntroTableViewCell.swift */,
 				65152F3B1C4C96D100DDB874 /* PersonalPageLocationTableViewCell.swift */,
 				65625BED1C43F0A90068176F /* PersonalSettingHeaderTableViewCell.swift */,
+				65CCA7E41C64D0B500EF87D6 /* PersonalPageScrollContainerTableViewCell.swift */,
+				65CCA7EE1C650E6F00EF87D6 /* PersonalPageMainPageIntroTableViewCell.swift */,
+				65CCA7F01C65102F00EF87D6 /* PersonalPageMainPageTitleWithValueTableViewCell.swift */,
 			);
 			path = PersonalPages;
 			sourceTree = "<group>";
@@ -520,7 +539,12 @@
 		65152F3D1C4CCAA800DDB874 /* PersonalPages */ = {
 			isa = PBXGroup;
 			children = (
+				65CCA7E21C649A6A00EF87D6 /* PersonalPageSegmentedControlViewController.swift */,
 				65152F3E1C4CCB5700DDB874 /* PersonalPageTableViewController.swift */,
+				65CCA7E61C64D29000EF87D6 /* PersonalPageMianPageTableViewController.swift */,
+				65CCA7E81C64D34700EF87D6 /* PersonalPageFluxPageTableViewController.swift */,
+				65CCA7EA1C64D3A300EF87D6 /* PersonalPageCatPageTableViewController.swift */,
+				65CCA7EC1C64F0FA00EF87D6 /* PersonalPageSubPageTableViewController.swift */,
 			);
 			path = PersonalPages;
 			sourceTree = "<group>";
@@ -1263,6 +1287,7 @@
 				65BB67921C4254AD00355BBE /* FluxDetailViewController.swift in Sources */,
 				65F400051C568B2400816BEB /* JDStatusBarNotification.m in Sources */,
 				6570C36E1C36936C00391EB8 /* DeviceGuru.swift in Sources */,
+				65CCA7ED1C64F0FA00EF87D6 /* PersonalPageSubPageTableViewController.swift in Sources */,
 				65DAB88A1C5FE0D6009C39D7 /* ExplainTableViewCell.swift in Sources */,
 				652B38D81C53DADF007F89E1 /* AlbumListTableViewCell.swift in Sources */,
 				65DAB87A1C5F694C009C39D7 /* CatArchiveListTableViewCell.swift in Sources */,
@@ -1293,6 +1318,7 @@
 				65BB678A1C4145A500355BBE /* Cats.swift in Sources */,
 				65BB678C1C4145B100355BBE /* Fluxes.swift in Sources */,
 				657C51881C46A6150047A568 /* FollowingTableViewCell.swift in Sources */,
+				65CCA7E31C649A6A00EF87D6 /* PersonalPageSegmentedControlViewController.swift in Sources */,
 				652B38BC1C53B2B7007F89E1 /* ALCameraShot.swift in Sources */,
 				6570C3711C36936D00391EB8 /* FHelper.swift in Sources */,
 				650AD0681C53F4EB000BFA59 /* ShootNavigationViewController.swift in Sources */,
@@ -1342,6 +1368,7 @@
 				654162B71C4F7F2500BD035E /* UITableViewCellExtension.swift in Sources */,
 				65D54D281C31ACB000F7B450 /* Location.swift in Sources */,
 				65BB677E1C4140C200355BBE /* TrendsListTableViewController.swift in Sources */,
+				65CCA7F11C65102F00EF87D6 /* PersonalPageMainPageTitleWithValueTableViewCell.swift in Sources */,
 				65CE59E81C2AF9E4008809B0 /* SearchResultTableViewCell.swift in Sources */,
 				65152F3C1C4C96D100DDB874 /* PersonalPageLocationTableViewCell.swift in Sources */,
 				652B38AA1C53B27E007F89E1 /* ALCameraView.swift in Sources */,
@@ -1374,6 +1401,7 @@
 				6557F7C61C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift in Sources */,
 				65BB678E1C422CF600355BBE /* FluxDetailTableViewCell.swift in Sources */,
 				6559A05C1C4544E10027CECE /* SettingSecondaryTableViewController.swift in Sources */,
+				65CCA7EF1C650E6F00EF87D6 /* PersonalPageMainPageIntroTableViewCell.swift in Sources */,
 				65BB67851C4141B500355BBE /* PrivateMessageListTableViewCell.swift in Sources */,
 				6559A0551C45398C0027CECE /* Helper.swift in Sources */,
 				65D54D261C3141F800F7B450 /* Delay.swift in Sources */,
@@ -1386,12 +1414,16 @@
 				65BB67871C4141E500355BBE /* TrendsListTableViewCell.swift in Sources */,
 				65BB67731C41371200355BBE /* FluxesListTableViewCell.swift in Sources */,
 				65BB67831C41417600355BBE /* NotificationListTableViewCell.swift in Sources */,
+				65CCA7E71C64D29000EF87D6 /* PersonalPageMianPageTableViewController.swift in Sources */,
 				65BB677C1C4140B100355BBE /* NotificationListTableViewController.swift in Sources */,
+				65CCA7EB1C64D3A300EF87D6 /* PersonalPageCatPageTableViewController.swift in Sources */,
+				65CCA7E51C64D0B500EF87D6 /* PersonalPageScrollContainerTableViewCell.swift in Sources */,
 				652B38BE1C53B2B7007F89E1 /* ALImageFetchingInteractor.swift in Sources */,
 				65DAB8741C5CFCC2009C39D7 /* Helper.Alert.swift in Sources */,
 				652B38D21C53DABF007F89E1 /* BrowsePhotoDelegate.swift in Sources */,
 				65152F3A1C4C96C300DDB874 /* PersonalPageIntroTableViewCell.swift in Sources */,
 				652B38DA1C53DADF007F89E1 /* PreviewHeaderCollectionReusableView.swift in Sources */,
+				65CCA7E91C64D34700EF87D6 /* PersonalPageFluxPageTableViewController.swift in Sources */,
 				652B389D1C537578007F89E1 /* Helper.UI.swift in Sources */,
 				65DAB88E1C5FE4A8009C39D7 /* NotificationSettingsTableViewController.swift in Sources */,
 				6570C37E1C36C83400391EB8 /* CatCalloutView.swift in Sources */,
