@@ -114,9 +114,17 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BxY-RP-3QZ">
+                                <rect key="frame" x="62" y="250.5" width="412" height="24"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="OL4-Jp-DJ2"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="BxY-RP-3QZ" firstAttribute="centerY" secondItem="bky-dj-hqM" secondAttribute="centerY" id="4SM-di-gH4"/>
                             <constraint firstAttribute="trailing" secondItem="eT7-2s-ge7" secondAttribute="trailing" constant="12" id="9oZ-ao-jf0"/>
                             <constraint firstItem="bZQ-4a-GOM" firstAttribute="leading" secondItem="0tV-O1-OUx" secondAttribute="trailing" constant="20" id="BQC-fC-wyE"/>
                             <constraint firstItem="bky-dj-hqM" firstAttribute="top" secondItem="eT7-2s-ge7" secondAttribute="bottom" constant="10" id="BS7-sg-7EO"/>
@@ -128,6 +136,7 @@
                             <constraint firstItem="7El-p8-bV1" firstAttribute="leading" secondItem="QWp-p8-NQC" secondAttribute="leading" constant="12" id="F8s-rV-N5R"/>
                             <constraint firstItem="7El-p8-bV1" firstAttribute="top" secondItem="tqH-OD-Bkh" secondAttribute="bottom" constant="4" id="GQa-0V-b1m"/>
                             <constraint firstAttribute="trailing" secondItem="7El-p8-bV1" secondAttribute="trailing" constant="12" id="Gjl-i5-ZRO"/>
+                            <constraint firstAttribute="trailing" secondItem="BxY-RP-3QZ" secondAttribute="trailing" constant="12" id="GuL-Vg-exT"/>
                             <constraint firstItem="0tV-O1-OUx" firstAttribute="centerY" secondItem="Glz-bq-a99" secondAttribute="centerY" id="Hmu-Rh-FvY"/>
                             <constraint firstItem="BD3-zX-viQ" firstAttribute="leading" secondItem="k8f-Hj-E31" secondAttribute="trailing" constant="20" id="Lk3-cp-sEN"/>
                             <constraint firstItem="eT7-2s-ge7" firstAttribute="top" secondItem="Jsh-M1-DiX" secondAttribute="bottom" constant="36" id="Qlp-iR-CBa"/>
@@ -140,6 +149,7 @@
                             <constraint firstItem="BD3-zX-viQ" firstAttribute="centerY" secondItem="k8f-Hj-E31" secondAttribute="centerY" id="bJZ-ox-qc0"/>
                             <constraint firstItem="0tV-O1-OUx" firstAttribute="leading" secondItem="NXt-Pq-Vib" secondAttribute="trailing" constant="20" id="cLK-27-88P"/>
                             <constraint firstItem="bky-dj-hqM" firstAttribute="leading" secondItem="QWp-p8-NQC" secondAttribute="leading" constant="12" id="diD-Ut-J3H"/>
+                            <constraint firstItem="BxY-RP-3QZ" firstAttribute="leading" secondItem="bky-dj-hqM" secondAttribute="trailing" constant="20" id="eKL-b1-UCj"/>
                             <constraint firstAttribute="trailing" secondItem="tqH-OD-Bkh" secondAttribute="trailing" constant="12" id="gDM-DN-flG"/>
                             <constraint firstItem="eT7-2s-ge7" firstAttribute="leading" secondItem="QWp-p8-NQC" secondAttribute="leading" constant="12" id="gVQ-7K-UtM"/>
                             <constraint firstItem="Glz-bq-a99" firstAttribute="top" secondItem="7El-p8-bV1" secondAttribute="bottom" constant="10" id="hoq-Hg-xdB"/>
@@ -173,6 +183,7 @@
                 <outlet property="genderTitleLabel" destination="Glz-bq-a99" id="qCs-F4-k9J"/>
                 <outlet property="nameLabel" destination="tqH-OD-Bkh" id="2G3-ls-IAB"/>
                 <outlet property="nameTitleLabel" destination="Qw1-5v-Jvc" id="kB8-5i-vF4"/>
+                <outlet property="tagContainerView" destination="BxY-RP-3QZ" id="3gS-t7-7cT"/>
                 <outlet property="tagTitleLabel" destination="bky-dj-hqM" id="r6n-pd-tXu"/>
             </connections>
             <point key="canvasLocation" x="153" y="241.5"/>

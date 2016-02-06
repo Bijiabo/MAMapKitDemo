@@ -27,6 +27,8 @@ class PersonalPageCatArchiveTableViewCell: UITableViewCell {
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var breedLabel: UILabel!
     
+    @IBOutlet weak var tagContainerView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
