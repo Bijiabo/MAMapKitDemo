@@ -12,6 +12,7 @@ class PersonalPageMainPageTitleWithValueTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet weak var separatorLineView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,6 +20,8 @@ class PersonalPageMainPageTitleWithValueTableViewCell: UITableViewCell {
         selectionStyle = .None
         Helper.UI.setLabel(titleLabel, forStyle: Constant.TextStyle.Body.Blue)
         Helper.UI.setLabel(valueLabel, forStyle: Constant.TextStyle.Body.G3)
+        
+        separatorLineView.backgroundColor = Constant.Color.TableViewSeparator
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -36,6 +39,12 @@ class PersonalPageMainPageTitleWithValueTableViewCell: UITableViewCell {
     var value: String = String() {
         didSet {
             valueLabel.text = value
+        }
+    }
+    
+    var displaySepatatorLineView: Bool = true {
+        didSet {
+            separatorLineView.hidden = !displaySepatatorLineView
         }
     }
 

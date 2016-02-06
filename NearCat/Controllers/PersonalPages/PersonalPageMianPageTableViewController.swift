@@ -15,9 +15,23 @@ class PersonalPageMianPageTableViewController: PersonalPageSubPageTableViewContr
         
         tableView.estimatedRowHeight = 48.0
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.separatorStyle = .None
+        tableView.backgroundColor = Constant.Color.TableViewBackground
+        
+        extension_setupFooterView()
     }
 
     // MARK: - Table view data source
+    
+    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 36.0
+    }
+    
+    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = UIColor.clearColor()
+        return view
+    }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
@@ -57,6 +71,8 @@ class PersonalPageMianPageTableViewController: PersonalPageSubPageTableViewContr
                 cell.title = "养猫经验"
                 cell.value = "3年"
             }
+            
+            cell.displaySepatatorLineView = indexPath.row + 1 != self.tableView(tableView, numberOfRowsInSection: indexPath.section)
             
             return cell
         }

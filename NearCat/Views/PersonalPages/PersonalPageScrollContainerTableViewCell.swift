@@ -12,6 +12,19 @@ class PersonalPageScrollContainerTableViewCell: UITableViewCell {
 
     @IBOutlet weak var scrollContainerView: UIScrollView!
     
+    var selectedIndex: Int = 0 {
+        didSet {
+            if selectedIndex > 2 || selectedIndex < 0 {
+                selectedIndex = 0
+                return
+            }
+            
+            UIView.animateKeyframesWithDuration(0.2, delay: 0, options: UIViewKeyframeAnimationOptions.BeginFromCurrentState , animations: { () -> Void in
+                self.scrollContainerView.contentOffset.x = self.bounds.width * CGFloat(self.selectedIndex)
+                }, completion: nil)
+        }
+    }
+    
     weak var personalPageTVCDelegate: PersonalPageTableViewController? {
         didSet {
             mainPageVC?.parentTVCDelegate = personalPageTVCDelegate
@@ -54,6 +67,8 @@ class PersonalPageScrollContainerTableViewCell: UITableViewCell {
         scrollContainerView.pagingEnabled = true
         
         _addSubViewControllers()
+        
+        verticalScrollEnabled = false
     }
     
     var mainPageVC: PersonalPageMianPageTableViewController?
@@ -66,22 +81,15 @@ class PersonalPageScrollContainerTableViewCell: UITableViewCell {
         
         mainPageVC = Helper.Controller.instanceForStoryboardByName("Main", ForIdentifier: "personalPageMianPageTableViewController") as? PersonalPageMianPageTableViewController
         mainPageVC?.view.frame = CGRect(x: 0, y: 0, width: width, height: height)
-//        mainPageVC?.tableView.bounces = false
-        mainPageVC?.view.backgroundColor = Constant.Color.Pink
         scrollContainerView.addSubview(mainPageVC!.view)
         
         fluxPageVC = Helper.Controller.instanceForStoryboardByName("Main", ForIdentifier: "personalPageFluxPageTableViewController") as? PersonalPageFluxPageTableViewController
         fluxPageVC?.view.frame = CGRect(x: UIScreen.mainScreen().bounds.width, y: 0, width: width, height: height)
-//        fluxPageVC?.tableView.bounces = false
-        fluxPageVC?.view.backgroundColor = Constant.Color.Theme
         scrollContainerView.addSubview(fluxPageVC!.view)
         
         catPageVC = Helper.Controller.instanceForStoryboardByName("Main", ForIdentifier: "personalPageCatPageTableViewController") as? PersonalPageCatPageTableViewController
         catPageVC?.view.frame = CGRect(x: UIScreen.mainScreen().bounds.width*2.0, y: 0, width: width, height: height)
-//        catPageVC?.tableView.bounces = false
-        catPageVC?.view.backgroundColor = Constant.Color.Pink
         scrollContainerView.addSubview(catPageVC!.view)
-        
     }
     
 }
@@ -89,7 +97,7 @@ class PersonalPageScrollContainerTableViewCell: UITableViewCell {
 extension PersonalPageScrollContainerTableViewCell: UIScrollViewDelegate {
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        
+        personalPageTVCDelegate?.segmentedControlVC.selectedIndex = Int(scrollView.contentOffset.x/bounds.width + 0.5)
     }
     
 }

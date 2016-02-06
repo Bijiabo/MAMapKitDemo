@@ -60,6 +60,7 @@ class PersonalPageTableViewController: UITableViewController {
     private func _setupSegmentedControlVC() {
         segmentedControlVC = Helper.Controller.PersonalPageSegemntedControl
         segmentedControlVC.titles = ["主页", "动态", "猫咪"]
+        segmentedControlVC.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -257,5 +258,16 @@ class PersonalPageTableViewController: UITableViewController {
         headerCell.followingCount = 0
         headerCell.cats = [JSON(["name":"请登录喵喵喵"])]
         headerCell.avatarImageView.image = nil
+    }
+}
+
+extension PersonalPageTableViewController: SegmentedControlDelegate {
+    
+    func segementedControlSelectedIndexUpdated(index index: Int) {
+
+        if let containerCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)) as? PersonalPageScrollContainerTableViewCell {
+            containerCell.selectedIndex = index
+        }
+    
     }
 }

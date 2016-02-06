@@ -24,6 +24,10 @@
 		65152F3F1C4CCB5700DDB874 /* PersonalPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65152F3E1C4CCB5700DDB874 /* PersonalPageTableViewController.swift */; };
 		65152F411C4D27AD00DDB874 /* FluxItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65152F401C4D27AD00DDB874 /* FluxItem.xib */; };
 		65152F431C4D6EC600DDB874 /* FollowActionControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65152F421C4D6EC600DDB874 /* FollowActionControllerProtocol.swift */; };
+		6523E0A61C65E1C4009023E0 /* PersonalPageFluxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6523E0A51C65E1C4009023E0 /* PersonalPageFluxCell.xib */; };
+		6523E0A81C65E6F2009023E0 /* PersonalPageFluxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6523E0A71C65E6F2009023E0 /* PersonalPageFluxTableViewCell.swift */; };
+		6523E0AA1C65EEB9009023E0 /* PersonalPageCatArchiveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6523E0A91C65EEB9009023E0 /* PersonalPageCatArchiveCell.xib */; };
+		6523E0AC1C65F2DE009023E0 /* PersonalPageCatArchiveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6523E0AB1C65F2DD009023E0 /* PersonalPageCatArchiveTableViewCell.swift */; };
 		652B384F1C50C302007F89E1 /* LoadMoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 652B384E1C50C302007F89E1 /* LoadMoreCell.xib */; };
 		652B38511C50E7FC007F89E1 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652B38501C50E7FC007F89E1 /* NSDateExtension.swift */; };
 		652B38951C5289BC007F89E1 /* MainRootViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652B38941C5289BC007F89E1 /* MainRootViewControllerExtension.swift */; };
@@ -252,6 +256,10 @@
 		65152F3E1C4CCB5700DDB874 /* PersonalPageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPageTableViewController.swift; sourceTree = "<group>"; };
 		65152F401C4D27AD00DDB874 /* FluxItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FluxItem.xib; sourceTree = "<group>"; };
 		65152F421C4D6EC600DDB874 /* FollowActionControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowActionControllerProtocol.swift; sourceTree = "<group>"; };
+		6523E0A51C65E1C4009023E0 /* PersonalPageFluxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalPageFluxCell.xib; sourceTree = "<group>"; };
+		6523E0A71C65E6F2009023E0 /* PersonalPageFluxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPageFluxTableViewCell.swift; sourceTree = "<group>"; };
+		6523E0A91C65EEB9009023E0 /* PersonalPageCatArchiveCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalPageCatArchiveCell.xib; sourceTree = "<group>"; };
+		6523E0AB1C65F2DD009023E0 /* PersonalPageCatArchiveTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPageCatArchiveTableViewCell.swift; sourceTree = "<group>"; };
 		652B384E1C50C302007F89E1 /* LoadMoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadMoreCell.xib; sourceTree = "<group>"; };
 		652B38501C50E7FC007F89E1 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 		652B38911C52414B007F89E1 /* NearCat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = NearCat.entitlements; sourceTree = "<group>"; };
@@ -518,6 +526,8 @@
 				65DAB87D1C5FD40B009C39D7 /* SettingSwitchCell.xib */,
 				65DAB8831C5FDE9F009C39D7 /* SettingNormalCell.xib */,
 				65DAB8871C5FDFFD009C39D7 /* ExplainTableViewCell.xib */,
+				6523E0A51C65E1C4009023E0 /* PersonalPageFluxCell.xib */,
+				6523E0A91C65EEB9009023E0 /* PersonalPageCatArchiveCell.xib */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -532,6 +542,8 @@
 				65CCA7E41C64D0B500EF87D6 /* PersonalPageScrollContainerTableViewCell.swift */,
 				65CCA7EE1C650E6F00EF87D6 /* PersonalPageMainPageIntroTableViewCell.swift */,
 				65CCA7F01C65102F00EF87D6 /* PersonalPageMainPageTitleWithValueTableViewCell.swift */,
+				6523E0A71C65E6F2009023E0 /* PersonalPageFluxTableViewCell.swift */,
+				6523E0AB1C65F2DD009023E0 /* PersonalPageCatArchiveTableViewCell.swift */,
 			);
 			path = PersonalPages;
 			sourceTree = "<group>";
@@ -1187,9 +1199,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6523E0AA1C65EEB9009023E0 /* PersonalPageCatArchiveCell.xib in Resources */,
 				65DAB87E1C5FD40B009C39D7 /* SettingSwitchCell.xib in Resources */,
 				65F4FFF51C5542D500816BEB /* Data in Resources */,
 				65CE59E11C2AC68C008809B0 /* AMap.bundle in Resources */,
+				6523E0A61C65E1C4009023E0 /* PersonalPageFluxCell.xib in Resources */,
 				65152F411C4D27AD00DDB874 /* FluxItem.xib in Resources */,
 				65CE59A21C2A7405008809B0 /* LaunchScreen.storyboard in Resources */,
 				65DAB8761C5DF202009C39D7 /* ArchiveListEditableCell.xib in Resources */,
@@ -1280,8 +1294,10 @@
 				6570C3781C36939200391EB8 /* User.swift in Sources */,
 				652B38C11C53B2C5007F89E1 /* ALImageModel.swift in Sources */,
 				6570C36D1C36936C00391EB8 /* Alamofire-SwiftyJSON.swift in Sources */,
+				6523E0A81C65E6F2009023E0 /* PersonalPageFluxTableViewCell.swift in Sources */,
 				652B38DB1C53DADF007F89E1 /* PreviewPhotoCollectionViewCell.swift in Sources */,
 				65DC58FC1C4916D8009D3FE6 /* PrivateMessages.swift in Sources */,
+				6523E0AC1C65F2DE009023E0 /* PersonalPageCatArchiveTableViewCell.swift in Sources */,
 				654FA8291C495B4E00337FA7 /* InputInterfaceTableViewController.swift in Sources */,
 				652B38BF1C53B2B7007F89E1 /* ALUtilities.swift in Sources */,
 				65BB67921C4254AD00355BBE /* FluxDetailViewController.swift in Sources */,

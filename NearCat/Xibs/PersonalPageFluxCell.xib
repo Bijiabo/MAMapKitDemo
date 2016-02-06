@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10089" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10072.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="personalPageFluxCell" rowHeight="316" id="BlQ-2r-t2X" customClass="PersonalPageFluxTableViewCell" customModule="NearCat" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="531" height="316"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BlQ-2r-t2X" id="fz3-F2-xe1">
+                <rect key="frame" x="0.0" y="0.0" width="531" height="315.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1N-C2-Wbq">
+                        <rect key="frame" x="10" y="12" width="50" height="20.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="BT2-Xj-0US"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.29411764709999999" green="0.42352941179999998" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbW-tf-hDO">
+                        <rect key="frame" x="76" y="12" width="415" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xZE-w7-aYo">
+                        <rect key="frame" x="76" y="41" width="415" height="262.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="x4T-4r-3v1"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdX-cS-l5e">
+                        <rect key="frame" x="30" y="40" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="0JC-UH-xZj"/>
+                            <constraint firstAttribute="height" constant="40" id="9E0-qS-pz0"/>
+                        </constraints>
+                        <state key="normal" image="cell_comment_icon_like_nor"/>
+                        <connections>
+                            <action selector="tapLikeButton:" destination="BlQ-2r-t2X" eventType="touchUpInside" id="K8Y-1p-olX"/>
+                        </connections>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3F2-Ox-W3G" userLabel="Separator Line View">
+                        <rect key="frame" x="36" y="314.5" width="495" height="1"/>
+                        <color key="backgroundColor" red="0.86302219680000003" green="0.86302219680000003" blue="0.86302219680000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="77L-Af-06X"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="tbW-tf-hDO" secondAttribute="trailing" constant="40" id="7Hw-IA-BuV"/>
+                    <constraint firstItem="xZE-w7-aYo" firstAttribute="trailing" secondItem="tbW-tf-hDO" secondAttribute="trailing" id="DGh-4L-YIC"/>
+                    <constraint firstAttribute="bottom" secondItem="3F2-Ox-W3G" secondAttribute="bottom" id="HpW-1y-qGU"/>
+                    <constraint firstItem="3F2-Ox-W3G" firstAttribute="leading" secondItem="fz3-F2-xe1" secondAttribute="leading" constant="36" id="SRy-WV-nX7"/>
+                    <constraint firstItem="tbW-tf-hDO" firstAttribute="leading" secondItem="y1N-C2-Wbq" secondAttribute="trailing" constant="16" id="Tnj-dJ-lsg"/>
+                    <constraint firstAttribute="trailing" secondItem="3F2-Ox-W3G" secondAttribute="trailing" id="UQr-7y-TRZ"/>
+                    <constraint firstItem="fdX-cS-l5e" firstAttribute="top" secondItem="y1N-C2-Wbq" secondAttribute="bottom" constant="8" id="W7b-0Y-lXr"/>
+                    <constraint firstItem="tbW-tf-hDO" firstAttribute="top" secondItem="fz3-F2-xe1" secondAttribute="top" constant="12" id="Z9O-BX-dxO"/>
+                    <constraint firstAttribute="bottom" secondItem="xZE-w7-aYo" secondAttribute="bottom" constant="12" id="a42-9Z-v9U"/>
+                    <constraint firstItem="xZE-w7-aYo" firstAttribute="leading" secondItem="tbW-tf-hDO" secondAttribute="leading" id="ciP-kj-CXN"/>
+                    <constraint firstItem="y1N-C2-Wbq" firstAttribute="top" secondItem="fz3-F2-xe1" secondAttribute="top" constant="12" id="ilB-Qd-YhA"/>
+                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="fdX-cS-l5e" secondAttribute="bottom" priority="750" constant="12" id="ipa-QD-eqf"/>
+                    <constraint firstItem="y1N-C2-Wbq" firstAttribute="leading" secondItem="fz3-F2-xe1" secondAttribute="leading" constant="10" id="kj5-8q-Kea"/>
+                    <constraint firstItem="fdX-cS-l5e" firstAttribute="leading" secondItem="fz3-F2-xe1" secondAttribute="leading" constant="30" id="wKu-Rg-Vzn"/>
+                    <constraint firstItem="xZE-w7-aYo" firstAttribute="top" secondItem="tbW-tf-hDO" secondAttribute="bottom" constant="12" id="xjA-ls-I76"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="contentImageView" destination="xZE-w7-aYo" id="jzw-dj-AcQ"/>
+                <outlet property="contentImageViewHeight" destination="x4T-4r-3v1" id="Jcp-ql-tnT"/>
+                <outlet property="contentLabel" destination="tbW-tf-hDO" id="dtO-Y1-925"/>
+                <outlet property="dateLabel" destination="y1N-C2-Wbq" id="Sgx-ut-aqx"/>
+                <outlet property="likeButton" destination="fdX-cS-l5e" id="l1z-2v-P3l"/>
+                <outlet property="separatorLineView" destination="3F2-Ox-W3G" id="lbk-Mi-ILY"/>
+            </connections>
+            <point key="canvasLocation" x="358.5" y="357"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="cell_comment_icon_like_nor" width="20" height="20"/>
+    </resources>
+</document>
