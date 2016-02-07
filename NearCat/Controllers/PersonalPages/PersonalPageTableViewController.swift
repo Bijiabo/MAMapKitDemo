@@ -110,7 +110,6 @@ class PersonalPageTableViewController: UITableViewController {
         }
     }
 
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             switch indexPath.row {
@@ -229,8 +228,10 @@ class PersonalPageTableViewController: UITableViewController {
         Action.users.informationFor(userId: userId) { (success, data, description) -> Void in
             if success {
                 self._userInformation = data
+                
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self._updateHeaderCellContent()
+                    self._updateNavigationBarRightButtons()
                 })
             }
         }
@@ -259,6 +260,74 @@ class PersonalPageTableViewController: UITableViewController {
         headerCell.followingCount = 0
         headerCell.cats = [JSON(["name":"请登录喵喵喵"])]
         headerCell.avatarImageView.image = nil
+    }
+    
+    // MARK: Navigation Bar buttons
+    
+    private func _updateNavigationBarRightButtons() {
+        
+        if _userInformation["following"].boolValue {
+            
+            let barButtonItems = [
+                UIBarButtonItem(image: UIImage(named: "icon_more_nor"), style: UIBarButtonItemStyle.Done, target: self, action: Selector("tapMoreButton:")),
+                UIBarButtonItem(image: UIImage(named: "nav_icon_chat_nor"), style: UIBarButtonItemStyle.Done, target: self, action: Selector("tapSendMessageButton:"))
+            ]
+            navigationItem.rightBarButtonItems = barButtonItems
+            
+        } else {
+            let buttonView = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 24))
+            buttonView.backgroundColor = UIColor.clearColor()
+            buttonView.layer.borderColor = UIColor(red:1, green:1, blue:1, alpha:0.5).CGColor
+            buttonView.layer.borderWidth = 1.0
+            buttonView.layer.cornerRadius = 12.0
+            buttonView.setTitle("加关注", forState: UIControlState.Normal)
+            buttonView.tintColor = UIColor(red:1, green:1, blue:1, alpha:0.8)
+            buttonView.addTarget(self, action: Selector("tapFollowButton:"), forControlEvents: UIControlEvents.TouchUpInside)
+            Helper.UI.setLabel(buttonView.titleLabel!, forStyle: Constant.TextStyle.Cell.Small.White)
+            let barButton = UIBarButtonItem(customView: buttonView)
+            navigationItem.rightBarButtonItems = [barButton]
+            
+        }
+        
+    }
+    
+    func tapFollowButton(sender: AnyObject) {
+        Action.follow.follow(userId: userId) { (success, description) -> Void in
+            if success {
+                self._userInformation["following"].bool = true
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self._updateNavigationBarRightButtons()
+                })
+            }
+        }
+    }
+
+    func tapSendMessageButton(sender: AnyObject) {
+        
+        let privateMessageChatVC = Helper.Controller.PrivateMessage
+        privateMessageChatVC.toUserId = userId
+        Helper.Controller.pushViewController(privateMessageChatVC)
+        
+    }
+    
+    func tapMoreButton(sender: AnyObject) {
+        let actionSheet = KKActionSheet(title: "取消关注讲无法在关注列表中看到 Ta 的动态", cancelTitle:"取消", cancelAction: { () -> Void in
+        })
+        
+        actionSheet.addButton("取消关注", isDestructive: false) { () -> Void in
+            Action.follow.unfollow(userId: self.userId, completeHandler: { (success, description) -> Void in
+                if success {
+                    self._userInformation["following"].bool = false
+                    
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self._updateNavigationBarRightButtons()
+                    })
+                }
+            })
+        }
+        
+        actionSheet.show()
     }
 }
 

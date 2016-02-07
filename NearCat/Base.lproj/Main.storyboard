@@ -2709,7 +2709,7 @@
         <!--Private Message Chat Container View Controller-->
         <scene sceneID="ool-FP-gHa">
             <objects>
-                <viewController id="Bc2-Yj-Cap" customClass="PrivateMessageChatContainerViewController" customModule="NearCat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PrivateMessageChatContainerViewController" id="Bc2-Yj-Cap" customClass="PrivateMessageChatContainerViewController" customModule="NearCat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="s1w-iV-pFz"/>
                         <viewControllerLayoutGuide type="bottom" id="zyz-s2-Iol"/>

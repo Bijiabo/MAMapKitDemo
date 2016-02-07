@@ -77,6 +77,12 @@ extension Helper {
             }
         }
         
+        class var PrivateMessage: PrivateMessageChatContainerViewController {
+            get {
+                return Helper.Controller.instanceForStoryboardByName("Main", ForIdentifier: "PrivateMessageChatContainerViewController") as! PrivateMessageChatContainerViewController
+            }
+        }
+        
         class var CatDetail: CatArchiveDetailTableViewController {
             get {
                 return Helper.Controller.instanceForStoryboardByName("Main", ForIdentifier: "catArchivePage") as! CatArchiveDetailTableViewController
