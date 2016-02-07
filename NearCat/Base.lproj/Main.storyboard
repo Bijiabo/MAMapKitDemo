@@ -1839,7 +1839,7 @@
                         <viewControllerLayoutGuide type="top" id="dEe-F8-T4S"/>
                         <viewControllerLayoutGuide type="bottom" id="yqX-iE-s0I"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="iV4-7v-zE6">
+                    <view key="view" contentMode="scaleToFill" id="iV4-7v-zE6" customClass="PersonalPageSegmentedControlView" customModule="NearCat" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1856,6 +1856,7 @@
                                     <constraint firstAttribute="width" constant="72" id="EBQ-ui-yhe"/>
                                     <constraint firstAttribute="height" constant="44" id="qdY-8G-OA7"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="动态">
                                     <color key="titleColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -1865,6 +1866,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2y-AL-qyi" userLabel="right Button">
                                 <rect key="frame" x="362" y="278" width="72" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="猫咪">
                                     <color key="titleColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -1874,6 +1876,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hR7-bq-GCY" userLabel="left Button">
                                 <rect key="frame" x="166" y="278" width="72" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="主页">
                                     <color key="titleColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -1916,6 +1919,12 @@
                                 <exclude reference="jut-Hl-2xq"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outlet property="centerButton" destination="RkH-B3-znc" id="qkL-RU-PaH"/>
+                            <outlet property="highlightView" destination="s5O-2f-5Ui" id="LDt-7U-o7G"/>
+                            <outlet property="leftButton" destination="hR7-bq-GCY" id="km0-9E-Mvs"/>
+                            <outlet property="rightButton" destination="c2y-AL-qyi" id="6ai-Ee-Zsy"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="centerButton" destination="RkH-B3-znc" id="jSn-hl-Boy"/>

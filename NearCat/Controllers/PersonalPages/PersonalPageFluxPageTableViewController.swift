@@ -63,9 +63,7 @@ class PersonalPageFluxPageTableViewController: PersonalPageSubPageTableViewContr
         case 0:
             let cell = tableView.dequeueReusableCellWithIdentifier("personalPageFluxCell", forIndexPath: indexPath) as! PersonalPageFluxTableViewCell
             
-            let currentData = _fluxes[indexPath.row]
-            let fluxData = currentData["flux"]
-            let userData = currentData["user"]
+            let fluxData = _fluxes[indexPath.row]
             
             cell.content = fluxData["content"].stringValue
             cell.date = fluxData["created_at"].stringValue
@@ -107,6 +105,16 @@ class PersonalPageFluxPageTableViewController: PersonalPageSubPageTableViewContr
         }
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        guard indexPath.section != 1 else {return}
+        guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? PersonalPageFluxTableViewCell else {return}
+        
+        let vc = Helper.Controller.FluxDetail
+        vc.id = cell.id
+        
+        Helper.Controller.pushViewController(vc)
+    }
+    
     // MARK: - data functions
     
     func refresh(sender: AnyObject) {
@@ -118,12 +126,15 @@ class PersonalPageFluxPageTableViewController: PersonalPageSubPageTableViewContr
             self.refreshControl?.endRefreshing()
             return
         }
-        Action.fluxes.list(page: refresh ? 1 : page) { (success, data, description) -> Void in
+        
+        guard let userId = parentTVCDelegate?.userId else {return}
+        
+        Action.fluxes.listForUser(userId: userId, page: refresh ? 1 : page) { (success, data, description) -> Void in
             self.refreshControl?.endRefreshing()
             if success {
                 self.currentPage = self.page
                 
-                if data.count == 0 {
+                if data["flux"].count == 0 {
                     self.maxPage = self.page
                     self._setLoadingCellStatus(loading: false)
                     return
@@ -133,7 +144,7 @@ class PersonalPageFluxPageTableViewController: PersonalPageSubPageTableViewContr
                     self._fluxes.removeAll(keepCapacity: false)
                 }
                 
-                self._fluxes += data.arrayValue
+                self._fluxes += data["flux"].arrayValue
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.tableView.reloadData()
                 })

@@ -27,10 +27,14 @@ class PersonalPageScrollContainerTableViewCell: UITableViewCell {
     
     weak var personalPageTVCDelegate: PersonalPageTableViewController? {
         didSet {
-            mainPageVC?.parentTVCDelegate = personalPageTVCDelegate
-            fluxPageVC?.parentTVCDelegate = personalPageTVCDelegate
-            catPageVC?.parentTVCDelegate = personalPageTVCDelegate
+            _updateDelegate()
         }
+    }
+    
+    private func _updateDelegate() {
+        mainPageVC?.parentTVCDelegate = personalPageTVCDelegate
+        fluxPageVC?.parentTVCDelegate = personalPageTVCDelegate
+        catPageVC?.parentTVCDelegate = personalPageTVCDelegate
     }
     
     var verticalScrollEnabled: Bool = false {
@@ -59,12 +63,16 @@ class PersonalPageScrollContainerTableViewCell: UITableViewCell {
         selectionStyle = .None
         
         _setupScrollContainerView()
+        _updateDelegate()
     }
 
     private func _setupScrollContainerView() {
+        scrollContainerView.backgroundColor = Constant.Color.TableViewBackground
         scrollContainerView.contentSize = CGSize(width: UIScreen.mainScreen().bounds.width*3.0, height: 0)
         scrollContainerView.delegate = self
         scrollContainerView.pagingEnabled = true
+        scrollContainerView.showsVerticalScrollIndicator = false
+        scrollContainerView.showsHorizontalScrollIndicator = false
         
         _addSubViewControllers()
         

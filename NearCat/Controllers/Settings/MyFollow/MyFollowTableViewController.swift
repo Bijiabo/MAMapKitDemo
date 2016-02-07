@@ -189,7 +189,7 @@ class MyFollowTableViewController: SettingSecondaryTableViewController {
         if segue.identifier == "followToPersonalPage" {
             guard let targetVC = segue.destinationViewController as? PersonalPageTableViewController else {return}
             guard let cell = sender as? FollowingTableViewCell else {return}
-            targetVC.user_id = cell.id
+            targetVC.userId = cell.id
         }
     }
 

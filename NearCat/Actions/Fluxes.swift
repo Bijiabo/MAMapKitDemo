@@ -44,6 +44,13 @@ extension Action {
             }
         }
         
+        public class func listForUser(userId userId: Int, var page: Int = 0, completeHandler: (success: Bool, data: JSON, description: String)->Void) {
+            if page < 0 { page=0 }
+            FNetManager.sharedInstance.GET(path: "users/\(userId).json?page=\(page)&token=\(FHelper.token)") { (request, response, json, error) -> Void in
+                Action.requestCompleteHandler(json: json, error: error, completeHandler: completeHandler)
+            }
+        }
+        
         // destroy
         public class func destroy(id id: String, completeHandler: (success: Bool, description: String)->Void = {(success: Bool, description: String) in }) {
             FNetManager.sharedInstance.DELETE(path: "fluxes/\(id).json", parameters: ["token": FHelper.token]) { (request, response, json, error) -> Void in

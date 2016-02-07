@@ -20,12 +20,16 @@ class PersonalPageFluxTableViewCell: UITableViewCell {
     var id: Int = 0
     var liked: Bool = false {
         didSet {
+            let image: UIImage = liked ? UIImage(named: "cell_comment_icon_like_sel")! : UIImage(named: "cell_comment_icon_like_nor")!
             
+            likeButton.setImage(image, forState: UIControlState.Normal)
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        extension_setDefaultSelectedColor()
         
         Helper.UI.setLabel(dateLabel, forStyle: Constant.TextStyle.Body.Blue)
         Helper.UI.setLabel(contentLabel, forStyle: Constant.TextStyle.Body.G2)

@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class PersonalPageTableViewController: UITableViewController {
     
-    var user_id: Int = 0
+    var userId: Int = 0
     var segmentedControlVC: PersonalPageSegmentedControlViewController!
 
     private var headerBackgroundImageViewOriginalHeight: CGFloat = 0
@@ -90,9 +90,6 @@ class PersonalPageTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if section == 0 {
-            return 4
-        }
         return 1
     }
     
@@ -229,7 +226,7 @@ class PersonalPageTableViewController: UITableViewController {
     // MARK: - data functions
     
     private func _loadUserInformation() {
-        Action.users.informationFor(userId: user_id) { (success, data, description) -> Void in
+        Action.users.informationFor(userId: userId) { (success, data, description) -> Void in
             if success {
                 self._userInformation = data
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -248,6 +245,10 @@ class PersonalPageTableViewController: UITableViewController {
             headerCell.thumbCount = _userInformation["thumb_count"].intValue
             headerCell.followingCount = _userInformation["followers_count"].intValue
             headerCell.cats = _userInformation["cats"].arrayValue
+            if let avatarPath = _userInformation["avatar"].string {
+                Helper.setRemoteImageForImageView(headerCell.avatarImageView, imagePath: avatarPath)
+            }
+            
         }
     }
     

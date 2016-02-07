@@ -21,7 +21,6 @@ class PersonalPageCatArchiveTableViewCell: UITableViewCell {
     @IBOutlet weak var ageTitleLabel: UILabel!
     @IBOutlet weak var tagTitleLabel: UILabel!
     
-    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
@@ -56,9 +55,16 @@ class PersonalPageCatArchiveTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    var catArchiveData: JSON = JSON([]) {
+    var catData: JSON = JSON([]) {
         didSet {
-            nameLabel.text = catArchiveData["name"].stringValue
+            nameLabel.text = catData["name"].stringValue
+            ageLabel.text = "\(catData["age"].intValue)岁"
+            genderLabel.text = catData["gender"].intValue == 1 ? "公猫" : "母猫"
+            breedLabel.text = catData["breed"].stringValue
+            
+            if let avatarPath = catData["avatar"].string {
+                Helper.setRemoteImageForImageView(avatarImageView, imagePath: avatarPath)
+            }
         }
     }
 

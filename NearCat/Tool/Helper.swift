@@ -31,6 +31,9 @@ public class Helper {
     
     public class func setRemoteImageForImageView(imageView: UIImageView, imagePath: String) {
         var _imagePathCharaters = imagePath.characters
+        
+        if _imagePathCharaters.count == 0 {return}
+        
         _imagePathCharaters.removeFirst()
         let avatarURLString = "\(FConfiguration.sharedInstance.host)\(String(_imagePathCharaters))"
         let avatarURL = NSURL(string: avatarURLString)!

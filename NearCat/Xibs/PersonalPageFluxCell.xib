@@ -16,9 +16,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1N-C2-Wbq">
-                        <rect key="frame" x="10" y="12" width="50" height="20.5"/>
+                        <rect key="frame" x="0.0" y="12" width="60" height="20.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="50" id="BT2-Xj-0US"/>
+                            <constraint firstAttribute="width" constant="60" id="BT2-Xj-0US"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.29411764709999999" green="0.42352941179999998" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -68,7 +68,7 @@
                     <constraint firstItem="xZE-w7-aYo" firstAttribute="leading" secondItem="tbW-tf-hDO" secondAttribute="leading" id="ciP-kj-CXN"/>
                     <constraint firstItem="y1N-C2-Wbq" firstAttribute="top" secondItem="fz3-F2-xe1" secondAttribute="top" constant="12" id="ilB-Qd-YhA"/>
                     <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="fdX-cS-l5e" secondAttribute="bottom" priority="750" constant="12" id="ipa-QD-eqf"/>
-                    <constraint firstItem="y1N-C2-Wbq" firstAttribute="leading" secondItem="fz3-F2-xe1" secondAttribute="leading" constant="10" id="kj5-8q-Kea"/>
+                    <constraint firstItem="y1N-C2-Wbq" firstAttribute="leading" secondItem="fz3-F2-xe1" secondAttribute="leading" id="kj5-8q-Kea"/>
                     <constraint firstItem="fdX-cS-l5e" firstAttribute="leading" secondItem="fz3-F2-xe1" secondAttribute="leading" constant="30" id="wKu-Rg-Vzn"/>
                     <constraint firstItem="xZE-w7-aYo" firstAttribute="top" secondItem="tbW-tf-hDO" secondAttribute="bottom" constant="12" id="xjA-ls-I76"/>
                 </constraints>

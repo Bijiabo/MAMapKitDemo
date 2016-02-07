@@ -18,24 +18,21 @@ class PersonalPageSegmentedControlViewController: UIViewController {
     weak var delegate: SegmentedControlDelegate?
     var selectedIndex: Int = 0 {
         didSet {
-            _updateHighlightDisplay()
+            if let view = view as? PersonalPageSegmentedControlView {
+                view.selectedIndex = selectedIndex
+            }
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-    }
-    
-    @IBAction func tapLeftButton(sender: AnyObject) {
+    @IBAction func tapLeftButton(sender: UIButton) {
         _tapButtonForIndex(0)
     }
     
-    @IBAction func tapCenterButton(sender: AnyObject) {
+    @IBAction func tapCenterButton(sender: UIButton) {
         _tapButtonForIndex(1)
     }
     
-    @IBAction func tapRightButton(sender: AnyObject) {
+    @IBAction func tapRightButton(sender: UIButton) {
         _tapButtonForIndex(2)
     }
     
@@ -50,12 +47,61 @@ class PersonalPageSegmentedControlViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+    }
+    
     private func _tapButtonForIndex(index: Int) {
-        selectedIndex = index
+        
+        if let view = view as? PersonalPageSegmentedControlView {
+            view.selectedIndex = index
+        }
+        
         delegate?.segementedControlSelectedIndexUpdated(index: index)
     }
     
-    private func _updateHighlightDisplay() {
+    func setupButtonTitles() {
+        guard titles.count < 3 else {return}
+        
+        leftButton.setTitle(titles[0], forState: UIControlState.Normal)
+        centerButton.setTitle(titles[1], forState: UIControlState.Normal)
+        rightButton.setTitle(titles[2], forState: UIControlState.Normal)
+    }
+    
+}
+
+class PersonalPageSegmentedControlView: UIView {
+    
+    @IBOutlet weak var leftButton: UIButton!
+    @IBOutlet weak var centerButton: UIButton!
+    @IBOutlet weak var rightButton: UIButton!
+    @IBOutlet weak var highlightView: UIView!
+    
+    var selectedIndex: Int = 0 {
+        didSet {
+            updateHighlightDisplay()
+        }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        Helper.UI.setLabel(leftButton.titleLabel!, forStyle: Constant.TextStyle.Cell.Title.Blue)
+        Helper.UI.setLabel(rightButton.titleLabel!, forStyle: Constant.TextStyle.Cell.Title.G2)
+        Helper.UI.setLabel(centerButton.titleLabel!, forStyle: Constant.TextStyle.Cell.Title.G2)
+    }
+    
+    func updateHighlightDisplay() {
+        
+        UIView.animateWithDuration(0.5) { () -> Void in
+            let normalStyle = Constant.TextStyle.Cell.Title.Black
+            let activeStyle = Constant.TextStyle.Cell.Title.Blue
+            Helper.UI.setLabel(self.leftButton.titleLabel!, forStyle: self.selectedIndex == 0 ? activeStyle : normalStyle )
+            Helper.UI.setLabel(self.centerButton.titleLabel!, forStyle: self.selectedIndex == 1 ? activeStyle : normalStyle)
+            Helper.UI.setLabel(self.rightButton.titleLabel!, forStyle: self.selectedIndex == 2 ? activeStyle : normalStyle)
+        }
         
         UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.1, options: UIViewAnimationOptions.AllowUserInteraction, animations: { () -> Void in
             
@@ -68,15 +114,8 @@ class PersonalPageSegmentedControlViewController: UIViewController {
                 self.highlightView.frame.origin.x = self.rightButton.frame.origin.x
             }
             
+            self.setNeedsDisplay()
+            
             }, completion: nil)
     }
-    
-    func setupButtonTitles() {
-        guard titles.count < 3 else {return}
-        
-        leftButton.setTitle(titles[0], forState: UIControlState.Normal)
-        centerButton.setTitle(titles[1], forState: UIControlState.Normal)
-        rightButton.setTitle(titles[2], forState: UIControlState.Normal)
-    }
-    
 }
