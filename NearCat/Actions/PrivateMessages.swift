@@ -48,7 +48,7 @@ extension Action {
                         multipartFormData.appendBodyPart(data: "".dataUsingEncoding(NSUTF8StringEncoding)!, name: "\(containerName)[picture]")
                     }
                     
-                    multipartFormData.appendBodyPart(data: String(toUser).dataUsingEncoding(NSUTF8StringEncoding)!, name: "\(containerName)[toUser_id]")
+                    multipartFormData.appendBodyPart(data: String(toUser).dataUsingEncoding(NSUTF8StringEncoding)!, name: "\(containerName)[to_user_id]")
                     multipartFormData.appendBodyPart(data: content.dataUsingEncoding(NSUTF8StringEncoding)!, name: "\(containerName)[content]")
                     multipartFormData.appendBodyPart(data: FHelper.token.dataUsingEncoding(NSUTF8StringEncoding)!, name: "token")
                 },

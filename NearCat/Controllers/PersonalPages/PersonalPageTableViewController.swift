@@ -275,6 +275,7 @@ class PersonalPageTableViewController: UITableViewController {
             navigationItem.rightBarButtonItems = barButtonItems
             
         } else {
+            /*
             let buttonView = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 24))
             buttonView.backgroundColor = UIColor.clearColor()
             buttonView.layer.borderColor = UIColor(red:1, green:1, blue:1, alpha:0.5).CGColor
@@ -285,7 +286,8 @@ class PersonalPageTableViewController: UITableViewController {
             buttonView.addTarget(self, action: Selector("tapFollowButton:"), forControlEvents: UIControlEvents.TouchUpInside)
             Helper.UI.setLabel(buttonView.titleLabel!, forStyle: Constant.TextStyle.Cell.Small.White)
             let barButton = UIBarButtonItem(customView: buttonView)
-            navigationItem.rightBarButtonItems = [barButton]
+            */
+            navigationItem.rightBarButtonItems = [UIBarButtonItem(image: UIImage(named: "nav_follow_button"), style: UIBarButtonItemStyle.Done, target: self, action: Selector("tapFollowButton:"))]
             
         }
         

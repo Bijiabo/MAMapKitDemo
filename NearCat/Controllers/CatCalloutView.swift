@@ -8,8 +8,9 @@
 
 import Foundation
 import UIKit
+import Spring
 
-class CatCalloutView: UIView {
+class CatCalloutView: SpringView {
     
     var image: UIImage = UIImage() {
         didSet {
@@ -84,6 +85,10 @@ class CatCalloutView: UIView {
         
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        self.animation = "fadeIn"
+        self.curve = "spring"
+        
         backgroundColor = UIColor.clearColor()
         initSubViews()
         

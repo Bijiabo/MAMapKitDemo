@@ -46,6 +46,8 @@ class CatAnnotationView: MAAnnotationView {
             addSubview(calloutView!)
             bringSubviewToFront(calloutView!)
             
+            calloutView?.animate()
+            
         } else {
             calloutView?.removeFromSuperview()
         }

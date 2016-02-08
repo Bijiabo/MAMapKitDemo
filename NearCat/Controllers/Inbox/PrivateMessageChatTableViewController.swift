@@ -26,12 +26,13 @@ class PrivateMessageChatTableViewController: InputInterfaceTableViewController {
         clearsSelectionOnViewWillAppear = false
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.separatorStyle = .None
         
         // setup tableview footer view
         let tableFooterView: UIView = UIView()
         tableFooterView.backgroundColor = UIColor.clearColor()
         tableView.tableFooterView = tableFooterView
-        tableView.backgroundColor = UIColor(red:0.97, green:0.97, blue:0.97, alpha:1)
+        tableView.backgroundColor = UIColor(red:0.96, green:0.96, blue:0.96, alpha:1)
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,16 +54,21 @@ class PrivateMessageChatTableViewController: InputInterfaceTableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("chatCell", forIndexPath: indexPath)
         let currentData = chatData[indexPath.row]
-        let send: Bool = currentData["fromUser_id"].intValue == FHelper.current_user.id
-        cell.textLabel?.text = currentData["content"].stringValue
+        let send: Bool = currentData["from_user_id"].intValue == FHelper.current_user.id
+        let content = currentData["content"].stringValue
+        
         if send {
-            cell.textLabel?.textAlignment = .Right
+            let cell = tableView.dequeueReusableCellWithIdentifier("rightCell", forIndexPath: indexPath) as! RightPostTableViewCell
+            cell.content = content
+            
+            return cell
         } else {
-            cell.textLabel?.textAlignment = .Left
+            let cell = tableView.dequeueReusableCellWithIdentifier("leftCell", forIndexPath: indexPath) as! LeftPostTableViewCell
+            cell.content = content
+            
+            return cell
         }
-        return cell
     }
     
     // MARK: - scroll view delegate

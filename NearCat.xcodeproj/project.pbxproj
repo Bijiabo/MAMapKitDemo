@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		650393621C6798D300122F46 /* Spring.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6503935D1C6798B000122F46 /* Spring.framework */; };
+		650393671C679C7B00122F46 /* Spring.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6503935D1C6798B000122F46 /* Spring.framework */; };
+		650393681C679C7B00122F46 /* Spring.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6503935D1C6798B000122F46 /* Spring.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		650AD0631C53F324000BFA59 /* ShootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652B38DC1C53F26E007F89E1 /* ShootViewController.swift */; };
 		650AD0641C53F333000BFA59 /* Helper.Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6559A0561C4539C20027CECE /* Helper.Controller.swift */; };
 		650AD0661C53F44F000BFA59 /* MediaPickerNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650AD0651C53F44F000BFA59 /* MediaPickerNavigationViewController.swift */; };
@@ -105,6 +108,8 @@
 		6577B2C01C34255C0096F72A /* CatArchiveEditLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6577B2BF1C34255C0096F72A /* CatArchiveEditLocationViewController.swift */; };
 		657C51851C46A53F0047A568 /* Follow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C51841C46A53F0047A568 /* Follow.swift */; };
 		657C51881C46A6150047A568 /* FollowingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C51871C46A6150047A568 /* FollowingTableViewCell.swift */; };
+		659311DC1C68ECA60088D476 /* LeftPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659311DA1C68ECA60088D476 /* LeftPostTableViewCell.swift */; };
+		659311DD1C68ECA60088D476 /* RightPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659311DB1C68ECA60088D476 /* RightPostTableViewCell.swift */; };
 		659606F11C3BC79100EE5A80 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659606F01C3BC79100EE5A80 /* SegmentedControl.swift */; };
 		659A3E441C662BBC00BBC3DD /* YYText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 659A3E431C662BBC00BBC3DD /* YYText.framework */; };
 		659A3E451C662BBC00BBC3DD /* YYText.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 659A3E431C662BBC00BBC3DD /* YYText.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -215,6 +220,48 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		650393581C6798B000122F46 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 650393431C6798A600122F46 /* SpringApp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9641173B1A5BE90A000E3A5A;
+			remoteInfo = SpringApp;
+		};
+		6503935A1C6798B000122F46 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 650393431C6798A600122F46 /* SpringApp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 964117501A5BE90A000E3A5A;
+			remoteInfo = SpringAppTests;
+		};
+		6503935C1C6798B000122F46 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 650393431C6798A600122F46 /* SpringApp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1A4FDA331A6E44780099D309;
+			remoteInfo = Spring;
+		};
+		6503935E1C6798B000122F46 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 650393431C6798A600122F46 /* SpringApp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1A4FDA3D1A6E44780099D309;
+			remoteInfo = SpringTests;
+		};
+		650393651C679A2B00122F46 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 650393431C6798A600122F46 /* SpringApp.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 1A4FDA321A6E44780099D309;
+			remoteInfo = Spring;
+		};
+		650393691C679C7B00122F46 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 650393431C6798A600122F46 /* SpringApp.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 1A4FDA321A6E44780099D309;
+			remoteInfo = Spring;
+		};
 		65CE59A91C2A7405008809B0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 65CE598C1C2A7405008809B0 /* Project object */;
@@ -238,6 +285,7 @@
 				6559A0671C4564C50027CECE /* AlamofireImage.framework in Embed Frameworks */,
 				65E79C321C5A5CCC00AABC7D /* Regex.framework in Embed Frameworks */,
 				65152F281C4BAA1700DDB874 /* NVActivityIndicatorView.framework in Embed Frameworks */,
+				650393681C679C7B00122F46 /* Spring.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,6 +293,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		650393431C6798A600122F46 /* SpringApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SpringApp.xcodeproj; path = Spring/SpringApp.xcodeproj; sourceTree = "<group>"; };
 		650AD0651C53F44F000BFA59 /* MediaPickerNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPickerNavigationViewController.swift; sourceTree = "<group>"; };
 		650AD0671C53F4EB000BFA59 /* ShootNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShootNavigationViewController.swift; sourceTree = "<group>"; };
 		650AD0691C53FC01000BFA59 /* MyArchiveSettingAvatarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyArchiveSettingAvatarTableViewCell.swift; path = Settings/MyArchiveSettingAvatarTableViewCell.swift; sourceTree = "<group>"; };
@@ -340,6 +389,8 @@
 		6577B2BF1C34255C0096F72A /* CatArchiveEditLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveEditLocationViewController.swift; sourceTree = "<group>"; };
 		657C51841C46A53F0047A568 /* Follow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Follow.swift; sourceTree = "<group>"; };
 		657C51871C46A6150047A568 /* FollowingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowingTableViewCell.swift; sourceTree = "<group>"; };
+		659311DA1C68ECA60088D476 /* LeftPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftPostTableViewCell.swift; sourceTree = "<group>"; };
+		659311DB1C68ECA60088D476 /* RightPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightPostTableViewCell.swift; sourceTree = "<group>"; };
 		659606F01C3BC79100EE5A80 /* SegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
 		659A3E431C662BBC00BBC3DD /* YYText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YYText.framework; path = Carthage/Build/iOS/YYText.framework; sourceTree = "<group>"; };
 		65B6A8E21C480D32004F3603 /* Users.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
@@ -461,6 +512,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				650393621C6798D300122F46 /* Spring.framework in Frameworks */,
 				65CE59DF1C2AC66D008809B0 /* MAMapKit.framework in Frameworks */,
 				65CE59DC1C2AC5F0008809B0 /* libc++.tbd in Frameworks */,
 				65D54D191C30340100F7B450 /* SwiftyJSON.framework in Frameworks */,
@@ -478,6 +530,7 @@
 				65CE59C41C2A7528008809B0 /* QuartzCore.framework in Frameworks */,
 				65CE59C21C2A751A008809B0 /* CoreGraphics.framework in Frameworks */,
 				659A3E441C662BBC00BBC3DD /* YYText.framework in Frameworks */,
+				650393671C679C7B00122F46 /* Spring.framework in Frameworks */,
 				65CE59C01C2A7512008809B0 /* Foundation.framework in Frameworks */,
 				65CE59BE1C2A7507008809B0 /* UIKit.framework in Frameworks */,
 				65CE59B91C2A743B008809B0 /* AMapSearchKit.framework in Frameworks */,
@@ -495,6 +548,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		650393521C6798B000122F46 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				650393591C6798B000122F46 /* SpringApp.app */,
+				6503935B1C6798B000122F46 /* SpringAppTests.xctest */,
+				6503935D1C6798B000122F46 /* Spring.framework */,
+				6503935F1C6798B000122F46 /* SpringTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		65152F291C4BABBF00DDB874 /* Public */ = {
 			isa = PBXGroup;
 			children = (
@@ -569,6 +633,7 @@
 		652B38A01C53B1D7007F89E1 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				650393431C6798A600122F46 /* SpringApp.xcodeproj */,
 				65F4FFFE1C568B1100816BEB /* JDStatusBarNotification */,
 				652B38A11C53B22B007F89E1 /* ALCameraViewController */,
 			);
@@ -791,6 +856,15 @@
 			path = Follow;
 			sourceTree = "<group>";
 		};
+		659311D91C68EC840088D476 /* PrivateMessage */ = {
+			isa = PBXGroup;
+			children = (
+				659311DA1C68ECA60088D476 /* LeftPostTableViewCell.swift */,
+				659311DB1C68ECA60088D476 /* RightPostTableViewCell.swift */,
+			);
+			path = PrivateMessage;
+			sourceTree = "<group>";
+		};
 		659606EF1C3BC72E00EE5A80 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -851,6 +925,7 @@
 		65BB67811C41415900355BBE /* Inbox */ = {
 			isa = PBXGroup;
 			children = (
+				659311D91C68EC840088D476 /* PrivateMessage */,
 				65BB67821C41417600355BBE /* NotificationListTableViewCell.swift */,
 				65BB67841C4141B500355BBE /* PrivateMessageListTableViewCell.swift */,
 				65BB67861C4141E500355BBE /* TrendsListTableViewCell.swift */,
@@ -1129,6 +1204,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				650393661C679A2B00122F46 /* PBXTargetDependency */,
+				6503936A1C679C7B00122F46 /* PBXTargetDependency */,
 			);
 			name = NearCat;
 			productName = MAMapKitDemo;
@@ -1192,6 +1269,12 @@
 			mainGroup = 65CE598B1C2A7405008809B0;
 			productRefGroup = 65CE59951C2A7405008809B0 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 650393521C6798B000122F46 /* Products */;
+					ProjectRef = 650393431C6798A600122F46 /* SpringApp.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				65CE59931C2A7405008809B0 /* NearCat */,
@@ -1199,6 +1282,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		650393591C6798B000122F46 /* SpringApp.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = SpringApp.app;
+			remoteRef = 650393581C6798B000122F46 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6503935B1C6798B000122F46 /* SpringAppTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SpringAppTests.xctest;
+			remoteRef = 6503935A1C6798B000122F46 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6503935D1C6798B000122F46 /* Spring.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Spring.framework;
+			remoteRef = 6503935C1C6798B000122F46 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6503935F1C6798B000122F46 /* SpringTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SpringTests.xctest;
+			remoteRef = 6503935E1C6798B000122F46 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		65CE59921C2A7405008809B0 /* Resources */ = {
@@ -1248,7 +1362,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\nEXTRACTED_ARCHS=()\n\nfor ARCH in $ARCHS\ndo\necho \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\n\necho \"Merging extracted architectures: ${ARCHS}\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\n\necho \"Replacing original executable with thinned version\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone";
+			shellScript = "#APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\n#find \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\n#do\n#FRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\n#FRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\n#echo \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\n#EXTRACTED_ARCHS=()\n\n#for ARCH in $ARCHS\n#do\n#echo \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\n#lipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\n#EXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\n#done\n\n#echo \"Merging extracted architectures: ${ARCHS}\"\n#lipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\n#rm \"${EXTRACTED_ARCHS[@]}\"\n\n#echo \"Replacing original executable with thinned version\"\n#rm \"$FRAMEWORK_EXECUTABLE_PATH\"\n#mv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\n#done";
 		};
 		65DAC81E1C2D9B7900335EFC /* Run Script For Build Version */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1292,6 +1406,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				659311DC1C68ECA60088D476 /* LeftPostTableViewCell.swift in Sources */,
+				659311DD1C68ECA60088D476 /* RightPostTableViewCell.swift in Sources */,
 				65152F431C4D6EC600DDB874 /* FollowActionControllerProtocol.swift in Sources */,
 				65F4FFF91C5620A600816BEB /* UIToolBarExtension.swift in Sources */,
 				6570C37C1C3693F300391EB8 /* FConfiguration.swift in Sources */,
@@ -1464,6 +1580,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		650393661C679A2B00122F46 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Spring;
+			targetProxy = 650393651C679A2B00122F46 /* PBXContainerItemProxy */;
+		};
+		6503936A1C679C7B00122F46 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Spring;
+			targetProxy = 650393691C679C7B00122F46 /* PBXContainerItemProxy */;
+		};
 		65CE59AA1C2A7405008809B0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 65CE59931C2A7405008809B0 /* NearCat */;
@@ -1508,7 +1634,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chunbo Hu (XARZYUE5XN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chunbo Hu (XARZYUE5XN)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1552,7 +1679,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chunbo Hu (UJX2Y9KP7Y)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1577,8 +1704,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NearCat/NearCat.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SDK",
@@ -1589,7 +1717,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = cat.near.cn;
 				PRODUCT_NAME = NearCat;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "610b0ba5-e606-4ddd-8c92-9b9f8dd9ec57";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/NearCat/AMapDemoSwift-Bridging-Header.h";
 			};
 			name = Debug;
@@ -1599,8 +1727,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NearCat/NearCat.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Chunbo Hu (UJX2Y9KP7Y)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chunbo Hu (UJX2Y9KP7Y)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SDK",
@@ -1611,7 +1740,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = cat.near.cn;
 				PRODUCT_NAME = NearCat;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "610b0ba5-e606-4ddd-8c92-9b9f8dd9ec57";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/NearCat/AMapDemoSwift-Bridging-Header.h";
 			};
 			name = Release;
