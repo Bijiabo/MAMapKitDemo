@@ -10,7 +10,12 @@ import UIKit
 
 class CatArchiveDetailMapTableViewCell: UITableViewCell, MAMapViewDelegate {
 
-    var delegate: CatArchiveDetailTableViewController?
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet weak var mapContainerView: UIView!
+    @IBOutlet weak var separatorLineView: UIView!
+    
+    weak var delegate: CatArchiveDetailTableViewController?
     var location: CLLocationCoordinate2D? {
         didSet {
             guard let location = location else {return}
@@ -23,11 +28,24 @@ class CatArchiveDetailMapTableViewCell: UITableViewCell, MAMapViewDelegate {
     
     var mapView:MAMapView?
     
+    var title: String = String() {
+        didSet {
+            titleLabel.text = title
+        }
+    }
+    
+    var value: String = String() {
+        didSet {
+            valueLabel.text = value
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
 
         initMapView()
+        extension_setDefaultSelectedColor()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -43,12 +61,11 @@ class CatArchiveDetailMapTableViewCell: UITableViewCell, MAMapViewDelegate {
         MAMapServices.sharedServices().apiKey = APIKey
         AMapSearchServices.sharedServices().apiKey = APIKey
         
-        mapView = MAMapView(frame: contentView.bounds)
+        mapView = MAMapView(frame: mapContainerView.bounds)
         
         mapView!.delegate = self
         
-        contentView.addSubview(mapView!)
-        contentView.sendSubviewToBack(mapView!)
+        mapContainerView.addSubview(mapView!)
         
         let compassX = mapView?.compassOrigin.x
         

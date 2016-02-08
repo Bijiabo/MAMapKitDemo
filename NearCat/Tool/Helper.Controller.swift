@@ -77,6 +77,30 @@ extension Helper {
             }
         }
         
+        class var PrivateMessage: PrivateMessageChatContainerViewController {
+            get {
+                return Helper.Controller.instanceForStoryboardByName("Main", ForIdentifier: "PrivateMessageChatContainerViewController") as! PrivateMessageChatContainerViewController
+            }
+        }
+        
+        class var CatDetail: CatArchiveDetailTableViewController {
+            get {
+                return Helper.Controller.instanceForStoryboardByName("Main", ForIdentifier: "catArchivePage") as! CatArchiveDetailTableViewController
+            }
+        }
+        
+        class var PersonalPageSegemntedControl: PersonalPageSegmentedControlViewController {
+            get {
+                return Helper.Controller.instanceForStoryboardByName("Main", ForIdentifier: "personalPageSegmentedControlVC") as! PersonalPageSegmentedControlViewController
+            }
+        }
+        
+        // display functions
+        
+        class func pushViewController(vc: UIViewController) {
+            NSNotificationCenter.defaultCenter().postNotificationName(Constant.Notification.Helper.Controller.pushViewController, object: vc)
+        }
+        
     }
     
 }

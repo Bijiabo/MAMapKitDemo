@@ -14,6 +14,7 @@ class MainNavigationController: UINavigationController {
         super.viewDidLoad()
 
         _setupViews()
+        _addNotificationObservers()
     }
     
     private func _setupViews() {
@@ -22,6 +23,18 @@ class MainNavigationController: UINavigationController {
         navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName: Constant.Color.Theme ]
         
         setNavigationBarHidden(true, animated: false)
+    }
+    
+    private func _addNotificationObservers() {
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        
+        notificationCenter.addObserver(self, selector: Selector("pushViewController:"), name: Constant.Notification.Helper.Controller.pushViewController, object: nil)
+    }
+    
+    func pushViewController(notification: NSNotification) {
+        if let vc = notification.object as? UIViewController {
+            pushViewController(vc, animated: true)
+        }
     }
 
 }

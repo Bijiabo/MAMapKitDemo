@@ -10,9 +10,12 @@ import Foundation
 
 extension UITableView {
     func scrollToBottom() {
-        let lastSectionIndex = numberOfSections > 0 ? numberOfSections - 1 : 0
+        if numberOfSections == 0 {return}
+        let lastSectionIndex = numberOfSections - 1
+        
         let numberOfRowsForLastSection = numberOfRowsInSection(lastSectionIndex)
-        let lastRowIndex = numberOfRowsForLastSection > 0 ? numberOfRowsForLastSection - 1 : 0
+        if numberOfRowsForLastSection == 0 {return}
+        let lastRowIndex = numberOfRowsForLastSection - 1
         let lastIndexPath = NSIndexPath(forRow: lastRowIndex, inSection: lastSectionIndex)
         scrollToRowAtIndexPath(lastIndexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
     }

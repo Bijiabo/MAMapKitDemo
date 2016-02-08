@@ -31,6 +31,9 @@ public class Helper {
     
     public class func setRemoteImageForImageView(imageView: UIImageView, imagePath: String) {
         var _imagePathCharaters = imagePath.characters
+        
+        if _imagePathCharaters.count == 0 {return}
+        
         _imagePathCharaters.removeFirst()
         let avatarURLString = "\(FConfiguration.sharedInstance.host)\(String(_imagePathCharaters))"
         let avatarURL = NSURL(string: avatarURLString)!
@@ -39,6 +42,17 @@ public class Helper {
             if let image = response.result.value {
                 imageView.image = image
             }
+        }
+    }
+    
+    public class func getRemoteImageForImageViewByPath(imagePath: String, completion: (image: UIImage?)->Void) {
+        var _imagePathCharaters = imagePath.characters
+        _imagePathCharaters.removeFirst()
+        let avatarURLString = "\(FConfiguration.sharedInstance.host)\(String(_imagePathCharaters))"
+        let avatarURL = NSURL(string: avatarURLString)!
+        let avatarURLRequest = NSURLRequest(URL: avatarURL)
+        _imageDownloader.downloadImage(URLRequest: avatarURLRequest) { (response) -> Void in
+            completion(image: response.result.value)
         }
     }
 }

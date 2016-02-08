@@ -13,7 +13,7 @@ class CatArchiveEditLocationViewController: UIViewController ,MAMapViewDelegate,
     var mapView:MAMapView?
     var search:AMapSearchAPI?
     var currentLocation:CLLocation?
-    var delegate: CatArchiveEditTableViewController?
+    weak var delegate: SelectionControllerDelegate?
     var searchResults: [String] = [String]()
     var catId: Int = 0
     @IBOutlet weak var searchBar: UISearchBar!
@@ -100,7 +100,10 @@ class CatArchiveEditLocationViewController: UIViewController ,MAMapViewDelegate,
                 
             })
             
-            delegate?.catLocation = (latitude: currentLocation.latitude, longitude: currentLocation.longitude)
+            delegate?.updateSelectionDataForIdentifier("location", data: [
+                "latitude": currentLocation.latitude,
+                "longitude": currentLocation.longitude
+                ])
         }
         
         

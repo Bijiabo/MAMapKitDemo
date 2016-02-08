@@ -23,6 +23,13 @@ class CatArchiveDetailTableViewController: UITableViewController {
         ],
         [
             [
+                "title": "地区",
+                "value": "",
+                "identifier": "region"
+            ]
+        ],
+        [
+            [
                 "title": "猫咪名字",
                 "value": "",
                 "identifier": "name"
@@ -41,13 +48,6 @@ class CatArchiveDetailTableViewController: UITableViewController {
                 "title": "猫咪品种",
                 "value": "",
                 "identifier": "breed"
-            ]
-        ],
-        [
-            [
-                "title": "地区",
-                "value": "",
-                "identifier": "region"
             ]
         ]
     ]
@@ -94,9 +94,9 @@ class CatArchiveDetailTableViewController: UITableViewController {
         case 0:
             return 100.0
         case 1:
-            return 44.0
+            return 200.0
         case 2:
-            return 300
+            return 48.0
         default:
             return 44.0
         }
@@ -113,7 +113,7 @@ class CatArchiveDetailTableViewController: UITableViewController {
             cell.delegate = self
             
             return cell
-        case 1:
+        case 2:
             let currentListData = listViewData[indexPath.section][indexPath.row]
             let identifier = currentListData["identifier"]!
             let cell = tableView.dequeueReusableCellWithIdentifier("ArchiveListEditableCell", forIndexPath: indexPath) as! ArchiveListEditableTableViewCell
@@ -132,21 +132,26 @@ class CatArchiveDetailTableViewController: UITableViewController {
             cell.headerTitle = currentListData["title"]!
             cell.identifier = currentListData["identifier"]!
             return cell
-        case 2:
-            let cell = tableView.dequeueReusableCellWithIdentifier("map", forIndexPath: indexPath) as! CatArchiveDetailMapTableViewCell
+        case 1:
+            let cell = tableView.dequeueReusableCellWithIdentifier("catArchiveDetailMapCell", forIndexPath: indexPath) as! CatArchiveDetailMapTableViewCell
             cell.delegate = self
             
-            let currentData = catInformation["catData"]
-            cell.catName = currentData["name"].stringValue
-            cell.catAge = currentData["age"].intValue
+            cell.catName = catInformation["name"].stringValue
+            cell.catAge = catInformation["age"].intValue
             if
-            let _ = catInformation["catData"]["latitude"].string,
-            let _ = catInformation["catData"]["longitude"].string,
-            let latitude = Double(catInformation["catData"]["latitude"].stringValue),
-            let longitude = Double(catInformation["catData"]["longitude"].stringValue)
+            let _ = catInformation["latitude"].string,
+            let _ = catInformation["longitude"].string,
+            let latitude = Double(catInformation["latitude"].stringValue),
+            let longitude = Double(catInformation["longitude"].stringValue)
             {
                 cell.location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                cell.value = "点击修改"
+            } else {
+                cell.value = "未设置"
             }
+            
+            cell.title = "位置"
+            
             
             return cell
         default:
@@ -236,6 +241,11 @@ class CatArchiveDetailTableViewController: UITableViewController {
             selectionVC.originViewController = self
             selectionVC.identifier = cell.identifier
             selectionVC.title = cell.headerTitle
+        case "editCatLocation" :
+            guard let locationEditorViewController = segue.destinationViewController as? CatArchiveEditLocationViewController else { return }
+            locationEditorViewController.delegate = self
+            locationEditorViewController.catId = catId
+            
         default:
             break
         }
@@ -315,11 +325,8 @@ extension CatArchiveDetailTableViewController: MediaPickerDelegate {
 extension CatArchiveDetailTableViewController: SelectionControllerDelegate {
     func updateSelectionDataForIdentifier(identifier: String, var data: [String : AnyObject]) {
         switch identifier {
-        case "region":
-            data = [
-                "province": data["catalogue"]!,
-                "city": data["singleItem"]!
-            ]
+        case "location":
+            break
         default:
             if data.count == 1 {
                 let dataFirstItem: (key: String, value: AnyObject) = data.first!

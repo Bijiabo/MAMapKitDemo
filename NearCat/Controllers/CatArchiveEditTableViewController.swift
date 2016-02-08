@@ -233,7 +233,7 @@ class CatArchiveEditTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "editCatLocation" {
             guard let locationEditorViewController = segue.destinationViewController as? CatArchiveEditLocationViewController else { return }
-            locationEditorViewController.delegate = self
+//            locationEditorViewController.delegate = self
             locationEditorViewController.catId = catId
         }
     }

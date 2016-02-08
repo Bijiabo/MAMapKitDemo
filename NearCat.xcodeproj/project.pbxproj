@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		650393621C6798D300122F46 /* Spring.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6503935D1C6798B000122F46 /* Spring.framework */; };
+		650393671C679C7B00122F46 /* Spring.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6503935D1C6798B000122F46 /* Spring.framework */; };
+		650393681C679C7B00122F46 /* Spring.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6503935D1C6798B000122F46 /* Spring.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		650AD0631C53F324000BFA59 /* ShootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652B38DC1C53F26E007F89E1 /* ShootViewController.swift */; };
 		650AD0641C53F333000BFA59 /* Helper.Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6559A0561C4539C20027CECE /* Helper.Controller.swift */; };
 		650AD0661C53F44F000BFA59 /* MediaPickerNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650AD0651C53F44F000BFA59 /* MediaPickerNavigationViewController.swift */; };
@@ -24,6 +27,10 @@
 		65152F3F1C4CCB5700DDB874 /* PersonalPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65152F3E1C4CCB5700DDB874 /* PersonalPageTableViewController.swift */; };
 		65152F411C4D27AD00DDB874 /* FluxItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65152F401C4D27AD00DDB874 /* FluxItem.xib */; };
 		65152F431C4D6EC600DDB874 /* FollowActionControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65152F421C4D6EC600DDB874 /* FollowActionControllerProtocol.swift */; };
+		6523E0A61C65E1C4009023E0 /* PersonalPageFluxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6523E0A51C65E1C4009023E0 /* PersonalPageFluxCell.xib */; };
+		6523E0A81C65E6F2009023E0 /* PersonalPageFluxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6523E0A71C65E6F2009023E0 /* PersonalPageFluxTableViewCell.swift */; };
+		6523E0AA1C65EEB9009023E0 /* PersonalPageCatArchiveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6523E0A91C65EEB9009023E0 /* PersonalPageCatArchiveCell.xib */; };
+		6523E0AC1C65F2DE009023E0 /* PersonalPageCatArchiveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6523E0AB1C65F2DD009023E0 /* PersonalPageCatArchiveTableViewCell.swift */; };
 		652B384F1C50C302007F89E1 /* LoadMoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 652B384E1C50C302007F89E1 /* LoadMoreCell.xib */; };
 		652B38511C50E7FC007F89E1 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652B38501C50E7FC007F89E1 /* NSDateExtension.swift */; };
 		652B38951C5289BC007F89E1 /* MainRootViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652B38941C5289BC007F89E1 /* MainRootViewControllerExtension.swift */; };
@@ -101,7 +108,11 @@
 		6577B2C01C34255C0096F72A /* CatArchiveEditLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6577B2BF1C34255C0096F72A /* CatArchiveEditLocationViewController.swift */; };
 		657C51851C46A53F0047A568 /* Follow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C51841C46A53F0047A568 /* Follow.swift */; };
 		657C51881C46A6150047A568 /* FollowingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C51871C46A6150047A568 /* FollowingTableViewCell.swift */; };
+		659311DC1C68ECA60088D476 /* LeftPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659311DA1C68ECA60088D476 /* LeftPostTableViewCell.swift */; };
+		659311DD1C68ECA60088D476 /* RightPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659311DB1C68ECA60088D476 /* RightPostTableViewCell.swift */; };
 		659606F11C3BC79100EE5A80 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659606F01C3BC79100EE5A80 /* SegmentedControl.swift */; };
+		659A3E441C662BBC00BBC3DD /* YYText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 659A3E431C662BBC00BBC3DD /* YYText.framework */; };
+		659A3E451C662BBC00BBC3DD /* YYText.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 659A3E431C662BBC00BBC3DD /* YYText.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65B6A8E31C480D32004F3603 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6A8E21C480D32004F3603 /* Users.swift */; };
 		65BB67651C41029000355BBE /* TabbarShootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67641C41029000355BBE /* TabbarShootViewController.swift */; };
 		65BB676A1C412F5C00355BBE /* FluxesContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67691C412F5C00355BBE /* FluxesContainerViewController.swift */; };
@@ -124,6 +135,14 @@
 		65BB67921C4254AD00355BBE /* FluxDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67911C4254AD00355BBE /* FluxDetailViewController.swift */; };
 		65BB67941C42A44100355BBE /* Trends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67931C42A44100355BBE /* Trends.swift */; };
 		65BB67961C42D29D00355BBE /* remoteNotificationTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB67951C42D29D00355BBE /* remoteNotificationTokens.swift */; };
+		65CCA7E31C649A6A00EF87D6 /* PersonalPageSegmentedControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CCA7E21C649A6A00EF87D6 /* PersonalPageSegmentedControlViewController.swift */; };
+		65CCA7E51C64D0B500EF87D6 /* PersonalPageScrollContainerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CCA7E41C64D0B500EF87D6 /* PersonalPageScrollContainerTableViewCell.swift */; };
+		65CCA7E71C64D29000EF87D6 /* PersonalPageMianPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CCA7E61C64D29000EF87D6 /* PersonalPageMianPageTableViewController.swift */; };
+		65CCA7E91C64D34700EF87D6 /* PersonalPageFluxPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CCA7E81C64D34700EF87D6 /* PersonalPageFluxPageTableViewController.swift */; };
+		65CCA7EB1C64D3A300EF87D6 /* PersonalPageCatPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CCA7EA1C64D3A300EF87D6 /* PersonalPageCatPageTableViewController.swift */; };
+		65CCA7ED1C64F0FA00EF87D6 /* PersonalPageSubPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CCA7EC1C64F0FA00EF87D6 /* PersonalPageSubPageTableViewController.swift */; };
+		65CCA7EF1C650E6F00EF87D6 /* PersonalPageMainPageIntroTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CCA7EE1C650E6F00EF87D6 /* PersonalPageMainPageIntroTableViewCell.swift */; };
+		65CCA7F11C65102F00EF87D6 /* PersonalPageMainPageTitleWithValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CCA7F01C65102F00EF87D6 /* PersonalPageMainPageTitleWithValueTableViewCell.swift */; };
 		65CE59981C2A7405008809B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59971C2A7405008809B0 /* AppDelegate.swift */; };
 		65CE599A1C2A7405008809B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE59991C2A7405008809B0 /* ViewController.swift */; };
 		65CE599D1C2A7405008809B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65CE599B1C2A7405008809B0 /* Main.storyboard */; };
@@ -201,6 +220,48 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		650393581C6798B000122F46 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 650393431C6798A600122F46 /* SpringApp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9641173B1A5BE90A000E3A5A;
+			remoteInfo = SpringApp;
+		};
+		6503935A1C6798B000122F46 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 650393431C6798A600122F46 /* SpringApp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 964117501A5BE90A000E3A5A;
+			remoteInfo = SpringAppTests;
+		};
+		6503935C1C6798B000122F46 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 650393431C6798A600122F46 /* SpringApp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1A4FDA331A6E44780099D309;
+			remoteInfo = Spring;
+		};
+		6503935E1C6798B000122F46 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 650393431C6798A600122F46 /* SpringApp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1A4FDA3D1A6E44780099D309;
+			remoteInfo = SpringTests;
+		};
+		650393651C679A2B00122F46 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 650393431C6798A600122F46 /* SpringApp.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 1A4FDA321A6E44780099D309;
+			remoteInfo = Spring;
+		};
+		650393691C679C7B00122F46 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 650393431C6798A600122F46 /* SpringApp.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 1A4FDA321A6E44780099D309;
+			remoteInfo = Spring;
+		};
 		65CE59A91C2A7405008809B0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 65CE598C1C2A7405008809B0 /* Project object */;
@@ -219,10 +280,12 @@
 			files = (
 				65D54D1A1C30340100F7B450 /* SwiftyJSON.framework in Embed Frameworks */,
 				6557F7AF1C2C655D00E6780D /* KeychainAccess.framework in Embed Frameworks */,
+				659A3E451C662BBC00BBC3DD /* YYText.framework in Embed Frameworks */,
 				6557F7AD1C2C655D00E6780D /* Alamofire.framework in Embed Frameworks */,
 				6559A0671C4564C50027CECE /* AlamofireImage.framework in Embed Frameworks */,
 				65E79C321C5A5CCC00AABC7D /* Regex.framework in Embed Frameworks */,
 				65152F281C4BAA1700DDB874 /* NVActivityIndicatorView.framework in Embed Frameworks */,
+				650393681C679C7B00122F46 /* Spring.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,6 +293,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		650393431C6798A600122F46 /* SpringApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SpringApp.xcodeproj; path = Spring/SpringApp.xcodeproj; sourceTree = "<group>"; };
 		650AD0651C53F44F000BFA59 /* MediaPickerNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPickerNavigationViewController.swift; sourceTree = "<group>"; };
 		650AD0671C53F4EB000BFA59 /* ShootNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShootNavigationViewController.swift; sourceTree = "<group>"; };
 		650AD0691C53FC01000BFA59 /* MyArchiveSettingAvatarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyArchiveSettingAvatarTableViewCell.swift; path = Settings/MyArchiveSettingAvatarTableViewCell.swift; sourceTree = "<group>"; };
@@ -244,6 +308,10 @@
 		65152F3E1C4CCB5700DDB874 /* PersonalPageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPageTableViewController.swift; sourceTree = "<group>"; };
 		65152F401C4D27AD00DDB874 /* FluxItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FluxItem.xib; sourceTree = "<group>"; };
 		65152F421C4D6EC600DDB874 /* FollowActionControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowActionControllerProtocol.swift; sourceTree = "<group>"; };
+		6523E0A51C65E1C4009023E0 /* PersonalPageFluxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalPageFluxCell.xib; sourceTree = "<group>"; };
+		6523E0A71C65E6F2009023E0 /* PersonalPageFluxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPageFluxTableViewCell.swift; sourceTree = "<group>"; };
+		6523E0A91C65EEB9009023E0 /* PersonalPageCatArchiveCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalPageCatArchiveCell.xib; sourceTree = "<group>"; };
+		6523E0AB1C65F2DD009023E0 /* PersonalPageCatArchiveTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPageCatArchiveTableViewCell.swift; sourceTree = "<group>"; };
 		652B384E1C50C302007F89E1 /* LoadMoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadMoreCell.xib; sourceTree = "<group>"; };
 		652B38501C50E7FC007F89E1 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 		652B38911C52414B007F89E1 /* NearCat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = NearCat.entitlements; sourceTree = "<group>"; };
@@ -321,7 +389,10 @@
 		6577B2BF1C34255C0096F72A /* CatArchiveEditLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatArchiveEditLocationViewController.swift; sourceTree = "<group>"; };
 		657C51841C46A53F0047A568 /* Follow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Follow.swift; sourceTree = "<group>"; };
 		657C51871C46A6150047A568 /* FollowingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowingTableViewCell.swift; sourceTree = "<group>"; };
+		659311DA1C68ECA60088D476 /* LeftPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftPostTableViewCell.swift; sourceTree = "<group>"; };
+		659311DB1C68ECA60088D476 /* RightPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightPostTableViewCell.swift; sourceTree = "<group>"; };
 		659606F01C3BC79100EE5A80 /* SegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
+		659A3E431C662BBC00BBC3DD /* YYText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YYText.framework; path = Carthage/Build/iOS/YYText.framework; sourceTree = "<group>"; };
 		65B6A8E21C480D32004F3603 /* Users.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		65BB67641C41029000355BBE /* TabbarShootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarShootViewController.swift; sourceTree = "<group>"; };
 		65BB67691C412F5C00355BBE /* FluxesContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FluxesContainerViewController.swift; sourceTree = "<group>"; };
@@ -344,6 +415,14 @@
 		65BB67911C4254AD00355BBE /* FluxDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FluxDetailViewController.swift; sourceTree = "<group>"; };
 		65BB67931C42A44100355BBE /* Trends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trends.swift; sourceTree = "<group>"; };
 		65BB67951C42D29D00355BBE /* remoteNotificationTokens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = remoteNotificationTokens.swift; sourceTree = "<group>"; };
+		65CCA7E21C649A6A00EF87D6 /* PersonalPageSegmentedControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonalPageSegmentedControlViewController.swift; path = ../../Views/PersonalPages/PersonalPageSegmentedControlViewController.swift; sourceTree = "<group>"; };
+		65CCA7E41C64D0B500EF87D6 /* PersonalPageScrollContainerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPageScrollContainerTableViewCell.swift; sourceTree = "<group>"; };
+		65CCA7E61C64D29000EF87D6 /* PersonalPageMianPageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPageMianPageTableViewController.swift; sourceTree = "<group>"; };
+		65CCA7E81C64D34700EF87D6 /* PersonalPageFluxPageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPageFluxPageTableViewController.swift; sourceTree = "<group>"; };
+		65CCA7EA1C64D3A300EF87D6 /* PersonalPageCatPageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPageCatPageTableViewController.swift; sourceTree = "<group>"; };
+		65CCA7EC1C64F0FA00EF87D6 /* PersonalPageSubPageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPageSubPageTableViewController.swift; sourceTree = "<group>"; };
+		65CCA7EE1C650E6F00EF87D6 /* PersonalPageMainPageIntroTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPageMainPageIntroTableViewCell.swift; sourceTree = "<group>"; };
+		65CCA7F01C65102F00EF87D6 /* PersonalPageMainPageTitleWithValueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPageMainPageTitleWithValueTableViewCell.swift; sourceTree = "<group>"; };
 		65CE59941C2A7405008809B0 /* NearCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CE59971C2A7405008809B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = NearCat/AppDelegate.swift; sourceTree = "<group>"; };
 		65CE59991C2A7405008809B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
@@ -433,6 +512,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				650393621C6798D300122F46 /* Spring.framework in Frameworks */,
 				65CE59DF1C2AC66D008809B0 /* MAMapKit.framework in Frameworks */,
 				65CE59DC1C2AC5F0008809B0 /* libc++.tbd in Frameworks */,
 				65D54D191C30340100F7B450 /* SwiftyJSON.framework in Frameworks */,
@@ -449,6 +529,8 @@
 				6557F7AE1C2C655D00E6780D /* KeychainAccess.framework in Frameworks */,
 				65CE59C41C2A7528008809B0 /* QuartzCore.framework in Frameworks */,
 				65CE59C21C2A751A008809B0 /* CoreGraphics.framework in Frameworks */,
+				659A3E441C662BBC00BBC3DD /* YYText.framework in Frameworks */,
+				650393671C679C7B00122F46 /* Spring.framework in Frameworks */,
 				65CE59C01C2A7512008809B0 /* Foundation.framework in Frameworks */,
 				65CE59BE1C2A7507008809B0 /* UIKit.framework in Frameworks */,
 				65CE59B91C2A743B008809B0 /* AMapSearchKit.framework in Frameworks */,
@@ -466,6 +548,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		650393521C6798B000122F46 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				650393591C6798B000122F46 /* SpringApp.app */,
+				6503935B1C6798B000122F46 /* SpringAppTests.xctest */,
+				6503935D1C6798B000122F46 /* Spring.framework */,
+				6503935F1C6798B000122F46 /* SpringTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		65152F291C4BABBF00DDB874 /* Public */ = {
 			isa = PBXGroup;
 			children = (
@@ -502,6 +595,8 @@
 				65DAB87D1C5FD40B009C39D7 /* SettingSwitchCell.xib */,
 				65DAB8831C5FDE9F009C39D7 /* SettingNormalCell.xib */,
 				65DAB8871C5FDFFD009C39D7 /* ExplainTableViewCell.xib */,
+				6523E0A51C65E1C4009023E0 /* PersonalPageFluxCell.xib */,
+				6523E0A91C65EEB9009023E0 /* PersonalPageCatArchiveCell.xib */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -513,6 +608,11 @@
 				65152F391C4C96C300DDB874 /* PersonalPageIntroTableViewCell.swift */,
 				65152F3B1C4C96D100DDB874 /* PersonalPageLocationTableViewCell.swift */,
 				65625BED1C43F0A90068176F /* PersonalSettingHeaderTableViewCell.swift */,
+				65CCA7E41C64D0B500EF87D6 /* PersonalPageScrollContainerTableViewCell.swift */,
+				65CCA7EE1C650E6F00EF87D6 /* PersonalPageMainPageIntroTableViewCell.swift */,
+				65CCA7F01C65102F00EF87D6 /* PersonalPageMainPageTitleWithValueTableViewCell.swift */,
+				6523E0A71C65E6F2009023E0 /* PersonalPageFluxTableViewCell.swift */,
+				6523E0AB1C65F2DD009023E0 /* PersonalPageCatArchiveTableViewCell.swift */,
 			);
 			path = PersonalPages;
 			sourceTree = "<group>";
@@ -520,7 +620,12 @@
 		65152F3D1C4CCAA800DDB874 /* PersonalPages */ = {
 			isa = PBXGroup;
 			children = (
+				65CCA7E21C649A6A00EF87D6 /* PersonalPageSegmentedControlViewController.swift */,
 				65152F3E1C4CCB5700DDB874 /* PersonalPageTableViewController.swift */,
+				65CCA7E61C64D29000EF87D6 /* PersonalPageMianPageTableViewController.swift */,
+				65CCA7E81C64D34700EF87D6 /* PersonalPageFluxPageTableViewController.swift */,
+				65CCA7EA1C64D3A300EF87D6 /* PersonalPageCatPageTableViewController.swift */,
+				65CCA7EC1C64F0FA00EF87D6 /* PersonalPageSubPageTableViewController.swift */,
 			);
 			path = PersonalPages;
 			sourceTree = "<group>";
@@ -528,6 +633,7 @@
 		652B38A01C53B1D7007F89E1 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				650393431C6798A600122F46 /* SpringApp.xcodeproj */,
 				65F4FFFE1C568B1100816BEB /* JDStatusBarNotification */,
 				652B38A11C53B22B007F89E1 /* ALCameraViewController */,
 			);
@@ -654,6 +760,7 @@
 		6557F7BE1C2D211D00E6780D /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
+				659A3E431C662BBC00BBC3DD /* YYText.framework */,
 				65E79C301C5A5CCC00AABC7D /* Regex.framework */,
 				65152F261C4BAA1700DDB874 /* NVActivityIndicatorView.framework */,
 				6559A0651C4564C50027CECE /* AlamofireImage.framework */,
@@ -749,6 +856,15 @@
 			path = Follow;
 			sourceTree = "<group>";
 		};
+		659311D91C68EC840088D476 /* PrivateMessage */ = {
+			isa = PBXGroup;
+			children = (
+				659311DA1C68ECA60088D476 /* LeftPostTableViewCell.swift */,
+				659311DB1C68ECA60088D476 /* RightPostTableViewCell.swift */,
+			);
+			path = PrivateMessage;
+			sourceTree = "<group>";
+		};
 		659606EF1C3BC72E00EE5A80 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -809,6 +925,7 @@
 		65BB67811C41415900355BBE /* Inbox */ = {
 			isa = PBXGroup;
 			children = (
+				659311D91C68EC840088D476 /* PrivateMessage */,
 				65BB67821C41417600355BBE /* NotificationListTableViewCell.swift */,
 				65BB67841C4141B500355BBE /* PrivateMessageListTableViewCell.swift */,
 				65BB67861C4141E500355BBE /* TrendsListTableViewCell.swift */,
@@ -1087,6 +1204,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				650393661C679A2B00122F46 /* PBXTargetDependency */,
+				6503936A1C679C7B00122F46 /* PBXTargetDependency */,
 			);
 			name = NearCat;
 			productName = MAMapKitDemo;
@@ -1150,6 +1269,12 @@
 			mainGroup = 65CE598B1C2A7405008809B0;
 			productRefGroup = 65CE59951C2A7405008809B0 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 650393521C6798B000122F46 /* Products */;
+					ProjectRef = 650393431C6798A600122F46 /* SpringApp.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				65CE59931C2A7405008809B0 /* NearCat */,
@@ -1158,14 +1283,47 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		650393591C6798B000122F46 /* SpringApp.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = SpringApp.app;
+			remoteRef = 650393581C6798B000122F46 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6503935B1C6798B000122F46 /* SpringAppTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SpringAppTests.xctest;
+			remoteRef = 6503935A1C6798B000122F46 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6503935D1C6798B000122F46 /* Spring.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Spring.framework;
+			remoteRef = 6503935C1C6798B000122F46 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6503935F1C6798B000122F46 /* SpringTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SpringTests.xctest;
+			remoteRef = 6503935E1C6798B000122F46 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		65CE59921C2A7405008809B0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6523E0AA1C65EEB9009023E0 /* PersonalPageCatArchiveCell.xib in Resources */,
 				65DAB87E1C5FD40B009C39D7 /* SettingSwitchCell.xib in Resources */,
 				65F4FFF51C5542D500816BEB /* Data in Resources */,
 				65CE59E11C2AC68C008809B0 /* AMap.bundle in Resources */,
+				6523E0A61C65E1C4009023E0 /* PersonalPageFluxCell.xib in Resources */,
 				65152F411C4D27AD00DDB874 /* FluxItem.xib in Resources */,
 				65CE59A21C2A7405008809B0 /* LaunchScreen.storyboard in Resources */,
 				65DAB8761C5DF202009C39D7 /* ArchiveListEditableCell.xib in Resources */,
@@ -1204,7 +1362,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\nEXTRACTED_ARCHS=()\n\nfor ARCH in $ARCHS\ndo\necho \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\n\necho \"Merging extracted architectures: ${ARCHS}\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\n\necho \"Replacing original executable with thinned version\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone";
+			shellScript = "#APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\n#find \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\n#do\n#FRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\n#FRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\n#echo \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\n#EXTRACTED_ARCHS=()\n\n#for ARCH in $ARCHS\n#do\n#echo \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\n#lipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\n#EXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\n#done\n\n#echo \"Merging extracted architectures: ${ARCHS}\"\n#lipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\n#rm \"${EXTRACTED_ARCHS[@]}\"\n\n#echo \"Replacing original executable with thinned version\"\n#rm \"$FRAMEWORK_EXECUTABLE_PATH\"\n#mv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\n#done";
 		};
 		65DAC81E1C2D9B7900335EFC /* Run Script For Build Version */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1232,6 +1390,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/NVActivityIndicatorView.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Regex.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/YYText.framework",
 			);
 			name = "Run Script For Carthage";
 			outputPaths = (
@@ -1247,6 +1406,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				659311DC1C68ECA60088D476 /* LeftPostTableViewCell.swift in Sources */,
+				659311DD1C68ECA60088D476 /* RightPostTableViewCell.swift in Sources */,
 				65152F431C4D6EC600DDB874 /* FollowActionControllerProtocol.swift in Sources */,
 				65F4FFF91C5620A600816BEB /* UIToolBarExtension.swift in Sources */,
 				6570C37C1C3693F300391EB8 /* FConfiguration.swift in Sources */,
@@ -1256,13 +1417,16 @@
 				6570C3781C36939200391EB8 /* User.swift in Sources */,
 				652B38C11C53B2C5007F89E1 /* ALImageModel.swift in Sources */,
 				6570C36D1C36936C00391EB8 /* Alamofire-SwiftyJSON.swift in Sources */,
+				6523E0A81C65E6F2009023E0 /* PersonalPageFluxTableViewCell.swift in Sources */,
 				652B38DB1C53DADF007F89E1 /* PreviewPhotoCollectionViewCell.swift in Sources */,
 				65DC58FC1C4916D8009D3FE6 /* PrivateMessages.swift in Sources */,
+				6523E0AC1C65F2DE009023E0 /* PersonalPageCatArchiveTableViewCell.swift in Sources */,
 				654FA8291C495B4E00337FA7 /* InputInterfaceTableViewController.swift in Sources */,
 				652B38BF1C53B2B7007F89E1 /* ALUtilities.swift in Sources */,
 				65BB67921C4254AD00355BBE /* FluxDetailViewController.swift in Sources */,
 				65F400051C568B2400816BEB /* JDStatusBarNotification.m in Sources */,
 				6570C36E1C36936C00391EB8 /* DeviceGuru.swift in Sources */,
+				65CCA7ED1C64F0FA00EF87D6 /* PersonalPageSubPageTableViewController.swift in Sources */,
 				65DAB88A1C5FE0D6009C39D7 /* ExplainTableViewCell.swift in Sources */,
 				652B38D81C53DADF007F89E1 /* AlbumListTableViewCell.swift in Sources */,
 				65DAB87A1C5F694C009C39D7 /* CatArchiveListTableViewCell.swift in Sources */,
@@ -1293,6 +1457,7 @@
 				65BB678A1C4145A500355BBE /* Cats.swift in Sources */,
 				65BB678C1C4145B100355BBE /* Fluxes.swift in Sources */,
 				657C51881C46A6150047A568 /* FollowingTableViewCell.swift in Sources */,
+				65CCA7E31C649A6A00EF87D6 /* PersonalPageSegmentedControlViewController.swift in Sources */,
 				652B38BC1C53B2B7007F89E1 /* ALCameraShot.swift in Sources */,
 				6570C3711C36936D00391EB8 /* FHelper.swift in Sources */,
 				650AD0681C53F4EB000BFA59 /* ShootNavigationViewController.swift in Sources */,
@@ -1342,6 +1507,7 @@
 				654162B71C4F7F2500BD035E /* UITableViewCellExtension.swift in Sources */,
 				65D54D281C31ACB000F7B450 /* Location.swift in Sources */,
 				65BB677E1C4140C200355BBE /* TrendsListTableViewController.swift in Sources */,
+				65CCA7F11C65102F00EF87D6 /* PersonalPageMainPageTitleWithValueTableViewCell.swift in Sources */,
 				65CE59E81C2AF9E4008809B0 /* SearchResultTableViewCell.swift in Sources */,
 				65152F3C1C4C96D100DDB874 /* PersonalPageLocationTableViewCell.swift in Sources */,
 				652B38AA1C53B27E007F89E1 /* ALCameraView.swift in Sources */,
@@ -1374,6 +1540,7 @@
 				6557F7C61C2D2DDA00E6780D /* CatArchiveDetailTableViewController.swift in Sources */,
 				65BB678E1C422CF600355BBE /* FluxDetailTableViewCell.swift in Sources */,
 				6559A05C1C4544E10027CECE /* SettingSecondaryTableViewController.swift in Sources */,
+				65CCA7EF1C650E6F00EF87D6 /* PersonalPageMainPageIntroTableViewCell.swift in Sources */,
 				65BB67851C4141B500355BBE /* PrivateMessageListTableViewCell.swift in Sources */,
 				6559A0551C45398C0027CECE /* Helper.swift in Sources */,
 				65D54D261C3141F800F7B450 /* Delay.swift in Sources */,
@@ -1386,12 +1553,16 @@
 				65BB67871C4141E500355BBE /* TrendsListTableViewCell.swift in Sources */,
 				65BB67731C41371200355BBE /* FluxesListTableViewCell.swift in Sources */,
 				65BB67831C41417600355BBE /* NotificationListTableViewCell.swift in Sources */,
+				65CCA7E71C64D29000EF87D6 /* PersonalPageMianPageTableViewController.swift in Sources */,
 				65BB677C1C4140B100355BBE /* NotificationListTableViewController.swift in Sources */,
+				65CCA7EB1C64D3A300EF87D6 /* PersonalPageCatPageTableViewController.swift in Sources */,
+				65CCA7E51C64D0B500EF87D6 /* PersonalPageScrollContainerTableViewCell.swift in Sources */,
 				652B38BE1C53B2B7007F89E1 /* ALImageFetchingInteractor.swift in Sources */,
 				65DAB8741C5CFCC2009C39D7 /* Helper.Alert.swift in Sources */,
 				652B38D21C53DABF007F89E1 /* BrowsePhotoDelegate.swift in Sources */,
 				65152F3A1C4C96C300DDB874 /* PersonalPageIntroTableViewCell.swift in Sources */,
 				652B38DA1C53DADF007F89E1 /* PreviewHeaderCollectionReusableView.swift in Sources */,
+				65CCA7E91C64D34700EF87D6 /* PersonalPageFluxPageTableViewController.swift in Sources */,
 				652B389D1C537578007F89E1 /* Helper.UI.swift in Sources */,
 				65DAB88E1C5FE4A8009C39D7 /* NotificationSettingsTableViewController.swift in Sources */,
 				6570C37E1C36C83400391EB8 /* CatCalloutView.swift in Sources */,
@@ -1409,6 +1580,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		650393661C679A2B00122F46 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Spring;
+			targetProxy = 650393651C679A2B00122F46 /* PBXContainerItemProxy */;
+		};
+		6503936A1C679C7B00122F46 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Spring;
+			targetProxy = 650393691C679C7B00122F46 /* PBXContainerItemProxy */;
+		};
 		65CE59AA1C2A7405008809B0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 65CE59931C2A7405008809B0 /* NearCat */;
@@ -1453,7 +1634,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chunbo Hu (XARZYUE5XN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chunbo Hu (XARZYUE5XN)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1497,7 +1679,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chunbo Hu (UJX2Y9KP7Y)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1522,8 +1704,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NearCat/NearCat.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SDK",
@@ -1534,7 +1717,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = cat.near.cn;
 				PRODUCT_NAME = NearCat;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "610b0ba5-e606-4ddd-8c92-9b9f8dd9ec57";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/NearCat/AMapDemoSwift-Bridging-Header.h";
 			};
 			name = Debug;
@@ -1544,8 +1727,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NearCat/NearCat.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Chunbo Hu (UJX2Y9KP7Y)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chunbo Hu (UJX2Y9KP7Y)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SDK",
@@ -1556,7 +1740,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = cat.near.cn;
 				PRODUCT_NAME = NearCat;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "610b0ba5-e606-4ddd-8c92-9b9f8dd9ec57";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/NearCat/AMapDemoSwift-Bridging-Header.h";
 			};
 			name = Release;

@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol SelectionControllerDelegate {
+protocol SelectionControllerDelegate: class {
     func updateSelectionDataForIdentifier(identifier: String, data: [String: AnyObject])
 }

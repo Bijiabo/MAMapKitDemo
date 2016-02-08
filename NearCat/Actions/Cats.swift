@@ -99,6 +99,16 @@ extension Action {
             }
         }
         
+        public class func byUserId (userId: Int, completeHandler: (success: Bool, data: JSON, description: String)->Void) {
+            let path = "users/\(userId)/cats.json"
+            
+            FNetManager.sharedInstance.GET(path: path) { (request, response, json, error) -> Void in
+                Action.requestCompleteHandler(json: json, error: error, completeHandler: { (success, data, description) -> Void in
+                    completeHandler(success: success, data: data, description: description)
+                })
+            }
+        }
+
         // set location for one cat
         public class func setLocation(latitude: Double, longitude: Double, catId: Int, completeHandler: (success: Bool, description: String)->Void) {
             let path = "cats/\(catId)/setLocation.json"
@@ -119,7 +129,7 @@ extension Action {
         
         // get nearby cats
         public class func nearby(latitude: Double, longitude: Double, completeHandler: (success: Bool, data: JSON, description: String)->Void) {
-            let path = "nearbyCat?latitude=\(latitude)&longitude=\(longitude)"
+            let path = "nearbyCat.json?latitude=\(latitude)&longitude=\(longitude)"
             
             FNetManager.sharedInstance.GET(path: path) { (request, response, json, error) -> Void in
                 Action.requestCompleteHandler(json: json, error: error, completeHandler: { (success, data, description) -> Void in

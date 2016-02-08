@@ -43,7 +43,7 @@ class FeedbackViewController: UIViewController {
     }
     
     @IBAction func tapSendButton(sender: AnyObject) {
-        let content = feedbackTextView.text
+        // let content = feedbackTextView.text
         
         // TODO: send feedback content
     }
