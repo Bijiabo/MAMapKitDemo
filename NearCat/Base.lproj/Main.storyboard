@@ -328,9 +328,9 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cbR-9R-2Fb">
                                             <rect key="frame" x="12" y="0.0" width="576" height="269.5"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jaX-Oh-UgI">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jaX-Oh-UgI">
                                                     <rect key="frame" x="0.0" y="0.0" width="576" height="150"/>
-                                                    <color key="backgroundColor" red="0.29411764709999999" green="0.42352941179999998" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.86302219680000003" green="0.86302219680000003" blue="0.86302219680000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="150" id="uPV-fE-VTH"/>
                                                     </constraints>
@@ -2900,6 +2900,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t8d-r7-fl3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-460" y="-368"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="jfE-Ri-ybJ">
+            <objects>
+                <viewController storyboardIdentifier="webVC" id="g74-LI-CX9" customClass="WebBrowserViewController" customModule="NearCat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cI9-jO-Avd"/>
+                        <viewControllerLayoutGuide type="bottom" id="krX-fJ-A9x"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sO4-dh-FXz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cWQ-Pq-Ndj">
+                                <rect key="frame" x="0.0" y="64" width="600" height="2"/>
+                            </progressView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="voT-dF-TAS">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="5Ja-1Q-mLv"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Title" id="fbd-tb-PDK">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="2AE-5Y-bTF">
+                                            <connections>
+                                                <action selector="tapDoneButton:" destination="g74-LI-CX9" id="QOV-37-Fnx"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0X1-i4-QRC" userLabel="status bar bg">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="6Sh-1a-Blf"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0X1-i4-QRC" firstAttribute="top" secondItem="sO4-dh-FXz" secondAttribute="top" id="6Fq-6X-L0a"/>
+                            <constraint firstAttribute="trailing" secondItem="cWQ-Pq-Ndj" secondAttribute="trailing" id="6ny-XR-bkv"/>
+                            <constraint firstItem="cWQ-Pq-Ndj" firstAttribute="top" secondItem="cI9-jO-Avd" secondAttribute="bottom" id="AMN-kM-tRM"/>
+                            <constraint firstAttribute="trailing" secondItem="0X1-i4-QRC" secondAttribute="trailing" id="MeD-QN-gqz"/>
+                            <constraint firstItem="voT-dF-TAS" firstAttribute="leading" secondItem="sO4-dh-FXz" secondAttribute="leading" id="NoL-7O-gEs"/>
+                            <constraint firstItem="voT-dF-TAS" firstAttribute="top" secondItem="cI9-jO-Avd" secondAttribute="bottom" id="YmV-ac-6dO"/>
+                            <constraint firstItem="cWQ-Pq-Ndj" firstAttribute="leading" secondItem="sO4-dh-FXz" secondAttribute="leading" id="g99-D8-hYR"/>
+                            <constraint firstItem="0X1-i4-QRC" firstAttribute="leading" secondItem="sO4-dh-FXz" secondAttribute="leading" id="oxJ-wN-5OC"/>
+                            <constraint firstAttribute="trailing" secondItem="voT-dF-TAS" secondAttribute="trailing" id="qdC-MM-OWo"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="ZXW-eW-Pi9"/>
+                    <connections>
+                        <outlet property="_navigationItem" destination="fbd-tb-PDK" id="3Yg-9f-6VC"/>
+                        <outlet property="progressView" destination="cWQ-Pq-Ndj" id="88V-fK-vyH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H2G-K0-VEP" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-505" y="7070"/>
         </scene>
     </scenes>
     <resources>
