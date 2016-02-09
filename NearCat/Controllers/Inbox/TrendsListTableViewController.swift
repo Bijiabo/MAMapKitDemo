@@ -134,7 +134,7 @@ class TrendsListTableViewController: UITableViewController {
     }
     
     private func _setLoadingCellStatus(loading loading: Bool) {
-        guard let loadingCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)) as? LoadingTableViewCell else {return}
+        guard let loadingCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: _trends.count, inSection: 0)) as? LoadingTableViewCell else {return}
         loadingCell.loading = loading
     }
 
