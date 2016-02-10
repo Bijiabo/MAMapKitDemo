@@ -3,3 +3,4 @@ github "Alamofire/AlamofireImage" ~> 2.0
 github "ninjaprox/NVActivityIndicatorView"
 github "sharplet/Regex" ~> 0.3
 github "ibireme/YYText"
+github "mac-cain13/R.swift.Library"

@@ -27,6 +27,8 @@
 		65152F3F1C4CCB5700DDB874 /* PersonalPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65152F3E1C4CCB5700DDB874 /* PersonalPageTableViewController.swift */; };
 		65152F411C4D27AD00DDB874 /* FluxItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65152F401C4D27AD00DDB874 /* FluxItem.xib */; };
 		65152F431C4D6EC600DDB874 /* FollowActionControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65152F421C4D6EC600DDB874 /* FollowActionControllerProtocol.swift */; };
+		651CFE251C6B0B4700C7C1B2 /* Rswift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651CFE241C6B0B4700C7C1B2 /* Rswift.framework */; };
+		651CFE261C6B0B4700C7C1B2 /* Rswift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 651CFE241C6B0B4700C7C1B2 /* Rswift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6523E0A61C65E1C4009023E0 /* PersonalPageFluxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6523E0A51C65E1C4009023E0 /* PersonalPageFluxCell.xib */; };
 		6523E0A81C65E6F2009023E0 /* PersonalPageFluxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6523E0A71C65E6F2009023E0 /* PersonalPageFluxTableViewCell.swift */; };
 		6523E0AA1C65EEB9009023E0 /* PersonalPageCatArchiveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6523E0A91C65EEB9009023E0 /* PersonalPageCatArchiveCell.xib */; };
@@ -218,6 +220,7 @@
 		65F4FFF71C560CC600816BEB /* UINavigationBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4FFF61C560CC600816BEB /* UINavigationBarExtension.swift */; };
 		65F4FFF91C5620A600816BEB /* UIToolBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4FFF81C5620A600816BEB /* UIToolBarExtension.swift */; };
 		65F4FFFB1C56223F00816BEB /* MediaPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4FFFA1C56223F00816BEB /* MediaPickerDelegate.swift */; };
+		65FA01B41C6B3D530028C05F /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FA01B31C6B3D530028C05F /* R.generated.swift */; };
 		65FFF2881C5BB26F00C29903 /* Helper.MultiThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FFF2871C5BB26F00C29903 /* Helper.MultiThread.swift */; };
 /* End PBXBuildFile section */
 
@@ -281,6 +284,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				65D54D1A1C30340100F7B450 /* SwiftyJSON.framework in Embed Frameworks */,
+				651CFE261C6B0B4700C7C1B2 /* Rswift.framework in Embed Frameworks */,
 				6557F7AF1C2C655D00E6780D /* KeychainAccess.framework in Embed Frameworks */,
 				659A3E451C662BBC00BBC3DD /* YYText.framework in Embed Frameworks */,
 				6557F7AD1C2C655D00E6780D /* Alamofire.framework in Embed Frameworks */,
@@ -310,6 +314,7 @@
 		65152F3E1C4CCB5700DDB874 /* PersonalPageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPageTableViewController.swift; sourceTree = "<group>"; };
 		65152F401C4D27AD00DDB874 /* FluxItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FluxItem.xib; sourceTree = "<group>"; };
 		65152F421C4D6EC600DDB874 /* FollowActionControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowActionControllerProtocol.swift; sourceTree = "<group>"; };
+		651CFE241C6B0B4700C7C1B2 /* Rswift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rswift.framework; path = Carthage/Build/iOS/Rswift.framework; sourceTree = "<group>"; };
 		6523E0A51C65E1C4009023E0 /* PersonalPageFluxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalPageFluxCell.xib; sourceTree = "<group>"; };
 		6523E0A71C65E6F2009023E0 /* PersonalPageFluxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPageFluxTableViewCell.swift; sourceTree = "<group>"; };
 		6523E0A91C65EEB9009023E0 /* PersonalPageCatArchiveCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalPageCatArchiveCell.xib; sourceTree = "<group>"; };
@@ -508,6 +513,7 @@
 		65F4FFF81C5620A600816BEB /* UIToolBarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIToolBarExtension.swift; sourceTree = "<group>"; };
 		65F4FFFA1C56223F00816BEB /* MediaPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPickerDelegate.swift; sourceTree = "<group>"; };
 		65F4FFFF1C568B2400816BEB /* JDStatusBarNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDStatusBarNotification.h; sourceTree = "<group>"; };
+		65FA01B31C6B3D530028C05F /* R.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		65FFF2871C5BB26F00C29903 /* Helper.MultiThread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.MultiThread.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -535,6 +541,7 @@
 				65CE59C21C2A751A008809B0 /* CoreGraphics.framework in Frameworks */,
 				659A3E441C662BBC00BBC3DD /* YYText.framework in Frameworks */,
 				650393671C679C7B00122F46 /* Spring.framework in Frameworks */,
+				651CFE251C6B0B4700C7C1B2 /* Rswift.framework in Frameworks */,
 				65CE59C01C2A7512008809B0 /* Foundation.framework in Frameworks */,
 				65CE59BE1C2A7507008809B0 /* UIKit.framework in Frameworks */,
 				65CE59B91C2A743B008809B0 /* AMapSearchKit.framework in Frameworks */,
@@ -765,6 +772,7 @@
 		6557F7BE1C2D211D00E6780D /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
+				651CFE241C6B0B4700C7C1B2 /* Rswift.framework */,
 				659A3E431C662BBC00BBC3DD /* YYText.framework */,
 				65E79C301C5A5CCC00AABC7D /* Regex.framework */,
 				65152F261C4BAA1700DDB874 /* NVActivityIndicatorView.framework */,
@@ -956,6 +964,7 @@
 		65CE598B1C2A7405008809B0 = {
 			isa = PBXGroup;
 			children = (
+				65FA01B31C6B3D530028C05F /* R.generated.swift */,
 				65F4FFF41C5542D500816BEB /* Data */,
 				6570C3761C36937700391EB8 /* FServiceManager */,
 				65CE59D31C2A758C008809B0 /* Framworks */,
@@ -1199,6 +1208,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65CE59B11C2A7405008809B0 /* Build configuration list for PBXNativeTarget "NearCat" */;
 			buildPhases = (
+				651CFE211C6B081C00C7C1B2 /* Run Script For R.swift */,
 				65CE59901C2A7405008809B0 /* Sources */,
 				65CE59911C2A7405008809B0 /* Frameworks */,
 				65CE59921C2A7405008809B0 /* Resources */,
@@ -1356,6 +1366,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		651CFE211C6B081C00C7C1B2 /* Run Script For R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script For R.swift";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$SRCROOT/rswift\" \"$SRCROOT\"";
+		};
 		65D94AC11C36759700BB4ECF /* Run Script fix 90087 error */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1397,6 +1421,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/NVActivityIndicatorView.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Regex.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/YYText.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Rswift.framework",
 			);
 			name = "Run Script For Carthage";
 			outputPaths = (
@@ -1412,6 +1437,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65FA01B41C6B3D530028C05F /* R.generated.swift in Sources */,
 				659311DC1C68ECA60088D476 /* LeftPostTableViewCell.swift in Sources */,
 				659311DD1C68ECA60088D476 /* RightPostTableViewCell.swift in Sources */,
 				65152F431C4D6EC600DDB874 /* FollowActionControllerProtocol.swift in Sources */,
