@@ -8,3 +8,5 @@ NearCat.xcodeproj/project.xcworkspace/xcuserdata/huchunbo.xcuserdatad/UserInterf
 NearCat.xcodeproj/xcuserdata/huchunbo.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
 
 NearCat.xcodeproj/project.xcworkspace/xcuserdata/huchunbo.xcuserdatad/UserInterfaceState.xcuserstate
+
+*.generated.swift

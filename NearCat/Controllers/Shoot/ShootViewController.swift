@@ -307,6 +307,24 @@ class ShootViewController: UIViewController {
         setDeviceFocusPoint(pointInPercentage: focusPoint, pointInCGFlot: locationInView)
     }
     
+    @IBAction func tapGalleryButton(sender: AnyObject) {
+        if Helper.Ability.Photo.hasAuthorization {
+            let mediaPickerNavigationVC = Helper.Controller.MediaPicker
+            mediaPickerNavigationVC.mediaPickerDelegate = self
+            self.presentViewController(mediaPickerNavigationVC, animated: true, completion: nil)
+        } else {
+            Helper.Ability.Photo.requestAuthorization(block: { (success) -> Void in
+                if success {
+                    let mediaPickerNavigationVC = Helper.Controller.MediaPicker
+                    self.presentViewController(mediaPickerNavigationVC, animated: true, completion: nil)
+                } else {
+                    Helper.Alert.show(title: "未开启照片访问权限", message: "请打开［设置］-> ［猫邻］-> ［照片］选择开启", animated: true)
+                }
+            })
+        }
+    }
+    
+    
     private func setDeviceFocusPoint(pointInPercentage pointInPercentage: CGPoint, pointInCGFlot: CGPoint) {
         guard let currentDevice = currentCameraDevice else {return}
         
@@ -493,7 +511,6 @@ class ShootViewController: UIViewController {
     }
     
     func savePhotoToAlbumComplete(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: AnyObject) {
-        print("savePhotoToAlbumComplete")
         galleryButton.setBackgroundImage(image, forState: UIControlState.Normal)
     }
     
@@ -621,6 +638,23 @@ extension ShootViewController {
         default:
             break
         }
+    }
+    
+}
+
+// MARK: - extension: MediaPickerDelegate
+
+extension ShootViewController: MediaPickerDelegate {
+    
+    func newImage(image: UIImage, fromMediaPicker: UIViewController) {
+        self.selectedImages.append(image)
+        
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("PostEditorTableViewController") as! PostEditorTableViewController
+        if !selectedImages.isEmpty {
+            vc.previewImage = selectedImages.last!
+            vc.selectedImages = selectedImages
+        }
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }
