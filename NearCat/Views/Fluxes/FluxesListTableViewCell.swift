@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class FluxesListTableViewCell: UITableViewCell {
 
@@ -149,6 +150,22 @@ class FluxesListTableViewCell: UITableViewCell {
     
     @IBAction func tapFollowButton(sender: AnyObject) {
         followActionController?.follow?(userId: userId)
+    }
+    
+    var catsData: JSON = JSON([]) {
+        didSet {
+            if catsData.count == 0 {catNameAndAgeLabel.text = ""}
+            
+            if catsData.count == 1 {
+                catNameAndAgeLabel.text = "\(catsData[0]["name"].stringValue) \(catsData[0]["age"].intValue)岁"
+            } else if catsData.count > 1 {
+                var names: String = ""
+                for (_, value) in catsData {
+                    names += "\(value["name"].stringValue) "
+                }
+                catNameAndAgeLabel.text = names
+            }
+        }
     }
 
 }
