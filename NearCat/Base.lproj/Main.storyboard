@@ -2390,6 +2390,9 @@
                                                     <constraint firstAttribute="width" constant="50" id="42f-jP-gHV"/>
                                                     <constraint firstAttribute="height" constant="50" id="UNo-6V-Jwt"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="tapGalleryButton:" destination="ujH-LK-ZYm" eventType="touchUpInside" id="VmJ-QI-IVU"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -2550,7 +2553,7 @@
         <!--Title-->
         <scene sceneID="TH1-Pg-ktC">
             <objects>
-                <tableViewController id="FnC-FH-gsN" customClass="PostEditorTableViewController" customModule="NearCat" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PostEditorTableViewController" id="FnC-FH-gsN" customClass="PostEditorTableViewController" customModule="NearCat" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="164" sectionHeaderHeight="28" sectionFooterHeight="28" id="56d-wD-Y0I">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

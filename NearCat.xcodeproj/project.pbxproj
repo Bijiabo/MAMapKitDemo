@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		650393621C6798D300122F46 /* Spring.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6503935D1C6798B000122F46 /* Spring.framework */; };
-		650393671C679C7B00122F46 /* Spring.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6503935D1C6798B000122F46 /* Spring.framework */; };
 		650393681C679C7B00122F46 /* Spring.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6503935D1C6798B000122F46 /* Spring.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		650AD0631C53F324000BFA59 /* ShootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652B38DC1C53F26E007F89E1 /* ShootViewController.swift */; };
 		650AD0641C53F333000BFA59 /* Helper.Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6559A0561C4539C20027CECE /* Helper.Controller.swift */; };
@@ -220,7 +219,6 @@
 		65F4FFF71C560CC600816BEB /* UINavigationBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4FFF61C560CC600816BEB /* UINavigationBarExtension.swift */; };
 		65F4FFF91C5620A600816BEB /* UIToolBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4FFF81C5620A600816BEB /* UIToolBarExtension.swift */; };
 		65F4FFFB1C56223F00816BEB /* MediaPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4FFFA1C56223F00816BEB /* MediaPickerDelegate.swift */; };
-		65FA01B41C6B3D530028C05F /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FA01B31C6B3D530028C05F /* R.generated.swift */; };
 		65FFF2881C5BB26F00C29903 /* Helper.MultiThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FFF2871C5BB26F00C29903 /* Helper.MultiThread.swift */; };
 /* End PBXBuildFile section */
 
@@ -513,7 +511,6 @@
 		65F4FFF81C5620A600816BEB /* UIToolBarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIToolBarExtension.swift; sourceTree = "<group>"; };
 		65F4FFFA1C56223F00816BEB /* MediaPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPickerDelegate.swift; sourceTree = "<group>"; };
 		65F4FFFF1C568B2400816BEB /* JDStatusBarNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDStatusBarNotification.h; sourceTree = "<group>"; };
-		65FA01B31C6B3D530028C05F /* R.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		65FFF2871C5BB26F00C29903 /* Helper.MultiThread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.MultiThread.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -540,7 +537,6 @@
 				65CE59C41C2A7528008809B0 /* QuartzCore.framework in Frameworks */,
 				65CE59C21C2A751A008809B0 /* CoreGraphics.framework in Frameworks */,
 				659A3E441C662BBC00BBC3DD /* YYText.framework in Frameworks */,
-				650393671C679C7B00122F46 /* Spring.framework in Frameworks */,
 				651CFE251C6B0B4700C7C1B2 /* Rswift.framework in Frameworks */,
 				65CE59C01C2A7512008809B0 /* Foundation.framework in Frameworks */,
 				65CE59BE1C2A7507008809B0 /* UIKit.framework in Frameworks */,
@@ -964,7 +960,6 @@
 		65CE598B1C2A7405008809B0 = {
 			isa = PBXGroup;
 			children = (
-				65FA01B31C6B3D530028C05F /* R.generated.swift */,
 				65F4FFF41C5542D500816BEB /* Data */,
 				6570C3761C36937700391EB8 /* FServiceManager */,
 				65CE59D31C2A758C008809B0 /* Framworks */,
@@ -1253,7 +1248,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Bijiabo;
 				TargetAttributes = {
 					65CE59931C2A7405008809B0 = {
@@ -1437,7 +1432,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65FA01B41C6B3D530028C05F /* R.generated.swift in Sources */,
 				659311DC1C68ECA60088D476 /* LeftPostTableViewCell.swift in Sources */,
 				659311DD1C68ECA60088D476 /* RightPostTableViewCell.swift in Sources */,
 				65152F431C4D6EC600DDB874 /* FollowActionControllerProtocol.swift in Sources */,
