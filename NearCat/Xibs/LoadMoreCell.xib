@@ -19,7 +19,7 @@
                         <rect key="frame" x="240" y="10" width="120" height="56.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="56.5" id="NFz-Of-BeX"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="NFz-Of-BeX"/>
                             <constraint firstAttribute="width" constant="120" id="jIL-r4-CQW"/>
                         </constraints>
                     </view>

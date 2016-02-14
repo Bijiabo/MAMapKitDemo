@@ -498,11 +498,18 @@ class ShootViewController: UIViewController {
             let cropVC = ALConfirmViewController(image: image, allowsCropping: true)
             cropVC.onComplete = { (image) in
                 guard let image = image else {
-                    self.navigationController?.popToViewController(self, animated: true)
+                    self.navigationController?.popToViewController(self, animated: false)
                     return
                 }
                 
                 self.delegate?.newImage(image, fromMediaPicker: self)
+                
+                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("PostEditorTableViewController") as! PostEditorTableViewController
+                if !self.selectedImages.isEmpty {
+                    vc.previewImage = self.selectedImages.last!
+                    vc.selectedImages = self.selectedImages
+                }
+                self.navigationController?.pushViewController(vc, animated: true)
             }
             
             self.navigationController?.pushViewController(cropVC, animated: true)

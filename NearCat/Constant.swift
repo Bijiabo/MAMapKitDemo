@@ -184,7 +184,7 @@ public struct Constant {
             static let Primary = TextStyle.instance(font: Constant.Font.Medium.Size_17, color: Constant.Color.Theme)
             static let Button = TextStyle.instance(font: Constant.Font.Medium.Size_17, color: Constant.Color.Theme)
             static let Title = TextStyle.instance(font: Constant.Font.Medium.Size_17, color: Constant.Color.TextBlack)
-            static let Description = TextStyle.instance(font: Constant.Font.Regular.Size_12, color: Constant.Color.Theme)
+            static let Description = TextStyle.instance(font: Constant.Font.Regular.Size_12, color: Constant.Color.TextBlack)
         }
         
         // segmented control

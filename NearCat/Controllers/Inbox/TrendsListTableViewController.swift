@@ -24,7 +24,6 @@ class TrendsListTableViewController: UITableViewController {
         extension_registerLoadingCellNib()
         extension_setupRefreshControl()
         _initViews()
-        _loadData()
     }
     
     private func _initViews() {
@@ -41,6 +40,16 @@ class TrendsListTableViewController: UITableViewController {
         tableView.tableFooterView = tableFooterView
         
         tableView.backgroundColor = Constant.Color.TableViewBackground
+    }
+    
+    private var _hasBeenAppeared: Bool = false
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !_hasBeenAppeared {
+            _loadData()
+            _hasBeenAppeared = true
+        }
     }
 
     override func didReceiveMemoryWarning() {

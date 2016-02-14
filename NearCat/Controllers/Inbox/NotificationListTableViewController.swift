@@ -25,7 +25,17 @@ class NotificationListTableViewController: UITableViewController {
         extension_setupFooterView()
         
         _initViews()
-        _loadData(refresh: true)
+        
+    }
+    
+    private var _hasBeenAppeared: Bool = false
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !_hasBeenAppeared {
+            _loadData(refresh: true)
+            _hasBeenAppeared = true
+        }
     }
     
     private func _initViews() {

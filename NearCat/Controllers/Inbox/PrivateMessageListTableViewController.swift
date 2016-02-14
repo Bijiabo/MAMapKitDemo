@@ -17,8 +17,6 @@ class PrivateMessageListTableViewController: UITableViewController {
         super.viewDidLoad()
 
         _initViews()
-        
-        _loadData()
     }
     
     private func _initViews() {
@@ -30,6 +28,16 @@ class PrivateMessageListTableViewController: UITableViewController {
         tableFooterView.backgroundColor = UIColor.clearColor()
         tableView.tableFooterView = tableFooterView
         tableView.backgroundColor = Constant.Color.TableViewBackground
+    }
+    
+    private var _hasBeenAppeared: Bool = false
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !_hasBeenAppeared {
+            _loadData()
+            _hasBeenAppeared = true
+        }
     }
 
     override func didReceiveMemoryWarning() {

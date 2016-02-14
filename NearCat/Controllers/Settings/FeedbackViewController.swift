@@ -63,7 +63,7 @@ extension FeedbackViewController: UITextViewDelegate {
     func textViewDidEndEditing(textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = feedbackTextViewPlaceholder
-            Helper.UI.setTextView(feedbackTextView, forStyle: Constant.TextStyle.Placeholder.G4)
+            Helper.UI.setTextView(textView, forStyle: Constant.TextStyle.Placeholder.G4)
         }
     }
     

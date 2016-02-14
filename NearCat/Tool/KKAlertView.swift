@@ -9,13 +9,13 @@
 private let ScreenWidth = UIScreen.mainScreen().bounds.size.width
 private let ScreenHeight = UIScreen.mainScreen().bounds.size.height
 
-private let AlertWidth: CGFloat = ScreenWidth-60
+private let AlertWidth: CGFloat = ScreenWidth - 104.0
 private let AlertSpace: CGFloat = 20
 
-private let ButtonBackgroundColor = UIColor.redColor()
-private let ButtonTitleColor = UIColor.whiteColor()
+private let ButtonBackgroundColor = UIColor.whiteColor()
+private let ButtonTitleColor = Constant.Color.Theme
 private let ButtonTitleFont = UIFont.systemFontOfSize(16)
-private let ButtonHeight: CGFloat = 40.0
+private let ButtonHeight: CGFloat = 44.0
 private let ButtonBorderWidth:CGFloat = 0.5
 private let ButtonCorner = true
 
@@ -66,6 +66,7 @@ class KKAlertView: UIView {
                     self.addSubview(messageLabel!)
                 }
                 messageLabel!.text = newValue
+                Helper.UI.setLabelLineSpacing(label: messageLabel!, lineSpacing: Constant.TextStyle.Alert.Description.font.pointSize*0.2)
                 let newSize = newValue?.sizeWithFont(MessageFont, maxWidth: messageLabel!.frame.size.width)
                 let messageFrame = messageLabel!.frame
                 messageLabel!.frame = CGRectMake(messageFrame.origin.x, messageFrame.origin.y, messageFrame.size.width, newSize!.height)
@@ -96,8 +97,9 @@ class KKAlertView: UIView {
         let titleFrame = CGRectMake(AlertSpace, AlertSpace, AlertWidth-AlertSpace*2, AlertSpace)
         titleLabel = UILabel(frame: titleFrame)
         titleLabel?.textAlignment = NSTextAlignment.Center
-        titleLabel?.font = TitleFont
-        titleLabel?.textColor = TitleColor
+        if let titleLabel = titleLabel {
+            Helper.UI.setLabel(titleLabel, forStyle: Constant.TextStyle.Alert.Primary)
+        }
         return titleLabel!
     }
     
@@ -111,7 +113,9 @@ class KKAlertView: UIView {
         messageLabel?.numberOfLines = 0
         messageLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
         messageLabel?.textAlignment = NSTextAlignment.Center
-        messageLabel?.textColor = MessageColor
+        if let messageLabel = messageLabel {
+            Helper.UI.setLabel(messageLabel, forStyle: Constant.TextStyle.Alert.Description)
+        }
         return messageLabel!
     }
     
@@ -135,12 +139,13 @@ class KKAlertView: UIView {
             button.setTitleColor(ButtonTitleColor, forState: UIControlState.Normal)
             button.backgroundColor = ButtonBackgroundColor
         }else{
-            button.setTitleColor(ButtonBackgroundColor, forState: UIControlState.Normal)
-            button.backgroundColor = ButtonTitleColor
+            button.setTitleColor(ButtonTitleColor, forState: UIControlState.Normal)
+            button.backgroundColor = ButtonBackgroundColor
         }
         button.setTitle(title, forState: UIControlState.Normal)
         button.titleLabel?.font = ButtonTitleFont
         button.addTarget(self, action: Selector("buttonClicked:"), forControlEvents: UIControlEvents.TouchUpInside)
+        button.addTarget(self, action: Selector("buttonTouchOn:"), forControlEvents: UIControlEvents.TouchDown)
         button.tag = buttons.count
         buttons.append(button)
         actions.append(action)
@@ -148,8 +153,14 @@ class KKAlertView: UIView {
         refreshButtonFrame()
     }
     
+    func buttonTouchOn(sender: AnyObject) {
+        let button = sender as! UIButton
+        button.backgroundColor = Constant.Color.TableViewBackground
+    }
+    
     func buttonClicked(sender: AnyObject) {
         let button = sender as! UIButton
+        button.backgroundColor = ButtonBackgroundColor
         let action = actions[button.tag]
         action()
         dismiss()
@@ -194,19 +205,19 @@ class KKAlertView: UIView {
         
         if count == 1 {
             let firstButton =  buttons[0] as UIButton
-            let buttonFrame = CGRectMake(AlertSpace, heightContent+AlertSpace, self.frame.size.width-AlertSpace*2, ButtonHeight)
+            let buttonFrame = CGRectMake(0, heightContent+AlertSpace, self.frame.size.width, ButtonHeight)
             firstButton.frame = buttonFrame
-            firstButton.layer.masksToBounds = true
-            firstButton.layer.cornerRadius = ButtonHeight/2
-            firstButton.layer.borderColor = ButtonBackgroundColor.CGColor
-            firstButton.layer.borderWidth = 0.5
+            firstButton.layer.masksToBounds = false
+            firstButton.layer.shadowColor = Constant.Color.G5.CGColor
+            firstButton.layer.shadowOffset = CGSize(width: 0, height: -1.0)
+            firstButton.layer.shadowRadius = 0
+            firstButton.layer.shadowOpacity = 1
         } else if count == 2 {
             let buttonWidth = (self.frame.size.width-AlertSpace*3)/2
             let firstButton =  buttons[0] as UIButton
             var buttonFrame = CGRectMake(AlertSpace, heightContent+AlertSpace, buttonWidth, ButtonHeight)
             firstButton.frame = buttonFrame
             firstButton.layer.masksToBounds = ButtonCorner
-            firstButton.layer.cornerRadius = ButtonHeight/2
             firstButton.layer.borderColor = ButtonBackgroundColor.CGColor
             firstButton.layer.borderWidth = ButtonBorderWidth
             
@@ -214,7 +225,6 @@ class KKAlertView: UIView {
             buttonFrame = CGRectMake(AlertSpace*2+buttonWidth, heightContent+AlertSpace, buttonWidth, ButtonHeight)
             secondButton.frame = buttonFrame
             secondButton.layer.masksToBounds = ButtonCorner
-            secondButton.layer.cornerRadius = ButtonHeight/2
             secondButton.layer.borderColor = ButtonBackgroundColor.CGColor
             secondButton.layer.borderWidth = ButtonBorderWidth
         } else {
@@ -227,7 +237,6 @@ class KKAlertView: UIView {
                     ButtonHeight)
                 button.frame = frame
                 button.layer.masksToBounds = ButtonCorner
-                button.layer.cornerRadius = ButtonHeight/2
                 button.layer.borderColor = ButtonBackgroundColor.CGColor
                 button.layer.borderWidth = ButtonBorderWidth
                 heightContent = heightContent+ButtonHeight
@@ -237,13 +246,13 @@ class KKAlertView: UIView {
     
     func resetFrame(count: Int) {
         if count == 1 || count == 2 {
-            self.frame = CGRectMake(0.0, 0.0, self.frame.size.width, heightContent + ButtonHeight+AlertSpace*2)
+            self.frame = CGRectMake(0.0, 0.0, self.frame.size.width, heightContent + ButtonHeight+AlertSpace)
             self.center = CGPointMake(windowFrame.size.width/2, windowFrame.size.height/2)
         } else {
             self.frame = CGRectMake(0.0, 0.0, self.frame.size.width, heightContent + CGFloat(count) * ButtonHeight+AlertSpace*CGFloat(count+1))
             self.center = CGPointMake(windowFrame.size.width/2, windowFrame.size.height/2)
         }
-        self.setAllCorner(5)
+        self.setAllCorner(6)
     }
 }
 

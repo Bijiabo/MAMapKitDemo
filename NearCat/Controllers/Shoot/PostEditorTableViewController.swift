@@ -15,11 +15,17 @@ class PostEditorTableViewController: UITableViewController {
     var location: CLLocation = CLLocation()
     var previewImage: UIImage = UIImage() {
         didSet {
-            guard let editCell = tableView.cellForRowAtIndexPath( NSIndexPath(forRow: 0, inSection: 0) ) as? PostEditorTableViewCell else {return}
+            guard let editCell = editCell else {return}
             editCell.previewImageView.image = previewImage
         }
     }
     var selectedImages: [UIImage] = [UIImage]()
+    
+    var editCell: PostEditorTableViewCell? {
+        get {
+            return tableView.cellForRowAtIndexPath( NSIndexPath(forRow: 0, inSection: 0) ) as? PostEditorTableViewCell
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,12 +124,22 @@ class PostEditorTableViewController: UITableViewController {
     // MARK: - user actions
     
     @IBAction func tapPostButton(sender: AnyObject) {
-        guard let editorCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as? PostEditorTableViewCell else {return}
+        guard let editorCell = editCell else {return}
+        editorCell.contentTextView.resignFirstResponder()
+        
         let content: String = editorCell.content
         var imageData: NSData? = nil
         if !selectedImages.isEmpty {
             let firstImage: UIImage = selectedImages.first!
             imageData = UIImageJPEGRepresentation(firstImage, 1)
+        }
+        
+        if content.characters.count > 140 {
+            Helper.Alert.show(title: "文字过长", message: "为了更好的体验，我们目前将文字长度限定在 140 字以内，请修改后重新发布。", animated: true)
+            return
+        } else if content.characters.count == 0 && selectedImages.isEmpty {
+            Helper.Alert.show(title: "内容为空", message: "没有添加任何图片和文字，没法发表哦喵。", animated: true)
+            return
         }
         
         Action.fluxes.create(motion: "publish", content: content, image: imageData) { (success, description) -> Void in

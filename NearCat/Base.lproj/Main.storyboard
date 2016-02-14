@@ -2581,18 +2581,25 @@
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="140" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDc-ke-t6e">
-                                            <rect key="frame" x="522" y="116" width="60" height="21"/>
+                                            <rect key="frame" x="145" y="116" width="437" height="21"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="60" id="KJl-sZ-uN7"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="KJl-sZ-uN7"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.86302219680000003" green="0.86302219680000003" blue="0.86302219680000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="KJl-sZ-uN7"/>
+                                                </mask>
+                                            </variation>
                                         </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="r0m-3x-ynw" firstAttribute="leading" secondItem="blx-la-80I" secondAttribute="leading" constant="12" id="2Tn-L7-Gvk"/>
                                         <constraint firstAttribute="trailing" secondItem="nha-1U-gB5" secondAttribute="trailing" constant="18" id="6Pi-6O-YtV"/>
+                                        <constraint firstItem="dDc-ke-t6e" firstAttribute="leading" secondItem="r0m-3x-ynw" secondAttribute="trailing" constant="20" id="6Ry-NE-DHU"/>
+                                        <constraint firstItem="r0m-3x-ynw" firstAttribute="centerY" secondItem="blx-la-80I" secondAttribute="centerY" id="A23-L8-YWz"/>
                                         <constraint firstAttribute="bottom" secondItem="dDc-ke-t6e" secondAttribute="bottom" constant="24" id="EBQ-2R-F7X"/>
                                         <constraint firstItem="nha-1U-gB5" firstAttribute="leading" secondItem="r0m-3x-ynw" secondAttribute="trailing" constant="20" id="Mo9-W1-39m"/>
                                         <constraint firstAttribute="bottom" secondItem="nha-1U-gB5" secondAttribute="bottom" constant="44" id="OXQ-0L-aoy"/>
@@ -2601,6 +2608,12 @@
                                         <constraint firstItem="r0m-3x-ynw" firstAttribute="top" secondItem="blx-la-80I" secondAttribute="top" constant="24" id="eX4-GB-Yuo"/>
                                         <constraint firstAttribute="trailing" secondItem="dDc-ke-t6e" secondAttribute="trailing" constant="18" id="tCN-BN-0H5"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="QuG-zr-qZg"/>
+                                            <exclude reference="eX4-GB-Yuo"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="contentCountLabel" destination="dDc-ke-t6e" id="Dif-FD-9QY"/>

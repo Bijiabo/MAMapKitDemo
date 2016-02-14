@@ -149,6 +149,15 @@ class PreviewCollectionViewController: UICollectionViewController {
         
         cell.indexPath = indexPath
         cell.delegate = self
+        
+        if let albumListVC = albumListVC {
+            if albumListVC.selectMode == .single {
+                cell.selectButton.hidden = true
+            } else {
+                cell.selectButton.hidden = false
+            }
+        }
+        
     
         return cell
     }
